@@ -1,0 +1,81 @@
+{
+  "primaryKey": "vehicle_id",
+  "missingValues": [
+    "NaN",
+    ""
+  ],
+  "fields": [
+    {
+      "name": "vehicle_id",
+      "type": "ID",
+      "required": "required",
+      "description": "Identifies a vehicle, such as a bus or a train consist. If possible, this should match other internal agency vehicle IDs and the GTFS-realtime VehicleDescriptor.",
+      "external_reference": null
+    },
+    {
+      "name": "vehicle_start",
+      "type": "POSIX time",
+      "required": "conditionally required",
+      "description": "The time at which the vehicle or train consist is first in operation (i.e., when the consist has been created). Required if Train_car is used.",
+      "external_reference": null
+    },
+    {
+      "name": "vehicle_end",
+      "type": "POSIX time",
+      "required": "optional",
+      "description": "The time at which the vehicle or train consist no longer exists (i.e., the consist is separated or modified). Only used if Train_car is used.",
+      "external_reference": null
+    },
+    {
+      "name": "model_name",
+      "type": "text",
+      "required": "optional",
+      "description": "Describes the vehicleâ€™s model.",
+      "external_reference": null
+    },
+    {
+      "name": "facility_name",
+      "type": "text",
+      "required": "optional",
+      "description": "Name or internal agency ID for the facility where the vehicle is generally held.",
+      "external_reference": null
+    },
+    {
+      "name": "capacity_seated",
+      "type": "non-negative integer",
+      "required": "optional",
+      "description": "Number of seats on the vehicle. Used if Train_car is not used.",
+      "external_reference": null
+    },
+    {
+      "name": "wheelchair_capacity",
+      "type": "non-negative integer",
+      "required": "optional",
+      "description": "Number of wheelchair spaces on the vehicle. Used if Train_car is not used.",
+      "external_reference": null
+    },
+    {
+      "name": "capacity_bike",
+      "type": "non-negative integer",
+      "required": "optional",
+      "description": "Number of bike spaces on the vehicle. Used if Train_car is not used.",
+      "external_reference": null
+    },
+    {
+      "name": "bike_rack",
+      "type": "enum",
+      "required": "optional",
+      "description": "Indicates if the vehicle has a useable bike rack. Used if Train_car is not used. Valid options are:\n0 - Vehicle has a useable bike rack.\n1 - Vehicle does not have a useable bike rack.",
+      "external_reference": null
+    },
+    {
+      "name": "capacity_standing",
+      "type": "non-negative integer",
+      "required": "optional",
+      "description": "Standing capacity of the vehicle set by the manufacturer. Used if Train_car is not used.",
+      "external_reference": null
+    }
+  ],
+  "name": "vehicles.schema.json",
+  "description": "Vehicles, including buses and train consists, with descriptive information."
+}

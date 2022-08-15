@@ -1,0 +1,39 @@
+{
+  "primaryKey": ["vehicle_id", "train_car_id"],
+  "missingValues": [
+    "NaN",
+    ""
+  ],
+  "fields": [
+    {
+      "name": "vehicle_id",
+      "type": "ID referencing vehicles.vehicle_id",
+      "required": "required",
+      "description": "Identifies a vehicle, such as a train consist. If possible, this should match other internal agency vehicle IDs.",
+      "external_reference": null
+    },
+    {
+      "name": "train_car_id",
+      "type": "ID referencing train_car.train_car_id",
+      "required": "required",
+      "description": "Identifies a train car or an asset that is a component of the vehicle.",
+      "external_reference": null
+    },
+    {
+      "name": "order",
+      "type": "non-negative integer",
+      "required": "optional",
+      "description": "The assigned order of the train car or asset within the vehicle.",
+      "external_reference": null
+    },
+    {
+      "name": "operator_id",
+      "type": "ID",
+      "required": "required",
+      "description": "Identifies an operator. If possible, this should match other internal agency operator IDs.",
+      "external_reference": null
+    }
+  ],
+  "name": "vehicle_train_cars.schema.json",
+  "description": "Relationships between assets and vehicles."
+}

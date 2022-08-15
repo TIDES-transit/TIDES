@@ -1,0 +1,74 @@
+{
+  "primaryKey": "train_car_id",
+  "missingValues": [
+    "NaN",
+    ""
+  ],
+  "fields": [
+    {
+      "name": "train_car_id",
+      "type": "ID",
+      "required": "required",
+      "description": "Identifies a train car or asset. If possible, this should match other internal agency asset IDs.",
+      "external_reference": null
+    },
+    {
+      "name": "model_name",
+      "type": "text",
+      "required": "optional",
+      "description": "Describes the train car or assetâ€™s model.",
+      "external_reference": null
+    },
+    {
+      "name": "facility_name",
+      "type": "text",
+      "required": "optional",
+      "description": "Name or internal agency ID for the facility where the train car or asset is generally held.",
+      "external_reference": null
+    },
+    {
+      "name": "capacity_seated",
+      "type": "non-negative integer",
+      "required": "optional",
+      "description": "Number of seats on the train car or asset.",
+      "external_reference": null
+    },
+    {
+      "name": "wheelchair_capacity",
+      "type": "non-negative integer",
+      "required": "optional",
+      "description": "Number of wheelchair spaces on the train car or asset.",
+      "external_reference": null
+    },
+    {
+      "name": "bike_capacity",
+      "type": "non-negative integer",
+      "required": "optional",
+      "description": "Number of bike spaces on the train car or asset.",
+      "external_reference": null
+    },
+    {
+      "name": "bike_rack",
+      "type": "enum",
+      "required": "optional",
+      "description": "Indicates if the train car or asset has a usable bike rack. Valid options are:\n0 - Asset has a usable bike rack.\n1 - Asset does not have a usable bike rack.",
+      "external_reference": null
+    },
+    {
+      "name": "capacity_standing",
+      "type": "non-negative integer",
+      "required": "optional",
+      "description": "Standing capacity of the train car or asset set by the manufacturer.",
+      "external_reference": null
+    },
+    {
+      "name": "train_car_type",
+      "type": "enum",
+      "required": "optional",
+      "description": "Indicates the type of train car or asset. Valid options are:\n0 - Train car.\n1 - Trolley.\n2 - Other.",
+      "external_reference": null
+    }
+  ],
+  "name": "train_cars.schema.json",
+  "description": "Assets that comprise vehicles, such as train cars, with descriptive information."
+}

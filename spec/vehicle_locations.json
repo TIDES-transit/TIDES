@@ -1,0 +1,144 @@
+{
+  "primaryKey": "location_ping_id",
+  "missingValues": [
+    "NaN",
+    ""
+  ],
+  "fields": [
+    {
+      "name": "date",
+      "type": "date",
+      "required": "required",
+      "description": "Service date.",
+      "external_reference": "GTFS"
+    },
+    {
+      "name": "timestamp",
+      "type": "POSIX time",
+      "required": "required",
+      "description": "Recorded event time.",
+      "external_reference": null
+    },
+    {
+      "name": "location_ping_id",
+      "type": "ID",
+      "required": "required",
+      "description": "Identifies the recorded vehicle location event.",
+      "external_reference": null
+    },
+    {
+      "name": "trip_id_performed",
+      "type": "ID referencing Trips_performed.trip_id_performed",
+      "required": "required",
+      "description": "Identifies the trip performed.",
+      "external_reference": null
+    },
+    {
+      "name": "stop_sequence",
+      "type": "positive integer referencing Stop_times.stop_sequence",
+      "required": "required",
+      "description": "Ordered stop the vehicle is approaching or serving on a particular trip.",
+      "external_reference": "GTFS"
+    },
+    {
+      "name": "vehicle_id",
+      "type": "ID referencing Vehicles.vehicle_id",
+      "required": "required",
+      "description": "Identifies a vehicle.",
+      "external_reference": null
+    },
+    {
+      "name": "device_id",
+      "type": "ID references Devices.device_id",
+      "required": "conditionally required",
+      "description": "Identifies the device that recorded the vehicle location. May be null if only a single device is reporting vehicle location and the device_id is not distinct from vehicle_id.",
+      "external_reference": null
+    },
+    {
+      "name": "stop_id",
+      "type": "ID referencing Stops.stop_id",
+      "required": "optional",
+      "description": "Identifies the stop the vehicle is approaching or serving currently.",
+      "external_reference": "GTFS"
+    },
+    {
+      "name": "current_status",
+      "type": "enum",
+      "required": "optional",
+      "description": "Indicates the status of the vehicle in reference to a stop. Valid options are:\n0 - Incoming at.\n1 - Stopped at.\n2 - In transit to.",
+      "external_reference": "GTFS-Realtime"
+    },
+    {
+      "name": "latitude",
+      "type": "float",
+      "required": "optional",
+      "description": "Degrees North, in the WGS-84 coordinate system.",
+      "external_reference": "GTFS-Realtime"
+    },
+    {
+      "name": "longitude",
+      "type": "float",
+      "required": "optional",
+      "description": "Degrees East, in the WGS-84 coordinate system.",
+      "external_reference": "GTFS-Realtime"
+    },
+    {
+      "name": "gps_quality",
+      "type": "enum",
+      "required": "optional",
+      "description": "Indicates the quality of data and communication provided by the GPS. Valid options are:\n0 - Excellent.\n1 - Good.\n2 - Poor.",
+      "external_reference": null
+    },
+    {
+      "name": "bearing",
+      "type": "float",
+      "required": "optional",
+      "description": "Bearing, in degrees, clockwise from true north, e.g., 0 would mean north and 90 would mean east. This can be the compass bearing, or the direction towards the next stop or intermediate location. This should not be deduced from the sequence of previous positions, which clients can compute from previous data.",
+      "external_reference": "GTFS-Realtime"
+    },
+    {
+      "name": "speed",
+      "type": "float",
+      "required": "optional",
+      "description": "Momentary speed measured by the vehicle, in meters per second.",
+      "external_reference": "GTFS-Realtime"
+    },
+    {
+      "name": "odometer",
+      "type": "integer",
+      "required": "optional",
+      "description": "Odometer value, in meters.",
+      "external_reference": "GTFS-Realtime"
+    },
+    {
+      "name": "schedule_deviation",
+      "type": "integer",
+      "required": "optional",
+      "description": "Indicates schedule adherence in seconds. A negative value represents an early vehicle. (An unscheduled trip would not have a scheduled deviation.)",
+      "external_reference": null
+    },
+    {
+      "name": "headway_deviation",
+      "type": "integer",
+      "required": "optional",
+      "description": "Indicates headway adherence in seconds. A negative value represents a shorter than scheduled headway.",
+      "external_reference": null
+    },
+    {
+      "name": "in_service",
+      "type": "enum",
+      "required": "optional",
+      "description": "Indicates status of travel with regard to service. Valid options are:\n0 - The vehicle is in passenger service.\n1 - The vehicle is en-route to service.\n2 - The vehicle is traveling from a service trip.\n3 - The vehicle is on a layover.\n4 - The vehicle is returning to a garage due to a suspension or breakdown.\n5 - Travel for on-route replacement of breakdown.\n6 - Other not in service",
+      "external_reference": null
+    },
+    {
+      "name": "schedule_relationship",
+      "type": "enum",
+      "required": "optional",
+      "description": "Indicates the status of the stop. Valid options are:\n0 - Scheduled.\n1 - Skipped.\n2 - Unscheduled.\n3 - Canceled.\n4 - Duplicated.\n5 - Schedule modified.",
+      "external_reference": null
+    }
+  ],
+  "name": "vehicle_locations.schema.json",
+  "description": "Timestamped vehicle locations and speeds."
+}

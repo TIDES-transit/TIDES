@@ -1,0 +1,109 @@
+{
+  "primaryKey": ["date", "stop_id", "time_period_start", "time_period_end"],
+  "missingValues": [
+    "NaN",
+    ""
+  ],
+  "fields": [
+    {
+      "name": "date",
+      "type": "date",
+      "required": "required",
+      "description": "Service date",
+      "external_reference": null
+    },
+    {
+      "name": "stop_id",
+      "type": "ID referencing Stops.stop_id",
+      "required": "required",
+      "description": "Identifies stop.",
+      "external_reference": "GTFS"
+    },
+    {
+      "name": "time_period_start",
+      "type": "POSIX time",
+      "required": "required",
+      "description": "Aggregation period start time.",
+      "external_reference": null
+    },
+    {
+      "name": "time_period_end",
+      "type": "POSIX time",
+      "required": "required",
+      "description": "Aggregation period end time.",
+      "external_reference": null
+    },
+    {
+      "name": "time_period_category",
+      "type": "text",
+      "required": "optional",
+      "description": "Indicates a standard time period to aid further aggregation. For example:\nAll day\nPeak\nOff-peak\nSummer\nOther",
+      "external_reference": null
+    },
+    {
+      "name": "total_entries",
+      "type": "non-negative integer",
+      "required": "optional",
+      "description": "Number of events at the stop considered entries, such as boardings or fare transactions.",
+      "external_reference": null
+    },
+    {
+      "name": "total_exits",
+      "type": "non-negative integer",
+      "required": "optional",
+      "description": "Number of events at the stop considered exits, such as alightings.",
+      "external_reference": null
+    },
+    {
+      "name": "number_of_transactions",
+      "type": "non-negative integer",
+      "required": "optional",
+      "description": "Number of fare transactions that occurred at a stop.",
+      "external_reference": null
+    },
+    {
+      "name": "transaction_revenue_x",
+      "type": "currency",
+      "required": "optional",
+      "description": "Indicates the revenue from a specified fare medium. For example, cash revenue would be represented by the field name transaction_revenue_0. Valid values for x are:\n0 - Cash or coins.\n1 - Smart card or ticket.\n2 - Magnetic-stripe card or ticket.\n3 - Bank card (credit or debit card).\n4 - Mobile NFC (smartphone tap, etc.).\n5 - Optical scan (of mobile app screen or paper ticket).\n6 - Button pressed by driver or operator to indicate a boarding or alighting passenger.\n7 - Other type.",
+      "external_reference": null
+    },
+    {
+      "name": "transaction_count_x",
+      "type": "Non-negative integer",
+      "required": "optional",
+      "description": "Number of fare transactions made by a distinct fare_media_type.\nValid values for x are:\n0 - Cash or coins.\n1 - Smart card or ticket.\n2 - Magnetic-stripe card or ticket.\n3 - Bank card (credit or debit card).\n4 - Mobile NFC (smartphone tap, etc.).\n5 - Optical scan (of mobile app screen or paper ticket).\n6 - Button pressed by driver or operator to indicate a boarding or alighting passenger.\n7 - Other type.",
+      "external_reference": null
+    },
+    {
+      "name": "bike_entries",
+      "type": "non-negative integer",
+      "required": "optional",
+      "description": "Number of bikes that entered the stop.",
+      "external_reference": null
+    },
+    {
+      "name": "bike_exits",
+      "type": "non-negative integer",
+      "required": "optional",
+      "description": "Number of bikes that exited the stop.",
+      "external_reference": null
+    },
+    {
+      "name": "ramp_entries",
+      "type": "non-negative integer",
+      "required": "optional",
+      "description": "Number of entries that used a ramp or accessible entrance.",
+      "external_reference": null
+    },
+    {
+      "name": "ramp_exits",
+      "type": "non-negative integer",
+      "required": "optional",
+      "description": "Number of exits that used a ramp or accessible exit.",
+      "external_reference": null
+    }
+  ],
+  "name": "station_activities.schema.json",
+  "description": "Summarized transactions, entries, and exits by stop or station and time period for each service date (for events not associated with a trip)."
+}

@@ -1,0 +1,74 @@
+{
+  "primaryKey": "device_id",
+  "missingValues": [
+    "NaN",
+    ""
+  ],
+  "fields": [
+    {
+      "name": "device_id",
+      "type": "ID",
+      "required": "required",
+      "description": "Identifies a device. If possible, this should match other internal agency device IDs.",
+      "external_reference": null
+    },
+    {
+      "name": "stop_id",
+      "type": "ID referencing Stops.stop_id",
+      "required": "conditionally required",
+      "description": "Identifies the stop at which the device is located. May be null if the device is on a vehicle.",
+      "external_reference": "GTFS"
+    },
+    {
+      "name": "vehicle_id",
+      "type": "ID referencing Vehicles.vehicle_id",
+      "required": "conditionally required",
+      "description": "Identifies the vehicle on which the device is located. May be null if the device is at a stop or station.",
+      "external_reference": null
+    },
+    {
+      "name": "train_car_id",
+      "type": "ID referencing Train_car.train_car_id",
+      "required": "conditionally required",
+      "description": "Identifies the train car or asset on which the device is located. May be null if the device is at a stop or station or if the Train_cars file is not used.",
+      "external_reference": null
+    },
+    {
+      "name": "device_type",
+      "type": "enum",
+      "required": "optional",
+      "description": "Indicates the type of device. Valid options are:\n0 - APC.\n1 - AFC.\n2 - AVL.\n3 - Other.",
+      "external_reference": null
+    },
+    {
+      "name": "device_vendor",
+      "type": "text",
+      "required": "optional",
+      "description": "Vendor of the device.",
+      "external_reference": null
+    },
+    {
+      "name": "device_model",
+      "type": "text",
+      "required": "optional",
+      "description": "Model of the device as specified by the vendor.",
+      "external_reference": null
+    },
+    {
+      "name": null,
+      "type": null,
+      "required": null,
+      "description": null,
+      "external_reference": null
+    },
+    {
+      "name": "location",
+      "type": "text",
+      "required": "optional",
+      "description": "Indicates the location of a device on the vehicle or at a station. For example:\nFront door.\nBack door.\nEntrance (not located on a vehicle).\nExit (not located on a vehicle).\nEntrance/exit (not located on a vehicle).\nOther.",
+      "external_reference": null
+    }
+  ],
+  "name": "devices.schema.json",
+  "description": "Measurement devices, such as AVL, APC, and AFC devices, associated with vehicles or stops or stations."
+}

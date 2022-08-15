@@ -1,0 +1,18 @@
+{
+  "primaryKey": "operator_id",
+  "missingValues": [
+    "NaN",
+    ""
+  ],
+  "fields": [
+    {
+      "name": "operator_id",
+      "type": "ID",
+      "required": "required",
+      "description": "Identifies an operator. If possible, this should match other internal agency operator IDs.",
+      "external_reference": null
+    }
+  ],
+  "name": "operators.schema.json",
+  "description": "Personnel who operate vehicles."
+}
