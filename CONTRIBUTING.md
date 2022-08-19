@@ -48,7 +48,7 @@ Content to be added.
 
 ## [License](license)
 
-The TIDES specification is licensed under the Apache License 2.0 as defined in [LICENSE.md][license-file] file.
+The TIDES specification is licensed under the Apache License 2.0 as defined in [LICENSE][license-file] file.
 
 ## [Project Governance](governance)
  
