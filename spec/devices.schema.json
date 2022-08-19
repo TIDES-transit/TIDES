@@ -1,0 +1,88 @@
+{
+  "primaryKey": "device_id",
+  "missingValues": [
+    "NaN",
+    ""
+  ],
+  "fields": [
+    {
+      "name": "device_id",
+      "type": "string",
+      "description": "Identifies a device. If possible, this should match other internal agency device IDs.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "stop_id",
+      "title": "ID referencing stops.stop_id",
+      "type": "string",
+      "description": "Identifies the stop at which the device is located. May be null if the device is on a vehicle. References GTFS"
+    },
+    {
+      "name": "vehicle_id",
+      "title": "ID referencing vehicles.vehicle_id",
+      "type": "string",
+      "description": "Identifies the vehicle on which the device is located. May be null if the device is at a stop or station."
+    },
+    {
+      "name": "train_car_id",
+      "title": "ID referencing train_car.train_car_id",
+      "type": "string",
+      "description": "Identifies the train car or asset on which the device is located. May be null if the device is at a stop or station or if the Train_cars file is not used."
+    },
+    {
+      "name": "device_type",
+      "type": "integer",
+      "description": "Indicates the type of device. Valid options are:\n0 - APC.\n1 - AFC.\n2 - AVL.\n3 - Other.",
+      "constraints": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "name": "device_vendor",
+      "type": "string",
+      "description": "Vendor of the device."
+    },
+    {
+      "name": "device_model",
+      "type": "string",
+      "description": "Model of the device as specified by the vendor."
+    },
+    {
+      "name": "location",
+      "type": "string",
+      "description": "Indicates the location of a device on the vehicle or at a station. For example:\nFront door.\nBack door.\nEntrance (not located on a vehicle).\nExit (not located on a vehicle).\nEntrance/exit (not located on a vehicle).\nOther."
+    }
+  ],
+  "foreignKeys": [
+    {
+      "fields": "stop_id",
+      "reference": {
+        "resource": "stops",
+        "fields": "stop_id"
+      }
+    },
+    {
+      "fields": "vehicle_id",
+      "reference": {
+        "resource": "vehicles",
+        "fields": "vehicle_id"
+      }
+    },
+    {
+      "fields": "train_car_id",
+      "reference": {
+        "resource": "train_car",
+        "fields": "train_car_id"
+      }
+    }
+  ],
+  "name": "devices.schema.json",
+  "description": "Measurement devices, such as AVL, APC, and AFC devices, associated with vehicles or stops or stations."
+}
