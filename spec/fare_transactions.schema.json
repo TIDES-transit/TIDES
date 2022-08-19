@@ -39,7 +39,7 @@
     },
     {
       "name": "currency_type",
-      "type": "currency code",
+      "type": "string",
       "description": "Currency used for the transaction. References GTFS",
       "constraints": {
         "required": true

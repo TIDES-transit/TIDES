@@ -195,8 +195,11 @@
     },
     {
       "name": "transaction_count_x",
-      "type": "Non-negative integer",
-      "description": "Number of fare transactions made by a specified fare medium. For example, the count of cash transactions would be represented by the field name transaction_count_0.\nValid values for x are:\n0 - Cash or coins.\n1 - Smart card or ticket.\n2 - Magnetic-stripe card or ticket.\n3 - Bank card (credit or debit card).\n4 - Mobile NFC (smartphone tap, etc.).\n5 - Optical scan (of mobile app screen or paper ticket).\n6 - Button pressed by driver or operator to indicate a boarding or alighting passenger.\n7 - Other type."
+      "type": "integer",
+      "description": "Number of fare transactions made by a specified fare medium. For example, the count of cash transactions would be represented by the field name transaction_count_0.\nValid values for x are:\n0 - Cash or coins.\n1 - Smart card or ticket.\n2 - Magnetic-stripe card or ticket.\n3 - Bank card (credit or debit card).\n4 - Mobile NFC (smartphone tap, etc.).\n5 - Optical scan (of mobile app screen or paper ticket).\n6 - Button pressed by driver or operator to indicate a boarding or alighting passenger.\n7 - Other type.",
+      "constraints": {
+        "minimum": 0
+      }
     },
     {
       "name": "schedule_relationship",
