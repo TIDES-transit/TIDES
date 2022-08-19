@@ -1,5 +1,8 @@
 {
-  "primaryKey": ["vehicle_id", "train_car_id"],
+  "primaryKey": [
+    "vehicle_id",
+    "train_car_id"
+  ],
   "missingValues": [
     "NaN",
     ""
@@ -7,31 +10,60 @@
   "fields": [
     {
       "name": "vehicle_id",
-      "type": "ID referencing vehicles.vehicle_id",
-      "required": "required",
+      "type": "string",
+      "title": "ID referencing vehicles.vehicle_id",
       "description": "Identifies a vehicle, such as a train consist. If possible, this should match other internal agency vehicle IDs.",
-      "external_reference": null
+      "constraints": {
+        "required": true
+      }
     },
     {
       "name": "train_car_id",
-      "type": "ID referencing train_car.train_car_id",
-      "required": "required",
+      "type": "string",
+      "title": "ID referencing train_car.train_car_id",
       "description": "Identifies a train car or an asset that is a component of the vehicle.",
-      "external_reference": null
+      "constraints": {
+        "required": true
+      }
     },
     {
       "name": "order",
-      "type": "non-negative integer",
-      "required": "optional",
+      "type": "integer",
       "description": "The assigned order of the train car or asset within the vehicle.",
-      "external_reference": null
+      "constraints": {
+        "minimum": 0
+      }
     },
     {
       "name": "operator_id",
-      "type": "ID",
-      "required": "required",
+      "type": "string",
       "description": "Identifies an operator. If possible, this should match other internal agency operator IDs.",
-      "external_reference": null
+      "constraints": {
+        "required": true
+      }
+    }
+  ],
+  "foreignKeys": [
+    {
+      "fields": "vehicle_id",
+      "reference": {
+        "resource": "vehicles",
+        "fields": "vehicle_id"
+      }
+    },
+    {
+      "fields": "train_car_id",
+      "reference": {
+        "resource": "train_cars",
+        "fields": "train_car_id"
+      }
+    },
+    {
+      "fields": "operator_id",
+      "reference": {
+        "resource": "operator",
+        "fields": "operator_id"
+      }
     }
   ],
   "name": "vehicle_train_cars.schema.json",

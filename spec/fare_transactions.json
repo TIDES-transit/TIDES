@@ -8,149 +8,212 @@
     {
       "name": "date",
       "type": "date",
-      "required": "required",
-      "description": "Service date.",
-      "external_reference": "GTFS"
+      "description": "Service date. References GTFS",
+      "constraints": {
+        "required": true
+      }
     },
     {
       "name": "timestamp",
-      "type": "POSIX time",
-      "required": "required",
+      "type": "time",
       "description": "Recorded event time, including for transactions that may be aggregated values associated with a trip or vehicle.",
-      "external_reference": null
+      "constraints": {
+        "required": true
+      }
     },
     {
       "name": "transaction_id",
-      "type": "ID",
-      "required": "required",
+      "type": "string",
       "description": "Identifies the fare transaction.",
-      "external_reference": null
+      "constraints": {
+        "required": true
+      }
     },
     {
       "name": "amount",
-      "type": "currency",
-      "required": "required",
+      "type": "number",
       "description": "Value of the transaction.",
-      "external_reference": null
+      "constraints": {
+        "required": true
+      }
     },
     {
       "name": "currency_type",
       "type": "currency code",
-      "required": "required",
-      "description": "Currency used for the transaction.",
-      "external_reference": "GTFS"
+      "description": "Currency used for the transaction. References GTFS",
+      "constraints": {
+        "required": true
+      }
     },
     {
       "name": "fare_action",
-      "type": "enum",
-      "required": "required",
+      "type": "integer",
       "description": "Indicates the type of action performed. Valid options are:\n0 - Unknown action type.\n1 - Purchase.\n2 - Enter (enter fare-controlled area or vehicle).\n3 - Exit (exit fare-controlled area or vehicle).\n4 - Transfer entrance.\n5 - Transfer exit.\n6 - Add (add stored value).\n7 - Activate (activate a fare pass).\n8 - Adjust (adjustment initiated by system or customer support).\n9 - Other.",
-      "external_reference": null
+      "constraints": {
+        "required": true,
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      }
     },
     {
       "name": "trip_id_performed",
-      "type": "ID referencing Trips_performed.trip_id_performed",
-      "required": "conditionally required",
-      "description": "Identifies the trip performed. May be null if the fare collection device is NOT located on a vehicle. May be null if on a vehicle but trip-level data is unavailable, in which case the data would be associated with the vehicle.",
-      "external_reference": null
+      "type": "string",
+      "title": "ID referencing trips_performed.trip_id_performed",
+      "description": "Identifies the trip performed. May be null if the fare collection device is NOT located on a vehicle. May be null if on a vehicle but trip-level data is unavailable, in which case the data would be associated with the vehicle."
     },
     {
       "name": "stop_sequence",
-      "type": "positive integer referencing stop_times.stop_sequence",
-      "required": "conditionally required",
-      "description": "Ordered stop the vehicle is serving on a particular trip. May be null if the fare collection device is NOT located on a vehicle. May be null if on a vehicle but stop-level data is unavailable, in which case the data would be associated with the vehicle and/or trip.",
-      "external_reference": "GTFS"
+      "type": "integer",
+      "title": "positive integer referencing stop_times.stop_sequence",
+      "description": "Ordered stop the vehicle is serving on a particular trip. May be null if the fare collection device is NOT located on a vehicle. May be null if on a vehicle but stop-level data is unavailable, in which case the data would be associated with the vehicle and/or trip. References GTFS",
+      "constraints": {
+        "minimum": 0
+      }
     },
     {
       "name": "vehicle_id",
-      "type": "ID referencing vehicles.vehicle_id",
-      "required": "conditionally required",
-      "description": "Identifies the vehicle. May be null if collection device is NOT located on a vehicle. May be null if on a vehicle but vehicle data is unavailable, in which case the data would be associated with a trip and/or stop.",
-      "external_reference": null
+      "type": "string",
+      "title": "ID referencing vehicles.vehicle_id",
+      "description": "Identifies the vehicle. May be null if collection device is NOT located on a vehicle. May be null if on a vehicle but vehicle data is unavailable, in which case the data would be associated with a trip and/or stop."
     },
     {
       "name": "device_id",
-      "type": "ID referencing devices.device_id",
-      "required": "conditionally required",
-      "description": "Identifies the ITS device on which the fare transaction was performed. May be null if only a single device is reporting fare transactions on a vehicle and vehicle_id is provided. May be null if only a single device is reporting fare transactions at a stop and stop_id is provided.",
-      "external_reference": null
+      "type": "string",
+      "title": "ID referencing devices.device_id",
+      "description": "Identifies the ITS device on which the fare transaction was performed. May be null if only a single device is reporting fare transactions on a vehicle and vehicle_id is provided. May be null if only a single device is reporting fare transactions at a stop and stop_id is provided."
     },
     {
       "name": "fare_id",
-      "type": "ID referencing Fare_attributes.fare_id",
-      "required": "optional",
-      "description": "Identifies a fare class, as included in the GTFS Fare_attributes file.",
-      "external_reference": "GTFS"
+      "type": "string",
+      "title": "ID referencing fare_attributes.fare_id",
+      "description": "Identifies a fare class, as included in the GTFS Fare_attributes file. References GTFS"
     },
     {
       "name": "stop_id",
-      "type": "ID referencing stops.stop_id",
-      "required": "optional",
-      "description": "Identifies the stop.",
-      "external_reference": "GTFS"
+      "type": "string",
+      "title": "ID referencing stops.stop_id",
+      "description": "Identifies the stop. References GTFS"
     },
     {
       "name": "group_size",
-      "type": "positive integer",
-      "required": "optional",
+      "type": "integer",
       "description": "The number of customers included in the transaction.",
-      "external_reference": null
+      "constraints": {
+        "minimum": 0
+      }
     },
     {
       "name": "media_type",
-      "type": "enum",
-      "required": "optional",
+      "type": "integer",
       "description": "Indicates the fare medium that was used for the transaction. Valid options are:\n0 - Cash or coins.\n1 - Smart card or ticket.\n2 - Magnetic-stripe card or ticket.\n3 - Bank card (credit or debit card).\n4 - Mobile NFC (smartphone tap, etc.).\n5 - Optical scan (of mobile app screen or paper ticket).\n6 - Button pressed by driver or operator to indicate a boarding or alighting passenger.\n7 - Other type.",
-      "external_reference": null
+      "constraints": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      }
     },
     {
       "name": "rider_category",
-      "type": "text",
-      "required": "optional",
-      "description": "Indicates rider category (categories defined by transit agency). For example:\nAdult\nYouth\nStudent\nSenior\nOther reduced",
-      "external_reference": null
+      "type": "string",
+      "description": "Indicates rider category (categories defined by transit agency). For example:\nAdult\nYouth\nStudent\nSenior\nOther reduced"
     },
     {
       "name": "fare_product",
-      "type": "text",
-      "required": "optional",
-      "description": "Indicates the fare group (fare groups defined by transit agency). For example:\nSingle ride\nPass\nEmployer sponsored\nOther pass",
-      "external_reference": null
+      "type": "string",
+      "description": "Indicates the fare group (fare groups defined by transit agency). For example:\nSingle ride\nPass\nEmployer sponsored\nOther pass"
     },
     {
       "name": "fare_period",
-      "type": "text",
-      "required": "optional",
-      "description": "Indicates the fare period (fare periods defined by transit agency). For example:\nAll day\nPeak\nOff-peak\nSummer\nOther",
-      "external_reference": null
+      "type": "string",
+      "description": "Indicates the fare period (fare periods defined by transit agency). For example:\nAll day\nPeak\nOff-peak\nSummer\nOther"
     },
     {
       "name": "fare_capped",
-      "type": "enum",
-      "required": "optional",
+      "type": "integer",
       "description": "Indicates if fare capping is in effect (fare capping options defined by transit agency). Valid options are:\n0 - Fare is not capped.\n1 - Fare is capped.",
-      "external_reference": null
+      "constraints": {
+        "required": true,
+        "enum": [
+          0,
+          1
+        ]
+      }
     },
     {
       "name": "fare_media_id",
-      "type": "ID",
-      "required": "optional",
-      "description": "Identifies the individual fare medium used for the transaction. For example, the fare card ID.",
-      "external_reference": null
+      "type": "string",
+      "description": "Identifies the individual fare medium used for the transaction. For example, the fare card ID."
     },
     {
       "name": "fare_media_id_purchased",
-      "type": "ID",
-      "required": "optional",
-      "description": "Identifies the individual fare medium purchased in the transaction. For example, the fare card ID.",
-      "external_reference": null
+      "type": "string",
+      "description": "Identifies the individual fare medium purchased in the transaction. For example, the fare card ID."
     },
     {
       "name": "balance",
-      "type": "float",
-      "required": "optional",
-      "description": "Stored value remaining on an account after the transaction is made.",
-      "external_reference": null
+      "type": "number",
+      "description": "Stored value remaining on an account after the transaction is made."
+    }
+  ],
+  "foreignKeys": [
+    {
+      "fields": "trip_id_performed",
+      "reference": {
+        "resource": "trips_performed",
+        "fields": "trip_id_performed"
+      }
+    },
+    {
+      "fields": "stop_sequence",
+      "reference": {
+        "resource": "stop_times",
+        "fields": "stop_sequence"
+      }
+    },
+    {
+      "fields": "vehicle_id",
+      "reference": {
+        "resource": "vehicles",
+        "fields": "vehicle_id"
+      }
+    },
+    {
+      "fields": "device_id",
+      "reference": {
+        "resource": "devices",
+        "fields": "device_id"
+      }
+    },
+    {
+      "fields": "fare_id",
+      "reference": {
+        "resource": "fare_attributes",
+        "fields": "fare_id"
+      }
+    },
+    {
+      "fields": "stop_id",
+      "reference": {
+        "resource": "stops",
+        "fields": "stop_id"
+      }
     }
   ],
   "name": "fare_transactions.schema.json",

@@ -1,5 +1,10 @@
 {
-  "primaryKey": ["date", "trip_id_performed", "stop_sequence", "vehicle_id"],
+  "primaryKey": [
+    "date",
+    "trip_id_performed",
+    "stop_sequence",
+    "vehicle_id"
+  ],
   "missingValues": [
     "NaN",
     ""
@@ -8,219 +13,229 @@
     {
       "name": "date",
       "type": "date",
-      "required": "required",
-      "description": "Service date.",
-      "external_reference": "GTFS"
+      "description": "Service date. References GTFS",
+      "constraints": {
+        "required": true
+      }
     },
     {
       "name": "trip_id_performed",
-      "type": "ID referencing Trips_performed.trip_id_performed",
-      "required": "required",
+      "type": "string",
+      "title": "ID referencing trips_performed.trip_id_performed",
       "description": "Identifies the trip performed.",
-      "external_reference": null
+      "constraints": {
+        "required": true
+      }
     },
     {
       "name": "stop_sequence",
-      "type": "positive integer referencing Stop_times.stop_sequence",
-      "required": "required",
-      "description": "Ordered stop the vehicle is serving on a particular trip.",
-      "external_reference": "GTFS"
+      "type": "integer",
+      "title": "positive integer referencing stop_times.stop_sequence",
+      "description": "Ordered stop the vehicle is serving on a particular trip. References GTFS",
+      "constraints": {
+        "required": true,
+        "minimum": 0
+      }
     },
     {
       "name": "vehicle_id",
-      "type": "ID referencing vehicles.vehicle_id",
-      "required": "required",
+      "type": "string",
+      "title": "ID referencing vehicles.vehicle_id",
       "description": "Identifies the vehicle.",
-      "external_reference": null
+      "constraints": {
+        "required": true
+      }
     },
     {
       "name": "dwell",
       "type": "integer",
-      "required": "optional",
-      "description": "Indicates the amount of time a vehicle spent stopped at a stop in seconds.",
-      "external_reference": null
+      "description": "Indicates the amount of time a vehicle spent stopped at a stop in seconds."
     },
     {
       "name": "stop_id",
-      "type": "ID referencing stops.stop_id",
-      "required": "optional",
-      "description": "Identifies the stop.",
-      "external_reference": "GTFS"
+      "type": "string",
+      "title": "ID referencing stops.stop_id from GTFS",
+      "description": "Identifies the stop."
     },
     {
       "name": "checkpoint",
-      "type": "enum",
-      "required": "optional",
+      "type": "integer",
       "description": "Indicates of the stop should be used for evaluating schedule adherence, on-time performance, and other KPIs. This could be populated to match the GTFS “timepoint” field. Valid options are:\n0 - Stop is not used in evaluating KPIs.\n1 or empty - Stop is used in evaluating KPIs.",
-      "external_reference": null
+      "constraints": {
+        "enum": [
+          0,
+          1
+        ]
+      }
     },
     {
       "name": "schedule_arrival_time",
-      "type": "POSIX time",
-      "required": "optional",
-      "description": "Scheduled time at which the vehicle arrives at a stop.",
-      "external_reference": "GTFS"
+      "type": "time",
+      "description": "Scheduled time at which the vehicle arrives at a stop. References GTFS"
     },
     {
       "name": "schedule_departure_time",
-      "type": "POSIX time",
-      "required": "optional",
-      "description": "Scheduled time at which the vehicle departs from a stop.",
-      "external_reference": "GTFS"
+      "type": "time",
+      "description": "Scheduled time at which the vehicle departs from a stop. References GTFS"
     },
     {
       "name": "actual_arrival_time",
-      "type": "POSIX time",
-      "required": "optional",
-      "description": "Time at which the vehicle arrives at a stop.",
-      "external_reference": null
+      "type": "time",
+      "description": "Time at which the vehicle arrives at a stop."
     },
     {
       "name": "actual_departure_time",
-      "type": "POSIX time",
-      "required": "optional",
-      "description": "Time at which the vehicle departs from a stop.",
-      "external_reference": null
+      "type": "time",
+      "description": "Time at which the vehicle departs from a stop."
     },
     {
       "name": "distance",
       "type": "integer",
-      "required": "optional",
-      "description": "Observed distance in meters from the previous stop traveled by the vehicle.",
-      "external_reference": null
+      "description": "Observed distance in meters from the previous stop traveled by the vehicle."
     },
     {
       "name": "boarding_1",
       "type": "integer",
-      "required": "optional",
-      "description": "Number of riders that entered the front-most or right-most door of the vehicle",
-      "external_reference": null
+      "description": "Number of riders that entered the front-most or right-most door of the vehicle"
     },
     {
       "name": "alighting_1",
       "type": "integer",
-      "required": "optional",
-      "description": "Number of riders that exited the front-most or right-most door of the vehicle",
-      "external_reference": null
+      "description": "Number of riders that exited the front-most or right-most door of the vehicle"
     },
     {
       "name": "boarding_2",
       "type": "integer",
-      "required": "optional",
-      "description": "Number of riders that entered the rest of the vehicle’s doors.",
-      "external_reference": null
+      "description": "Number of riders that entered the rest of the vehicle’s doors."
     },
     {
       "name": "alighting_2",
       "type": "integer",
-      "required": "optional",
-      "description": "Number of riders that exited the rest of the vehicle’s doors.",
-      "external_reference": null
+      "description": "Number of riders that exited the rest of the vehicle’s doors."
     },
     {
       "name": "load",
       "type": "integer",
-      "required": "optional",
-      "description": "Number of riders on the vehicle when departing the stop.",
-      "external_reference": null
+      "description": "Number of riders on the vehicle when departing the stop."
     },
     {
       "name": "door_open",
-      "type": "POSIX time",
-      "required": "optional",
-      "description": "Time at which the doors opened.",
-      "external_reference": null
+      "type": "time",
+      "description": "Time at which the doors opened."
     },
     {
       "name": "door_close",
-      "type": "POSIX time",
-      "required": "optional",
-      "description": "Time at which the doors closed.",
-      "external_reference": null
+      "type": "time",
+      "description": "Time at which the doors closed."
     },
     {
       "name": "door_status",
-      "type": "text",
-      "required": "optional",
-      "description": "Indicates actions of the doors during the stop visit. For example:\n-Doors did not open\n-Front door opened and back doors remain closed\n-Back doors opened and front door remained closed\n-All doors opened\n-Other configuration",
-      "external_reference": null
+      "type": "string",
+      "description": "Indicates actions of the doors during the stop visit. For example:\n-Doors did not open\n-Front door opened and back doors remain closed\n-Back doors opened and front door remained closed\n-All doors opened\n-Other configuration"
     },
     {
       "name": "ramp_deployed_time",
-      "type": "float",
-      "required": "optional",
-      "description": "Duration of time a ramp is deployed, in seconds.",
-      "external_reference": null
+      "type": "number",
+      "description": "Duration of time a ramp is deployed, in seconds."
     },
     {
       "name": "ramp_failure",
-      "type": "enum",
-      "required": "optional",
+      "type": "integer",
       "description": "Indicates if the ramp deployment failed at a stop. Valid options are:\n 0 - Ramp deployment successful.\n 1 - Ramp deployment failed.",
-      "external_reference": null
+      "constraints": {
+        "enum": [
+          0,
+          1
+        ]
+      }
     },
     {
       "name": "kneel_deployed_time",
-      "type": "float",
-      "required": "optional",
-      "description": "Duration of time a kneel is deployed in seconds.",
-      "external_reference": null
+      "type": "number",
+      "description": "Duration of time a kneel is deployed in seconds."
     },
     {
       "name": "lift_deployed_time",
-      "type": "float",
-      "required": "optional",
-      "description": "Duration of time in seconds of time a lift is deployed.",
-      "external_reference": null
+      "type": "number",
+      "description": "Duration of time in seconds of time a lift is deployed."
     },
     {
       "name": "bike_rack_deployed",
-      "type": "enum",
-      "required": "optional",
+      "type": "integer",
       "description": "Indicates if the bike rack was deployed at a stop. Valid options are:\n0 - Bike rack was not deployed.\n1 - Bike rack was deployed.",
-      "external_reference": null
+      "constraints": {
+        "enum": [
+          0,
+          1
+        ]
+      }
     },
     {
       "name": "bike_load",
       "type": "integer",
-      "required": "optional",
-      "description": "Number of bikes on the vehicle when departing the stop.",
-      "external_reference": null
+      "description": "Number of bikes on the vehicle when departing the stop."
     },
     {
       "name": "revenue",
-      "type": "currency",
-      "required": "optional",
-      "description": "Amount of revenue collected at the stop.",
-      "external_reference": null
+      "type": "number",
+      "description": "Amount of revenue collected at the stop."
     },
     {
       "name": "number_of_transactions",
-      "type": "non-negative integer",
-      "required": "optional",
+      "type": "integer",
       "description": "Number of fare transactions that occurred at a stop.",
-      "external_reference": null
+      "constraints": {
+        "minimum": 0
+      }
     },
     {
       "name": "transaction_revenue_x",
-      "type": "currency",
-      "required": "optional",
-      "description": "Indicates the revenue from a specified fare medium. For example, cash revenue would be represented by the field name transaction_revenue_0. Valid values for x are:\n0 - Cash or coins.\n1 - Smart card or ticket.\n2 - Magnetic-stripe card or ticket.\n3 - Bank card (credit or debit card).\n4 - Mobile NFC (smartphone tap, etc.).\n5 - Optical scan (of mobile app screen or paper ticket).\n6 - Button pressed by driver or operator to indicate a boarding or alighting passenger.\n7 - Other type.",
-      "external_reference": null
+      "type": "number",
+      "description": "Indicates the revenue from a specified fare medium. For example, cash revenue would be represented by the field name transaction_revenue_0. Valid values for x are:\n0 - Cash or coins.\n1 - Smart card or ticket.\n2 - Magnetic-stripe card or ticket.\n3 - Bank card (credit or debit card).\n4 - Mobile NFC (smartphone tap, etc.).\n5 - Optical scan (of mobile app screen or paper ticket).\n6 - Button pressed by driver or operator to indicate a boarding or alighting passenger.\n7 - Other type."
     },
     {
       "name": "transaction_count_x",
       "type": "Non-negative integer",
-      "required": "optional",
-      "description": "Number of fare transactions made by a specified fare medium. For example, the count of cash transactions would be represented by the field name transaction_count_0.\nValid values for x are:\n0 - Cash or coins.\n1 - Smart card or ticket.\n2 - Magnetic-stripe card or ticket.\n3 - Bank card (credit or debit card).\n4 - Mobile NFC (smartphone tap, etc.).\n5 - Optical scan (of mobile app screen or paper ticket).\n6 - Button pressed by driver or operator to indicate a boarding or alighting passenger.\n7 - Other type.",
-      "external_reference": null
+      "description": "Number of fare transactions made by a specified fare medium. For example, the count of cash transactions would be represented by the field name transaction_count_0.\nValid values for x are:\n0 - Cash or coins.\n1 - Smart card or ticket.\n2 - Magnetic-stripe card or ticket.\n3 - Bank card (credit or debit card).\n4 - Mobile NFC (smartphone tap, etc.).\n5 - Optical scan (of mobile app screen or paper ticket).\n6 - Button pressed by driver or operator to indicate a boarding or alighting passenger.\n7 - Other type."
     },
     {
       "name": "schedule_relationship",
-      "type": "enum",
-      "required": "optional",
+      "type": "integer",
       "description": "Indicates the status of stop’s service on the trip. Valid options are:\n 0 - Scheduled.\n 1 - Skipped.\n 2 - Missing data.\n 3 - Unscheduled.\n 4 - Canceled.\n 5 - Duplicated.\n 6 - Schedule modified. (Note: schedule_arrival_time and schedule_departure_time may differ from GTFS in this case.)",
-      "external_reference": null
+      "constraints": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      }
+    }
+  ],
+  "foreignKeys": [
+    {
+      "fields": "trip_id_performed",
+      "reference": {
+        "resource": "trips_performed",
+        "fields": "trip_id_performed"
+      }
+    },
+    {
+      "fields": "stop_sequence",
+      "reference": {
+        "resource": "stop_times",
+        "fields": "stop_sequence"
+      }
+    },
+    {
+      "fields": "vehicle_id",
+      "reference": {
+        "resource": "vehicles",
+        "fields": "vehicle_id"
+      }
     }
   ],
   "name": "stop_visits.schema.json",

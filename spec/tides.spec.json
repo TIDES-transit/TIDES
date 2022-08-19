@@ -26,17 +26,17 @@
     },
     {
       "name": "stop_visits",
-      "description": "	Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date.",
+      "description": "Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date.",
       "path": "Stop_visits.csv",
       "schema": "stop_visits.schema.json",
-      "required": true
+      "required": false
     },
     {
       "name": "trips_performed",
       "description": "Trips performed for each service date.",
       "path": "trips_performed.csv",
       "schema": "trips_performed.schema.json",
-      "required": true
+      "required": false
     },
     {
       "name": "station_activities",
@@ -71,7 +71,7 @@
       "description": "Vehicles, including buses and train consists, with descriptive information.",
       "path": "vehicles.csv",
       "schema": "vehicles.schema.json",
-      "required": true
+      "required": false
     },
     {
       "name": "operators",
