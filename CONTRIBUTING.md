@@ -73,7 +73,7 @@ Leadership is responsible for overall direction and decision-making on the proje
 Leadership Group Members
 * John Levin, Metro Transit (Minneapolis-St. Paul, MN)
 
-Leadership Group Member GitHub Access: Admin
+Leadership Group Member [GitHub Access](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization): Admin
  
 ### Product Management Team (PMT)
 
@@ -87,7 +87,7 @@ PMT Group Members
 * Blake Fleisher, Jarv.us (on behalf of Caltrans)
 * Joey Reid, Metro Transit (Minneapolis-St. Paul, MN)
 
-PMT Group Member GitHub Access: Admin
+PMT Group Member [GitHub Access](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization): Admin
  
 ### Contributors
 
@@ -98,7 +98,7 @@ Contributors must request [here][contributor-registration] to be registered in o
 Contributor Group Members: 
 The list of registered contributors is maintained in the [contributors.md][contributors-file] file.
 
-Contributor Group GitHub Access: Write
+Contributor Group [GitHub Access](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization): Write
  
 ### Stakeholders
  
@@ -108,7 +108,7 @@ Stakeholder Group Membership:
 * Members of the TIDES Project Google Group 
 * Others who have expressed interest in following progress or contributing to TIDES, but who have not requested to be a registered Contributor
  
-Stakeholder Group GitHub Access: Read/Create Issues (same as general public)
+Stakeholder Group [GitHub Access](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization): Read/Create Issues (same as general public)
  
 ## [Review and Approval Process](review)
  
