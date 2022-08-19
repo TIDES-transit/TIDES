@@ -121,6 +121,6 @@ Leadership will convene a governance group to refine this and decide the approva
 Contributors to the TIDES Project are expected to read and follow the Code of Conduct for the project in the [CODE_OF_CONDUCT.md][code-of-conduct-file] file.
 
 [contributor-registration]: https://forms.office.com/Pages/ResponsePage.aspx?id=i_a_3SpIc0WB4P74FWpP0Hpd6kyRp1VEg8rnx5-CwORUMFFGTzBYRktEMkJRWVg4Qlg3SkM0VEJKVi4u
-[license-file]: add path
-[contributors-file]: add path 
-[code-of-conduct-file]: CODE_OF_CONDUCT.md
+[license-file]: https://www.google.com
+[contributors-file]: https://www.google.com
+[code-of-conduct-file]: https://www.google.com
