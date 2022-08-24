@@ -4,6 +4,7 @@
     "trip_id_performed"
   ],
   "missingValues": [
+    "NA",
     "NaN",
     ""
   ],
@@ -47,31 +48,22 @@
     },
     {
       "name": "route_type",
-      "type": "integer",
-      "description": "Indicates the type of transportation used on a route. Valid options are:\n0 - Tram, Streetcar, Light rail. Any light rail or street level system within a metropolitan area.\n1 - Subway, Metro. Any underground rail system within a metropolitan area.\n2 - Rail. Used for intercity or long-distance travel.\n3 - Bus. Used for short- and long-distance bus routes.\n4 - Ferry. Used for short- and long-distance boat service.\n5 - Cable tram. Used for street-level rail cars where the cable runs beneath the vehicle, e.g., cable car in San Francisco.\n6 - Aerial lift, suspended cable car (e.g., gondola lift, aerial tramway). Cable transport where cabins, cars, gondolas, or open chairs are suspended by means of one or more cables.\n7 - Funicular. Any rail system designed for steep inclines.\n11 - Trolleybus. Electric buses that draw power from overhead wires using poles.\n12 - Monorail. Railway in which the track consists of a single rail or a beam. References GTFS",
+      "type": "string",
+      "description": "Indicates the type of transportation used on a route. References GTFS",
       "constraints": {
         "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8,
-          9,
-          10,
-          11,
-          12
+          "Tram, Streetcar, Light rail",
+          "Subway, Metro",
+          "Rail",
+          "Bus",
+          "Ferry",
+          "Cable tram",
+          "Aerial lift",
+          "Funicular",
+          "Trolleybus",
+          "Monorail"
         ]
       }
-    },
-    {
-      "name": "pattern_id",
-      "type": "string",
-      "title": "ID referencing proposed trips.pattern_id in GTFS",
-      "description": "Identifies the exact service and path on the route. References GTFS"
     },
     {
       "name": "shape_id",
@@ -81,12 +73,12 @@
     },
     {
       "name": "direction_id",
-      "type": "integer",
-      "description": "Indicates the direction of travel for a trip. Valid options are:\n0 - Travel in one direction (e.g., outbound travel).\n1 - Travel in the opposite direction (e.g., inbound travel). References GTFS",
+      "type": "string",
+      "description": "Indicates the direction of travel for a trip. References GTFS",
       "constraints": {
         "enum": [
-          0,
-          1
+          "Outbound",
+          "Inbound"
         ]
       }
     },
@@ -135,33 +127,33 @@
     },
     {
       "name": "in_service",
-      "type": "integer",
-      "description": "Indicates status of travel with regard to service. Valid options are:\n0 - The vehicle is in passenger service.\n1 - The vehicle is en-route to service.\n2 - The vehicle is traveling from a service trip.\n3 - The vehicle is on a layover.\n4 - The vehicle is returning to a garage due to a suspension or breakdown.\n5 - Travel for on-route replacement of breakdown.\n6 - Other not in service",
+      "type": "string",
+      "description": "Indicates status of travel with regard to service.",
       "constraints": {
         "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
+          "In passenger service",
+          "En-route to service",
+          "Traveling from a service trip",
+          "On a layover",
+          "Returning to a garage due to a suspension or breakdown",
+          "Travel for on-route replacement of breakdown",
+          "Other not in service"
         ]
       }
     },
     {
       "name": "schedule_relationship",
-      "type": "integer",
-      "description": "Indicates the status of the trip. Valid options are:\n0 - Scheduled.\n1 - Skipped.\n2 - Missing data.\n3 - Unscheduled.\n4 - Canceled.\n5 - Duplicated.\n6 - Schedule modified.",
+      "type": "string",
+      "description": "Indicates the status of the trip.",
       "constraints": {
         "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
+          "Scheduled",
+          "Skipped",
+          "Missing data",
+          "Unscheduled",
+          "Canceled",
+          "Duplicated",
+          "Schedule modified"
         ]
       }
     }

@@ -1,6 +1,6 @@
 # TIDES
 
-Transit ITS Data Exchange Specification (TIDES) for historical transit operations data.
+Transit ITS Data Exchange Specification (TIDES) for historical transit operation data.
 
 This repository provides data schemas and tools to support the access, management, and improvement of historical transit operations data, including vehicle operations, passenger activity, fare collection, and other similar data.
 
@@ -9,6 +9,9 @@ The TIDES specification is maintained in the `/spec` sub-directory as a series o
 
 Data Table schemas
 Data table schemas are specified in JSON and are compatible with the [frictionless data](https://specs.frictionlessdata.io/table-schema/) table schema standards.
+
+## Contributing to TIDES
+Those who want to help with the development of the TIDES specification should review the guidance in the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
 ## Issues
 Please add issues, bugs, and feature requests to [GitHub](https://github.com/TIDES-transit/TIDES).

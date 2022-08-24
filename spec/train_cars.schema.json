@@ -1,6 +1,7 @@
 {
   "primaryKey": "train_car_id",
   "missingValues": [
+    "NA",
     "NaN",
     ""
   ],
@@ -10,7 +11,8 @@
       "type": "string",
       "description": "Identifies a train car or asset. If possible, this should match other internal agency asset IDs.",
       "constraints": {
-        "required": true
+        "required": true,
+        "unique": true
       }
     },
     {
@@ -49,14 +51,8 @@
     },
     {
       "name": "bike_rack",
-      "type": "integer",
-      "description": "Indicates if the train car or asset has a usable bike rack. Valid options are:\n0 - Asset has a usable bike rack.\n1 - Asset does not have a usable bike rack.",
-      "constraints": {
-        "enum": [
-          0,
-          1
-        ]
-      }
+      "type": "boolean",
+      "description": "Indicates if the train car or asset has a usable bike rack."
     },
     {
       "name": "capacity_standing",
@@ -68,13 +64,13 @@
     },
     {
       "name": "train_car_type",
-      "type": "integer",
-      "description": "Indicates the type of train car or asset. Valid options are:\n0 - Train car.\n1 - Trolley.\n2 - Other.",
+      "type": "string",
+      "description": "Indicates the type of train car or asset.",
       "constraints": {
         "enum": [
-          0,
-          1,
-          2
+          "Train car",
+          "Trolley",
+          "Other"
         ]
       }
     }

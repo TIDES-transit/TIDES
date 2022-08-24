@@ -1,6 +1,7 @@
 {
   "primaryKey": "operator_id",
   "missingValues": [
+    "NA",
     "NaN",
     ""
   ],
@@ -10,7 +11,8 @@
       "type": "string",
       "description": "Identifies an operator. If possible, this should match other internal agency operator IDs.",
       "constraints": {
-        "required": true
+        "required": true,
+        "unique": true
       }
     }
   ],

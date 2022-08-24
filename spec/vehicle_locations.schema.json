@@ -1,10 +1,20 @@
 {
   "primaryKey": "location_ping_id",
   "missingValues": [
+    "NA",
     "NaN",
     ""
   ],
   "fields": [
+    {
+      "name": "location_ping_id",
+      "type": "string",
+      "description": "Identifies the recorded vehicle location event.",
+      "constraints": {
+        "required": true,
+        "unique": true
+      }
+    },
     {
       "name": "date",
       "type": "date",
@@ -17,14 +27,6 @@
       "name": "timestamp",
       "type": "time",
       "description": "Recorded event time.",
-      "constraints": {
-        "required": true
-      }
-    },
-    {
-      "name": "location_ping_id",
-      "type": "string",
-      "description": "Identifies the recorded vehicle location event.",
       "constraints": {
         "required": true
       }
@@ -70,13 +72,13 @@
     },
     {
       "name": "current_status",
-      "type": "integer",
-      "description": "Indicates the status of the vehicle in reference to a stop. Valid options are:\n0 - Incoming at.\n1 - Stopped at.\n2 - In transit to. References GTFS-Realtime",
+      "type": "string",
+      "description": "Indicates the status of the vehicle in reference to a stop. References GTFS-Realtime",
       "constraints": {
         "enum": [
-          0,
-          1,
-          2
+          "Incoming at",
+          "Stopped at",
+          "In transit to"
         ]
       }
     },
@@ -92,20 +94,20 @@
     },
     {
       "name": "gps_quality",
-      "type": "integer",
-      "description": "Indicates the quality of data and communication provided by the GPS. Valid options are:\n0 - Excellent.\n1 - Good.\n2 - Poor.",
+      "type": "string",
+      "description": "Indicates the quality of data and communication provided by the GPS.",
       "constraints": {
         "enum": [
-          0,
-          1,
-          2
+          "Excellent",
+          "Good",
+          "Poor"
         ]
       }
     },
     {
-      "name": "bearing",
+      "name": "heading",
       "type": "number",
-      "description": "Bearing, in degrees, clockwise from true north, e.g., 0 would mean north and 90 would mean east. This can be the compass bearing, or the direction towards the next stop or intermediate location. This should not be deduced from the sequence of previous positions, which clients can compute from previous data. References GTFS-Realtime"
+      "description": "Heading, in degrees, clockwise from true north, e.g., 0 would mean north and 90 would mean east. This can be the compass bearing, or the direction towards the next stop or intermediate location. This should not be deduced from the sequence of previous positions, which clients can compute from previous data. References GTFS-Realtime"
     },
     {
       "name": "speed",
@@ -129,31 +131,32 @@
     },
     {
       "name": "in_service",
-      "description": "Indicates status of travel with regard to service. Valid options are:\n0 - The vehicle is in passenger service.\n1 - The vehicle is en-route to service.\n2 - The vehicle is traveling from a service trip.\n3 - The vehicle is on a layover.\n4 - The vehicle is returning to a garage due to a suspension or breakdown.\n5 - Travel for on-route replacement of breakdown.\n6 - Other not in service",
+      "type": "string",
+      "description": "Indicates status of travel with regard to service.",
       "constraints": {
         "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
+          "In passenger service",
+          "En-route to service",
+          "Traveling from a service trip",
+          "On a layover",
+          "Returning to a garage due to a suspension or breakdown",
+          "Travel for on-route replacement of breakdown",
+          "Other not in service"
         ]
       }
     },
     {
       "name": "schedule_relationship",
-      "type": "integer",
-      "description": "Indicates the status of the stop. Valid options are:\n0 - Scheduled.\n1 - Skipped.\n2 - Unscheduled.\n3 - Canceled.\n4 - Duplicated.\n5 - Schedule modified.",
+      "type": "string",
+      "description": "Indicates the status of the stop. ",
       "constraints": {
         "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5
+          "Scheduled",
+          "Skipped",
+          "Unscheduled",
+          "Canceled",
+          "Duplicated",
+          "Schedule modified"
         ]
       }
     }

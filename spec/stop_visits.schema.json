@@ -6,6 +6,7 @@
     "vehicle_id"
   ],
   "missingValues": [
+    "NA",
     "NaN",
     ""
   ],
@@ -59,14 +60,8 @@
     },
     {
       "name": "checkpoint",
-      "type": "integer",
-      "description": "Indicates of the stop should be used for evaluating schedule adherence, on-time performance, and other KPIs. This could be populated to match the GTFS “timepoint” field. Valid options are:\n0 - Stop is not used in evaluating KPIs.\n1 or empty - Stop is used in evaluating KPIs.",
-      "constraints": {
-        "enum": [
-          0,
-          1
-        ]
-      }
+      "type": "boolean",
+      "description": "Indicates if the stop should be used for evaluating schedule adherence, on-time performance, and other KPIs. This could be populated to match the GTFS “timepoint” field."
     },
     {
       "name": "schedule_arrival_time",
@@ -91,32 +86,50 @@
     {
       "name": "distance",
       "type": "integer",
-      "description": "Observed distance in meters from the previous stop traveled by the vehicle."
+      "description": "Observed distance in meters from the previous stop traveled by the vehicle.",
+      "constraints": {
+        "minimum": 0
+      }
     },
     {
       "name": "boarding_1",
       "type": "integer",
-      "description": "Number of riders that entered the front-most or right-most door of the vehicle"
+      "description": "Number of riders that entered the front-most or right-most door of the vehicle",
+      "constraints": {
+        "minimum": 0
+      }
     },
     {
       "name": "alighting_1",
       "type": "integer",
-      "description": "Number of riders that exited the front-most or right-most door of the vehicle"
+      "description": "Number of riders that exited the front-most or right-most door of the vehicle",
+      "constraints": {
+        "minimum": 0
+      }
     },
     {
       "name": "boarding_2",
       "type": "integer",
-      "description": "Number of riders that entered the rest of the vehicle’s doors."
+      "description": "Number of riders that entered the rest of the vehicle’s doors.",
+      "constraints": {
+        "minimum": 0
+      }
     },
     {
       "name": "alighting_2",
       "type": "integer",
-      "description": "Number of riders that exited the rest of the vehicle’s doors."
+      "description": "Number of riders that exited the rest of the vehicle’s doors.",
+      "constraints": {
+        "minimum": 0
+      }
     },
     {
       "name": "load",
       "type": "integer",
-      "description": "Number of riders on the vehicle when departing the stop."
+      "description": "Number of riders on the vehicle when departing the stop.",
+      "constraints": {
+        "minimum": 0
+      }
     },
     {
       "name": "door_open",
@@ -140,14 +153,8 @@
     },
     {
       "name": "ramp_failure",
-      "type": "integer",
-      "description": "Indicates if the ramp deployment failed at a stop. Valid options are:\n 0 - Ramp deployment successful.\n 1 - Ramp deployment failed.",
-      "constraints": {
-        "enum": [
-          0,
-          1
-        ]
-      }
+      "type": "boolean",
+      "description": "Indicates if the ramp deployment failed at a stop."
     },
     {
       "name": "kneel_deployed_time",
@@ -161,19 +168,16 @@
     },
     {
       "name": "bike_rack_deployed",
-      "type": "integer",
-      "description": "Indicates if the bike rack was deployed at a stop. Valid options are:\n0 - Bike rack was not deployed.\n1 - Bike rack was deployed.",
-      "constraints": {
-        "enum": [
-          0,
-          1
-        ]
-      }
+      "type": "boolean",
+      "description": "Indicates if the bike rack was deployed at a stop."
     },
     {
       "name": "bike_load",
       "type": "integer",
-      "description": "Number of bikes on the vehicle when departing the stop."
+      "description": "Number of bikes on the vehicle when departing the stop.",
+      "constraints": {
+        "minimum": 0
+      }
     },
     {
       "name": "revenue",
@@ -203,17 +207,17 @@
     },
     {
       "name": "schedule_relationship",
-      "type": "integer",
-      "description": "Indicates the status of stop’s service on the trip. Valid options are:\n 0 - Scheduled.\n 1 - Skipped.\n 2 - Missing data.\n 3 - Unscheduled.\n 4 - Canceled.\n 5 - Duplicated.\n 6 - Schedule modified. (Note: schedule_arrival_time and schedule_departure_time may differ from GTFS in this case.)",
+      "type": "string",
+      "description": "Indicates the status of stop’s service on the trip.(Note: schedule_arrival_time and schedule_departure_time may differ from GTFS in the case of a schedule modification)",
       "constraints": {
         "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
+          "Scheduled",
+          "Skipped",
+          "Missing data",
+          "Unscheduled",
+          "Canceled",
+          "Duplicated",
+          "Schedule modified"
         ]
       }
     }

@@ -1,6 +1,7 @@
 {
   "primaryKey": "device_id",
   "missingValues": [
+    "NA",
     "NaN",
     ""
   ],
@@ -10,7 +11,8 @@
       "type": "string",
       "description": "Identifies a device. If possible, this should match other internal agency device IDs.",
       "constraints": {
-        "required": true
+        "required": true,
+        "unique": true
       }
     },
     {
@@ -33,14 +35,14 @@
     },
     {
       "name": "device_type",
-      "type": "integer",
-      "description": "Indicates the type of device. Valid options are:\n0 - APC.\n1 - AFC.\n2 - AVL.\n3 - Other.",
+      "type": "string",
+      "description": "Indicates the type of device.",
       "constraints": {
         "enum": [
-          0,
-          1,
-          2,
-          3
+          "APC",
+          "AFC",
+          "AVL",
+          "Other"
         ]
       }
     },

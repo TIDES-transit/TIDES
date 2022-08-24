@@ -1,10 +1,20 @@
 {
   "primaryKey": "transaction_id",
   "missingValues": [
+    "NA",
     "NaN",
     ""
   ],
   "fields": [
+    {
+      "name": "transaction_id",
+      "type": "string",
+      "description": "Identifies the fare transaction.",
+      "constraints": {
+        "required": true,
+        "unique": true
+      }
+    },
     {
       "name": "date",
       "type": "date",
@@ -17,14 +27,6 @@
       "name": "timestamp",
       "type": "time",
       "description": "Recorded event time, including for transactions that may be aggregated values associated with a trip or vehicle.",
-      "constraints": {
-        "required": true
-      }
-    },
-    {
-      "name": "transaction_id",
-      "type": "string",
-      "description": "Identifies the fare transaction.",
       "constraints": {
         "required": true
       }
@@ -47,21 +49,21 @@
     },
     {
       "name": "fare_action",
-      "type": "integer",
-      "description": "Indicates the type of action performed. Valid options are:\n0 - Unknown action type.\n1 - Purchase.\n2 - Enter (enter fare-controlled area or vehicle).\n3 - Exit (exit fare-controlled area or vehicle).\n4 - Transfer entrance.\n5 - Transfer exit.\n6 - Add (add stored value).\n7 - Activate (activate a fare pass).\n8 - Adjust (adjustment initiated by system or customer support).\n9 - Other.",
+      "type": "string",
+      "description": "Indicates the type of action performed.",
       "constraints": {
         "required": true,
         "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8,
-          9
+          "Unknown action type",
+          "Purchase",
+          "Enter",
+          "Exit",
+          "Transfer entrance",
+          "Transfer exit",
+          "Add",
+          "Activate",
+          "Adjust",
+          "Other"
         ]
       }
     },
@@ -114,18 +116,18 @@
     },
     {
       "name": "media_type",
-      "type": "integer",
-      "description": "Indicates the fare medium that was used for the transaction. Valid options are:\n0 - Cash or coins.\n1 - Smart card or ticket.\n2 - Magnetic-stripe card or ticket.\n3 - Bank card (credit or debit card).\n4 - Mobile NFC (smartphone tap, etc.).\n5 - Optical scan (of mobile app screen or paper ticket).\n6 - Button pressed by driver or operator to indicate a boarding or alighting passenger.\n7 - Other type.",
+      "type": "string",
+      "description": "Indicates the fare medium that was used for the transaction.",
       "constraints": {
         "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7
+          "Cash or coins",
+          "Smart card or ticket",
+          "Magnetic-stripe card or ticket",
+          "Bank card",
+          "Mobile NFC",
+          "Optical scan",
+          "Button pressed by driver or operator to indicate a boarding or alighting passenger.",
+          "Other type"
         ]
       }
     },
@@ -146,13 +148,13 @@
     },
     {
       "name": "fare_capped",
-      "type": "integer",
-      "description": "Indicates if fare capping is in effect (fare capping options defined by transit agency). Valid options are:\n0 - Fare is not capped.\n1 - Fare is capped.",
+      "type": "string",
+      "description": "Indicates if fare capping is in effect (fare capping options defined by transit agency).",
       "constraints": {
         "required": true,
         "enum": [
-          0,
-          1
+          "Fare is not capped",
+          "Fare is capped."
         ]
       }
     },

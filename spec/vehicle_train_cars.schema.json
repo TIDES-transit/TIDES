@@ -4,6 +4,7 @@
     "train_car_id"
   ],
   "missingValues": [
+    "NA",
     "NaN",
     ""
   ],

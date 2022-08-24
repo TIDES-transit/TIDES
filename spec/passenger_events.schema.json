@@ -1,10 +1,20 @@
 {
   "primaryKey": "passenger_event_id",
   "missingValues": [
+    "NA",
     "NaN",
     ""
   ],
   "fields": [
+    {
+      "name": "passenger_event_id",
+      "type": "string",
+      "description": "Identifies the recorded passenger event.",
+      "constraints": {
+        "required": true,
+        "unique": true
+      }
+    },
     {
       "name": "date",
       "type": "date",
@@ -17,14 +27,6 @@
       "name": "timestamp",
       "type": "time",
       "description": "Recorded event time.",
-      "constraints": {
-        "required": true
-      }
-    },
-    {
-      "name": "passenger_event_id",
-      "type": "string",
-      "description": "Identifies the recorded passenger event.",
       "constraints": {
         "required": true
       }
@@ -50,27 +52,28 @@
     },
     {
       "name": "event_type",
-      "type": "integer",
-      "description": "Indicates the type of event recorded. Options are:\n0 - Vehicle arrived at stop\n1 - Vehicle departed stop\n2 - Door opened\n3 - Door closed\n4 - Passenger boarded\n5 - Passenger alighted\n6 - Kneel was engaged\n7 - Kneel was disengaged\n8 - Ramp was deployed\n9 - Ramp was raised\n10 - Ramp deployment failed\n11 - Lift was deployed\n12 - Lift was raised\n13 - Individual bike boarded\n14 - Individual bike alighted\n15 - Bike rack deployed",
+      "type": "string",
+      "description": "Indicates the type of event recorded.",
       "constraints": {
         "required": true,
-        "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8,
-          9,
-          10,
-          11,
-          12,
-          13,
-          14,
-          15
+        "enum": 
+        [
+          "Vehicle arrived at stop",
+          "Vehicle departed stop",
+          "Door opened",
+          "Door closed",
+          "Passenger boarded",
+          "Passenger alighted",
+          "Kneel was engaged",
+          "Kneel was disengaged",
+          "Ramp was deployed",
+          "Ramp was raised",
+          "Ramp deployment failed",
+          "Lift was deployed",
+          "Lift was raised",
+          "Individual bike boarded",
+          "Individual bike alighted",
+          "Bike rack deployed"
         ]
       }
     },

@@ -6,6 +6,7 @@
     "time_period_end"
   ],
   "missingValues": [
+    "NA",
     "NaN",
     ""
   ],

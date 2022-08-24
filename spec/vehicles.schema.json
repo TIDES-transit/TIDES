@@ -1,6 +1,7 @@
 {
   "primaryKey": "vehicle_id",
   "missingValues": [
+    "NA",
     "NaN",
     ""
   ],
@@ -10,7 +11,8 @@
       "type": "string",
       "description": "Identifies a vehicle, such as a bus or a train consist. If possible, this should match other internal agency vehicle IDs and the GTFS-realtime VehicleDescriptor.",
       "constraints": {
-        "required": true
+        "required": true,
+        "unique": true
       }
     },
     {
@@ -59,14 +61,8 @@
     },
     {
       "name": "bike_rack",
-      "type": "integer",
-      "description": "Indicates if the vehicle has a useable bike rack. Used if Train_car is not used. Valid options are:\n0 - Vehicle has a useable bike rack.\n1 - Vehicle does not have a useable bike rack.",
-      "constraints": {
-        "enum": [
-          0,
-          1
-        ]
-      }
+      "type": "boolean",
+      "description": "Indicates if the vehicle has a useable bike rack. Used if Train_car is not used."
     },
     {
       "name": "capacity_standing",
