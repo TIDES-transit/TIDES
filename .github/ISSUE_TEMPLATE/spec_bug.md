@@ -1,8 +1,8 @@
 ---
-name: Bug report
-about: Create a report to help us improve
+name: Data specification bug report
+about: Create a report to help us improve the data specification
 title: ''
-labels: ''
+labels: ['spec', 'bug']
 assignees: ''
 
 ---

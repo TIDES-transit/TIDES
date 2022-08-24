@@ -1,8 +1,8 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
+name: Data specification feature request
+about: Suggest an idea for the data specification
 title: ''
-labels: ''
+labels: ['spec', 'feature']
 assignees: ''
 
 ---
