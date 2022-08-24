@@ -1,10 +1,10 @@
 # Contributing to TIDES 
-Thank you for contributing to the TIDES Project.  This document defines the roles and process for contributing to the project and documents the governance roles and approach for decision-making.
+Thank you for contributing to the TIDES Project.  This document defines the roles and process for 
+contributing to the project and documents the governance roles and approach for decision-making.
 
 ## Contents
 * [Roles](#roles)
 * [How to Contribute](#how-to-contribute)
-* [How to Create Good Issues and Pull Requests](#how-to-create-good-issues-and-pull-requests)
 * [Contributor Agreement](#contributor-agreement)
 * [License](#license)
 * [Project Governance](#project-governance)
@@ -25,6 +25,26 @@ To become a registered Contributor, fill out the registration form at [this link
 Contributions should be offered through GitHub issues and pull requests. 
  
 By making any contribution to the projects, contributors self-certify to the [Contributor Agreement](#contributor-agreement).
+
+### Issues
+
+Create issues to start discussion on a new topic.  If the issue is associated with a pull 
+request, be sure to link the two.  There are shortcuts [here](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword)
+
+### Pull Requests
+
+Use the following guidance in creating and responding to pull requests
+
+* Keep pull requests small and focused. One issue is best.
+* Link Pull Requests to Issues as appropriate.
+* Complete the pull request template as best you can.
+
+### Commits 
+
+Use the following guidance for commits
+
+* Provide a short, clear title.  Capitalize. No period at the end
+* Wrap the body of text at 72 characters
  
 ## [Contributor Agreement](contributor-agreement)
  
@@ -41,10 +61,6 @@ By making a contribution to this project, I certify that:
 > d. I understand and agree that this project and the contribution are public and that a record of the contribution (including all personal information I submit with it, including my sign-off) is maintained indefinitely and may be redistributed consistent with this project or the open source license(s) involved.
 >  
 Attribution: This Contributor Agreement is adapted from the node.js project available here: https://github.com/nodejs/node/blob/main/CONTRIBUTING.md 
-
-## [How to Create Good Issues and Pull Requests](how-to-create-issues-and-pull-requests)
- 
-Content to be added. 
 
 ## [License](license)
 
