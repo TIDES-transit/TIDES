@@ -3,7 +3,7 @@ Before submitting a pull request, please read
 
 For spec changes:
 
+- [ ] Pull-requests must address an existing issue
 - [ ] Update relevant documentation.
-- [ ] Reference related issues.
 
 By contributing to this project, all contributors certify to the Developer Certificate of Origin in [CONTRIBUTING.md](CONTRIBUTING.md#contributor-agreement).
