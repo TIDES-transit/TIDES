@@ -2,10 +2,10 @@ Before submitting a pull request, please read
 [CONTRIBUTING.md](CONTRIBUTING.md).
 
 For spec changes:
-1. Update documentation if relevant.
-1. Reference related issues.
 
 Developer's Certificate of Origin 1.1
+- [ ] Update relevant documentation.
+- [ ] Reference related issues.
 
 By making a contribution to this project, I certify that:
 
