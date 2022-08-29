@@ -172,7 +172,7 @@
     {
       "name": "schedule_relationship",
       "type": "string",
-      "description": "Indicates the status of the stop. ",
+      "description": "Indicates the status of the stop. References GTFS-realtime VehiclePosition.schedule_relationship",
       "constraints": {
         "enum": [
           "Scheduled",
