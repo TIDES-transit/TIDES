@@ -50,7 +50,10 @@
     {
       "name": "dwell",
       "type": "integer",
-      "description": "Indicates the amount of time a vehicle spent stopped at a stop in seconds."
+      "description": "Indicates the amount of time a vehicle spent stopped at a stop in seconds.",
+      "constraints": {
+        "minimum": 0
+      }
     },
     {
       "name": "stop_id",
@@ -158,7 +161,10 @@
     {
       "name": "ramp_deployed_time",
       "type": "number",
-      "description": "Duration of time a ramp is deployed, in seconds."
+      "description": "Duration of time a ramp is deployed, in seconds.",
+      "constraints": {
+        "minimum": 0
+      }
     },
     {
       "name": "ramp_failure",
@@ -168,12 +174,18 @@
     {
       "name": "kneel_deployed_time",
       "type": "number",
-      "description": "Duration of time a kneel is deployed in seconds."
+      "description": "Duration of time a kneel is deployed in seconds.",
+      "constraints": {
+        "minimum": 0
+      }
     },
     {
       "name": "lift_deployed_time",
       "type": "number",
-      "description": "Duration of time in seconds of time a lift is deployed."
+      "description": "Duration of time in seconds of time a lift is deployed.",
+      "constraints": {
+        "minimum": 0
+      }
     },
     {
       "name": "bike_rack_deployed",

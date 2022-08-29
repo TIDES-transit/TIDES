@@ -140,12 +140,18 @@
     {
       "name": "schedule_deviation",
       "type": "integer",
-      "description": "Indicates schedule adherence in seconds. A negative value represents an early vehicle. (An unscheduled trip would not have a scheduled deviation.)"
+      "description": "Indicates schedule adherence in seconds. A negative value represents an early vehicle. (An unscheduled trip would not have a scheduled deviation.)",
+      "constraints": {
+        "minimum": 0
+      }
     },
     {
       "name": "headway_deviation",
       "type": "integer",
-      "description": "Indicates headway adherence in seconds. A negative value represents a shorter than scheduled headway."
+      "description": "Indicates headway adherence in seconds. A negative value represents a shorter than scheduled headway.",
+      "constraints": {
+        "minimum": 0
+      }
     },
     {
       "name": "in_service",
