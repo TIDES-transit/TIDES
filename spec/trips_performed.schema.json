@@ -52,7 +52,7 @@
       "description": "Indicates the type of transportation used on a route. References GTFS",
       "constraints": {
         "enum": [
-          "Tram, Streetcar, Light rail",
+          "Tram / Streetcar / Light rail",
           "Subway, Metro",
           "Rail",
           "Bus",
@@ -148,12 +148,10 @@
       "constraints": {
         "enum": [
           "Scheduled",
-          "Skipped",
-          "Missing data",
+          "Added",
           "Unscheduled",
           "Canceled",
-          "Duplicated",
-          "Schedule modified"
+          "Duplicated"
         ]
       }
     }

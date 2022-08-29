@@ -42,6 +42,7 @@
     {
       "name": "currency_type",
       "type": "string",
+      "rdfType": "https://schema.org/currency",
       "description": "Currency used for the transaction. References GTFS",
       "constraints": {
         "required": true
@@ -148,14 +149,10 @@
     },
     {
       "name": "fare_capped",
-      "type": "string",
+      "type": "boolean",
       "description": "Indicates if fare capping is in effect (fare capping options defined by transit agency).",
       "constraints": {
-        "required": true,
-        "enum": [
-          "Fare is not capped",
-          "Fare is capped."
-        ]
+        "required": true
       }
     },
     {

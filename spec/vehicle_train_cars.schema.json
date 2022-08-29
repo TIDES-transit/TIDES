@@ -38,10 +38,7 @@
     {
       "name": "operator_id",
       "type": "string",
-      "description": "Identifies an operator. If possible, this should match other internal agency operator IDs.",
-      "constraints": {
-        "required": true
-      }
+      "description": "Identifies an operator (person). If possible, this should match other internal agency operator IDs."
     }
   ],
   "foreignKeys": [

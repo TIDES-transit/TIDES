@@ -85,12 +85,20 @@
     {
       "name": "latitude",
       "type": "number",
-      "description": "Degrees North, in the WGS-84 coordinate system. References GTFS-Realtime"
+      "description": "Degrees North, in the WGS-84 coordinate system. References GTFS-Realtime",
+      "constraints": {
+        "minimum": -90,
+        "maximum": 90
+      }
     },
     {
       "name": "longitude",
       "type": "number",
-      "description": "Degrees East, in the WGS-84 coordinate system. References GTFS-Realtime"
+      "description": "Degrees East, in the WGS-84 coordinate system. References GTFS-Realtime",
+      "constraints": {
+        "minimum": -180,
+        "maximum": 180
+      }
     },
     {
       "name": "gps_quality",
@@ -107,17 +115,27 @@
     {
       "name": "heading",
       "type": "number",
-      "description": "Heading, in degrees, clockwise from true north, e.g., 0 would mean north and 90 would mean east. This can be the compass bearing, or the direction towards the next stop or intermediate location. This should not be deduced from the sequence of previous positions, which clients can compute from previous data. References GTFS-Realtime"
+      "description": "Heading, in degrees, clockwise from true north, e.g., 0 would mean north and 90 would mean east. This can be the compass bearing, or the direction towards the next stop or intermediate location. This should not be deduced from the sequence of previous positions, which clients can compute from previous data. References GTFS-Realtime",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 360
+      }
     },
     {
       "name": "speed",
       "type": "number",
-      "description": "Momentary speed measured by the vehicle, in meters per second. References GTFS-Realtime"
+      "description": "Momentary speed measured by the vehicle, in meters per second. References GTFS-Realtime",
+      "constraints": {
+        "minimum": 0
+      }
     },
     {
       "name": "odometer",
       "type": "integer",
-      "description": "Odometer value, in meters. References GTFS-Realtime"
+      "description": "Odometer value, in meters. References GTFS-Realtime",
+      "constraints": {
+        "minimum": 0
+      }
     },
     {
       "name": "schedule_deviation",
@@ -153,10 +171,8 @@
         "enum": [
           "Scheduled",
           "Skipped",
-          "Unscheduled",
-          "Canceled",
-          "Duplicated",
-          "Schedule modified"
+          "No data",
+          "Unscheduled"
         ]
       }
     }
