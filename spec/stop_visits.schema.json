@@ -22,8 +22,8 @@
     {
       "name": "trip_id_performed",
       "type": "string",
-      "title": "ID referencing trips_performed.trip_id_performed",
-      "description": "Identifies the trip performed.",
+      "title": "ID referencing GTFS trips_performed.trip_id_performed",
+      "description": "Identifies the trip performed References GTFS",
       "constraints": {
         "required": true
       }
@@ -31,7 +31,7 @@
     {
       "name": "stop_sequence",
       "type": "integer",
-      "title": "positive integer referencing stop_times.stop_sequence",
+      "title": "positive integer referencing GTFS stop_times.stop_sequence",
       "description": "Ordered stop the vehicle is serving on a particular trip. References GTFS",
       "constraints": {
         "required": true,
@@ -55,8 +55,8 @@
     {
       "name": "stop_id",
       "type": "string",
-      "title": "ID referencing stops.stop_id from GTFS",
-      "description": "Identifies the stop."
+      "title": "ID referencing GTFS stops.stop_id",
+      "description": "Identifies the stop. References GTFS"
     },
     {
       "name": "checkpoint",
@@ -308,7 +308,7 @@
     {
       "name": "schedule_relationship",
       "type": "string",
-      "description": "Indicates the status of stop’s service on the trip.(Note: schedule_arrival_time and schedule_departure_time may differ from GTFS in the case of a schedule modification)",
+      "description": "Indicates the status of stop’s service on the trip.(Note: schedule_arrival_time and schedule_departure_time may differ from GTFS in the case of a schedule modification). References GTFS-realtime TripUpdate",
       "constraints": {
         "enum": [
           "Scheduled",

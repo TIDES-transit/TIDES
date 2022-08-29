@@ -22,7 +22,7 @@
     {
       "name": "stop_id",
       "type": "string",
-      "title": "ID referencing stops.stop_id",
+      "title": "ID referencing GTFS stops.stop_id",
       "description": "Identifies stop. References GTFS",
       "constraints": {
         "required": true

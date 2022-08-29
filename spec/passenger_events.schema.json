@@ -43,7 +43,7 @@
     {
       "name": "stop_sequence",
       "type": "integer",
-      "title": "positive integer referencing stop_times.stop_sequence",
+      "title": "positive integer referencing GTFS stop_times.stop_sequence",
       "description": "Ordered stop the vehicle is serving on a particular trip. References GTFS",
       "constraints": {
         "required": true,
@@ -101,7 +101,7 @@
     {
       "name": "stop_id",
       "type": "string",
-      "title": "ID referencing stops.stop_id",
+      "title": "ID referencing GTFS stops.stop_id",
       "description": "Identifies the stop the vehicle is serving. References GTFS"
     }
   ],

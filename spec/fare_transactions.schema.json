@@ -77,7 +77,7 @@
     {
       "name": "stop_sequence",
       "type": "integer",
-      "title": "positive integer referencing stop_times.stop_sequence",
+      "title": "positive integer referencing GTFS stop_times.stop_sequence",
       "description": "Ordered stop the vehicle is serving on a particular trip. May be null if the fare collection device is NOT located on a vehicle. May be null if on a vehicle but stop-level data is unavailable, in which case the data would be associated with the vehicle and/or trip. References GTFS",
       "constraints": {
         "minimum": 0
@@ -98,13 +98,13 @@
     {
       "name": "fare_id",
       "type": "string",
-      "title": "ID referencing fare_attributes.fare_id",
+      "title": "ID referencing GTFS fare_attributes.fare_id",
       "description": "Identifies a fare class, as included in the GTFS Fare_attributes file. References GTFS"
     },
     {
       "name": "stop_id",
       "type": "string",
-      "title": "ID referencing stops.stop_id",
+      "title": "ID referencing GTFS stops.stop_id",
       "description": "Identifies the stop. References GTFS"
     },
     {

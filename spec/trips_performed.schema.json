@@ -37,13 +37,13 @@
     {
       "name": "trip_id_scheduled",
       "type": "string",
-      "title": "ID referencing Trips.trip_id in GTFS",
+      "title": "ID referencing GTFS trips.trip_id",
       "description": "Identifies the scheduled trip associated with the trip performed. One scheduled trip may be associated with multiple operated trips, or an operated trip may not be associated with a scheduled trip. References GTFS"
     },
     {
       "name": "route_id",
       "type": "string",
-      "title": "ID referencing routes.route_id",
+      "title": "ID referencing GTFS routes.route_id",
       "description": "Identifies the route. References GTFS"
     },
     {
@@ -53,7 +53,7 @@
       "constraints": {
         "enum": [
           "Tram / Streetcar / Light rail",
-          "Subway, Metro",
+          "Subway / Metro",
           "Rail",
           "Bus",
           "Ferry",
@@ -73,12 +73,12 @@
     },
     {
       "name": "direction_id",
-      "type": "string",
+      "type": "integer",
       "description": "Indicates the direction of travel for a trip. References GTFS",
       "constraints": {
         "enum": [
-          "Outbound",
-          "Inbound"
+          0,
+          1
         ]
       }
     },
@@ -91,18 +91,19 @@
     {
       "name": "block_id",
       "type": "string",
+      "title": "ID referencing trips.block_id",
       "description": "Identifies the block to which the trip belongs. A block consists of a single trip, or many sequential trips made using the same vehicle, defined by shared service days and block_id. A block_id can have trips with different service days, making distinct blocks. See example in GTFS documentation. References GTFS"
     },
     {
       "name": "trip_start_stop_id",
       "type": "string",
-      "title": "ID referencing stops.stop_id",
+      "title": "ID referencing GTFS stops.stop_id",
       "description": "Origin stop_id. References GTFS"
     },
     {
       "name": "trip_end_stop_id",
       "type": "string",
-      "title": "ID referencing stops.stop_id",
+      "title": "ID referencing GTFS stops.stop_id",
       "description": "Destination stop_id. References GTFS"
     },
     {
@@ -144,7 +145,7 @@
     {
       "name": "schedule_relationship",
       "type": "string",
-      "description": "Indicates the status of the trip.",
+      "description": "Indicates the status of the trip. References GTFS-realtime TripUpdate.trip.schedule_relationship",
       "constraints": {
         "enum": [
           "Scheduled",
