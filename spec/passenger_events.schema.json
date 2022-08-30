@@ -1,0 +1,154 @@
+{
+  "primaryKey": "passenger_event_id",
+  "missingValues": [
+    "NA",
+    "NaN",
+    ""
+  ],
+  "fields": [
+    {
+      "name": "passenger_event_id",
+      "type": "string",
+      "description": "Identifies the recorded passenger event.",
+      "constraints": {
+        "required": true,
+        "unique": true
+      }
+    },
+    {
+      "name": "date",
+      "type": "date",
+      "description": "Service date. References GTFS",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "timestamp",
+      "type": "time",
+      "description": "Recorded event time.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "trip_id_performed",
+      "type": "string",
+      "title": "ID referencing trips_performed.trip_id_performed",
+      "description": "Identifies the trip performed.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "stop_sequence",
+      "type": "integer",
+      "title": "positive integer referencing GTFS stop_times.stop_sequence",
+      "description": "Ordered stop the vehicle is serving on a particular trip. References GTFS",
+      "constraints": {
+        "required": true,
+        "minimum": 0
+      }
+    },
+    {
+      "name": "event_type",
+      "type": "string",
+      "description": "Indicates the type of event recorded.",
+      "constraints": {
+        "required": true,
+        "enum": 
+        [
+          "Vehicle arrived at stop",
+          "Vehicle departed stop",
+          "Door opened",
+          "Door closed",
+          "Passenger boarded",
+          "Passenger alighted",
+          "Kneel was engaged",
+          "Kneel was disengaged",
+          "Ramp was deployed",
+          "Ramp was raised",
+          "Ramp deployment failed",
+          "Lift was deployed",
+          "Lift was raised",
+          "Individual bike boarded",
+          "Individual bike alighted",
+          "Bike rack deployed"
+        ]
+      }
+    },
+    {
+      "name": "vehicle_id",
+      "type": "string",
+      "title": "ID referencing vehicles.vehicle_id",
+      "description": "Identifies a vehicle.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "device_id",
+      "type": "string",
+      "title": "ID referencing devices.device_id",
+      "description": "Identifies the device that recorded the event. May be null if only a single device is reporting passenger events on a vehicle/ train car and the device_id is not distinct from vehicle_id/train_car_id."
+    },
+    {
+      "name": "train_car_id",
+      "type": "string",
+      "title": "ID referencing train_car.train_car_id",
+      "description": "Identifies the train car."
+    },
+    {
+      "name": "stop_id",
+      "type": "string",
+      "title": "ID referencing GTFS stops.stop_id",
+      "description": "Identifies the stop the vehicle is serving. References GTFS"
+    }
+  ],
+  "foreignKeys": [
+    {
+      "fields": "trip_id_performed",
+      "reference": {
+        "resource": "trips_performed",
+        "fields": "trip_id_performed"
+      }
+    },
+    {
+      "fields": "stop_sequence",
+      "reference": {
+        "resource": "stop_times",
+        "fields": "stop_sequence"
+      }
+    },
+    {
+      "fields": "vehicle_id",
+      "reference": {
+        "resource": "vehicles",
+        "fields": "vehicle_id"
+      }
+    },
+    {
+      "fields": "device_id",
+      "reference": {
+        "resource": "devices",
+        "fields": "device_id"
+      }
+    },
+    {
+      "fields": "train_car_id",
+      "reference": {
+        "resource": "train_car",
+        "fields": "train_car_id"
+      }
+    },
+    {
+      "fields": "stop_id",
+      "reference": {
+        "resource": "stops",
+        "fields": "stop_id"
+      }
+    }
+  ],
+  "name": "passenger_events.schema.json",
+  "description": "Timestamped passenger-related events, including boardings and alightings."
+}

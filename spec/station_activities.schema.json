@@ -1,0 +1,224 @@
+{
+  "primaryKey": [
+    "date",
+    "stop_id",
+    "time_period_start",
+    "time_period_end"
+  ],
+  "missingValues": [
+    "NA",
+    "NaN",
+    ""
+  ],
+  "fields": [
+    {
+      "name": "date",
+      "type": "date",
+      "description": "Service date",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "stop_id",
+      "type": "string",
+      "title": "ID referencing GTFS stops.stop_id",
+      "description": "Identifies stop. References GTFS",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "time_period_start",
+      "type": "datetime",
+      "description": "Aggregation period start time.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "time_period_end",
+      "type": "datetime",
+      "description": "Aggregation period end time.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "time_period_category",
+      "type": "string",
+      "description": "Indicates a standard time period to aid further aggregation. For example:\nAll day\nPeak\nOff-peak\nSummer\nOther"
+    },
+    {
+      "name": "total_entries",
+      "type": "integer",
+      "description": "Number of events at the stop considered entries, such as boardings or fare transactions.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "total_exits",
+      "type": "integer",
+      "description": "Number of events at the stop considered exits, such as alightings.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "number_of_transactions",
+      "type": "integer",
+      "description": "Number of fare transactions that occurred at a stop.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "transaction_revenue_cash",
+      "type": "number",
+      "description": "Indicates the revenue from cash or coins."
+    },
+    {
+      "name": "transaction_revenue_smartcard",
+      "type": "number",
+      "description": "Indicates the revenue from smart card or ticket."
+    },
+    {
+      "name": "transaction_revenue_magcard",
+      "type": "number",
+      "description": "Indicates the revenue from magnetic-stripe card or ticket."
+    },
+    {
+      "name": "transaction_revenue_bankcard",
+      "type": "number",
+      "description": "Indicates the revenue from bank card (credit or debit card)."
+    },
+    {
+      "name": "transaction_revenue_nfc",
+      "type": "number",
+      "description": "Indicates the revenue from mobile NFC (smartphone tap, etc.)"
+    },
+    {
+      "name": "transaction_revenue_optical",
+      "type": "number",
+      "description": "Indicates the revenue from optical scan (of mobile app screen or paper ticket)."
+    },
+    {
+      "name": "transaction_revenue_operator",
+      "type": "number",
+      "description": "Indicates the revenue from button pressed by driver or operator to indicate a boarding or alighting passenger."
+    },
+    {
+      "name": "transaction_revenue_other",
+      "type": "number",
+      "description": "Indicates the revenue from other fare media."
+    },
+    {
+      "name": "transaction_count_cash",
+      "type": "number",
+      "description": "Number of fare transactions made by cash or coins.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "transaction_count_smartcard",
+      "type": "number",
+      "description": "Number of fare transactions made by smart card or ticket.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "transaction_count_magcard",
+      "type": "number",
+      "description": "Number of fare transactions made by magnetic-stripe card or ticket.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "transaction_count_bankcard",
+      "type": "number",
+      "description": "Number of fare transactions made by bank card (credit or debit card).",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "transaction_count_nfc",
+      "type": "number",
+      "description": "Number of fare transactions made by mobile NFC (smartphone tap, etc.)",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "transaction_count_optical",
+      "type": "number",
+      "description": "Number of fare transactions made by optical scan (of mobile app screen or paper ticket).",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "transaction_count_operator",
+      "type": "number",
+      "description": "Number of fare transactions made by button pressed by driver or operator to indicate a boarding or alighting passenger.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "transaction_count_other",
+      "type": "number",
+      "description": "Number of fare transactions made by other fare media.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "bike_entries",
+      "type": "integer",
+      "description": "Number of bikes that entered the stop.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "bike_exits",
+      "type": "integer",
+      "description": "Number of bikes that exited the stop.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "ramp_entries",
+      "type": "integer",
+      "description": "Number of entries that used a ramp or accessible entrance.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "ramp_exits",
+      "type": "integer",
+      "description": "Number of exits that used a ramp or accessible exit.",
+      "constraints": {
+        "minimum": 0
+      }
+    }
+  ],
+  "foreignKeys": [
+    {
+      "fields": "stop_id",
+      "reference": {
+        "resource": "stops",
+        "fields": "stop_id"
+      }
+    }
+  ],
+  "name": "station_activities.schema.json",
+  "description": "Summarized transactions, entries, and exits by stop or station and time period for each service date (for events not associated with a trip)."
+}

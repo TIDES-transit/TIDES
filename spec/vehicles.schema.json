@@ -1,0 +1,78 @@
+{
+  "primaryKey": "vehicle_id",
+  "missingValues": [
+    "NA",
+    "NaN",
+    ""
+  ],
+  "fields": [
+    {
+      "name": "vehicle_id",
+      "type": "string",
+      "description": "Identifies a vehicle, such as a bus or a train consist. If possible, this should match other internal agency vehicle IDs and the GTFS-realtime VehicleDescriptor.",
+      "constraints": {
+        "required": true,
+        "unique": true
+      }
+    },
+    {
+      "name": "vehicle_start",
+      "type": "time",
+      "description": "The time at which the vehicle or train consist is first in operation (i.e., when the consist has been created). Required if Train_car is used."
+    },
+    {
+      "name": "vehicle_end",
+      "type": "time",
+      "description": "The time at which the vehicle or train consist no longer exists (i.e., the consist is separated or modified). Only used if Train_car is used."
+    },
+    {
+      "name": "model_name",
+      "type": "string",
+      "description": "Describes the vehicle's model."
+    },
+    {
+      "name": "facility_name",
+      "type": "string",
+      "description": "Name or internal agency ID for the facility where the vehicle is generally held."
+    },
+    {
+      "name": "capacity_seated",
+      "type": "integer",
+      "description": "Number of seats on the vehicle. Used if Train_car is not used.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "wheelchair_capacity",
+      "type": "integer",
+      "description": "Number of wheelchair spaces on the vehicle. Used if Train_car is not used.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "capacity_bike",
+      "type": "integer",
+      "description": "Number of bike spaces on the vehicle. Used if Train_car is not used.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "bike_rack",
+      "type": "boolean",
+      "description": "Indicates if the vehicle has a useable bike rack. Used if Train_car is not used."
+    },
+    {
+      "name": "capacity_standing",
+      "type": "integer",
+      "description": "Standing capacity of the vehicle set by the manufacturer. Used if Train_car is not used.",
+      "constraints": {
+        "minimum": 0
+      }
+    }
+  ],
+  "name": "vehicles.schema.json",
+  "description": "Vehicles, including buses and train consists, with descriptive information."
+}

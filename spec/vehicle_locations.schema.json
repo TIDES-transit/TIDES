@@ -1,0 +1,211 @@
+{
+  "primaryKey": "location_ping_id",
+  "missingValues": [
+    "NA",
+    "NaN",
+    ""
+  ],
+  "fields": [
+    {
+      "name": "location_ping_id",
+      "type": "string",
+      "description": "Identifies the recorded vehicle location event.",
+      "constraints": {
+        "required": true,
+        "unique": true
+      }
+    },
+    {
+      "name": "date",
+      "type": "date",
+      "description": "Service date. References GTFS",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "timestamp",
+      "type": "time",
+      "description": "Recorded event time.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "trip_id_performed",
+      "type": "string",
+      "title": "ID referencing trips_performed.trip_id_performed",
+      "description": "Identifies the trip performed.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "stop_sequence",
+      "type": "string",
+      "title": "positive integer referencing GTFS stop_times.stop_sequence",
+      "description": "Ordered stop the vehicle is approaching or serving on a particular trip. References GTFS",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "vehicle_id",
+      "type": "string",
+      "title": "ID referencing vehicles.vehicle_id",
+      "description": "Identifies a vehicle.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "device_id",
+      "type": "string",
+      "title": "ID references devices.device_id",
+      "description": "Identifies the device that recorded the vehicle location. May be null if only a single device is reporting vehicle location and the device_id is not distinct from vehicle_id."
+    },
+    {
+      "name": "stop_id",
+      "type": "string",
+      "title": "ID referencing GTFS stops.stop_id",
+      "description": "Identifies the stop the vehicle is approaching or serving currently. References GTFS"
+    },
+    {
+      "name": "current_status",
+      "type": "string",
+      "description": "Indicates the status of the vehicle in reference to a stop. References GTFS-Realtime",
+      "constraints": {
+        "enum": [
+          "Incoming at",
+          "Stopped at",
+          "In transit to"
+        ]
+      }
+    },
+    {
+      "name": "latitude",
+      "type": "number",
+      "description": "Degrees North, in the WGS-84 coordinate system. References GTFS-Realtime",
+      "constraints": {
+        "minimum": -90,
+        "maximum": 90
+      }
+    },
+    {
+      "name": "longitude",
+      "type": "number",
+      "description": "Degrees East, in the WGS-84 coordinate system. References GTFS-Realtime",
+      "constraints": {
+        "minimum": -180,
+        "maximum": 180
+      }
+    },
+    {
+      "name": "gps_quality",
+      "type": "string",
+      "description": "Indicates the quality of data and communication provided by the GPS.",
+      "constraints": {
+        "enum": [
+          "Excellent",
+          "Good",
+          "Poor"
+        ]
+      }
+    },
+    {
+      "name": "heading",
+      "type": "number",
+      "description": "Heading, in degrees, clockwise from true north, e.g., 0 would mean north and 90 would mean east. This can be the compass bearing, or the direction towards the next stop or intermediate location. This should not be deduced from the sequence of previous positions, which clients can compute from previous data. References GTFS-Realtime",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 360
+      }
+    },
+    {
+      "name": "speed",
+      "type": "number",
+      "description": "Momentary speed measured by the vehicle, in meters per second. References GTFS-Realtime",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "odometer",
+      "type": "integer",
+      "description": "Odometer value, in meters. References GTFS-Realtime",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "schedule_deviation",
+      "type": "integer",
+      "description": "Indicates schedule adherence in seconds. A negative value represents an early vehicle. (An unscheduled trip would not have a scheduled deviation.)",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "headway_deviation",
+      "type": "integer",
+      "description": "Indicates headway adherence in seconds. A negative value represents a shorter than scheduled headway.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "in_service",
+      "type": "string",
+      "description": "Indicates status of travel with regard to service.",
+      "constraints": {
+        "enum": [
+          "In passenger service",
+          "En-route to service",
+          "Traveling from a service trip",
+          "On a layover",
+          "Returning to a garage due to a suspension or breakdown",
+          "Travel for on-route replacement of breakdown",
+          "Other not in service"
+        ]
+      }
+    },
+    {
+      "name": "schedule_relationship",
+      "type": "string",
+      "description": "Indicates the status of the stop. References GTFS-realtime VehiclePosition.trip.schedule_relationship",
+      "constraints": {
+        "enum": [
+          "Scheduled",
+          "Skipped",
+          "No data",
+          "Unscheduled"
+        ]
+      }
+    }
+  ],
+  "foreignKeys": [
+    {
+      "fields": "trip_id_performed",
+      "reference": {
+        "resource": "trips_performed",
+        "fields": "trip_id_performed"
+      }
+    },
+    {
+      "fields": "vehicle_id",
+      "reference": {
+        "resource": "vehicles",
+        "fields": "vehicle_id"
+      }
+    },
+    {
+      "fields": "device_id",
+      "reference": {
+        "resource": "devices",
+        "fields": "device_id"
+      }
+    }
+  ],
+  "name": "vehicle_locations.schema.json",
+  "description": "Timestamped vehicle locations and speeds."
+}
