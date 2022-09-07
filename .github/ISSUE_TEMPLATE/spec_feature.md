@@ -1,8 +1,8 @@
 ---
 name: Data specification feature request
 about: Suggest an idea for the data specification
-title: ''
-labels: ['spec', 'feature']
+title: '📄🚀 – '
+labels: ['📄 spec', '🚀 feature']
 assignees: ''
 
 ---

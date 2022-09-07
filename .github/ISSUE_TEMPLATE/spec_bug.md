@@ -1,8 +1,8 @@
 ---
 name: Data specification bug report
 about: Report errors in the data specification
-title: ''
-labels: ['spec', 'bug']
+title: '🐛📄 – '
+labels: ['📄 spec', '🐛 bug']
 assignees: ''
 
 ---

@@ -1,8 +1,8 @@
 ---
 name: Code feature request
 about: Suggest and idea for the project code
-title: ''
-labels: ['code', 'feature']
+title: '🚀💻 – '
+labels: ['💻 code', '🚀 feature']
 assignees: ''
 
 ---

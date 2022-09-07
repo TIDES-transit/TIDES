@@ -1,8 +1,8 @@
 ---
 name: Code bug report
 about: Create a report to help us improve the project code
-title: ''
-labels: ['code', 'bug']
+title: '🐛💻 – '
+labels: ['💻 code', '🐛 bug']
 assignees: ''
 
 ---
