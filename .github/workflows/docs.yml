@@ -1,0 +1,32 @@
+name: Build docs on push
+
+on: [push]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Document which branch
+      run: echo ${{ github.ref_name }}
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r docs/requirements.txt
+    - name: Update documentation markdown with spec json
+      run: |
+        python docs/document.py
+    - name: Configure Git user
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+    - name: Build docs
+      run: |
+        mike deploy --push --rebase ${{ github.ref_name }}
