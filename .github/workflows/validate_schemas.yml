@@ -1,0 +1,22 @@
+name: Validate Frictionless JSON Schemas for Spec
+
+on: [push]
+
+jobs:
+  validate_schemas:
+    name: Validate Frictionless Schemas
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Validate Data Package schema
+        uses: snapcart/json-schema-validator@v1.0.0
+        with:
+          json_schema: "https://specs.frictionlessdata.io/schemas/data-package.json"
+          json_path_pattern: ^spec/.*\.schema.json$
+          send_comment: true
+          clear_comments: true
+      - name: Validate other schema
+        uses: snapcart/json-schema-validator@v1.0.0
+        with:
+          json_schema: "https://specs.frictionlessdata.io/schemas/table-schema.json"
+          json_path_pattern: ^spec/.*\.schema.json$
