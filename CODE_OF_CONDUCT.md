@@ -39,8 +39,8 @@ Examples of unacceptable behavior include:
 
 ## Enforcement Responsibilities
 
-The community leaders for this effort include project Leadership and the Product 
-Management Team as described in the [Project Governance](CONTRIBUTING.md#governance) 
+The community leaders for this effort include project Leadership and the Product
+Management Team as described in the [Project Governance](CONTRIBUTING.md#governance)
 section of [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Community leaders are responsible for clarifying and enforcing our standards of
@@ -64,8 +64,8 @@ representative at an online or offline event.
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported to the community leaders responsible for enforcement at 
-tidestransit@gmail.com. 
+reported to the community leaders responsible for enforcement at
+tidestransit@gmail.com.
 All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the
@@ -135,4 +135,3 @@ For answers to common questions about this code of conduct, see the FAQ at
 [Mozilla CoC]: https://github.com/mozilla/diversity
 [FAQ]: https://www.contributor-covenant.org/faq
 [translations]: https://www.contributor-covenant.org/translations
-
