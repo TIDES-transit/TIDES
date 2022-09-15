@@ -26,10 +26,15 @@ theme:
 plugins:
   - autorefs
   - awesome-pages
+  - mermaid2:
+      arguments:
+        theme: |
+            ^(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'
+        securityLevel: 'loose'
   - search
 
 extra_javascript:
-  - https://unpkg.com/mermaid@8.5.0/dist/mermaid.min.js
+  - https://unpkg.com/mermaid/dist/mermaid.min.js
 
 extra_css:
   - https://use.fontawesome.com/releases/v5.13.0/css/all.css
@@ -47,7 +52,7 @@ markdown_extensions:
       custom_fences:
         - name: mermaid
           class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_div_format
+          format: !!python/name:mermaid2.fence_mermaid
   - pymdownx.smartsymbols
   - smarty
   - toc:
@@ -58,3 +63,6 @@ nav:
   - Home: index.md
   - Architecture: architecture.md
   - Table Schemas: tables.md
+  - Contributing: CONTRIBUTING.md
+  - Contributors: contributors.md
+  - Code of Conduct: CODE_OF_CONDUCT.md
