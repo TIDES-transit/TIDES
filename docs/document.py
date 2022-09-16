@@ -17,7 +17,7 @@ def _format_cell_by_type(x, header):
             return "Variable: `{}`".format(var)
         return "Table: `{}`, Variable: `{}`".format(table, var)
     else:
-        return str(x).replace('\n','<br />')
+        return str(x).replace("\n", "<br />")
 
 
 def _recursive_items(d: dict, key_prefix: str = ""):
@@ -27,10 +27,22 @@ def _recursive_items(d: dict, key_prefix: str = ""):
     Modified from https://stackoverflow.com/questions/39233973/get-all-keys-of-a-nested-dictionary
     """
     for k, v in d.items():
-        if type(v) is dict:
+        if k == "constraints":
+            _str = ""
+            if v.pop("required", None):
+                _str += "**Required**\n"
+            if v.pop("unique", None):
+                _str += "*Unique*\n"
+            enum = [str(x) for x in v.pop("enum", [])]
+            if enum:
+                _str += "Allowed Values\n - `" + "`\n- `".join(enum) + "`"
+            _remove = ["{", "}", "[", "]", '"', ","]
+            _json = json.dumps(v, indent=2)
+            _str += "".join(s for s in _json if s not in _remove)
+            yield (k, _str)
+
+        elif type(v) is dict:
             yield from _recursive_items(v, key_prefix=k + " ")
-        elif k == "required":
-            yield (k, v)
         else:
             yield (key_prefix + k, v)
 
@@ -71,32 +83,35 @@ def _list_to_md_table(list_of_dicts: list) -> str:
         list_of_dicts: a list of dictionaries containing definition of fields.
     returns: A markdown string representing the table.
     """
+
     # flatten dictionary
     flat_list = []
     for i in list_of_dicts:
         flat_list.append({k: v for k, v in _recursive_items(i)})
 
     # get all items listed
-    standard_header_items = [
+    standard_header_fields = [
         "name",
-        "required",
+        "constraints",
         "type",
-        #"foreign_key",
+        # "foreign_key",
         "description",
     ]
-    additional_header_items = list(
-        set([k for i in flat_list for k, v in i.items()]) - set(standard_header_items)
-    )
-    header_items = standard_header_items + sorted(additional_header_items)
 
-    header_md = "|" + "|".join(header_items) + "|\n"
-    header_md += "|---" * len(header_items) + "|\n"
+    _all_header_fields = [k for i in flat_list for k, v in i.items()]
+    _additional_header_fields = list(
+        set(_all_header_fields) - set(standard_header_fields)
+    )
+    _header_fields = standard_header_fields + sorted(_additional_header_fields)
+
+    header_md = "|" + "|".join(_header_fields) + "|\n"
+    header_md += "|---" * len(_header_fields) + "|\n"
 
     body_md = ""
     for d in flat_list:
         body_md += (
             "|"
-            + "|".join([_format_cell_by_type(d.get(i, " "), i) for i in header_items])
+            + "|".join([_format_cell_by_type(d.get(i, " "), i) for i in _header_fields])
             + "|\n"
         )
 
