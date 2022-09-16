@@ -17,7 +17,7 @@ def _format_cell_by_type(x, header):
             return "Variable: `{}`".format(var)
         return "Table: `{}`, Variable: `{}`".format(table, var)
     else:
-        return str(x)
+        return str(x).replace('\n','<br />')
 
 
 def _recursive_items(d: dict, key_prefix: str = ""):
@@ -81,7 +81,7 @@ def _list_to_md_table(list_of_dicts: list) -> str:
         "name",
         "required",
         "type",
-        "foreign_key",
+        #"foreign_key",
         "description",
     ]
     additional_header_items = list(
