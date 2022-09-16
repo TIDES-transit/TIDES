@@ -10,7 +10,7 @@ import pandas as pd
 
 def _format_cell_by_type(x, header):
     if "enum" in header and len(x) > 1:
-        return "Allowed Values: `" + ",".join(map(str, x)) + "`"
+        return "Allowed Values: `" + "`,`".join(map(str, x)) + "`"
     if header == "foreign_key" and len(x) > 1:
         table, var = x.split(".")
         if table == "":
@@ -96,7 +96,7 @@ def _list_to_md_table(list_of_dicts: list) -> str:
     for d in flat_list:
         body_md += (
             "|"
-            + "|".join([_format_cell_by_type(d.get(i, "-"), i) for i in header_items])
+            + "|".join([_format_cell_by_type(d.get(i, " "), i) for i in header_items])
             + "|\n"
         )
 
