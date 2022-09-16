@@ -30,6 +30,15 @@ Contributions should be offered through GitHub issues and pull requests.
 
 By making any contribution to the projects, contributors self-certify to the [Contributor Agreement](#contributor-agreement).
 
+### Setup
+
+1. Make sure you have a [GitHub](https://github.com/) account.  
+2. Make sure you have [git](https://git-scm.com/downloads), a terminal (e.g. Mac Terminal, CygWin, etc.), and a text editor installed on your local machine.  Optionally, you will likely find it easier to use [GitHub Desktop](https://desktop.github.com/), an IDE instead of a simple text editor like [VSCode](https://code.visualstudio.com/), [Eclipse](https://www.eclipse.org/), [Sublime Text](https://www.sublimetext.com/), etc.  
+3. [Fork the repository](https://github.com/TIDES-transit/TIDES/fork) into your own GitHub account and [clone it locally](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).  
+4. [Create a branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-and-deleting-branches-within-your-repository) to work on a new issue (or checkout an existing one where the issue is being worked on).  
+5. Install [pre-commit](https://pre-commit.com/) so you can check your code and text formatting.
+6. \[Optional\] [Install act](https://github.com/nektos/act) to run github actions locally.  
+
 ### Issues
 
 Create issues to start discussion on a new topic.  If the issue is associated with a pull
