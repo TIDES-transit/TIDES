@@ -6,7 +6,7 @@ This repository provides data schemas and tools to support the access, managemen
 
 ## TIDES specification
 
-The TIDES specification is maintained in the `/spec` sub-directory as a series of JSON tablesc ompatible with the [frictionless data](https://specs.frictionlessdata.io/table-schema/) table schema standards.
+The TIDES specification is maintained in the `/spec` sub-directory as a series of JSON tables compatible with the [frictionless data](https://specs.frictionlessdata.io/table-schema/) table schema standards.
 Human-friendlier documentation is auto-generated and available at:
 
 - [Architecture](architecture.md)
