@@ -12,11 +12,11 @@ jobs:
         uses: snapcart/json-schema-validator@v1.0.0
         with:
           json_schema: "https://specs.frictionlessdata.io/schemas/data-package.json"
-          json_path_pattern: ^spec/tides.spec.json$
+          json_path_pattern: ^spec\/tides.spec.json$
           send_comment: true
           clear_comments: true
       - name: Validate other schema
         uses: snapcart/json-schema-validator@v1.0.0
         with:
           json_schema: "https://specs.frictionlessdata.io/schemas/table-schema.json"
-          json_path_pattern: ^spec/.*\.schema.json$
+          json_path_pattern: ^spec\/.*\.schema.json$
