@@ -1,6 +1,6 @@
 site_name: "Transit ITS Data Exchange (TIDES) Data Specification Suite"
 site_url: https://TIDES-transit/.github.io/TIDES
-repo_url: https://github.com/TIDES-transit//TIDES
+repo_url: https://github.com/TIDES-transit/TIDES
 edit_uri: edit/main/docs
 
 theme:
@@ -60,7 +60,7 @@ markdown_extensions:
       permalink: " ¶"
 
 nav:
-  - Home: index.md
+  - Home: README.md
   - Architecture: architecture.md
   - Table Schemas: tables.md
   - Contributing: CONTRIBUTING.md
