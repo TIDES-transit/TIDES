@@ -1,6 +1,6 @@
 # TIDES Tables Schema
 
-Schemas for TIDES suite. 
+Schemas for TIDES suite.
 
 ## Files in Specification
 

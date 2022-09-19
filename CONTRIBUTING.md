@@ -75,10 +75,10 @@ Ahead of Version 1.0 release, the governance for the TIDES specification is bein
 
 Development of the TIDES specification shall be managed by the following groups:
 
-* Leadership  
-* Product Management Team  
-* Registered Contributors  
-* All Other Stakeholders  
+* Leadership
+* Product Management Team
+* Registered Contributors
+* All Other Stakeholders
 
 These groups will have the following rights and responsibilities:
 
@@ -86,10 +86,10 @@ These groups will have the following rights and responsibilities:
 
 Leadership is responsible for overall direction and decision-making on the project including:
 
-* approval of registered contributors  
-* creation, scoping, and management of working groups,  
-* approval of the final specification for Version 1.0  
-* approval of changes to project governance  
+* approval of registered contributors
+* creation, scoping, and management of working groups
+* approval of the final specification for Version 1.0
+* approval of changes to project governance
 
 Leadership Group Members
 
@@ -103,12 +103,12 @@ The Product Management Team (PMT) is responsible for creating and maintaining ba
 
 PMT Group Members
 
-* Hunter Owens, Caltrans  
-* Jameelah Young, Jarv.us (on behalf of Caltrans)  
-* Elizabeth Sall, UrbanLabs LLC (on behalf of Caltrans)  
-* Benjamin Bressette, Caltrans  
-* Blake Fleisher, Jarv.us (on behalf of Caltrans)  
-* Joey Reid, Metro Transit (Minneapolis-St. Paul, MN)  
+* Hunter Owens, Caltrans
+* Jameelah Young, Jarv.us (on behalf of Caltrans)
+* Elizabeth Sall, UrbanLabs LLC (on behalf of Caltrans)
+* Benjamin Bressette, Caltrans
+* Blake Fleisher, Jarv.us (on behalf of Caltrans)
+* Joey Reid, Metro Transit (Minneapolis-St. Paul, MN)
 
 PMT Group Member [GitHub Access](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization): Admin
 
@@ -130,8 +130,8 @@ Stakeholders will be informed about progress on TIDES and given the opportunity 
 
 Stakeholder Group Membership:
 
-* Members of the TIDES Project Google Group  
-* Others who have expressed interest in following progress or contributing to TIDES, but who have not requested to be a registered Contributor  
+* Members of the TIDES Project Google Group
+* Others who have expressed interest in following progress or contributing to TIDES, but who have not requested to be a registered Contributor
 
 Stakeholder Group [GitHub Access](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization): Read/Create Issues (same as general public)
 
