@@ -28,4 +28,4 @@ jobs:
         git config --local user.name "github-actions[bot]"
     - name: Build docs
       run: |
-        mike deploy --push --rebase ${{ github.ref_name }} ${{ github.ref_name }}
+        mike deploy --push --rebase ${{ github.ref_name }}
