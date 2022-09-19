@@ -56,7 +56,7 @@
       "description": "Indicates the type of event recorded.",
       "constraints": {
         "required": true,
-        "enum": 
+        "enum":
         [
           "Vehicle arrived at stop",
           "Vehicle departed stop",

@@ -1,0 +1,12 @@
+# includes/excludes all rules by default
+default: true
+
+# 4-space list indentation works best with MkDocs
+MD007:
+  indent: 4
+
+# Remove line length limit
+MD013: false
+
+# Remove "no emphasis as heading"
+MD036: false

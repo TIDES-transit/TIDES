@@ -1,5 +1,6 @@
-Before submitting a pull request, please read
-[CONTRIBUTING.md](CONTRIBUTING.md).
+# Pull Request
+
+Before submitting a pull request, please read [CONTRIBUTING.md](CONTRIBUTING.md).
 
 For spec changes:
 
