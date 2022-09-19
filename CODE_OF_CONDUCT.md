@@ -1,4 +1,3 @@
-
 # Contributor Covenant Code of Conduct
 
 ## Our Pledge
@@ -18,11 +17,11 @@ diverse, inclusive, and healthy community.
 Examples of behavior that contributes to a positive environment for our
 community include:
 
-* Demonstrating empathy and kindness toward other people
-* Being respectful of differing opinions, viewpoints, and experiences
-* Giving and gracefully accepting constructive feedback
+* Demonstrating empathy and kindness toward other people  
+* Being respectful of differing opinions, viewpoints, and experiences  
+* Giving and gracefully accepting constructive feedback  
 * Accepting responsibility and apologizing to those affected by our mistakes,
-  and learning from the experience
+  and learning from the experience  
 * Focusing on what is best not just for us as individuals, but for the overall
   community
 
@@ -32,16 +31,13 @@ Examples of unacceptable behavior include:
   any kind
 * Trolling, insulting or derogatory comments, and personal or political attacks
 * Public or private harassment
-* Publishing others' private information, such as a physical or email address,
-  without their explicit permission
+* Publishing others' private information, such as a physical or email address, without their explicit permission
 * Other conduct which could reasonably be considered inappropriate in a
   professional setting
 
 ## Enforcement Responsibilities
 
-The community leaders for this effort include project Leadership and the Product
-Management Team as described in the [Project Governance](CONTRIBUTING.md#governance)
-section of [CONTRIBUTING.md](CONTRIBUTING.md).
+The community leaders for this effort include project Leadership and the Product Management Team as described in the [Project Governance](CONTRIBUTING.md#project-governance) section of [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Community leaders are responsible for clarifying and enforcing our standards of
 acceptable behavior and will take appropriate and fair corrective action in
@@ -63,9 +59,8 @@ representative at an online or offline event.
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported to the community leaders responsible for enforcement at
-tidestransit@gmail.com.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at [`tidestransit@gmail.com`](mailto:tidestransit@gmail.com).
+
 All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the

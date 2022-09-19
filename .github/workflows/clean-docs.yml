@@ -1,0 +1,25 @@
+name: Clean Docs for Deleted References
+on:
+  delete:
+
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Set up Python $PYTHON_VERSION
+      uses: actions/setup-python@v4
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install mike
+    - name: Configure Git user
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+    - name: Delete defunct docs versions
+      run: |
+        echo "Deleting ${{ github.event.ref_name }} version from docs"
+        mike delete --rebase --push ${{ github.event.ref_name }}

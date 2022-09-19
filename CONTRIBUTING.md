@@ -1,7 +1,6 @@
 # Contributing to TIDES
 
-Thank you for contributing to the TIDES Project.  This document defines the roles and process for
-contributing to the project and documents the governance roles and approach for decision-making.
+Thank you for contributing to the TIDES Project.  This document defines the roles and process for contributing to the project and documents the governance roles and approach for decision-making.
 
 ## Contents
 
@@ -97,7 +96,7 @@ These groups will have the following rights and responsibilities:
 Leadership is responsible for overall direction and decision-making on the project including:
 
 * approval of registered contributors
-* creation, scoping, and management of working groups,
+* creation, scoping, and management of working groups
 * approval of the final specification for Version 1.0
 * approval of changes to project governance
 
@@ -129,6 +128,7 @@ Contributors actively work to develop the TIDES specification. They propose addi
 Contributors must request [here][contributor-registration] to be registered in order to gain access.  Requests to become a Contributor must be approved by project Leadership.
 
 Contributor Group Members:
+
 The list of registered contributors is maintained in the [contributors.md](contributors.md) file.
 
 Contributor Group [GitHub Access](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization): Write
