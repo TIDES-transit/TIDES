@@ -1,5 +1,6 @@
 .DS_Store*
 .vscode*
+.env
 /venv*
 /site
 # pages that are copied in from main repo
