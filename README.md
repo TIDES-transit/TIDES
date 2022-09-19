@@ -8,7 +8,7 @@ This repository provides data schemas and tools to support the access, managemen
 
 The TIDES specification is maintained in the `/spec` sub-directory as a series of tables specified as a [frictionless data package](https://specs.frictionlessdata.io/data-package/) defined in `/spec/tides.spec.json`, which is a series of [frictionless data tables](https://specs.frictionlessdata.io/table-schema/) schemas specified in the set of files `/spec/*.schema.json`.
 
-Human readable tables describing the schema can be found at [http://tides-transit/github.io/TIDES/architecture](http://tides-transit/github.io/TIDES/architecture).
+Human readable tables describing the schema can be found at [http://tides-transit.github.io/TIDES/architecture](http://tides-transit.github.io/TIDES/architecture).
 
 ## Contributing to TIDES
 
