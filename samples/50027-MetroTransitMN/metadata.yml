@@ -1,0 +1,12 @@
+---
+# agency name (required)
+agency: Metro Transit
+# agency 5 digit NTDID (required)
+NTDID: 50027
+# CAD/AVL vendor/software (recommended)
+CAD/AVL: TransitMaster
+# sample maintainer, at least on of `email` or `github` is required
+maintainer: {
+  email: Joey Reid <joseph.reid@metrotransit.org>,
+  github: botanize
+}
