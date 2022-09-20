@@ -1,0 +1,24 @@
+name: Validate Frictionless Table Schemas for Spec
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'spec/*.spec.json$'
+      - '!spec/tides.spec.json'
+
+jobs:
+  validate_tables:
+    name: Validate other schema
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Validate Table schema
+        uses: snapcart/json-schema-validator@v1.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          json_schema: "https://specs.frictionlessdata.io/schemas/table-schema.json"
+          json_path_pattern: ^spec/.*\.schema\.json$
+          send_comment: true
+          clear_comments: true
