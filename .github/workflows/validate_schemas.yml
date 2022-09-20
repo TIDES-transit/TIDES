@@ -16,7 +16,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           json_schema: "https://specs.frictionlessdata.io/schemas/data-package.json"
-          json_path_pattern: tides.spec.json
+          json_path_pattern: ^spec/tides\.spec\.json$
           send_comment: true
           clear_comments: true
       - name: Validate other schema
