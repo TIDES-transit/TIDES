@@ -11,4 +11,4 @@ jobs:
   validate_data_package:
     runs-on: ubuntu-latest
     steps:
-      - run: 'echo "no validation required"'
+      - run: 'echo "no changes to spec/tides.schema.json: no validation required"'

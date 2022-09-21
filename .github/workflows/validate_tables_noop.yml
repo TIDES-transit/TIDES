@@ -12,4 +12,4 @@ jobs:
   validate_tables:
     runs-on: ubuntu-latest
     steps:
-      - run: 'echo "no validation required"'
+      - run: 'echo "no changes to table schemas: no validation required"'
