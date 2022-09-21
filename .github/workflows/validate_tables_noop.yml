@@ -1,0 +1,15 @@
+name: Validate Frictionless Table Schemas for Spec
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '!spec/*.spec.json$'
+      - '!spec/tides.spec.json$'
+
+jobs:
+  validate_tables:
+    runs-on: ubuntu-latest
+    steps:
+      - run: 'echo "no changes to table schemas: no validation required"'

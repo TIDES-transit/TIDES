@@ -1,0 +1,14 @@
+name: Validate Frictionless Data Package Schema for Spec
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '!spec/tides.spec.json$'
+
+jobs:
+  validate_data_package:
+    runs-on: ubuntu-latest
+    steps:
+      - run: 'echo "no changes to spec/tides.schema.json: no validation required"'
