@@ -76,6 +76,25 @@ def _fill_template(
             _outfile.write(_txt_contents)
 
 
+def _format_primary_key(schema: dict) -> str:
+    """
+    Reads the primaryKey property of a schema and creates markdown for the table
+    description.
+    args:
+        schema: a schema dict, see `read_schema`
+    returns: A markdown string describing the primary key.
+    """
+    if "primaryKey" in schema:
+        primary_key = schema["primaryKey"]
+    else:
+        primary_key = "none"
+    if isinstance(primary_key, list):
+        primary_key = set(primary_key)
+    else:
+        primary_key = set([primary_key])
+    return "Primary key: {`" + "`, `".join(primary_key) + "`}\n"
+
+
 def _list_to_md_table(list_of_dicts: list) -> str:
     """
     Reads a list of dictionaries defining a schema and creates a markdown table.
@@ -218,17 +237,30 @@ def document_schemas(
     )
     print("Documenting schemas from: {}".format(schema_files))
 
-    file_schema_markdown = ""
+    file_schema_markdown = []
     for s in schema_files:
         print(f"Documenting Schema: {s}")
         spec_name = s.split("/")[-1].split(".")[0]
+        spec_title = " ".join([x.capitalize() for x in spec_name.split("_")])
         schema = read_schema(s)
-        file_schema_markdown += "\n\n## {}\n".format(spec_name)
-        file_schema_markdown += "\n\n{}".format(_list_to_md_table(schema["fields"]))
+        schema_md = "## {}\n".format(spec_title)
+        schema_md += "\n{}\n".format(s.split("/")[-1])
+        if "_table_type" in schema:
+            table_type = "*{} Table*: ".format(schema["table_type"])
+        else:
+            table_type = ""
+        if "description" in schema:
+            schema_md += "\n{}{}\n".format(table_type, schema["description"])
+        schema_md += "\n" + _format_primary_key(schema)
+        schema_md += "\n\n{}".format(_list_to_md_table(schema["fields"]))
+        file_schema_markdown.append((table_type, spec_title, schema_md))
+    md_name = sorted(file_schema_markdown, key=lambda schema: schema[1])
+    md_type_name = sorted(md_name, key=lambda schema: schema[0])
+    md = "\n\n".join([x[2] for x in md_type_name])
 
     _fill_template(
         outfile_path=os.path.join(docs_path, outfile_name),
-        content_dict={"TABLES": file_schema_markdown},
+        content_dict={"TABLES": md},
     )
 
 
