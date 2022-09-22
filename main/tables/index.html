@@ -191,23 +191,8 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#stop_visits">
-    stop_visits
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#vehicles">
-    vehicles
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#station_activities">
-    station_activities
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#trips_performed">
-    trips_performed
+<a class="md-nav__link" href="#devices">
+    devices
   </a>
 </li>
 <li class="md-nav__item">
@@ -216,13 +201,28 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#vehicle_train_cars">
-    vehicle_train_cars
+<a class="md-nav__link" href="#trips_performed">
+    trips_performed
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#operators">
-    operators
+<a class="md-nav__link" href="#station_activities">
+    station_activities
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fare_transactions">
+    fare_transactions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#stop_visits">
+    stop_visits
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vehicle_train_cars">
+    vehicle_train_cars
   </a>
 </li>
 <li class="md-nav__item">
@@ -231,18 +231,18 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#devices">
-    devices
+<a class="md-nav__link" href="#operators">
+    operators
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vehicles">
+    vehicles
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#train_cars">
     train_cars
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#fare_transactions">
-    fare_transactions
   </a>
 </li>
 </ul>
@@ -278,23 +278,8 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#stop_visits">
-    stop_visits
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#vehicles">
-    vehicles
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#station_activities">
-    station_activities
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#trips_performed">
-    trips_performed
+<a class="md-nav__link" href="#devices">
+    devices
   </a>
 </li>
 <li class="md-nav__item">
@@ -303,13 +288,28 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#vehicle_train_cars">
-    vehicle_train_cars
+<a class="md-nav__link" href="#trips_performed">
+    trips_performed
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#operators">
-    operators
+<a class="md-nav__link" href="#station_activities">
+    station_activities
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fare_transactions">
+    fare_transactions
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#stop_visits">
+    stop_visits
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vehicle_train_cars">
+    vehicle_train_cars
   </a>
 </li>
 <li class="md-nav__item">
@@ -318,18 +318,18 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#devices">
-    devices
+<a class="md-nav__link" href="#operators">
+    operators
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vehicles">
+    vehicles
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#train_cars">
     train_cars
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#fare_transactions">
-    fare_transactions
   </a>
 </li>
 </ul>
@@ -346,6 +346,756 @@
 <p>Data table schemas are specified in JSON and are compatible with the
 <a href="https://specs.frictionlessdata.io/table-schema/">frictionless data</a> table
 schema standards.</p>
+<h2 id="devices">devices<a class="headerlink" href="#devices" title="Permanent link"> ¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>constraints</th>
+<th>type</th>
+<th>description</th>
+<th>title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>device_id</td>
+<td><strong>Required</strong><br/><em>Unique</em><br/></td>
+<td>string</td>
+<td>Identifies a device. If possible, this should match other internal agency device IDs.</td>
+<td></td>
+</tr>
+<tr>
+<td>stop_id</td>
+<td></td>
+<td>string</td>
+<td>Identifies the stop at which the device is located. May be null if the device is on a vehicle. References GTFS</td>
+<td>ID referencing GTFS stops.stop_id</td>
+</tr>
+<tr>
+<td>vehicle_id</td>
+<td></td>
+<td>string</td>
+<td>Identifies the vehicle on which the device is located. May be null if the device is at a stop or station.</td>
+<td>ID referencing vehicles.vehicle_id</td>
+</tr>
+<tr>
+<td>train_car_id</td>
+<td></td>
+<td>string</td>
+<td>Identifies the train car or asset on which the device is located. May be null if the device is at a stop or station or if the Train_cars file is not used.</td>
+<td>ID referencing train_car.train_car_id</td>
+</tr>
+<tr>
+<td>device_type</td>
+<td>Allowed Values<br/> - <code>APC</code><br/>- <code>AFC</code><br/>- <code>AVL</code><br/>- <code>Other</code></td>
+<td>string</td>
+<td>Indicates the type of device.</td>
+<td></td>
+</tr>
+<tr>
+<td>device_vendor</td>
+<td></td>
+<td>string</td>
+<td>Vendor of the device.</td>
+<td></td>
+</tr>
+<tr>
+<td>device_model</td>
+<td></td>
+<td>string</td>
+<td>Model of the device as specified by the vendor.</td>
+<td></td>
+</tr>
+<tr>
+<td>location</td>
+<td></td>
+<td>string</td>
+<td>Indicates the location of a device on the vehicle or at a station. For example:<br/>Front door.<br/>Back door.<br/>Entrance (not located on a vehicle).<br/>Exit (not located on a vehicle).<br/>Entrance/exit (not located on a vehicle).<br/>Other.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="vehicle_locations">vehicle_locations<a class="headerlink" href="#vehicle_locations" title="Permanent link"> ¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>constraints</th>
+<th>type</th>
+<th>description</th>
+<th>title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>location_ping_id</td>
+<td><strong>Required</strong><br/><em>Unique</em><br/></td>
+<td>string</td>
+<td>Identifies the recorded vehicle location event.</td>
+<td></td>
+</tr>
+<tr>
+<td>date</td>
+<td><strong>Required</strong><br/></td>
+<td>date</td>
+<td>Service date. References GTFS</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td><strong>Required</strong><br/></td>
+<td>time</td>
+<td>Recorded event time.</td>
+<td></td>
+</tr>
+<tr>
+<td>trip_id_performed</td>
+<td><strong>Required</strong><br/></td>
+<td>string</td>
+<td>Identifies the trip performed.</td>
+<td>ID referencing trips_performed.trip_id_performed</td>
+</tr>
+<tr>
+<td>stop_sequence</td>
+<td><strong>Required</strong><br/></td>
+<td>integer</td>
+<td>Ordered stop the vehicle is approaching or serving on a particular trip. References GTFS</td>
+<td>positive integer referencing GTFS stop_times.stop_sequence</td>
+</tr>
+<tr>
+<td>vehicle_id</td>
+<td><strong>Required</strong><br/></td>
+<td>string</td>
+<td>Identifies a vehicle.</td>
+<td>ID referencing vehicles.vehicle_id</td>
+</tr>
+<tr>
+<td>device_id</td>
+<td></td>
+<td>string</td>
+<td>Identifies the device that recorded the vehicle location. May be null if only a single device is reporting vehicle location and the device_id is not distinct from vehicle_id.</td>
+<td>ID references devices.device_id</td>
+</tr>
+<tr>
+<td>stop_id</td>
+<td></td>
+<td>string</td>
+<td>Identifies the stop the vehicle is approaching or serving currently. References GTFS</td>
+<td>ID referencing GTFS stops.stop_id</td>
+</tr>
+<tr>
+<td>current_status</td>
+<td>Allowed Values<br/> - <code>Incoming at</code><br/>- <code>Stopped at</code><br/>- <code>In transit to</code></td>
+<td>string</td>
+<td>Indicates the status of the vehicle in reference to a stop. References GTFS-Realtime</td>
+<td></td>
+</tr>
+<tr>
+<td>latitude</td>
+<td><br/>  minimum: -90<br/>  maximum: 90<br/></td>
+<td>number</td>
+<td>Degrees North, in the WGS-84 coordinate system. References GTFS-Realtime</td>
+<td></td>
+</tr>
+<tr>
+<td>longitude</td>
+<td><br/>  minimum: -180<br/>  maximum: 180<br/></td>
+<td>number</td>
+<td>Degrees East, in the WGS-84 coordinate system. References GTFS-Realtime</td>
+<td></td>
+</tr>
+<tr>
+<td>gps_quality</td>
+<td>Allowed Values<br/> - <code>Excellent</code><br/>- <code>Good</code><br/>- <code>Poor</code></td>
+<td>string</td>
+<td>Indicates the quality of data and communication provided by the GPS.</td>
+<td></td>
+</tr>
+<tr>
+<td>heading</td>
+<td><br/>  minimum: 0<br/>  maximum: 360<br/></td>
+<td>number</td>
+<td>Heading, in degrees, clockwise from true north, e.g., 0 would mean north and 90 would mean east. This can be the compass bearing, or the direction towards the next stop or intermediate location. This should not be deduced from the sequence of previous positions, which clients can compute from previous data. References GTFS-Realtime</td>
+<td></td>
+</tr>
+<tr>
+<td>speed</td>
+<td><br/>  minimum: 0<br/></td>
+<td>number</td>
+<td>Momentary speed measured by the vehicle, in meters per second. References GTFS-Realtime</td>
+<td></td>
+</tr>
+<tr>
+<td>odometer</td>
+<td><br/>  minimum: 0<br/></td>
+<td>integer</td>
+<td>Odometer value, in meters. References GTFS-Realtime</td>
+<td></td>
+</tr>
+<tr>
+<td>schedule_deviation</td>
+<td></td>
+<td>integer</td>
+<td>Indicates schedule adherence in seconds. A negative value represents an early vehicle. (An unscheduled trip would not have a scheduled deviation.)</td>
+<td></td>
+</tr>
+<tr>
+<td>headway_deviation</td>
+<td></td>
+<td>integer</td>
+<td>Indicates headway adherence in seconds. A negative value represents a shorter than scheduled headway.</td>
+<td></td>
+</tr>
+<tr>
+<td>in_service</td>
+<td>Allowed Values<br/> - <code>In passenger service</code><br/>- <code>En-route to service</code><br/>- <code>Traveling from a service trip</code><br/>- <code>On a layover</code><br/>- <code>Returning to a garage due to a suspension or breakdown</code><br/>- <code>Travel for on-route replacement of breakdown</code><br/>- <code>Other not in service</code></td>
+<td>string</td>
+<td>Indicates status of travel with regard to service.</td>
+<td></td>
+</tr>
+<tr>
+<td>schedule_relationship</td>
+<td>Allowed Values<br/> - <code>Scheduled</code><br/>- <code>Skipped</code><br/>- <code>No data</code><br/>- <code>Unscheduled</code></td>
+<td>string</td>
+<td>Indicates the status of the stop. References GTFS-realtime VehiclePosition.trip.schedule_relationship</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="trips_performed">trips_performed<a class="headerlink" href="#trips_performed" title="Permanent link"> ¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>constraints</th>
+<th>type</th>
+<th>description</th>
+<th>title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>date</td>
+<td><strong>Required</strong><br/></td>
+<td>date</td>
+<td>Service date. References GTFS</td>
+<td></td>
+</tr>
+<tr>
+<td>trip_id_performed</td>
+<td><strong>Required</strong><br/></td>
+<td>string</td>
+<td>Identifies the trip performed.</td>
+<td></td>
+</tr>
+<tr>
+<td>vehicle_id</td>
+<td><strong>Required</strong><br/></td>
+<td>string</td>
+<td>Identifies the vehicle.</td>
+<td>ID referencing vehicles.vehicle_id</td>
+</tr>
+<tr>
+<td>trip_id_scheduled</td>
+<td></td>
+<td>string</td>
+<td>Identifies the scheduled trip associated with the trip performed. One scheduled trip may be associated with multiple operated trips, or an operated trip may not be associated with a scheduled trip. References GTFS</td>
+<td>ID referencing GTFS trips.trip_id</td>
+</tr>
+<tr>
+<td>route_id</td>
+<td></td>
+<td>string</td>
+<td>Identifies the route. References GTFS</td>
+<td>ID referencing GTFS routes.route_id</td>
+</tr>
+<tr>
+<td>route_type</td>
+<td>Allowed Values<br/> - <code>Tram / Streetcar / Light rail</code><br/>- <code>Subway / Metro</code><br/>- <code>Rail</code><br/>- <code>Bus</code><br/>- <code>Ferry</code><br/>- <code>Cable tram</code><br/>- <code>Aerial lift</code><br/>- <code>Funicular</code><br/>- <code>Trolleybus</code><br/>- <code>Monorail</code></td>
+<td>string</td>
+<td>Indicates the type of transportation used on a route. References GTFS</td>
+<td></td>
+</tr>
+<tr>
+<td>shape_id</td>
+<td></td>
+<td>string</td>
+<td>Identifies a geospatial shape that describes the vehicle travel path for a trip. References GTFS</td>
+<td>ID referencing shapes.shape_id</td>
+</tr>
+<tr>
+<td>direction_id</td>
+<td>Allowed Values<br/> - <code>0</code><br/>- <code>1</code></td>
+<td>integer</td>
+<td>Indicates the direction of travel for a trip. References GTFS</td>
+<td></td>
+</tr>
+<tr>
+<td>operator_id</td>
+<td></td>
+<td>string</td>
+<td>Identifies the vehicle’s operator.</td>
+<td>ID referencing operators.operator_id</td>
+</tr>
+<tr>
+<td>block_id</td>
+<td></td>
+<td>string</td>
+<td>Identifies the block to which the trip belongs. A block consists of a single trip, or many sequential trips made using the same vehicle, defined by shared service days and block_id. A block_id can have trips with different service days, making distinct blocks. See example in GTFS documentation. References GTFS</td>
+<td>ID referencing trips.block_id</td>
+</tr>
+<tr>
+<td>trip_start_stop_id</td>
+<td></td>
+<td>string</td>
+<td>Origin stop_id. References GTFS</td>
+<td>ID referencing GTFS stops.stop_id</td>
+</tr>
+<tr>
+<td>trip_end_stop_id</td>
+<td></td>
+<td>string</td>
+<td>Destination stop_id. References GTFS</td>
+<td>ID referencing GTFS stops.stop_id</td>
+</tr>
+<tr>
+<td>schedule_trip_start</td>
+<td></td>
+<td>time</td>
+<td>Scheduled departure time from the trip’s origin.</td>
+<td></td>
+</tr>
+<tr>
+<td>schedule_trip_end</td>
+<td></td>
+<td>time</td>
+<td>Scheduled end time at the trip’s destination.</td>
+<td></td>
+</tr>
+<tr>
+<td>actual_trip_start</td>
+<td></td>
+<td>time</td>
+<td>Time at which the vehicle departed its origin.</td>
+<td></td>
+</tr>
+<tr>
+<td>actual_trip_end</td>
+<td></td>
+<td>time</td>
+<td>Time at which the vehicle arrived at its destination.</td>
+<td></td>
+</tr>
+<tr>
+<td>in_service</td>
+<td>Allowed Values<br/> - <code>In passenger service</code><br/>- <code>En-route to service</code><br/>- <code>Traveling from a service trip</code><br/>- <code>On a layover</code><br/>- <code>Returning to a garage due to a suspension or breakdown</code><br/>- <code>Travel for on-route replacement of breakdown</code><br/>- <code>Other not in service</code></td>
+<td>string</td>
+<td>Indicates status of travel with regard to service.</td>
+<td></td>
+</tr>
+<tr>
+<td>schedule_relationship</td>
+<td>Allowed Values<br/> - <code>Scheduled</code><br/>- <code>Added</code><br/>- <code>Unscheduled</code><br/>- <code>Canceled</code><br/>- <code>Duplicated</code></td>
+<td>string</td>
+<td>Indicates the status of the trip. References GTFS-realtime TripUpdate.trip.schedule_relationship</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="station_activities">station_activities<a class="headerlink" href="#station_activities" title="Permanent link"> ¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>constraints</th>
+<th>type</th>
+<th>description</th>
+<th>title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>date</td>
+<td><strong>Required</strong><br/></td>
+<td>date</td>
+<td>Service date</td>
+<td></td>
+</tr>
+<tr>
+<td>stop_id</td>
+<td><strong>Required</strong><br/></td>
+<td>string</td>
+<td>Identifies stop. References GTFS</td>
+<td>ID referencing GTFS stops.stop_id</td>
+</tr>
+<tr>
+<td>time_period_start</td>
+<td><strong>Required</strong><br/></td>
+<td>datetime</td>
+<td>Aggregation period start time.</td>
+<td></td>
+</tr>
+<tr>
+<td>time_period_end</td>
+<td><strong>Required</strong><br/></td>
+<td>datetime</td>
+<td>Aggregation period end time.</td>
+<td></td>
+</tr>
+<tr>
+<td>time_period_category</td>
+<td></td>
+<td>string</td>
+<td>Indicates a standard time period to aid further aggregation. For example:<br/>All day<br/>Peak<br/>Off-peak<br/>Summer<br/>Other</td>
+<td></td>
+</tr>
+<tr>
+<td>total_entries</td>
+<td><br/>  minimum: 0<br/></td>
+<td>integer</td>
+<td>Number of events at the stop considered entries, such as boardings or fare transactions.</td>
+<td></td>
+</tr>
+<tr>
+<td>total_exits</td>
+<td><br/>  minimum: 0<br/></td>
+<td>integer</td>
+<td>Number of events at the stop considered exits, such as alightings.</td>
+<td></td>
+</tr>
+<tr>
+<td>number_of_transactions</td>
+<td><br/>  minimum: 0<br/></td>
+<td>integer</td>
+<td>Number of fare transactions that occurred at a stop.</td>
+<td></td>
+</tr>
+<tr>
+<td>transaction_revenue_cash</td>
+<td></td>
+<td>number</td>
+<td>Indicates the revenue from cash or coins.</td>
+<td></td>
+</tr>
+<tr>
+<td>transaction_revenue_smartcard</td>
+<td></td>
+<td>number</td>
+<td>Indicates the revenue from smart card or ticket.</td>
+<td></td>
+</tr>
+<tr>
+<td>transaction_revenue_magcard</td>
+<td></td>
+<td>number</td>
+<td>Indicates the revenue from magnetic-stripe card or ticket.</td>
+<td></td>
+</tr>
+<tr>
+<td>transaction_revenue_bankcard</td>
+<td></td>
+<td>number</td>
+<td>Indicates the revenue from bank card (credit or debit card).</td>
+<td></td>
+</tr>
+<tr>
+<td>transaction_revenue_nfc</td>
+<td></td>
+<td>number</td>
+<td>Indicates the revenue from mobile NFC (smartphone tap, etc.)</td>
+<td></td>
+</tr>
+<tr>
+<td>transaction_revenue_optical</td>
+<td></td>
+<td>number</td>
+<td>Indicates the revenue from optical scan (of mobile app screen or paper ticket).</td>
+<td></td>
+</tr>
+<tr>
+<td>transaction_revenue_operator</td>
+<td></td>
+<td>number</td>
+<td>Indicates the revenue from button pressed by driver or operator to indicate a boarding or alighting passenger.</td>
+<td></td>
+</tr>
+<tr>
+<td>transaction_revenue_other</td>
+<td></td>
+<td>number</td>
+<td>Indicates the revenue from other fare media.</td>
+<td></td>
+</tr>
+<tr>
+<td>transaction_count_cash</td>
+<td><br/>  minimum: 0<br/></td>
+<td>number</td>
+<td>Number of fare transactions made by cash or coins.</td>
+<td></td>
+</tr>
+<tr>
+<td>transaction_count_smartcard</td>
+<td><br/>  minimum: 0<br/></td>
+<td>number</td>
+<td>Number of fare transactions made by smart card or ticket.</td>
+<td></td>
+</tr>
+<tr>
+<td>transaction_count_magcard</td>
+<td><br/>  minimum: 0<br/></td>
+<td>number</td>
+<td>Number of fare transactions made by magnetic-stripe card or ticket.</td>
+<td></td>
+</tr>
+<tr>
+<td>transaction_count_bankcard</td>
+<td><br/>  minimum: 0<br/></td>
+<td>number</td>
+<td>Number of fare transactions made by bank card (credit or debit card).</td>
+<td></td>
+</tr>
+<tr>
+<td>transaction_count_nfc</td>
+<td><br/>  minimum: 0<br/></td>
+<td>number</td>
+<td>Number of fare transactions made by mobile NFC (smartphone tap, etc.)</td>
+<td></td>
+</tr>
+<tr>
+<td>transaction_count_optical</td>
+<td><br/>  minimum: 0<br/></td>
+<td>number</td>
+<td>Number of fare transactions made by optical scan (of mobile app screen or paper ticket).</td>
+<td></td>
+</tr>
+<tr>
+<td>transaction_count_operator</td>
+<td><br/>  minimum: 0<br/></td>
+<td>number</td>
+<td>Number of fare transactions made by button pressed by driver or operator to indicate a boarding or alighting passenger.</td>
+<td></td>
+</tr>
+<tr>
+<td>transaction_count_other</td>
+<td><br/>  minimum: 0<br/></td>
+<td>number</td>
+<td>Number of fare transactions made by other fare media.</td>
+<td></td>
+</tr>
+<tr>
+<td>bike_entries</td>
+<td><br/>  minimum: 0<br/></td>
+<td>integer</td>
+<td>Number of bikes that entered the stop.</td>
+<td></td>
+</tr>
+<tr>
+<td>bike_exits</td>
+<td><br/>  minimum: 0<br/></td>
+<td>integer</td>
+<td>Number of bikes that exited the stop.</td>
+<td></td>
+</tr>
+<tr>
+<td>ramp_entries</td>
+<td><br/>  minimum: 0<br/></td>
+<td>integer</td>
+<td>Number of entries that used a ramp or accessible entrance.</td>
+<td></td>
+</tr>
+<tr>
+<td>ramp_exits</td>
+<td><br/>  minimum: 0<br/></td>
+<td>integer</td>
+<td>Number of exits that used a ramp or accessible exit.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="fare_transactions">fare_transactions<a class="headerlink" href="#fare_transactions" title="Permanent link"> ¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>constraints</th>
+<th>type</th>
+<th>description</th>
+<th>rdfType</th>
+<th>title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transaction_id</td>
+<td><strong>Required</strong><br/><em>Unique</em><br/></td>
+<td>string</td>
+<td>Identifies the fare transaction.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>date</td>
+<td><strong>Required</strong><br/></td>
+<td>date</td>
+<td>Service date. References GTFS</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td><strong>Required</strong><br/></td>
+<td>time</td>
+<td>Recorded event time, including for transactions that may be aggregated values associated with a trip or vehicle.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>amount</td>
+<td><strong>Required</strong><br/></td>
+<td>number</td>
+<td>Value of the transaction.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>currency_type</td>
+<td><strong>Required</strong><br/></td>
+<td>string</td>
+<td>Currency used for the transaction. References GTFS</td>
+<td>https://schema.org/currency</td>
+<td></td>
+</tr>
+<tr>
+<td>fare_action</td>
+<td><strong>Required</strong><br/>Allowed Values<br/> - <code>Unknown action type</code><br/>- <code>Purchase</code><br/>- <code>Enter</code><br/>- <code>Exit</code><br/>- <code>Transfer entrance</code><br/>- <code>Transfer exit</code><br/>- <code>Add</code><br/>- <code>Activate</code><br/>- <code>Adjust</code><br/>- <code>Other</code></td>
+<td>string</td>
+<td>Indicates the type of action performed.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>trip_id_performed</td>
+<td></td>
+<td>string</td>
+<td>Identifies the trip performed. May be null if the fare collection device is NOT located on a vehicle. May be null if on a vehicle but trip-level data is unavailable, in which case the data would be associated with the vehicle.</td>
+<td></td>
+<td>ID referencing trips_performed.trip_id_performed</td>
+</tr>
+<tr>
+<td>stop_sequence</td>
+<td><br/>  minimum: 0<br/></td>
+<td>integer</td>
+<td>Ordered stop the vehicle is serving on a particular trip. May be null if the fare collection device is NOT located on a vehicle. May be null if on a vehicle but stop-level data is unavailable, in which case the data would be associated with the vehicle and/or trip. References GTFS</td>
+<td></td>
+<td>positive integer referencing GTFS stop_times.stop_sequence</td>
+</tr>
+<tr>
+<td>vehicle_id</td>
+<td></td>
+<td>string</td>
+<td>Identifies the vehicle. May be null if collection device is NOT located on a vehicle. May be null if on a vehicle but vehicle data is unavailable, in which case the data would be associated with a trip and/or stop.</td>
+<td></td>
+<td>ID referencing vehicles.vehicle_id</td>
+</tr>
+<tr>
+<td>device_id</td>
+<td></td>
+<td>string</td>
+<td>Identifies the ITS device on which the fare transaction was performed. May be null if only a single device is reporting fare transactions on a vehicle and vehicle_id is provided. May be null if only a single device is reporting fare transactions at a stop and stop_id is provided.</td>
+<td></td>
+<td>ID referencing devices.device_id</td>
+</tr>
+<tr>
+<td>fare_id</td>
+<td></td>
+<td>string</td>
+<td>Identifies a fare class, as included in the GTFS Fare_attributes file. References GTFS</td>
+<td></td>
+<td>ID referencing GTFS fare_attributes.fare_id</td>
+</tr>
+<tr>
+<td>stop_id</td>
+<td></td>
+<td>string</td>
+<td>Identifies the stop. References GTFS</td>
+<td></td>
+<td>ID referencing GTFS stops.stop_id</td>
+</tr>
+<tr>
+<td>group_size</td>
+<td><br/>  minimum: 0<br/></td>
+<td>integer</td>
+<td>The number of customers included in the transaction.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>media_type</td>
+<td>Allowed Values<br/> - <code>Cash or coins</code><br/>- <code>Smart card or ticket</code><br/>- <code>Magnetic-stripe card or ticket</code><br/>- <code>Bank card</code><br/>- <code>Mobile NFC</code><br/>- <code>Optical scan</code><br/>- <code>Button pressed by driver or operator to indicate a boarding or alighting passenger.</code><br/>- <code>Other type</code></td>
+<td>string</td>
+<td>Indicates the fare medium that was used for the transaction.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>rider_category</td>
+<td></td>
+<td>string</td>
+<td>Indicates rider category (categories defined by transit agency). For example:<br/>Adult<br/>Youth<br/>Student<br/>Senior<br/>Other reduced</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>fare_product</td>
+<td></td>
+<td>string</td>
+<td>Indicates the fare group (fare groups defined by transit agency). For example:<br/>Single ride<br/>Pass<br/>Employer sponsored<br/>Other pass</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>fare_period</td>
+<td></td>
+<td>string</td>
+<td>Indicates the fare period (fare periods defined by transit agency). For example:<br/>All day<br/>Peak<br/>Off-peak<br/>Summer<br/>Other</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>fare_capped</td>
+<td><strong>Required</strong><br/></td>
+<td>boolean</td>
+<td>Indicates if fare capping is in effect (fare capping options defined by transit agency).</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>fare_media_id</td>
+<td></td>
+<td>string</td>
+<td>Identifies the individual fare medium used for the transaction. For example, the fare card ID.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>fare_media_id_purchased</td>
+<td></td>
+<td>string</td>
+<td>Identifies the individual fare medium purchased in the transaction. For example, the fare card ID.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>balance</td>
+<td></td>
+<td>number</td>
+<td>Stored value remaining on an account after the transaction is made.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h2 id="stop_visits">stop_visits<a class="headerlink" href="#stop_visits" title="Permanent link"> ¶</a></h2>
 <table>
 <thead>
@@ -675,576 +1425,6 @@ schema standards.</p>
 </tr>
 </tbody>
 </table>
-<h2 id="vehicles">vehicles<a class="headerlink" href="#vehicles" title="Permanent link"> ¶</a></h2>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>constraints</th>
-<th>type</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>vehicle_id</td>
-<td><strong>Required</strong><br/><em>Unique</em><br/></td>
-<td>string</td>
-<td>Identifies a vehicle, such as a bus or a train consist. If possible, this should match other internal agency vehicle IDs and the GTFS-realtime VehicleDescriptor.</td>
-</tr>
-<tr>
-<td>vehicle_start</td>
-<td></td>
-<td>time</td>
-<td>The time at which the vehicle or train consist is first in operation (i.e., when the consist has been created). Required if Train_car is used.</td>
-</tr>
-<tr>
-<td>vehicle_end</td>
-<td></td>
-<td>time</td>
-<td>The time at which the vehicle or train consist no longer exists (i.e., the consist is separated or modified). Only used if Train_car is used.</td>
-</tr>
-<tr>
-<td>model_name</td>
-<td></td>
-<td>string</td>
-<td>Describes the vehicle’s model.</td>
-</tr>
-<tr>
-<td>facility_name</td>
-<td></td>
-<td>string</td>
-<td>Name or internal agency ID for the facility where the vehicle is generally held.</td>
-</tr>
-<tr>
-<td>capacity_seated</td>
-<td><br/>  minimum: 0<br/></td>
-<td>integer</td>
-<td>Number of seats on the vehicle. Used if Train_car is not used.</td>
-</tr>
-<tr>
-<td>wheelchair_capacity</td>
-<td><br/>  minimum: 0<br/></td>
-<td>integer</td>
-<td>Number of wheelchair spaces on the vehicle. Used if Train_car is not used.</td>
-</tr>
-<tr>
-<td>capacity_bike</td>
-<td><br/>  minimum: 0<br/></td>
-<td>integer</td>
-<td>Number of bike spaces on the vehicle. Used if Train_car is not used.</td>
-</tr>
-<tr>
-<td>bike_rack</td>
-<td></td>
-<td>boolean</td>
-<td>Indicates if the vehicle has a useable bike rack. Used if Train_car is not used.</td>
-</tr>
-<tr>
-<td>capacity_standing</td>
-<td><br/>  minimum: 0<br/></td>
-<td>integer</td>
-<td>Standing capacity of the vehicle set by the manufacturer. Used if Train_car is not used.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="station_activities">station_activities<a class="headerlink" href="#station_activities" title="Permanent link"> ¶</a></h2>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>constraints</th>
-<th>type</th>
-<th>description</th>
-<th>title</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>date</td>
-<td><strong>Required</strong><br/></td>
-<td>date</td>
-<td>Service date</td>
-<td></td>
-</tr>
-<tr>
-<td>stop_id</td>
-<td><strong>Required</strong><br/></td>
-<td>string</td>
-<td>Identifies stop. References GTFS</td>
-<td>ID referencing GTFS stops.stop_id</td>
-</tr>
-<tr>
-<td>time_period_start</td>
-<td><strong>Required</strong><br/></td>
-<td>datetime</td>
-<td>Aggregation period start time.</td>
-<td></td>
-</tr>
-<tr>
-<td>time_period_end</td>
-<td><strong>Required</strong><br/></td>
-<td>datetime</td>
-<td>Aggregation period end time.</td>
-<td></td>
-</tr>
-<tr>
-<td>time_period_category</td>
-<td></td>
-<td>string</td>
-<td>Indicates a standard time period to aid further aggregation. For example:<br/>All day<br/>Peak<br/>Off-peak<br/>Summer<br/>Other</td>
-<td></td>
-</tr>
-<tr>
-<td>total_entries</td>
-<td><br/>  minimum: 0<br/></td>
-<td>integer</td>
-<td>Number of events at the stop considered entries, such as boardings or fare transactions.</td>
-<td></td>
-</tr>
-<tr>
-<td>total_exits</td>
-<td><br/>  minimum: 0<br/></td>
-<td>integer</td>
-<td>Number of events at the stop considered exits, such as alightings.</td>
-<td></td>
-</tr>
-<tr>
-<td>number_of_transactions</td>
-<td><br/>  minimum: 0<br/></td>
-<td>integer</td>
-<td>Number of fare transactions that occurred at a stop.</td>
-<td></td>
-</tr>
-<tr>
-<td>transaction_revenue_cash</td>
-<td></td>
-<td>number</td>
-<td>Indicates the revenue from cash or coins.</td>
-<td></td>
-</tr>
-<tr>
-<td>transaction_revenue_smartcard</td>
-<td></td>
-<td>number</td>
-<td>Indicates the revenue from smart card or ticket.</td>
-<td></td>
-</tr>
-<tr>
-<td>transaction_revenue_magcard</td>
-<td></td>
-<td>number</td>
-<td>Indicates the revenue from magnetic-stripe card or ticket.</td>
-<td></td>
-</tr>
-<tr>
-<td>transaction_revenue_bankcard</td>
-<td></td>
-<td>number</td>
-<td>Indicates the revenue from bank card (credit or debit card).</td>
-<td></td>
-</tr>
-<tr>
-<td>transaction_revenue_nfc</td>
-<td></td>
-<td>number</td>
-<td>Indicates the revenue from mobile NFC (smartphone tap, etc.)</td>
-<td></td>
-</tr>
-<tr>
-<td>transaction_revenue_optical</td>
-<td></td>
-<td>number</td>
-<td>Indicates the revenue from optical scan (of mobile app screen or paper ticket).</td>
-<td></td>
-</tr>
-<tr>
-<td>transaction_revenue_operator</td>
-<td></td>
-<td>number</td>
-<td>Indicates the revenue from button pressed by driver or operator to indicate a boarding or alighting passenger.</td>
-<td></td>
-</tr>
-<tr>
-<td>transaction_revenue_other</td>
-<td></td>
-<td>number</td>
-<td>Indicates the revenue from other fare media.</td>
-<td></td>
-</tr>
-<tr>
-<td>transaction_count_cash</td>
-<td><br/>  minimum: 0<br/></td>
-<td>number</td>
-<td>Number of fare transactions made by cash or coins.</td>
-<td></td>
-</tr>
-<tr>
-<td>transaction_count_smartcard</td>
-<td><br/>  minimum: 0<br/></td>
-<td>number</td>
-<td>Number of fare transactions made by smart card or ticket.</td>
-<td></td>
-</tr>
-<tr>
-<td>transaction_count_magcard</td>
-<td><br/>  minimum: 0<br/></td>
-<td>number</td>
-<td>Number of fare transactions made by magnetic-stripe card or ticket.</td>
-<td></td>
-</tr>
-<tr>
-<td>transaction_count_bankcard</td>
-<td><br/>  minimum: 0<br/></td>
-<td>number</td>
-<td>Number of fare transactions made by bank card (credit or debit card).</td>
-<td></td>
-</tr>
-<tr>
-<td>transaction_count_nfc</td>
-<td><br/>  minimum: 0<br/></td>
-<td>number</td>
-<td>Number of fare transactions made by mobile NFC (smartphone tap, etc.)</td>
-<td></td>
-</tr>
-<tr>
-<td>transaction_count_optical</td>
-<td><br/>  minimum: 0<br/></td>
-<td>number</td>
-<td>Number of fare transactions made by optical scan (of mobile app screen or paper ticket).</td>
-<td></td>
-</tr>
-<tr>
-<td>transaction_count_operator</td>
-<td><br/>  minimum: 0<br/></td>
-<td>number</td>
-<td>Number of fare transactions made by button pressed by driver or operator to indicate a boarding or alighting passenger.</td>
-<td></td>
-</tr>
-<tr>
-<td>transaction_count_other</td>
-<td><br/>  minimum: 0<br/></td>
-<td>number</td>
-<td>Number of fare transactions made by other fare media.</td>
-<td></td>
-</tr>
-<tr>
-<td>bike_entries</td>
-<td><br/>  minimum: 0<br/></td>
-<td>integer</td>
-<td>Number of bikes that entered the stop.</td>
-<td></td>
-</tr>
-<tr>
-<td>bike_exits</td>
-<td><br/>  minimum: 0<br/></td>
-<td>integer</td>
-<td>Number of bikes that exited the stop.</td>
-<td></td>
-</tr>
-<tr>
-<td>ramp_entries</td>
-<td><br/>  minimum: 0<br/></td>
-<td>integer</td>
-<td>Number of entries that used a ramp or accessible entrance.</td>
-<td></td>
-</tr>
-<tr>
-<td>ramp_exits</td>
-<td><br/>  minimum: 0<br/></td>
-<td>integer</td>
-<td>Number of exits that used a ramp or accessible exit.</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="trips_performed">trips_performed<a class="headerlink" href="#trips_performed" title="Permanent link"> ¶</a></h2>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>constraints</th>
-<th>type</th>
-<th>description</th>
-<th>title</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>date</td>
-<td><strong>Required</strong><br/></td>
-<td>date</td>
-<td>Service date. References GTFS</td>
-<td></td>
-</tr>
-<tr>
-<td>trip_id_performed</td>
-<td><strong>Required</strong><br/></td>
-<td>string</td>
-<td>Identifies the trip performed.</td>
-<td></td>
-</tr>
-<tr>
-<td>vehicle_id</td>
-<td><strong>Required</strong><br/></td>
-<td>string</td>
-<td>Identifies the vehicle.</td>
-<td>ID referencing vehicles.vehicle_id</td>
-</tr>
-<tr>
-<td>trip_id_scheduled</td>
-<td></td>
-<td>string</td>
-<td>Identifies the scheduled trip associated with the trip performed. One scheduled trip may be associated with multiple operated trips, or an operated trip may not be associated with a scheduled trip. References GTFS</td>
-<td>ID referencing GTFS trips.trip_id</td>
-</tr>
-<tr>
-<td>route_id</td>
-<td></td>
-<td>string</td>
-<td>Identifies the route. References GTFS</td>
-<td>ID referencing GTFS routes.route_id</td>
-</tr>
-<tr>
-<td>route_type</td>
-<td>Allowed Values<br/> - <code>Tram / Streetcar / Light rail</code><br/>- <code>Subway / Metro</code><br/>- <code>Rail</code><br/>- <code>Bus</code><br/>- <code>Ferry</code><br/>- <code>Cable tram</code><br/>- <code>Aerial lift</code><br/>- <code>Funicular</code><br/>- <code>Trolleybus</code><br/>- <code>Monorail</code></td>
-<td>string</td>
-<td>Indicates the type of transportation used on a route. References GTFS</td>
-<td></td>
-</tr>
-<tr>
-<td>shape_id</td>
-<td></td>
-<td>string</td>
-<td>Identifies a geospatial shape that describes the vehicle travel path for a trip. References GTFS</td>
-<td>ID referencing shapes.shape_id</td>
-</tr>
-<tr>
-<td>direction_id</td>
-<td>Allowed Values<br/> - <code>0</code><br/>- <code>1</code></td>
-<td>integer</td>
-<td>Indicates the direction of travel for a trip. References GTFS</td>
-<td></td>
-</tr>
-<tr>
-<td>operator_id</td>
-<td></td>
-<td>string</td>
-<td>Identifies the vehicle’s operator.</td>
-<td>ID referencing operators.operator_id</td>
-</tr>
-<tr>
-<td>block_id</td>
-<td></td>
-<td>string</td>
-<td>Identifies the block to which the trip belongs. A block consists of a single trip, or many sequential trips made using the same vehicle, defined by shared service days and block_id. A block_id can have trips with different service days, making distinct blocks. See example in GTFS documentation. References GTFS</td>
-<td>ID referencing trips.block_id</td>
-</tr>
-<tr>
-<td>trip_start_stop_id</td>
-<td></td>
-<td>string</td>
-<td>Origin stop_id. References GTFS</td>
-<td>ID referencing GTFS stops.stop_id</td>
-</tr>
-<tr>
-<td>trip_end_stop_id</td>
-<td></td>
-<td>string</td>
-<td>Destination stop_id. References GTFS</td>
-<td>ID referencing GTFS stops.stop_id</td>
-</tr>
-<tr>
-<td>schedule_trip_start</td>
-<td></td>
-<td>time</td>
-<td>Scheduled departure time from the trip’s origin.</td>
-<td></td>
-</tr>
-<tr>
-<td>schedule_trip_end</td>
-<td></td>
-<td>time</td>
-<td>Scheduled end time at the trip’s destination.</td>
-<td></td>
-</tr>
-<tr>
-<td>actual_trip_start</td>
-<td></td>
-<td>time</td>
-<td>Time at which the vehicle departed its origin.</td>
-<td></td>
-</tr>
-<tr>
-<td>actual_trip_end</td>
-<td></td>
-<td>time</td>
-<td>Time at which the vehicle arrived at its destination.</td>
-<td></td>
-</tr>
-<tr>
-<td>in_service</td>
-<td>Allowed Values<br/> - <code>In passenger service</code><br/>- <code>En-route to service</code><br/>- <code>Traveling from a service trip</code><br/>- <code>On a layover</code><br/>- <code>Returning to a garage due to a suspension or breakdown</code><br/>- <code>Travel for on-route replacement of breakdown</code><br/>- <code>Other not in service</code></td>
-<td>string</td>
-<td>Indicates status of travel with regard to service.</td>
-<td></td>
-</tr>
-<tr>
-<td>schedule_relationship</td>
-<td>Allowed Values<br/> - <code>Scheduled</code><br/>- <code>Added</code><br/>- <code>Unscheduled</code><br/>- <code>Canceled</code><br/>- <code>Duplicated</code></td>
-<td>string</td>
-<td>Indicates the status of the trip. References GTFS-realtime TripUpdate.trip.schedule_relationship</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="vehicle_locations">vehicle_locations<a class="headerlink" href="#vehicle_locations" title="Permanent link"> ¶</a></h2>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>constraints</th>
-<th>type</th>
-<th>description</th>
-<th>title</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>location_ping_id</td>
-<td><strong>Required</strong><br/><em>Unique</em><br/></td>
-<td>string</td>
-<td>Identifies the recorded vehicle location event.</td>
-<td></td>
-</tr>
-<tr>
-<td>date</td>
-<td><strong>Required</strong><br/></td>
-<td>date</td>
-<td>Service date. References GTFS</td>
-<td></td>
-</tr>
-<tr>
-<td>timestamp</td>
-<td><strong>Required</strong><br/></td>
-<td>time</td>
-<td>Recorded event time.</td>
-<td></td>
-</tr>
-<tr>
-<td>trip_id_performed</td>
-<td><strong>Required</strong><br/></td>
-<td>string</td>
-<td>Identifies the trip performed.</td>
-<td>ID referencing trips_performed.trip_id_performed</td>
-</tr>
-<tr>
-<td>stop_sequence</td>
-<td><strong>Required</strong><br/></td>
-<td>string</td>
-<td>Ordered stop the vehicle is approaching or serving on a particular trip. References GTFS</td>
-<td>positive integer referencing GTFS stop_times.stop_sequence</td>
-</tr>
-<tr>
-<td>vehicle_id</td>
-<td><strong>Required</strong><br/></td>
-<td>string</td>
-<td>Identifies a vehicle.</td>
-<td>ID referencing vehicles.vehicle_id</td>
-</tr>
-<tr>
-<td>device_id</td>
-<td></td>
-<td>string</td>
-<td>Identifies the device that recorded the vehicle location. May be null if only a single device is reporting vehicle location and the device_id is not distinct from vehicle_id.</td>
-<td>ID references devices.device_id</td>
-</tr>
-<tr>
-<td>stop_id</td>
-<td></td>
-<td>string</td>
-<td>Identifies the stop the vehicle is approaching or serving currently. References GTFS</td>
-<td>ID referencing GTFS stops.stop_id</td>
-</tr>
-<tr>
-<td>current_status</td>
-<td>Allowed Values<br/> - <code>Incoming at</code><br/>- <code>Stopped at</code><br/>- <code>In transit to</code></td>
-<td>string</td>
-<td>Indicates the status of the vehicle in reference to a stop. References GTFS-Realtime</td>
-<td></td>
-</tr>
-<tr>
-<td>latitude</td>
-<td><br/>  minimum: -90<br/>  maximum: 90<br/></td>
-<td>number</td>
-<td>Degrees North, in the WGS-84 coordinate system. References GTFS-Realtime</td>
-<td></td>
-</tr>
-<tr>
-<td>longitude</td>
-<td><br/>  minimum: -180<br/>  maximum: 180<br/></td>
-<td>number</td>
-<td>Degrees East, in the WGS-84 coordinate system. References GTFS-Realtime</td>
-<td></td>
-</tr>
-<tr>
-<td>gps_quality</td>
-<td>Allowed Values<br/> - <code>Excellent</code><br/>- <code>Good</code><br/>- <code>Poor</code></td>
-<td>string</td>
-<td>Indicates the quality of data and communication provided by the GPS.</td>
-<td></td>
-</tr>
-<tr>
-<td>heading</td>
-<td><br/>  minimum: 0<br/>  maximum: 360<br/></td>
-<td>number</td>
-<td>Heading, in degrees, clockwise from true north, e.g., 0 would mean north and 90 would mean east. This can be the compass bearing, or the direction towards the next stop or intermediate location. This should not be deduced from the sequence of previous positions, which clients can compute from previous data. References GTFS-Realtime</td>
-<td></td>
-</tr>
-<tr>
-<td>speed</td>
-<td><br/>  minimum: 0<br/></td>
-<td>number</td>
-<td>Momentary speed measured by the vehicle, in meters per second. References GTFS-Realtime</td>
-<td></td>
-</tr>
-<tr>
-<td>odometer</td>
-<td><br/>  minimum: 0<br/></td>
-<td>integer</td>
-<td>Odometer value, in meters. References GTFS-Realtime</td>
-<td></td>
-</tr>
-<tr>
-<td>schedule_deviation</td>
-<td></td>
-<td>integer</td>
-<td>Indicates schedule adherence in seconds. A negative value represents an early vehicle. (An unscheduled trip would not have a scheduled deviation.)</td>
-<td></td>
-</tr>
-<tr>
-<td>headway_deviation</td>
-<td></td>
-<td>integer</td>
-<td>Indicates headway adherence in seconds. A negative value represents a shorter than scheduled headway.</td>
-<td></td>
-</tr>
-<tr>
-<td>in_service</td>
-<td>Allowed Values<br/> - <code>In passenger service</code><br/>- <code>En-route to service</code><br/>- <code>Traveling from a service trip</code><br/>- <code>On a layover</code><br/>- <code>Returning to a garage due to a suspension or breakdown</code><br/>- <code>Travel for on-route replacement of breakdown</code><br/>- <code>Other not in service</code></td>
-<td>string</td>
-<td>Indicates status of travel with regard to service.</td>
-<td></td>
-</tr>
-<tr>
-<td>schedule_relationship</td>
-<td>Allowed Values<br/> - <code>Scheduled</code><br/>- <code>Skipped</code><br/>- <code>No data</code><br/>- <code>Unscheduled</code></td>
-<td>string</td>
-<td>Indicates the status of the stop. References GTFS-realtime VehiclePosition.trip.schedule_relationship</td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h2 id="vehicle_train_cars">vehicle_train_cars<a class="headerlink" href="#vehicle_train_cars" title="Permanent link"> ¶</a></h2>
 <table>
 <thead>
@@ -1284,25 +1464,6 @@ schema standards.</p>
 <td>string</td>
 <td>Identifies an operator (person). If possible, this should match other internal agency operator IDs.</td>
 <td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="operators">operators<a class="headerlink" href="#operators" title="Permanent link"> ¶</a></h2>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>constraints</th>
-<th>type</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>operator_id</td>
-<td><strong>Required</strong><br/><em>Unique</em><br/></td>
-<td>string</td>
-<td>Identifies an operator. If possible, this should match other internal agency operator IDs.</td>
 </tr>
 </tbody>
 </table>
@@ -1390,7 +1551,7 @@ schema standards.</p>
 </tr>
 </tbody>
 </table>
-<h2 id="devices">devices<a class="headerlink" href="#devices" title="Permanent link"> ¶</a></h2>
+<h2 id="operators">operators<a class="headerlink" href="#operators" title="Permanent link"> ¶</a></h2>
 <table>
 <thead>
 <tr>
@@ -1398,65 +1559,87 @@ schema standards.</p>
 <th>constraints</th>
 <th>type</th>
 <th>description</th>
-<th>title</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>device_id</td>
+<td>operator_id</td>
 <td><strong>Required</strong><br/><em>Unique</em><br/></td>
 <td>string</td>
-<td>Identifies a device. If possible, this should match other internal agency device IDs.</td>
-<td></td>
+<td>Identifies an operator. If possible, this should match other internal agency operator IDs.</td>
 </tr>
+</tbody>
+</table>
+<h2 id="vehicles">vehicles<a class="headerlink" href="#vehicles" title="Permanent link"> ¶</a></h2>
+<table>
+<thead>
 <tr>
-<td>stop_id</td>
-<td></td>
-<td>string</td>
-<td>Identifies the stop at which the device is located. May be null if the device is on a vehicle. References GTFS</td>
-<td>ID referencing GTFS stops.stop_id</td>
+<th>name</th>
+<th>constraints</th>
+<th>type</th>
+<th>description</th>
 </tr>
+</thead>
+<tbody>
 <tr>
 <td>vehicle_id</td>
-<td></td>
+<td><strong>Required</strong><br/><em>Unique</em><br/></td>
 <td>string</td>
-<td>Identifies the vehicle on which the device is located. May be null if the device is at a stop or station.</td>
-<td>ID referencing vehicles.vehicle_id</td>
+<td>Identifies a vehicle, such as a bus or a train consist. If possible, this should match other internal agency vehicle IDs and the GTFS-realtime VehicleDescriptor.</td>
 </tr>
 <tr>
-<td>train_car_id</td>
+<td>vehicle_start</td>
 <td></td>
-<td>string</td>
-<td>Identifies the train car or asset on which the device is located. May be null if the device is at a stop or station or if the Train_cars file is not used.</td>
-<td>ID referencing train_car.train_car_id</td>
+<td>time</td>
+<td>The time at which the vehicle or train consist is first in operation (i.e., when the consist has been created). Required if Train_car is used.</td>
 </tr>
 <tr>
-<td>device_type</td>
-<td>Allowed Values<br/> - <code>APC</code><br/>- <code>AFC</code><br/>- <code>AVL</code><br/>- <code>Other</code></td>
-<td>string</td>
-<td>Indicates the type of device.</td>
+<td>vehicle_end</td>
 <td></td>
+<td>time</td>
+<td>The time at which the vehicle or train consist no longer exists (i.e., the consist is separated or modified). Only used if Train_car is used.</td>
 </tr>
 <tr>
-<td>device_vendor</td>
+<td>model_name</td>
 <td></td>
 <td>string</td>
-<td>Vendor of the device.</td>
-<td></td>
+<td>Describes the vehicle’s model.</td>
 </tr>
 <tr>
-<td>device_model</td>
+<td>facility_name</td>
 <td></td>
 <td>string</td>
-<td>Model of the device as specified by the vendor.</td>
-<td></td>
+<td>Name or internal agency ID for the facility where the vehicle is generally held.</td>
 </tr>
 <tr>
-<td>location</td>
+<td>capacity_seated</td>
+<td><br/>  minimum: 0<br/></td>
+<td>integer</td>
+<td>Number of seats on the vehicle. Used if Train_car is not used.</td>
+</tr>
+<tr>
+<td>wheelchair_capacity</td>
+<td><br/>  minimum: 0<br/></td>
+<td>integer</td>
+<td>Number of wheelchair spaces on the vehicle. Used if Train_car is not used.</td>
+</tr>
+<tr>
+<td>capacity_bike</td>
+<td><br/>  minimum: 0<br/></td>
+<td>integer</td>
+<td>Number of bike spaces on the vehicle. Used if Train_car is not used.</td>
+</tr>
+<tr>
+<td>bike_rack</td>
 <td></td>
-<td>string</td>
-<td>Indicates the location of a device on the vehicle or at a station. For example:<br/>Front door.<br/>Back door.<br/>Entrance (not located on a vehicle).<br/>Exit (not located on a vehicle).<br/>Entrance/exit (not located on a vehicle).<br/>Other.</td>
-<td></td>
+<td>boolean</td>
+<td>Indicates if the vehicle has a useable bike rack. Used if Train_car is not used.</td>
+</tr>
+<tr>
+<td>capacity_standing</td>
+<td><br/>  minimum: 0<br/></td>
+<td>integer</td>
+<td>Standing capacity of the vehicle set by the manufacturer. Used if Train_car is not used.</td>
 </tr>
 </tbody>
 </table>
@@ -1524,189 +1707,6 @@ schema standards.</p>
 <td>Allowed Values<br/> - <code>Train car</code><br/>- <code>Trolley</code><br/>- <code>Other</code></td>
 <td>string</td>
 <td>Indicates the type of train car or asset.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="fare_transactions">fare_transactions<a class="headerlink" href="#fare_transactions" title="Permanent link"> ¶</a></h2>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>constraints</th>
-<th>type</th>
-<th>description</th>
-<th>rdfType</th>
-<th>title</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>transaction_id</td>
-<td><strong>Required</strong><br/><em>Unique</em><br/></td>
-<td>string</td>
-<td>Identifies the fare transaction.</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>date</td>
-<td><strong>Required</strong><br/></td>
-<td>date</td>
-<td>Service date. References GTFS</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>timestamp</td>
-<td><strong>Required</strong><br/></td>
-<td>time</td>
-<td>Recorded event time, including for transactions that may be aggregated values associated with a trip or vehicle.</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>amount</td>
-<td><strong>Required</strong><br/></td>
-<td>number</td>
-<td>Value of the transaction.</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>currency_type</td>
-<td><strong>Required</strong><br/></td>
-<td>string</td>
-<td>Currency used for the transaction. References GTFS</td>
-<td>https://schema.org/currency</td>
-<td></td>
-</tr>
-<tr>
-<td>fare_action</td>
-<td><strong>Required</strong><br/>Allowed Values<br/> - <code>Unknown action type</code><br/>- <code>Purchase</code><br/>- <code>Enter</code><br/>- <code>Exit</code><br/>- <code>Transfer entrance</code><br/>- <code>Transfer exit</code><br/>- <code>Add</code><br/>- <code>Activate</code><br/>- <code>Adjust</code><br/>- <code>Other</code></td>
-<td>string</td>
-<td>Indicates the type of action performed.</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>trip_id_performed</td>
-<td></td>
-<td>string</td>
-<td>Identifies the trip performed. May be null if the fare collection device is NOT located on a vehicle. May be null if on a vehicle but trip-level data is unavailable, in which case the data would be associated with the vehicle.</td>
-<td></td>
-<td>ID referencing trips_performed.trip_id_performed</td>
-</tr>
-<tr>
-<td>stop_sequence</td>
-<td><br/>  minimum: 0<br/></td>
-<td>integer</td>
-<td>Ordered stop the vehicle is serving on a particular trip. May be null if the fare collection device is NOT located on a vehicle. May be null if on a vehicle but stop-level data is unavailable, in which case the data would be associated with the vehicle and/or trip. References GTFS</td>
-<td></td>
-<td>positive integer referencing GTFS stop_times.stop_sequence</td>
-</tr>
-<tr>
-<td>vehicle_id</td>
-<td></td>
-<td>string</td>
-<td>Identifies the vehicle. May be null if collection device is NOT located on a vehicle. May be null if on a vehicle but vehicle data is unavailable, in which case the data would be associated with a trip and/or stop.</td>
-<td></td>
-<td>ID referencing vehicles.vehicle_id</td>
-</tr>
-<tr>
-<td>device_id</td>
-<td></td>
-<td>string</td>
-<td>Identifies the ITS device on which the fare transaction was performed. May be null if only a single device is reporting fare transactions on a vehicle and vehicle_id is provided. May be null if only a single device is reporting fare transactions at a stop and stop_id is provided.</td>
-<td></td>
-<td>ID referencing devices.device_id</td>
-</tr>
-<tr>
-<td>fare_id</td>
-<td></td>
-<td>string</td>
-<td>Identifies a fare class, as included in the GTFS Fare_attributes file. References GTFS</td>
-<td></td>
-<td>ID referencing GTFS fare_attributes.fare_id</td>
-</tr>
-<tr>
-<td>stop_id</td>
-<td></td>
-<td>string</td>
-<td>Identifies the stop. References GTFS</td>
-<td></td>
-<td>ID referencing GTFS stops.stop_id</td>
-</tr>
-<tr>
-<td>group_size</td>
-<td><br/>  minimum: 0<br/></td>
-<td>integer</td>
-<td>The number of customers included in the transaction.</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>media_type</td>
-<td>Allowed Values<br/> - <code>Cash or coins</code><br/>- <code>Smart card or ticket</code><br/>- <code>Magnetic-stripe card or ticket</code><br/>- <code>Bank card</code><br/>- <code>Mobile NFC</code><br/>- <code>Optical scan</code><br/>- <code>Button pressed by driver or operator to indicate a boarding or alighting passenger.</code><br/>- <code>Other type</code></td>
-<td>string</td>
-<td>Indicates the fare medium that was used for the transaction.</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>rider_category</td>
-<td></td>
-<td>string</td>
-<td>Indicates rider category (categories defined by transit agency). For example:<br/>Adult<br/>Youth<br/>Student<br/>Senior<br/>Other reduced</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>fare_product</td>
-<td></td>
-<td>string</td>
-<td>Indicates the fare group (fare groups defined by transit agency). For example:<br/>Single ride<br/>Pass<br/>Employer sponsored<br/>Other pass</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>fare_period</td>
-<td></td>
-<td>string</td>
-<td>Indicates the fare period (fare periods defined by transit agency). For example:<br/>All day<br/>Peak<br/>Off-peak<br/>Summer<br/>Other</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>fare_capped</td>
-<td><strong>Required</strong><br/></td>
-<td>boolean</td>
-<td>Indicates if fare capping is in effect (fare capping options defined by transit agency).</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>fare_media_id</td>
-<td></td>
-<td>string</td>
-<td>Identifies the individual fare medium used for the transaction. For example, the fare card ID.</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>fare_media_id_purchased</td>
-<td></td>
-<td>string</td>
-<td>Identifies the individual fare medium purchased in the transaction. For example, the fare card ID.</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>balance</td>
-<td></td>
-<td>number</td>
-<td>Stored value remaining on an account after the transaction is made.</td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
