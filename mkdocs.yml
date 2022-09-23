@@ -36,6 +36,7 @@ plugins:
         '../architecture.md': 'architecture.md'
         '../CODE_OF_CONDUCT.md': 'CODE_OF_CONDUCT.md'
         '../contributing.md': 'contributing.md'
+        '../contributors.md': 'contributors.md'
   - search
   
 
