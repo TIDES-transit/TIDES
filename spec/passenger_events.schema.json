@@ -150,5 +150,6 @@
     }
   ],
   "name": "passenger_events.schema.json",
-  "description": "Timestamped passenger-related events, including boardings and alightings."
+  "description": "Timestamped passenger-related events, including boardings and alightings.",
+  "_table_type": "Event"
 }

@@ -201,5 +201,6 @@
     }
   ],
   "name": "vehicle_locations.schema.json",
-  "description": "Timestamped vehicle locations and speeds."
+  "description": "Timestamped vehicle locations and speeds.",
+  "_table_type": "Event"
 }

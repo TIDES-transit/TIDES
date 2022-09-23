@@ -358,5 +358,6 @@
     }
   ],
   "name": "stop_visits.schema.json",
-  "description": "Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date."
+  "description": "Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date.",
+  "_table_type": "Summary"
 }

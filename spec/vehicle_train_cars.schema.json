@@ -65,5 +65,6 @@
     }
   ],
   "name": "vehicle_train_cars.schema.json",
-  "description": "Relationships between assets and vehicles."
+  "description": "Relationships between assets and vehicles.",
+  "_table_type": "Supporting"
 }

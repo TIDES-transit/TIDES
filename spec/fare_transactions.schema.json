@@ -216,5 +216,6 @@
     }
   ],
   "name": "fare_transactions.schema.json",
-  "description": "Timestamped fare transaction, associated with devices."
+  "description": "Timestamped fare transaction, associated with devices.",
+  "_table_type": "Event"
 }
