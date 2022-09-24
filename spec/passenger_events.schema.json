@@ -95,7 +95,7 @@
     {
       "name": "train_car_id",
       "type": "string",
-      "title": "ID referencing train_car.train_car_id",
+      "title": "ID referencing train_cars.train_car_id",
       "description": "Identifies the train car."
     },
     {
