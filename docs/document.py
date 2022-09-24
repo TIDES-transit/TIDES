@@ -7,6 +7,8 @@ from typing import Union
 
 import pandas as pd
 
+TABLE_TYPES = ["Event", "Summary", "Supporting"]
+
 
 def _format_cell_by_type(x, header):
     if "enum" in header and len(x) > 1:
@@ -16,8 +18,21 @@ def _format_cell_by_type(x, header):
         if table == "":
             return "Variable: `{}`".format(var)
         return "Table: `{}`, Variable: `{}`".format(table, var)
-    else:
-        return str(x).replace("\n", "<br />")
+    if header == "title" and "referencing GTFS" in x:
+        return re.sub(
+            r"(.+ referencing )(GTFS )([a-z_]+)\.([a-z_]+)",
+            r"\1 [\2\3](https://gtfs.org/schedule/reference/#\3txt).\4",
+            x,
+        )
+    if header == "title" and "ID referencing" in x:
+        tname = re.sub(r"ID referencing ([a-z_]+)\.([a-z_]+)", r"\1", x)
+        tfield = re.sub(r"ID referencing [a-z_]+\.([a-z_]+)", r"\1", x)
+        return "ID referencing [{}](#{tname}).{tfield}".format(
+            tname, tname=tname.replace("_", "-"), tfield=tfield
+        )
+    if header in {"title", "rdfType"} and x.startswith("http"):
+        return "<{}>".format(x)
+    return str(x).replace("\n", "<br />")
 
 
 def _recursive_items(d: dict, key_prefix: str = ""):
@@ -243,20 +258,33 @@ def document_schemas(
         spec_name = s.split("/")[-1].split(".")[0]
         spec_title = " ".join([x.capitalize() for x in spec_name.split("_")])
         schema = read_schema(s)
-        schema_md = "## {}\n".format(spec_title)
-        schema_md += "\n{}\n".format(s.split("/")[-1])
         if "_table_type" in schema:
-            table_type = "*{} Table*: ".format(schema["table_type"])
+            table_type = schema["_table_type"]
+            if table_type not in TABLE_TYPES:
+                raise Exception(
+                    "{} table_type property of {} does not match known table types".format(
+                        table_type, spec_name
+                    )
+                )
         else:
-            table_type = ""
+            raise Exception("_table_type property missing from {}".format(spec_name))
+        schema_md = "\n### {}\n".format(spec_title)
+        schema_md += "\n*{}*\n".format(s.split("/")[-1])
         if "description" in schema:
-            schema_md += "\n{}{}\n".format(table_type, schema["description"])
+            schema_md += "\n{}\n".format(schema["description"])
         schema_md += "\n" + _format_primary_key(schema)
-        schema_md += "\n\n{}".format(_list_to_md_table(schema["fields"]))
-        file_schema_markdown.append((table_type, spec_title, schema_md))
-    md_name = sorted(file_schema_markdown, key=lambda schema: schema[1])
-    md_type_name = sorted(md_name, key=lambda schema: schema[0])
-    md = "\n\n".join([x[2] for x in md_type_name])
+        schema_md += "\n\n{}\n".format(_list_to_md_table(schema["fields"]))
+        file_schema_markdown.append(
+            {"table_type": table_type, "spec_title": spec_title, "schema_md": schema_md}
+        )
+
+    file_schema_markdown.sort(key=lambda schema: schema["spec_title"])
+    md = "\n\n"
+    for table_type in TABLE_TYPES:
+        md += "##{} Tables\n".format(table_type)
+        for table in file_schema_markdown:
+            if table["table_type"] == table_type:
+                md += table["schema_md"]
 
     _fill_template(
         outfile_path=os.path.join(docs_path, outfile_name),
