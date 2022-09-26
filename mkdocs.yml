@@ -26,6 +26,7 @@ theme:
 plugins:
   - autorefs
   - awesome-pages
+  - macros:
   - mermaid2:
       arguments:
         theme: |
