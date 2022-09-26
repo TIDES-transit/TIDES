@@ -29,4 +29,5 @@ jobs:
         git config --local user.name "github-actions[bot]"
     - name: Build docs
       run: |
+        git fetch origin gh-pages --depth=1
         mike deploy --push --rebase ${{ github.ref_name }}
