@@ -74,5 +74,6 @@
     }
   ],
   "name": "vehicles.schema.json",
-  "description": "Vehicles, including buses and train consists, with descriptive information."
+  "description": "Vehicles, including buses and train consists, with descriptive information.",
+  "_table_type": "Supporting"
 }

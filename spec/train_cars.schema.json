@@ -76,5 +76,6 @@
     }
   ],
   "name": "train_cars.schema.json",
-  "description": "Assets that comprise vehicles, such as train cars, with descriptive information."
+  "description": "Assets that comprise vehicles, such as train cars, with descriptive information.",
+  "_table_type": "Supporting"
 }
