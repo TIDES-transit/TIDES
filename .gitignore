@@ -1,8 +1,9 @@
 .DS_Store*
 .vscode*
+/__pycache__/*
 .env
 /venv*
-/site
+/site/*
 # pages that are copied in from main repo
 /docs/CONTRIBUTING.md
 /docs/CODE_OF_CONDUCT.md

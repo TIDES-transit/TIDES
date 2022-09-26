@@ -299,7 +299,3 @@ def repo_to_docs(
 if __name__ == "__main__":
     document_spec()
     document_schemas()
-    repo_to_docs("README.md")
-    repo_to_docs("CONTRIBUTING.md")
-    repo_to_docs("contributors.md")
-    repo_to_docs("CODE_OF_CONDUCT.md")
