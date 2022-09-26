@@ -31,7 +31,14 @@ plugins:
         theme: |
             ^(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'
         securityLevel: 'loose'
+  - redirects:
+      redirect_maps: #original relative to /docs : redirect target
+        '../architecture.md': 'architecture.md'
+        '../CODE_OF_CONDUCT.md': 'CODE_OF_CONDUCT.md'
+        '../contributing.md': 'contributing.md'
+        '../contributors.md': 'contributors.md'
   - search
+  
 
 extra_javascript:
   - https://unpkg.com/mermaid/dist/mermaid.min.js
