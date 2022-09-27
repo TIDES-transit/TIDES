@@ -33,12 +33,11 @@ plugins:
         securityLevel: 'loose'
   - redirects:
       redirect_maps: #original relative to /docs : redirect target
-        '../architecture.md': 'architecture.md'
         '../CODE_OF_CONDUCT.md': 'CODE_OF_CONDUCT.md'
-        '../contributing.md': 'contributing.md'
+        '../CONTRIBUTING.md': 'CONTRIBUTING.md'
         '../contributors.md': 'contributors.md'
   - search
-  
+
 
 extra_javascript:
   - https://unpkg.com/mermaid/dist/mermaid.min.js
