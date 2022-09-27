@@ -1,16 +1,27 @@
-name: Build docs on push
+name: Build and Publish Documentation
 
-on: [push]
+on: 
+  push:
+    paths:
+      - 'docs/*'
+      - '*.md'
+  pull_request:
+    paths:
+      - 'docs/*'
+      - '*.md'
+  workflow_dispatch:
+  create:
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout Repo
+      uses: actions/checkout@v3
       with:
         fetch-depth: 0
-    - name: Document which branch
-      run: echo ${{ github.ref_name }}
+    - name: Document which reference
+      run: echo "Running for ${{ github.ref_name }}"
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
@@ -31,3 +42,19 @@ jobs:
       run: |
         git fetch origin gh-pages --depth=1
         mike deploy --push --rebase ${{ github.ref_name }}
+    - run: |
+        echo "Documentation available at: http://tides-transit.github.io/TIDES/${{ github.ref_name }})"
+  comment:
+    runs-on: ubuntu-latest
+    if: ${{ github.context.event_name }} == "pull_request"
+    steps:
+      - uses: actions/github-script@v5
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Documentation available at: [`http://tides-transit.github.io/TIDES/${{ github.ref_name }}`](http://tides-transit.github.io/TIDES/${{ github.ref_name }})'
+            })
