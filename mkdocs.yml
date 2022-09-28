@@ -34,6 +34,11 @@ plugins:
         securityLevel: 'loose'
   - search
 
+watch:
+  - CONTRIBUTING.md
+  - CODE_OF_CONDUCT.md
+  - contributors.md
+  - README.md
 
 extra_javascript:
   - https://unpkg.com/mermaid/dist/mermaid.min.js
