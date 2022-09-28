@@ -14,6 +14,7 @@ repos:
         args: [--markdown-linebreak-ext=md]
       - id: end-of-file-fixer
       - id: check-yaml
+        args: ["--unsafe"]
       - id: check-added-large-files
       - id: check-json
       - id: requirements-txt-fixer
