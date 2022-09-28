@@ -1,0 +1,22 @@
+name: Validate Example TIDES Data
+
+on: 
+  push:
+    paths:
+      - 'data/*/TIDES/*'
+  pull_request:
+    paths:
+      - 'data/*/TIDES/*'
+  workflow_dispatch:
+  create:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Validate data
+        uses: frictionlessdata/repository@v2
+        with:
+          packages: "data/*/TIDES/*.package.y?ml"

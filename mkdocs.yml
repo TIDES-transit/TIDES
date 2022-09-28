@@ -27,12 +27,20 @@ plugins:
   - autorefs
   - awesome-pages
   - macros:
+      include_yaml:
+       - data/examples.yml
   - mermaid2:
       arguments:
         theme: |
             ^(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'
         securityLevel: 'loose'
+  - mike:
+      version_selector: true
   - search
+
+extra:
+  version:
+    provider: mike
 
 extra_javascript:
   - https://unpkg.com/mermaid/dist/mermaid.min.js
@@ -61,9 +69,8 @@ markdown_extensions:
       permalink: " ¶"
 
 nav:
-  - Home: README.md
+  - Home: index.md
   - Architecture: architecture.md
   - Table Schemas: tables.md
-  - Contributing: CONTRIBUTING.md
-  - Contributors: contributors.md
-  - Code of Conduct: CODE_OF_CONDUCT.md
+  - Contributing: development.md
+  - Example Data: examples.md

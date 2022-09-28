@@ -12,6 +12,14 @@ Human-friendlier documentation is auto-generated and available at:
 - [Architecture](architecture.md)
 - [Table Schemas](tables.md)
 
+## Example Data
+
+[![Example Data](https://github.com/TIDES-transit/TIDES/actions/workflows/validate-data.yaml/badge.svg)](https://repository.frictionlessdata.io/pages/dashboard.html?user=TIDES-transit&repo=TIDES&flow=validate-data)
+
+Example data can be found in the `/data` directory, with one directory for each example.  
+
+Example data in the `/TIDES` subdirectories is validated upon a push action to the main repository according to the `TIDES` schema contained in the respective repository commit.
+
 ## Contributing to TIDES
 
 Those who want to help with the development of the TIDES specification should review the guidance in the [CONTRIBUTING.md](CONTRIBUTING.md) file.
