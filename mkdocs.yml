@@ -1,7 +1,7 @@
 site_name: "Transit ITS Data Exchange (TIDES) Data Specification Suite"
 site_url: https://TIDES-transit.github.io/TIDES
 repo_url: https://github.com/TIDES-transit/TIDES
-edit_uri: edit/main/docs
+edit_uri: ""
 
 theme:
   name: material
@@ -37,7 +37,6 @@ plugins:
         '../CONTRIBUTING.md': 'CONTRIBUTING.md'
         '../contributors.md': 'contributors.md'
   - search
-
 
 extra_javascript:
   - https://unpkg.com/mermaid/dist/mermaid.min.js
