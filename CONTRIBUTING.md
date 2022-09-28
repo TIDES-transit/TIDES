@@ -2,17 +2,7 @@
 
 Thank you for contributing to the TIDES Project.  This document defines the roles and process for contributing to the project and documents the governance roles and approach for decision-making.
 
-## Contents
-
-* [Roles](#roles)
-* [How to Contribute](#how-to-contribute)
-* [Contributor Agreement](#contributor-agreement)
-* [License](#license)
-* [Project Governance](#project-governance)
-* [Review and Approval Process](#review-and-approval-process)
-* [Code of Conduct](#code-of-conduct)
-
-## [Roles](roles)
+## Roles
 
 There are two types of contributors to TIDES:
 
@@ -23,7 +13,7 @@ All contributors and stakeholders are asked to adhere to the [Code of Conduct](#
 
 To become a registered Contributor, fill out the registration form at [this link][contributor-registration].
 
-## [How to Contribute](how-to-contribute)
+## How to Contribute
 
 Contributions should be offered through GitHub issues and pull requests.
 
@@ -58,7 +48,7 @@ Use the following guidance for commits
 * Provide a short, clear title.  Capitalize. No period at the end
 * Wrap the body of text at 72 characters
 
-## [Contributor Agreement](contributor-agreement)
+## Contributor Agreement
 
 By making any contribution to the projects, contributors self-certify to the following Contributor Agreement:
 
@@ -74,11 +64,11 @@ By making a contribution to this project, I certify that:
 >  
 Attribution: This Contributor Agreement is adapted from the node.js project available here: [https://github.com/nodejs/node/blob/main/CONTRIBUTING.md](https://github.com/nodejs/node/blob/main/CONTRIBUTING.md).
 
-## [License](license)
+## License
 
 The TIDES specification is licensed under the Apache License 2.0 as defined in [LICENSE](LICENSE) file.
 
-## [Project Governance](project-governance)
+## Project Governance
 
 Ahead of Version 1.0 release, the governance for the TIDES specification is being kept limited and lightweight. The governance approach will be revisited as release of Version 1.0 approaches.
 
@@ -144,13 +134,13 @@ Stakeholder Group Membership:
 
 Stakeholder Group [GitHub Access](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization): Read/Create Issues (same as general public)
 
-## [Review and Approval Process](review-and-approval-process)
+## Review and Approval Process
 
 Prior to release of Version 1.0 of the specification, the PMT and Leadership will have final approval of all changes.   All Contributors are permitted and encouraged to discuss and comment on issues and pull requests and make recommendations for changes to the specification.
 
 Leadership will convene a governance group to refine this and decide the approval process for Version 1.0 and the governance and approval process for future revisions to the specification.
 
-## [Code of Conduct](code-of-conduct)
+## Code of Conduct
 
 Contributors to the TIDES Project are expected to read and follow the Code of Conduct for the project in the [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) file.
 
