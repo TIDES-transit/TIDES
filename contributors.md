@@ -1,1 +1,1 @@
-# Contributors to the TIDES Suite
+# Contributors

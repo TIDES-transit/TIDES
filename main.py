@@ -8,13 +8,14 @@ from typing import Union
 import pandas as pd
 
 FIND_REPLACE = {  # original relative to /docs : redirect target
-    "CODE_OF_CONDUCT.md": "development/#CODE_OF_CONDUCT",
-    "CONTRIBUTING.md": "development/#CONTRIBUTING",
-    "contributors.md": "development/#contributors",
-    "architecture.md": "architecture",
+    "<CONTRIBUTING.md>": "[Contributing Section](development/#CONTRIBUTING)",
+    "(CODE_OF_CONDUCT.md)": "(development/#CODE_OF_CONDUCT)",
+    "CONTRIBUTING.md)": "development/#CONTRIBUTING)",
+    "<LICENSE>": "[LICENSE](https://github.com/TIDES-transit/TIDES/blob/main/LICENSE)",
+    "contributors.md)": "development/#contributors)",
+    "architecture.md)": "architecture)",
     "tables.md": "tables",
 }
-
 
 def define_env(env):
     """
@@ -48,6 +49,7 @@ def define_env(env):
         for _find, _replace in FIND_REPLACE.items():
             if _filenamebase in _replace:
                 _replace = _replace.replace(_filenamebase, "")
+                
             content = content.replace(_find, _replace)
         return content
 
