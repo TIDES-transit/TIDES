@@ -15,8 +15,11 @@ jobs:
       uses: actions/checkout@v3
       with:
         fetch-depth: 0
+    - name: Set github reference as Slug environment variable
+      run: |
+        echo "Slug=$(echo ${{ github.event.ref_name }} | sed "s/\//\-/g")" >> $GITHUB_ENV
     - name: Document which reference
-      run: echo "Running for reference $(echo ${{ github.event.ref_name }}| sed "s/\//\-/g")"
+      run: echo "Running for reference $Slug"
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
@@ -36,5 +39,5 @@ jobs:
     - name: Build docs
       run: |
         git fetch origin gh-pages --depth=1
-        mike deploy --push --rebase $(echo ${{ github.event.ref_name }}| sed "s/\//\-/g")"
-        echo 'Documentation available at: http://tides-transit.github.io/TIDES/$(echo ${{ github.event.ref_name }}| sed "s/\//\-/g")"'
+        mike deploy --push --rebase $Slug
+        echo "Documentation available at: http://tides-transit.github.io/TIDES/$Slug"
