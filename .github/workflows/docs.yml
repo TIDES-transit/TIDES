@@ -15,7 +15,7 @@ jobs:
       with:
         fetch-depth: 0
     - name: Document which reference
-      run: SLUG=$(echo ${{ github.event.ref_name }} | sed "s/\//\-/")
+      run: SLUG=$(echo ${{ github.event.ref_name }} | sed "s/\//\-/g")
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
@@ -37,4 +37,3 @@ jobs:
         git fetch origin gh-pages --depth=1
         mike deploy --push --rebase $SLUG
         echo "Documentation available at: http://tides-transit.github.io/TIDES/$SLUG"
-        
