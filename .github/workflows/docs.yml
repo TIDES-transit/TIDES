@@ -15,9 +15,7 @@ jobs:
       with:
         fetch-depth: 0
     - name: Document which reference
-      uses: rlespinasse/github-slug-action@v4
-      run: echo "Running for ${{ github.ref_name }}
-           Uses URL Reference ${{ env.GITHUB_REF_SLUG_URL }}"
+      run: SLUG=$(echo ${{ github.event.ref_name }} | sed "s/\//\-/")
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
@@ -37,5 +35,6 @@ jobs:
     - name: Build docs
       run: |
         git fetch origin gh-pages --depth=1
-        mike deploy --push --rebase ${{ env.GITHUB_REF_SLUG_URL }}
-        echo "Documentation available at: http://tides-transit.github.io/TIDES/${{ env.GITHUB_REF_SLUG_URL }}"
+        mike deploy --push --rebase $SLUG
+        echo "Documentation available at: http://tides-transit.github.io/TIDES/$SLUG"
+        
