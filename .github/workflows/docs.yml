@@ -15,9 +15,12 @@ jobs:
       uses: actions/checkout@v3
       with:
         fetch-depth: 0
+    - name: Document Github Context
+      run: | 
+        echo '${{ toJSON(github) }}'
     - name: Set github reference as Slug environment variable
       run: |
-        echo "Slug=$(echo "${{ github.event.ref_name }}" | sed "s/\//\-/g")" >> $GITHUB_ENV
+        echo "Slug=$(echo "${{ github.ref_name }}" | sed "s/\//\-/g")" >> $GITHUB_ENV
     - name: Document which reference
       run: echo "Running for reference ${{ env.Slug }}"
     - name: Set up Python
