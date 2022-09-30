@@ -35,10 +35,7 @@
       "name": "trip_id_performed",
       "type": "string",
       "title": "ID referencing trips_performed.trip_id_performed",
-      "description": "Identifies the trip performed.",
-      "constraints": {
-        "required": true
-      }
+      "description": "Identifies the trip performed."
     },
     {
       "name": "stop_sequence",
