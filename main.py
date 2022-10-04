@@ -95,7 +95,7 @@ def define_env(env):
             columns=["fullpath", "fullpath_schema", "path", "schema", "name"]
         ).reset_index()
         spec_df["name"] = spec_df["name"].apply(
-            lambda x: "[`{}`](tables.md#{})".format(x, x)
+            lambda x: f"[`{x}`](tables.md#{x})".replace("_","-")
         )
 
         return spec_df.to_markdown(index=False)
