@@ -6,7 +6,7 @@ Schemas for TIDES suite.
 
 TIDES consists of a package of files as defined in the following table.
 
-**The following table is automatically generated from [`tides.spec.json`](http://github.com/TIDES-transit/blob/main/spec/tides.spec.json)**
+**The following table is automatically generated from [`tides.spec.json`]( https://github.com/TIDES-transit/TIDES/blob/main/spec/tides.spec.json)**
 
 {{ frictionless_spec('spec/tides.spec.json') }}
 
