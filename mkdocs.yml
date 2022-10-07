@@ -7,6 +7,8 @@ theme:
   name: material
   features:
     - navigation.tabs
+    - navigation.expand
+    - toc.integrate
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -26,9 +28,7 @@ theme:
 plugins:
   - autorefs
   - awesome-pages
-  - macros:
-      include_yaml:
-       - data/examples.yml
+  - macros
   - mermaid2:
       arguments:
         theme: |
@@ -46,6 +46,12 @@ plugins:
 extra:
   version:
     provider: mike
+
+watch:
+  - CONTRIBUTING.md
+  - CODE_OF_CONDUCT.md
+  - contributors.md
+  - README.md
 
 extra_javascript:
   - https://unpkg.com/mermaid/dist/mermaid.min.js
@@ -78,6 +84,5 @@ nav:
   - Architecture: architecture.md
   - Table Schemas: tables.md
   - Example Data: examples.md
-  - Contributing: CONTRIBUTING.md
-  - Contributors: contributors.md
-  - Code of Conduct: CODE_OF_CONDUCT.md
+  - Development: development.md
+  

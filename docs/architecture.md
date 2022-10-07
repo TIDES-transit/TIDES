@@ -6,11 +6,11 @@ Schemas for TIDES suite.
 
 TIDES consists of a package of files as defined in the following table.
 
-**The following table is automatically generated from [`tides.spec.json`](http://github.com/TIDES-transit/blob/main/spec/tides.spec.json)**
+**The following table is automatically generated from [`tides.spec.json`]( https://github.com/TIDES-transit/TIDES/blob/main/spec/tides.spec.json)**
 
-{SPEC}
+{{ frictionless_spec('spec/tides.spec.json') }}
 
-File components for TIDES are specified in [`tides.spec.json`](http://github.com/TIDES-transit/blob/main/spec/tides.spec.json) in a format compatible with the
+File components for TIDES are specified in [`tides.spec.json`](http://github.com/TIDES-transit/TIDES/blob/main/spec/tides.spec.json) in a format compatible with the
 [frictionless data](https://specs.frictionlessdata.io/tabular-data-package/) data package standard.
 
 ## Relationships
@@ -72,13 +72,13 @@ graph LR;
     click stop_times.txt "https://gtfs.org/schedule/reference/#stop_timestxt"
     click calendar.txt "https://gtfs.org/schedule/reference/#calendartxt"
     click trips.txt "https://gtfs.org/schedule/reference/#tripstxt"
-    click station_activities "tables/#station_activities"
-    click stop_visits "tables/#stop_visits"
-    click train_cars "tables/#train_cars"
-    click vehicle_train_cars "tables/#vehicle_train_cars"
-    click vehicles "tables/#vehicles"
-    click devices "tables/#devices"
-    click vehicle_locations "tables/#vehicle_locations"
-    click passenger_events "tables/#passenger_events"
-    click fare_transactions "tables/#fare_transactions"
+    click station_activities "../tables/#station-activities"
+    click stop_visits "../tables/#stop-visits"
+    click train_cars "../tables/#train-cars"
+    click vehicle_train_cars "../tables/#vehicle-train-cars"
+    click vehicles "../tables/#vehicles"
+    click devices "../tables/#devices"
+    click vehicle_locations "../tables/#vehicle-locations"
+    click passenger_events "../tables/#passenger-events"
+    click fare_transactions "../tables/#fare-transactions"
 ```

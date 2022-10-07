@@ -46,7 +46,7 @@ frictionless validate datapackage.json
 
 ## Contributing to TIDES
 
-Those who want to help with the development of the TIDES specification should review the guidance in the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+Those who want to help with the development of the TIDES specification should review the guidance in <CONTRIBUTING.md>.
 
 ## Issues
 

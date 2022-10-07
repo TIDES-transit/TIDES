@@ -20,9 +20,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r docs/requirements.txt
-    - name: Update documentation markdown with spec json
-      run: |
-        python docs/document.py
     - name: Configure Git user
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
