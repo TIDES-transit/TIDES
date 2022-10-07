@@ -1,0 +1,1 @@
+location_ping_id,date,timestamp,trip_id_performed,stop_sequence,vehicle_id,device_id,stop_id,current_status,latitude,longitude,gps_quality,heading,speed,odometer,schedule_deviation,headway_deviation,in_service,schedule_relationship

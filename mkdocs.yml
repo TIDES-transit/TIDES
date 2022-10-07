@@ -83,5 +83,5 @@ nav:
   - Home: index.md
   - Architecture: architecture.md
   - Table Schemas: tables.md
-  - Example Data: examples.md
+  - Sample Data: samples.md
   - Development: development.md

@@ -14,16 +14,30 @@ SCHEMAS_LOC = "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/"
 
 # DATAPACKAGE.JSON INFORMATION
 # Per https://specs.frictionlessdata.io/data-package/
-TITLE = "example"
-NAME = "Example TIDES Data Package"
+TITLE = "Template TIDES Data Package Example"
+NAME = "template"
+AGENCY = "Transit Agency Name"
+NTD_ID = "1234-56"
 PROFILE = "tabular-data-package"
 LICENSES = [{"name": "Apache-2.0"}]
 SOURCES = [{"title": "Generated from /scripts/create_example.py"}]
-CONTRIBUTORS = [{"title": "My Name", "email": "me@myself.com"}]
-MAINTAINERS = [{"title": "Another Name", "email": "another@myself.com"}]
+CONTRIBUTORS = [{"title": "My Name", "email": "me@myself.com", "github": "myhandle"}]
+MAINTAINERS = [
+    {"title": "Another Name", "email": "another@myself.com", "github": "myhandle"}
+]
+RESOURCE_SOURCES = [
+    {
+        "title": "Where did data come from?",
+        "component": "Type of technology component, i.e. `AVL`",
+        "product": "Product used.",
+        "vendor": "Vendor selling product.",
+    }
+]
 DATAPACKAGE_TEMPLATE = {
     "name": NAME,
     "title": TITLE,
+    "agency": AGENCY,
+    "ntd_id": NTD_ID,
     "profile": PROFILE,
     "licenses": LICENSES,
     "contributors": CONTRIBUTORS,
@@ -32,7 +46,7 @@ DATAPACKAGE_TEMPLATE = {
 }
 
 
-def write_schema_examples(
+def write_schema_template(
     out_dir: str,
     schemas: list = SCHEMAS,
 ) -> None:
@@ -46,7 +60,7 @@ def write_schema_examples(
         write_csv_for_schema(s, out_dir)
 
 
-def write_datapackage(
+def write_datapackage_template(
     out_dir: str,
     schemas: list = SCHEMAS,
     template: dict = DATAPACKAGE_TEMPLATE,
@@ -63,7 +77,6 @@ def write_datapackage(
     out_filename = os.path.join(out_dir, "datapackage.json")
     with open(out_filename, "w") as outfile:
         outfile.write(json.dumps(datapackage, indent=4))
-        print(f"Wrote {out_filename}")
     json.dumps
 
 
@@ -80,8 +93,12 @@ def schema_to_resources(schema_filename: str) -> dict:
     name = schema_filename.stem.split(".")[0]
     path = name + ".csv"
     schema_loc = SCHEMAS_LOC + name + ".schema.json"
-
-    return {"name": name, "path": path, "schema": schema_loc}
+    return {
+        "name": name,
+        "path": path,
+        "schema": schema_loc,
+        "sources": RESOURCE_SOURCES,
+    }
 
 
 def write_csv_for_schema(
@@ -100,7 +117,6 @@ def write_csv_for_schema(
     out_filename = os.path.join(out_dir, schema_name + ".csv")
     with open(out_filename, "w") as outfile:
         outfile.write(",".join(fields))
-        print(f"Wrote {out_filename}")
 
 
 def read_schema(schema_file: str) -> dict:
@@ -117,5 +133,5 @@ def read_schema(schema_file: str) -> dict:
 
 
 if __name__ == "__main__":
-    write_schema_examples(out_dir=os.path.join(EXAMPLE_DIR, "data"))
-    write_datapackage(out_dir=os.path.join(EXAMPLE_DIR, "data"))
+    write_schema_template(out_dir=os.path.join(EXAMPLE_DIR, "TIDES"))
+    write_datapackage_template(out_dir=os.path.join(EXAMPLE_DIR, "TIDES"))

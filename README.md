@@ -6,7 +6,7 @@ This repository provides data schemas and tools to support the access, managemen
 
 ## TIDES specification
 
-The TIDES specification is maintained in the `/spec` sub-directory as a series of JSON tables compatible with the [frictionless data](https://specs.frictionlessdata.io/table-schema/) table schema standards.
+The TIDES specification is maintained in the `/spec` sub-directory as a series of JSON tables compatible with the [frictionless data](https://specs.frictionlessdata.io/table-schema/) table schema and [data package](https://specs.frictionlessdata.io/data-package) standards.
 Human-friendlier documentation is auto-generated and available at:
 
 - [Architecture](architecture.md)
@@ -27,7 +27,7 @@ frictionless validate path/to/your/datapackage.json
 
 ### Data Package
 
-To validate a package of TIDES data, you must add a frictionless-compliant [`datapackage.json`](https://specs.frictionlessdata.io/data-package/) alongside your data which describes which files should be validated to which schemas.  Most of this can be copied from [`/data/example/data/datapackage.json`](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/data/example/data/datapackage.json).
+To validate a package of TIDES data, you must add a frictionless-compliant [`datapackage.json`](https://specs.frictionlessdata.io/data-package/) alongside your data which describes which files should be validated to which schemas.  Most of this can be copied from [`/data/template/TIDES/datapackage.json`](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/data/template/TIDES/datapackage.json).
 
 Once this is created, mapping the data files to the schema, simply run:
 

@@ -27,31 +27,32 @@ def define_env(env):
     """
 
     @env.macro
-    def list_examples(data_dir: str) -> str:
+    def list_samples(data_dir: str) -> str:
         """Outputs a simple list of the directories in a folder in markdown.
         Args:
             data_dir (str):directory to search in
         Returns:
             str: markdown-formatted list
         """
+
+        fields = ["Sample", "Agency", "Resources", "Vendors"]
+        df = pd.DataFrame([], columns=fields)
+
         data_dir = os.path.join(env.project_dir, data_dir)
-        examples = [
+        samples = [
             d for d in os.listdir(data_dir) if os.path.isdir(os.path.join(data_dir, d))
         ]
-        sep = "\n- "
-        bullet_list = sep + sep.join([_to_md_link(e) for e in examples])
-        example_docs = bullet_list
-        for e in examples:
-            example_title = f"\n## {e.capitalize()}\n\n"
-            example_docs += example_title
-            _readme_filename = os.path.join(data_dir, e, "README.md")
-            if os.path.exists(_readme_filename):
-                example_docs += include_file(_readme_filename, start_line=2)
-            else:
-                example_docs += (
-                    f"No README.md in example folder {os.path.join(data_dir,e)}.\n"
-                )
-        return example_docs
+
+        for s in samples:
+            df = pd.concat(
+                [
+                    df,
+                    pd.DataFrame(
+                        sample_metadata_as_dict(os.path.join(data_dir, s)), index=[0]
+                    ),
+                ]
+            )
+        return df.to_markdown(index=False)
 
     @env.macro
     def include_file(
@@ -84,9 +85,8 @@ def define_env(env):
             4: re.compile(r"(#{4}\s)(.*)"),
             5: re.compile(r"(#{5}\s)(.*)"),
         }
-        print(f"???before downshifting! {full_filename}")
+
         if md_heading_re[1].search(content) and downshift_h1:
-            print("!!!downshifting!")
             content = re.sub(md_heading_re[5], r"#\1\2", content)
             content = re.sub(md_heading_re[4], r"#\1\2", content)
             content = re.sub(md_heading_re[3], r"#\1\2", content)
@@ -164,8 +164,38 @@ def define_env(env):
 TABLE_TYPES = ["Event", "Summary", "Supporting"]
 
 
-def _to_md_link(name):
-    return f"[{name.capitalize()}](#{name})"
+def sample_metadata_as_dict(dir: str) -> dict:
+    """Reads datapackage and translates key metadata to dictionary.
+
+    Args:
+        dir (str): fully qualified directory for sample data
+
+    Returns:
+        dict: dictionary with data pacakge name, agency, resources and vendors.
+    """
+    dp_filename = os.path.join(dir, "TIDES", "datapackage.json")
+    if not os.path.isfile(dp_filename):
+        raise ValueError(f"Can't find datapackage file:\n   {dp_filename}.")
+    with open(dp_filename, "r") as dp_file:
+        dp = json.loads(dp_file.read())
+
+        _vendors = [
+            s.get("vendor", None) for r in dp["resources"] for s in r.get("sources", [])
+        ]
+        _vendors = list(set(_vendors) - set([None]))
+
+        return {
+            "Sample": _to_sample_readme_link(dp["name"], dir),
+            "Agency": dp["agency"],
+            "Resources": "<ul><li>`"
+            + "`</li><li>`".join([r["name"] for r in dp["resources"]])
+            + "`</li></ul>",
+            "Vendors": "<ul><li>`" + "`</li><li>`".join(_vendors) + "`</li></ul>",
+        }
+
+
+def _to_sample_readme_link(sample_name, folder_dir):
+    return f"[{sample_name.capitalize()}]({folder_dir}/README.md)"
 
 
 def _document_frictionless_schema(schema_filename: str) -> dict:
