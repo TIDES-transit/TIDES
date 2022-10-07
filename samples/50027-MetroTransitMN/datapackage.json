@@ -1,0 +1,23 @@
+{
+  "profile": "tabular-data-package",
+  "name": "50027-metrotransitmn",
+  "description": "",
+  "contributors": [
+    {
+      "title": "Joey Reid",
+      "organization": "Metro Transit a division of the Metropolitan Council",
+      "_github": "botanize",
+      "email": "botanize@users.noreply.github.com",
+      "path": "https://www.metrotransit.org/",
+      "_CAD": "TransitMaster",
+      "_NTDID": 50027
+    }
+  ],
+  "resources": [
+    {
+      "path": "TIDES/vehicle_locations.csv",
+      "profile": "tabular-data-resource",
+      "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicle_locations.schema.json"
+    }
+  ]
+}
