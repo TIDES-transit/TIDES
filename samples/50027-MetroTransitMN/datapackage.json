@@ -8,11 +8,11 @@
       "organization": "Metro Transit a division of the Metropolitan Council",
       "_github": "botanize",
       "email": "botanize@users.noreply.github.com",
-      "path": "https://www.metrotransit.org/",
-      "_CAD": "TransitMaster",
-      "_NTDID": 50027
+      "path": "https://www.metrotransit.org/"
     }
   ],
+  "_CAD": "TransitMaster",
+  "_NTDID": 50027,
   "resources": [
     {
       "path": "TIDES/vehicle_locations.csv",
