@@ -8,5 +8,11 @@ MD007:
 # Remove line length limit
 MD013: false
 
+# Remove "fenced code blocks should have language specified"
+MD040: false
+
+# Remove "no inline HTML"
+MD033: false
+
 # Remove "no emphasis as heading"
 MD036: false
