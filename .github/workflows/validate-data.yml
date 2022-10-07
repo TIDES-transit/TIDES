@@ -1,6 +1,6 @@
 name: Validate Example TIDES Data
 
-on: 
+on:
   push:
     paths:
       - 'data/*/data/*'

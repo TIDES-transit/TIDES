@@ -1,6 +1,1 @@
 transaction_id,date,timestamp,amount,currency_type,fare_action,trip_id_performed,stop_sequence,vehicle_id,device_id,fare_id,stop_id,group_size,media_type,rider_category,fare_product,fare_period,fare_capped,fare_media_id,fare_media_id_purchased,balance
-n,2022-01-07,00:50:00Z,44.0,x,Activate,m,33,g,u,r,v,39,Optical scan,k,w,b,False,g,i,91.0
-j,2022-01-18,00:53:00Z,33.0,w,Adjust,a,89,e,y,s,h,14,Cash or coins,g,m,o,False,i,k,39.0
-o,2022-01-03,00:10:00Z,33.0,m,Enter,o,77,c,f,t,h,51,Button pressed by driver or operator to indicate a boarding or alighting passenger.,z,v,e,True,b,b,91.0
-p,2022-02-05,00:02:00Z,10.0,l,Enter,r,2,i,l,c,b,33,Optical scan,p,e,b,False,w,y,60.0
-z,2022-03-31,02:15:00Z,82.0,s,Exit,h,74,x,h,f,r,3,Smart card or ticket,v,f,s,True,i,o,24.0

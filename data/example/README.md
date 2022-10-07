@@ -1,16 +1,16 @@
 # Example TIDES Data Package
 
-## Structure
+Template directory for example scaffolding and helper scripts.
 
-The structure of a TIDES Data Package follows the [Frictionless Data Package specification](https://specs.frictionlessdata.io/data-package/), including:
+## Scripts for Generating Data
 
-- `\data`: formatted TIDES data
-- `\scripts`: scripts to create, manipulate, or use TIDES data
-- `datapackage.json`: data package metadata
+`scripts\create_example.py` has some template code which can help with the following
 
-## Validate Data
+- `write_schema_examples()`: will generate blank csvs according to the TIDES schema
+- `write_datapackage()` will generate a datapackage.json based on the TIDES schemas and a set of defaults specified in th script.
+
+To run both (note this replaces the existing files in the directory)
 
 ```bash
-pip install frictionless
-frictionless validate path/to/your/datapackage.json
+python data/example/scripts/create_example.py
 ```

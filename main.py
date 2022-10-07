@@ -52,14 +52,16 @@ def define_env(env):
         return content
 
     @env.macro
-    def frictionless_spec(spec_filename:str= None) -> str:
+    def frictionless_spec(spec_filename: str = None) -> str:
         if not base_path:
             base_path = os.path.dirname(os.path.realpath(__file__))
         if not docs_path:
             docs_path = os.path.join(base_path, "docs")
 
         if spec_filename is None:
-            spec_filename = glob.glob(os.path.join(base_path, "**/*.spec.json"), recursive=True)[0]
+            spec_filename = glob.glob(
+                os.path.join(base_path, "**/*.spec.json"), recursive=True
+            )[0]
 
         print("Documenting spec_file: ", spec_filename)
 
@@ -76,6 +78,42 @@ def define_env(env):
             outfile_path=os.path.join(docs_path, outfile_name),
             content_dict={"SPEC": spec_df.to_markdown(index=False)},
         )
+
+    @env.macro
+    def list_examples(data_dir: str) -> str:
+        """Outputs a simple list of the directories in a folder in markdown.
+
+        Args:
+            data_dir (str):directory to search in
+
+        Returns:
+            str: markdown-formatted list
+        """
+        data_dir = os.path.join(env.project_dir, data_dir)
+        examples = [
+            d for d in os.listdir(data_dir) if os.path.isdir(os.path.join(data_dir, d))
+        ]
+        sep = "\n- "
+        bullet_list = sep + sep.join([_to_md_link(e) for e in examples])
+
+        example_docs = bullet_list
+
+        for e in examples:
+            example_title = f"\n## {e.capitalize()}\n\n"
+            example_docs += example_title
+            _readme_filename = os.path.join(data_dir, e, "README.md")
+            if os.path.exists(_readme_filename):
+                example_docs += include_file(_readme_filename, start_line=2)
+            else:
+                example_docs += (
+                    f"No README.md in example folder {os.path.join(data_dir,e)}.\n"
+                )
+
+        return example_docs
+
+
+def _to_md_link(name):
+    return f"[{name.capitalize()}](#{name})"
 
 
 def _format_cell_by_type(x, header):
@@ -364,5 +402,3 @@ def repo_to_docs(
                 outline = line
                 # add any fixes that need to happen here.
                 fout.write(outline)
-
-

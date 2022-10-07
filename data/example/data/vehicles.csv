@@ -1,6 +1,1 @@
 vehicle_id,vehicle_start,vehicle_end,model_name,facility_name,capacity_seated,wheelchair_capacity,capacity_bike,bike_rack,capacity_standing
-y,00:50:00Z,01:59:00Z,u,j,36,13,70,False,42
-s,01:44:00Z,01:21:00Z,f,g,59,94,90,False,9
-k,00:24:00Z,01:39:00Z,m,o,87,0,99,False,84
-b,02:36:00Z,00:51:00Z,i,q,19,86,51,True,53
-x,00:24:00Z,01:02:00Z,l,i,2,12,74,False,1

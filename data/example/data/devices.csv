@@ -1,6 +1,1 @@
 device_id,stop_id,vehicle_id,train_car_id,device_type,device_vendor,device_model,location
-e,s,c,c,Other,e,x,e
-n,v,o,a,AFC,h,o,o
-f,q,e,h,Other,d,n,f
-h,n,s,h,Other,e,o,w
-h,n,h,q,AFC,y,w,m

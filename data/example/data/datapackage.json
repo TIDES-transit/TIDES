@@ -1,15 +1,10 @@
 {
-    "name": "example",
-    "title" : "Example TIDES Data Package",
-    "licenses" : [ 
+    "name": "Example TIDES Data Package",
+    "title": "example",
+    "profile": "tabular-data-package",
+    "licenses": [
         {
             "name": "Apache-2.0"
-        } 
-    ],
-    "profile" : "data-package",
-    "sources" : [
-        {
-        "title": "Randomly-generated Data from /scripts/create_example.py"
         }
     ],
     "contributors": [
@@ -31,29 +26,14 @@
             "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/devices.schema.json"
         },
         {
+            "name": "vehicle_locations",
+            "path": "vehicle_locations.csv",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicle_locations.schema.json"
+        },
+        {
             "name": "fare_transactions",
             "path": "fare_transactions.csv",
             "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/fare_transactions.schema.json"
-        },
-        {
-            "name": "operators",
-            "path": "operators.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/operators.schema.json"
-        },
-        {
-            "name": "passenger_events",
-            "path": "passenger_events.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/passenger_events.schema.json"
-        },
-        {
-            "name": "station_activities",
-            "path": "station_activities.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/station_activities.schema.json"
-        },
-        {
-            "name": "stop_visits",
-            "path": "stop_visits.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/stop_visits.schema.json"
         },
         {
             "name": "train_cars",
@@ -61,19 +41,39 @@
             "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/train_cars.schema.json"
         },
         {
-            "name": "trips_performed",
-            "path": "trips_performed.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/trips_performed.schema.json"
+            "name": "operators",
+            "path": "operators.csv",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/operators.schema.json"
         },
         {
-            "name": "vehicle_locations",
-            "path": "vehicle_locations.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicle_locations.schema.json"
+            "name": "stop_visits",
+            "path": "stop_visits.csv",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/stop_visits.schema.json"
+        },
+        {
+            "name": "vehicle_train_cars",
+            "path": "vehicle_train_cars.csv",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicle_train_cars.schema.json"
         },
         {
             "name": "vehicles",
             "path": "vehicles.csv",
             "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicles.schema.json"
+        },
+        {
+            "name": "trips_performed",
+            "path": "trips_performed.csv",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/trips_performed.schema.json"
+        },
+        {
+            "name": "station_activities",
+            "path": "station_activities.csv",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/station_activities.schema.json"
+        },
+        {
+            "name": "passenger_events",
+            "path": "passenger_events.csv",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/passenger_events.schema.json"
         }
     ]
 }

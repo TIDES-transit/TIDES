@@ -40,7 +40,6 @@ frictionless validate datapackage.json
 
 ### Specific files
 
-
 ```sh
 frictionless validate datapackage.json
 ```
