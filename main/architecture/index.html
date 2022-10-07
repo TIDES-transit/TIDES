@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://TIDES-transit.github.io/TIDES/main/architecture/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.5.3" name="generator"/>
+<meta content="mkdocs-1.4.0, mkdocs-material-8.5.6" name="generator"/>
 <title>Architecture - Transit ITS Data Exchange (TIDES) Data Specification Suite</title>
-<link href="../assets/stylesheets/main.7a952b86.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -125,18 +125,8 @@
     </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../CONTRIBUTING/">
-      Contributing
-    </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../contributors/">
-      Contributors
-    </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../CODE_OF_CONDUCT/">
-      Code of Conduct
+<a class="md-tabs__link" href="../development/">
+      Development
     </a>
 </li>
 </ul>
@@ -147,7 +137,7 @@
 <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
-<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
 <a aria-label="Transit ITS Data Exchange (TIDES) Data Specification Suite" class="md-nav__button md-logo" data-md-component="logo" href=".." title="Transit ITS Data Exchange (TIDES) Data Specification Suite">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
@@ -204,43 +194,9 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../CONTRIBUTING/">
-        Contributing
+<a class="md-nav__link" href="../development/">
+        Development
       </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../contributors/">
-        Contributors
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../CODE_OF_CONDUCT/">
-        Code of Conduct
-      </a>
-</li>
-</ul>
-</nav>
-</div>
-</div>
-</div>
-<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
-<div class="md-sidebar__scrollwrap">
-<div class="md-sidebar__inner">
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#files-in-specification">
-    Files in Specification
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#relationships">
-    Relationships
-  </a>
 </li>
 </ul>
 </nav>
@@ -256,7 +212,7 @@
 <p>Schemas for TIDES suite.</p>
 <h2 id="files-in-specification">Files in Specification<a class="headerlink" href="#files-in-specification" title="Permanent link"> ¶</a></h2>
 <p>TIDES consists of a package of files as defined in the following table.</p>
-<p><strong>The following table is automatically generated from <a href="http://github.com/TIDES-transit/blob/main/spec/tides.spec.json"><code>tides.spec.json</code></a></strong></p>
+<p><strong>The following table is automatically generated from <a href="https://github.com/TIDES-transit/TIDES/blob/main/spec/tides.spec.json"><code>tides.spec.json</code></a></strong></p>
 <table>
 <thead>
 <tr>
@@ -267,32 +223,32 @@
 </thead>
 <tbody>
 <tr>
-<td align="left"><a href="../tables/#vehicle_locations"><code>vehicle_locations</code></a></td>
+<td align="left"><a href="../tables/#vehicle-locations"><code>vehicle-locations</code></a></td>
 <td align="left">Timestamped vehicle locations and speeds.</td>
 <td align="left">False</td>
 </tr>
 <tr>
-<td align="left"><a href="../tables/#passenger_events"><code>passenger_events</code></a></td>
+<td align="left"><a href="../tables/#passenger-events"><code>passenger-events</code></a></td>
 <td align="left">Timestamped passenger-related events, including boardings and alightings.</td>
 <td align="left">False</td>
 </tr>
 <tr>
-<td align="left"><a href="../tables/#fare_transactions"><code>fare_transactions</code></a></td>
+<td align="left"><a href="../tables/#fare-transactions"><code>fare-transactions</code></a></td>
 <td align="left">Timestamped fare transaction, associated with devices.</td>
 <td align="left">False</td>
 </tr>
 <tr>
-<td align="left"><a href="../tables/#stop_visits"><code>stop_visits</code></a></td>
+<td align="left"><a href="../tables/#stop-visits"><code>stop-visits</code></a></td>
 <td align="left">Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date.</td>
 <td align="left">False</td>
 </tr>
 <tr>
-<td align="left"><a href="../tables/#trips_performed"><code>trips_performed</code></a></td>
+<td align="left"><a href="../tables/#trips-performed"><code>trips-performed</code></a></td>
 <td align="left">Trips performed for each service date.</td>
 <td align="left">False</td>
 </tr>
 <tr>
-<td align="left"><a href="../tables/#station_activities"><code>station_activities</code></a></td>
+<td align="left"><a href="../tables/#station-activities"><code>station-activities</code></a></td>
 <td align="left">Summarized transactions, entries, and exits by stop or station and time period for each service date (for events not associated with a trip).</td>
 <td align="left">False</td>
 </tr>
@@ -302,12 +258,12 @@
 <td align="left">False</td>
 </tr>
 <tr>
-<td align="left"><a href="../tables/#train_cars"><code>train_cars</code></a></td>
+<td align="left"><a href="../tables/#train-cars"><code>train-cars</code></a></td>
 <td align="left">Assets that comprise vehicles, such as train cars, with descriptive information.</td>
 <td align="left">False</td>
 </tr>
 <tr>
-<td align="left"><a href="../tables/#vehicle_train_cars"><code>vehicle_train_cars</code></a></td>
+<td align="left"><a href="../tables/#vehicle-train-cars"><code>vehicle-train-cars</code></a></td>
 <td align="left">Relationships between assets and vehicles.</td>
 <td align="left">False</td>
 </tr>
@@ -323,7 +279,7 @@
 </tr>
 </tbody>
 </table>
-<p>File components for TIDES are specified in <a href="http://github.com/TIDES-transit/blob/main/spec/tides.spec.json"><code>tides.spec.json</code></a> in a format compatible with the
+<p>File components for TIDES are specified in <a href="http://github.com/TIDES-transit/TIDES/blob/main/spec/tides.spec.json"><code>tides.spec.json</code></a> in a format compatible with the
 <a href="https://specs.frictionlessdata.io/tabular-data-package/">frictionless data</a> data package standard.</p>
 <h2 id="relationships">Relationships<a class="headerlink" href="#relationships" title="Permanent link"> ¶</a></h2>
 <p>Files in the TIDES suite are related to each other and other open standards as follows:</p>
@@ -381,15 +337,15 @@
     click stop_times.txt "https://gtfs.org/schedule/reference/#stop_timestxt"
     click calendar.txt "https://gtfs.org/schedule/reference/#calendartxt"
     click trips.txt "https://gtfs.org/schedule/reference/#tripstxt"
-    click station_activities "tables/#station_activities"
-    click stop_visits "tables/#stop_visits"
-    click train_cars "tables/#train_cars"
-    click vehicle_train_cars "tables/#vehicle_train_cars"
-    click vehicles "tables/#vehicles"
-    click devices "tables/#devices"
-    click vehicle_locations "tables/#vehicle_locations"
-    click passenger_events "tables/#passenger_events"
-    click fare_transactions "tables/#fare_transactions"
+    click station_activities "../tables/#station-activities"
+    click stop_visits "../tables/#stop-visits"
+    click train_cars "../tables/#train-cars"
+    click vehicle_train_cars "../tables/#vehicle-train-cars"
+    click vehicles "../tables/#vehicles"
+    click devices "../tables/#devices"
+    click vehicle_locations "../tables/#vehicle-locations"
+    click passenger_events "../tables/#passenger-events"
+    click fare_transactions "../tables/#fare-transactions"
 </div>
 </article>
 </div>
@@ -441,8 +397,8 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs"], "search": "../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.37e9125f.min.js"></script>
+<script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.expand", "toc.integrate"], "search": "../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.078830c0.min.js"></script>
 <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({
     theme: (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light',
