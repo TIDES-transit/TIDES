@@ -7,6 +7,8 @@ theme:
   name: material
   features:
     - navigation.tabs
+    - navigation.expand
+    - toc.integrate
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -26,18 +28,19 @@ theme:
 plugins:
   - autorefs
   - awesome-pages
+  - macros
   - mermaid2:
       arguments:
         theme: |
             ^(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'
         securityLevel: 'loose'
-  - redirects:
-      redirect_maps: #original relative to /docs : redirect target
-        '../CODE_OF_CONDUCT.md': 'CODE_OF_CONDUCT.md'
-        '../CONTRIBUTING.md': 'CONTRIBUTING.md'
-        '../contributors.md': 'contributors.md'
   - search
 
+watch:
+  - CONTRIBUTING.md
+  - CODE_OF_CONDUCT.md
+  - contributors.md
+  - README.md
 
 extra_javascript:
   - https://unpkg.com/mermaid/dist/mermaid.min.js
@@ -66,9 +69,7 @@ markdown_extensions:
       permalink: " ¶"
 
 nav:
-  - Home: README.md
+  - Home: index.md
   - Architecture: architecture.md
   - Table Schemas: tables.md
-  - Contributing: CONTRIBUTING.md
-  - Contributors: contributors.md
-  - Code of Conduct: CODE_OF_CONDUCT.md
+  - Development: development.md

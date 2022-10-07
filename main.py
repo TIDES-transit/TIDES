@@ -7,7 +7,166 @@ from typing import Union
 
 import pandas as pd
 
+FIND_REPLACE = {  # original relative to /docs : redirect target
+    "<CONTRIBUTING.md>": "[Contributing Section](development/#CONTRIBUTING)",
+    "(CODE_OF_CONDUCT.md)": "(development/#CODE_OF_CONDUCT)",
+    "CONTRIBUTING.md)": "development/#CONTRIBUTING)",
+    "<LICENSE>": "[LICENSE](https://github.com/TIDES-transit/TIDES/blob/main/LICENSE)",
+    "contributors.md)": "development/#contributors)",
+    "architecture.md)": "architecture)",
+    "tables.md": "tables",
+}
+
+def define_env(env):
+    """
+    This is the hook for defining variables, macros and filters
+
+    - variables: the dictionary that contains the environment variables
+    - macro: a decorator function, to declare a macro.
+    """
+
+    @env.macro
+    def include_file(filename: str, downshift_h1 = True, start_line: int = 0, end_line: int = None):
+        """
+        Include a file, optionally indicating start_line and end_line.
+
+        Will create redirects if specified in FIND_REPLACE in main.py.
+
+        args:
+            filename: file to include, relative to the top directory of the documentation project.
+            downshift_h1: If true, will downshift headings by 1 if h1 heading found. Defaults to True. 
+            start_line (Optional): if included, will start including the file from this line
+                (indexed to 0)
+            end_line (Optional): if included, will stop including at this line (indexed to 0)
+        """
+        full_filename = os.path.join(env.project_dir, filename)
+        with open(full_filename, "r") as f:
+            lines = f.readlines()
+        line_range = lines[start_line:end_line]
+        content = "".join(line_range)
+
+        # Downshift headings if h1 found
+        md_heading_re = {
+            1: re.compile(r"(#{1}\s)(.*)"),
+            2: re.compile(r"(#{2}\s)(.*)"),
+            3: re.compile(r"(#{3}\s)(.*)"),
+            4: re.compile(r"(#{4}\s)(.*)"),
+            5: re.compile(r"(#{5}\s)(.*)"),
+        }
+        print(f"???before downshifting! {full_filename}")
+        if md_heading_re[1].search(content) and downshift_h1:
+            print("!!!downshifting!")
+            content = re.sub(md_heading_re[5],r'#\1\2',content)
+            content = re.sub(md_heading_re[4],r'#\1\2',content)
+            content = re.sub(md_heading_re[3],r'#\1\2',content)
+            content = re.sub(md_heading_re[2],r'#\1\2',content)
+            content = re.sub(md_heading_re[1],r'#\1\2',content)
+
+        _filenamebase = env.page.file.url
+        for _find, _replace in FIND_REPLACE.items():
+            if _filenamebase in _replace:
+                _replace = _replace.replace(_filenamebase, "")
+                
+            content = content.replace(_find, _replace)
+        return content
+
+    @env.macro
+    def frictionless_spec(
+        spec_path: str = "**/*.spec.json",
+    ) -> str:
+        """Translate the frictionless .spec file to a markdown table.
+
+        Note: Right now if it finds more than one, it will take the first one.
+
+        Args:
+            spec_path (str, optional): base path of repo. Defaults to two directories
+                up from this file.
+
+        Returns: a markdown table string
+        """
+
+        spec_file = glob.glob(spec_path, recursive=True)[0]
+
+        print("Documenting spec_file: ", spec_file)
+
+        # Generate a table for overall file requirements
+        spec_df = read_config(spec_file)
+        spec_df = spec_df.drop(
+            columns=["fullpath", "fullpath_schema", "path", "schema", "name"]
+        ).reset_index()
+        spec_df["name"] = spec_df["name"].apply(
+            lambda x: f"[`{x}`](tables.md#{x})".replace("_","-")
+        )
+
+        return spec_df.to_markdown(index=False)
+
+    @env.macro
+    def frictionless_schemas(
+        schema_path: str = "**/*.schema.json",
+    ) -> None:
+        """Document frictionless table schema files as markdown tables.
+
+        Args:
+            schema_path (str, optional): Schema path in glob format.
+                Defaults to "**/*.schema.json".
+        """
+
+        # Create markdown with a table for each schema file
+        schema_files = glob.glob(schema_path, recursive=True)
+
+        print("Documenting schemas from: {}".format(schema_files))
+
+        file_schema_markdown = [
+            _document_frictionless_schema(_s) for _s in schema_files
+        ]
+        file_schema_markdown.sort(key=lambda schema: schema["spec_title"])
+        md = "\n\n"
+        for table_type in TABLE_TYPES:
+            md += "##{} Tables\n".format(table_type)
+            for table in file_schema_markdown:
+                if table["table_type"] == table_type:
+                    md += table["schema_md"]
+
+        return md
+
+
 TABLE_TYPES = ["Event", "Summary", "Supporting"]
+
+
+def _document_frictionless_schema(schema_filename: str) -> dict:
+    """Documents a single frictionless schema.
+
+    Args:
+        schema_filename (str): location of the schema.
+
+    Returns:
+        dict: dictionary with the following keys:
+            "table_type": one of TABLE_TYPES to help in sorting/organizing tables
+            "spec_title": to use for heading
+            "schema_md": markdown table documenting fields
+
+    """
+    print(f"Documenting schema from file: {schema_filename}")
+    spec_name = schema_filename.split("/")[-1].split(".")[0]
+    spec_title = " ".join([x.capitalize() for x in spec_name.split("_")])
+    schema = read_schema(schema_filename)
+    if "_table_type" in schema:
+        table_type = schema["_table_type"]
+        if table_type not in TABLE_TYPES:
+            raise Exception(
+                "{} table_type property of {} does not match known table types".format(
+                    table_type, spec_name
+                )
+            )
+    else:
+        raise Exception("_table_type property missing from {}".format(spec_name))
+    schema_md = "\n### {}\n".format(spec_title)
+    schema_md += "\n*{}*\n".format(schema_filename.split("/")[-1])
+    if "description" in schema:
+        schema_md += "\n{}\n".format(schema["description"])
+    schema_md += "\n" + _format_primary_key(schema)
+    schema_md += "\n\n{}\n".format(_list_to_md_table(schema["fields"]))
+    return {"table_type": table_type, "spec_title": spec_title, "schema_md": schema_md}
 
 
 def _format_cell_by_type(x, header):
@@ -60,35 +219,6 @@ def _recursive_items(d: dict, key_prefix: str = ""):
             yield from _recursive_items(v, key_prefix=k + " ")
         else:
             yield (key_prefix + k, v)
-
-
-def _fill_template(
-    outfile_path: Union[str, pathlib.Path],
-    content_dict: dict,
-    template_path: Union[str, pathlib.Path] = None,
-) -> None:
-    """Replace contents of a text file with template variables filled by a dictionary.
-
-    Args:
-        outfile_path (Union[str,pathlib.Path]): File to write output to.
-        content_dict (dict[): Dictionary of values to fill template with.
-        template_path (Union[str,pathlib.Path], optional): _description_. If not specified, will assume
-            it is the outfile with a .template suffix (i.e. index.template.md)
-
-    Raises:
-        ValueError: _description_
-    """
-
-    outfile_path = pathlib.Path(outfile_path)
-    if template_path is None:
-        template_path = outfile_path.parent / pathlib.Path(
-            outfile_path.stem + ".template" + outfile_path.suffix
-        )
-
-    with open(template_path) as _template_file:
-        _txt_contents = _template_file.read().format(**content_dict)
-        with open(os.path.join(outfile_path), "w") as _outfile:
-            _outfile.write(_txt_contents)
 
 
 def _format_primary_key(schema: dict) -> str:
@@ -222,144 +352,3 @@ def read_config(
 
     resource_df.set_index("name", drop=False, inplace=True)
     return resource_df
-
-
-def document_schemas(
-    base_path: str = "",
-    docs_path: str = "",
-    outfile_name="tables.md",
-) -> None:
-    """Document frictionless table schema files as markdown tables.
-
-    Args:
-        base_path (str, optional): base path of repo. Defaults to two directories up from this file.
-        docs_path (str, optional): path where documentation is written. Defaults to "docs" within
-            the base_path.
-        outfile_name (str,optional): name of the file (and corresponding template) to write to.
-            Defaults to architecture.md.
-        out_path (str, optional): _description_. Defaults to ''.
-    """
-
-    if not base_path:
-        base_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-    if not docs_path:
-        docs_path = os.path.join(base_path, "docs")
-
-    # Create markdown with a table for each schema file
-
-    schema_files = glob.glob(
-        os.path.join(base_path, "**/*.schema.json"), recursive=True
-    )
-    print("Documenting schemas from: {}".format(schema_files))
-
-    file_schema_markdown = []
-    for s in schema_files:
-        print(f"Documenting Schema: {s}")
-        spec_name = s.split("/")[-1].split(".")[0]
-        spec_title = " ".join([x.capitalize() for x in spec_name.split("_")])
-        schema = read_schema(s)
-        if "_table_type" in schema:
-            table_type = schema["_table_type"]
-            if table_type not in TABLE_TYPES:
-                raise Exception(
-                    "{} table_type property of {} does not match known table types".format(
-                        table_type, spec_name
-                    )
-                )
-        else:
-            raise Exception("_table_type property missing from {}".format(spec_name))
-        schema_md = "\n### {}\n".format(spec_title)
-        schema_md += "\n*{}*\n".format(s.split("/")[-1])
-        if "description" in schema:
-            schema_md += "\n{}\n".format(schema["description"])
-        schema_md += "\n" + _format_primary_key(schema)
-        schema_md += "\n\n{}\n".format(_list_to_md_table(schema["fields"]))
-        file_schema_markdown.append(
-            {"table_type": table_type, "spec_title": spec_title, "schema_md": schema_md}
-        )
-
-    file_schema_markdown.sort(key=lambda schema: schema["spec_title"])
-    md = "\n\n"
-    for table_type in TABLE_TYPES:
-        md += "##{} Tables\n".format(table_type)
-        for table in file_schema_markdown:
-            if table["table_type"] == table_type:
-                md += table["schema_md"]
-
-    _fill_template(
-        outfile_path=os.path.join(docs_path, outfile_name),
-        content_dict={"TABLES": md},
-    )
-
-
-def document_spec(
-    base_path: str = "",
-    docs_path: str = "",
-    outfile_name="architecture.md",
-) -> None:
-    """Translate the frictionless .spec file to a markdown table.
-
-    Args:
-        base_path (str, optional): base path of repo. Defaults to two directories up from this file.
-        docs_path (str, optional): path where documentation is written. Defaults to "docs" within
-            the base_path.
-        outfile_name (str,optional): name of the file (and corresponding template) to write to.
-            Defaults to architecture.md.
-    """
-    if not base_path:
-        base_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-    if not docs_path:
-        docs_path = os.path.join(base_path, "docs")
-
-    spec_file = glob.glob(os.path.join(base_path, "**/*.spec.json"), recursive=True)[0]
-
-    print("Documenting spec_file: ", spec_file)
-
-    # Generate a table for overall file requirements
-    spec_df = read_config(spec_file)
-    spec_df = spec_df.drop(
-        columns=["fullpath", "fullpath_schema", "path", "schema", "name"]
-    ).reset_index()
-    spec_df["name"] = spec_df["name"].apply(
-        lambda x: "[`{}`](tables.md#{})".format(x, x)
-    )
-
-    _fill_template(
-        outfile_path=os.path.join(docs_path, outfile_name),
-        content_dict={"SPEC": spec_df.to_markdown(index=False)},
-    )
-
-
-def repo_to_docs(
-    infile_name, outfile_name: str = None, base_path: str = "", docs_path: str = ""
-):
-    """Copy files from repo to docs (i.e. README).
-
-    Args:
-        infile_name (str): file to transfer from base repo to documentation directory
-        outfile_name (str): what to call the outfile in docs dir. Defaults to infile_name.
-        base_path (str, optional): _description_. Defaults to ''.
-        docs_path (str, optional): _description_. Defaults to ''.
-    """
-    if not outfile_name:
-        outfile_name = infile_name
-    if not base_path:
-        base_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-    if not docs_path:
-        docs_path = os.path.join(base_path, "docs")
-
-    with open(os.path.join(base_path, infile_name), "rt") as fin:
-        with open(os.path.join(docs_path, outfile_name), "wt") as fout:
-            for line in fin:
-                outline = line
-                # add any fixes that need to happen here.
-                fout.write(outline)
-
-
-if __name__ == "__main__":
-    document_spec()
-    document_schemas()
-    repo_to_docs("README.md")
-    repo_to_docs("CONTRIBUTING.md")
-    repo_to_docs("contributors.md")
-    repo_to_docs("CODE_OF_CONDUCT.md")
