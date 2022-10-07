@@ -36,6 +36,11 @@ plugins:
         securityLevel: 'loose'
   - mike:
       version_selector: true
+  - redirects:
+      redirect_maps: #original relative to /docs : redirect target
+        '../CODE_OF_CONDUCT.md': 'CODE_OF_CONDUCT.md'
+        '../CONTRIBUTING.md': 'CONTRIBUTING.md'
+        '../contributors.md': 'contributors.md'
   - search
 
 extra:
@@ -72,5 +77,7 @@ nav:
   - Home: index.md
   - Architecture: architecture.md
   - Table Schemas: tables.md
-  - Contributing: development.md
   - Example Data: examples.md
+  - Contributing: CONTRIBUTING.md
+  - Contributors: contributors.md
+  - Code of Conduct: CODE_OF_CONDUCT.md

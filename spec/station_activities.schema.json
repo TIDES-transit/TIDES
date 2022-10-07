@@ -220,5 +220,6 @@
     }
   ],
   "name": "station_activities.schema.json",
-  "description": "Summarized transactions, entries, and exits by stop or station and time period for each service date (for events not associated with a trip)."
+  "description": "Summarized transactions, entries, and exits by stop or station and time period for each service date (for events not associated with a trip).",
+  "_table_type": "Summary"
 }

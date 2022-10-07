@@ -1,9 +1,14 @@
-name: Validate Frictionless JSON Schemas for Spec
+name: Validate Frictionless Data Package Schema for Spec
 
-on: [push]
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'spec/tides.spec.json$'
 
 jobs:
-  validate_schemas:
+  validate_data_package:
     name: Validate Frictionless Schemas
     runs-on: ubuntu-latest
     steps:
@@ -11,12 +16,8 @@ jobs:
       - name: Validate Data Package schema
         uses: snapcart/json-schema-validator@v1.0.0
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           json_schema: "https://specs.frictionlessdata.io/schemas/data-package.json"
-          json_path_pattern: ^spec\/tides.spec.json$
+          json_path_pattern: ^spec/tides\.spec\.json$
           send_comment: true
           clear_comments: true
-      - name: Validate other schema
-        uses: snapcart/json-schema-validator@v1.0.0
-        with:
-          json_schema: "https://specs.frictionlessdata.io/schemas/table-schema.json"
-          json_path_pattern: ^spec\/.*\.schema.json$

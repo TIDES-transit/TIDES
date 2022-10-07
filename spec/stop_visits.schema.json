@@ -22,8 +22,8 @@
     {
       "name": "trip_id_performed",
       "type": "string",
-      "title": "ID referencing GTFS trips_performed.trip_id_performed",
-      "description": "Identifies the trip performed References GTFS",
+      "title": "ID referencing trips_performed.trip_id_performed",
+      "description": "Identifies the trip performed",
       "constraints": {
         "required": true
       }
@@ -358,5 +358,6 @@
     }
   ],
   "name": "stop_visits.schema.json",
-  "description": "Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date."
+  "description": "Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date.",
+  "_table_type": "Summary"
 }

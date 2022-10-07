@@ -95,7 +95,7 @@
     {
       "name": "train_car_id",
       "type": "string",
-      "title": "ID referencing train_car.train_car_id",
+      "title": "ID referencing train_cars.train_car_id",
       "description": "Identifies the train car."
     },
     {
@@ -150,5 +150,6 @@
     }
   ],
   "name": "passenger_events.schema.json",
-  "description": "Timestamped passenger-related events, including boardings and alightings."
+  "description": "Timestamped passenger-related events, including boardings and alightings.",
+  "_table_type": "Event"
 }

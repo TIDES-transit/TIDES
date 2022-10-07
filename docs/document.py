@@ -7,6 +7,8 @@ from typing import Union
 
 import pandas as pd
 
+TABLE_TYPES = ["Event", "Summary", "Supporting"]
+
 
 def _format_cell_by_type(x, header):
     if "enum" in header and len(x) > 1:
@@ -16,8 +18,21 @@ def _format_cell_by_type(x, header):
         if table == "":
             return "Variable: `{}`".format(var)
         return "Table: `{}`, Variable: `{}`".format(table, var)
-    else:
-        return str(x).replace("\n", "<br />")
+    if header == "title" and "referencing GTFS" in x:
+        return re.sub(
+            r"(.+ referencing )(GTFS )([a-z_]+)\.([a-z_]+)",
+            r"\1 [\2\3](https://gtfs.org/schedule/reference/#\3txt).\4",
+            x,
+        )
+    if header == "title" and "ID referencing" in x:
+        tname = re.sub(r"ID referencing ([a-z_]+)\.([a-z_]+)", r"\1", x)
+        tfield = re.sub(r"ID referencing [a-z_]+\.([a-z_]+)", r"\1", x)
+        return "ID referencing [{}](#{tname}).{tfield}".format(
+            tname, tname=tname.replace("_", "-"), tfield=tfield
+        )
+    if header in {"title", "rdfType"} and x.startswith("http"):
+        return "<{}>".format(x)
+    return str(x).replace("\n", "<br />")
 
 
 def _recursive_items(d: dict, key_prefix: str = ""):
@@ -74,6 +89,25 @@ def _fill_template(
         _txt_contents = _template_file.read().format(**content_dict)
         with open(os.path.join(outfile_path), "w") as _outfile:
             _outfile.write(_txt_contents)
+
+
+def _format_primary_key(schema: dict) -> str:
+    """
+    Reads the primaryKey property of a schema and creates markdown for the table
+    description.
+    args:
+        schema: a schema dict, see `read_schema`
+    returns: A markdown string describing the primary key.
+    """
+    if "primaryKey" in schema:
+        primary_key = schema["primaryKey"]
+    else:
+        primary_key = "none"
+    if isinstance(primary_key, list):
+        primary_key = set(primary_key)
+    else:
+        primary_key = set([primary_key])
+    return "Primary key: {`" + "`, `".join(primary_key) + "`}\n"
 
 
 def _list_to_md_table(list_of_dicts: list) -> str:
@@ -218,17 +252,43 @@ def document_schemas(
     )
     print("Documenting schemas from: {}".format(schema_files))
 
-    file_schema_markdown = ""
+    file_schema_markdown = []
     for s in schema_files:
         print(f"Documenting Schema: {s}")
         spec_name = s.split("/")[-1].split(".")[0]
+        spec_title = " ".join([x.capitalize() for x in spec_name.split("_")])
         schema = read_schema(s)
-        file_schema_markdown += "\n\n## {}\n".format(spec_name)
-        file_schema_markdown += "\n\n{}".format(_list_to_md_table(schema["fields"]))
+        if "_table_type" in schema:
+            table_type = schema["_table_type"]
+            if table_type not in TABLE_TYPES:
+                raise Exception(
+                    "{} table_type property of {} does not match known table types".format(
+                        table_type, spec_name
+                    )
+                )
+        else:
+            raise Exception("_table_type property missing from {}".format(spec_name))
+        schema_md = "\n### {}\n".format(spec_title)
+        schema_md += "\n*{}*\n".format(s.split("/")[-1])
+        if "description" in schema:
+            schema_md += "\n{}\n".format(schema["description"])
+        schema_md += "\n" + _format_primary_key(schema)
+        schema_md += "\n\n{}\n".format(_list_to_md_table(schema["fields"]))
+        file_schema_markdown.append(
+            {"table_type": table_type, "spec_title": spec_title, "schema_md": schema_md}
+        )
+
+    file_schema_markdown.sort(key=lambda schema: schema["spec_title"])
+    md = "\n\n"
+    for table_type in TABLE_TYPES:
+        md += "##{} Tables\n".format(table_type)
+        for table in file_schema_markdown:
+            if table["table_type"] == table_type:
+                md += table["schema_md"]
 
     _fill_template(
         outfile_path=os.path.join(docs_path, outfile_name),
-        content_dict={"TABLES": file_schema_markdown},
+        content_dict={"TABLES": md},
     )
 
 

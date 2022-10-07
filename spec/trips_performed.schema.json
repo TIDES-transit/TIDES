@@ -174,5 +174,6 @@
     }
   ],
   "name": "trips_performed.schema.json",
-  "description": "Trips performed for each service date."
+  "description": "Trips performed for each service date.",
+  "_table_type": "Summary"
 }

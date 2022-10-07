@@ -17,5 +17,6 @@
     }
   ],
   "name": "operators.schema.json",
-  "description": "Personnel who operate vehicles."
+  "description": "Personnel who operate vehicles.",
+  "_table_type": "Supporting"
 }

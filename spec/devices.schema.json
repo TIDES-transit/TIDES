@@ -29,7 +29,7 @@
     },
     {
       "name": "train_car_id",
-      "title": "ID referencing train_car.train_car_id",
+      "title": "ID referencing train_cars.train_car_id",
       "type": "string",
       "description": "Identifies the train car or asset on which the device is located. May be null if the device is at a stop or station or if the Train_cars file is not used."
     },
@@ -86,5 +86,6 @@
     }
   ],
   "name": "devices.schema.json",
-  "description": "Measurement devices, such as AVL, APC, and AFC devices, associated with vehicles or stops or stations."
+  "description": "Measurement devices, such as AVL, APC, and AFC devices, associated with vehicles or stops or stations.",
+  "_table_type": "Supporting"
 }
