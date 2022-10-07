@@ -21,4 +21,4 @@ jobs:
       - name: Validate data
         uses: frictionlessdata/repository@v2
         with:
-          packages: "data/*/data/*.package.json"
+          packages: "data/*/data/datapackage.json"
