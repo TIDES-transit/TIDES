@@ -1,0 +1,6 @@
+train_car_id,model_name,facility_name,capacity_seated,wheelchair_capacity,bike_capacity,bike_rack,capacity_standing,train_car_type
+r,k,w,3,47,94,True,7,Trolley
+s,d,s,10,16,96,True,1,Train car
+e,e,h,74,47,15,False,36,Trolley
+o,n,u,30,87,0,True,17,Other
+o,u,o,97,47,0,True,47,Train car

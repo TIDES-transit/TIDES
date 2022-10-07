@@ -1,0 +1,6 @@
+date,trip_id_performed,vehicle_id,trip_id_scheduled,route_id,route_type,shape_id,direction_id,operator_id,block_id,trip_start_stop_id,trip_end_stop_id,schedule_trip_start,schedule_trip_end,actual_trip_start,actual_trip_end,in_service,schedule_relationship
+2022-03-20,t,q,q,s,Monorail,x,21,c,y,p,n,01:47:00Z,01:47:00Z,01:06:00Z,00:05:00Z,Travel for on-route replacement of breakdown,Duplicated
+2022-01-31,x,u,w,p,Subway / Metro,k,11,k,m,q,p,00:49:00Z,02:56:00Z,01:58:00Z,01:21:00Z,Traveling from a service trip,Unscheduled
+2022-01-23,r,n,j,i,Funicular,w,60,v,d,d,a,02:13:00Z,02:22:00Z,02:07:00Z,00:59:00Z,In passenger service,Duplicated
+2022-03-31,d,m,w,b,Cable tram,v,6,v,p,c,a,02:20:00Z,01:55:00Z,02:37:00Z,00:18:00Z,Travel for on-route replacement of breakdown,Scheduled
+2022-01-28,b,i,y,l,Aerial lift,u,77,e,c,c,y,01:56:00Z,01:27:00Z,01:10:00Z,02:55:00Z,Travel for on-route replacement of breakdown,Unscheduled

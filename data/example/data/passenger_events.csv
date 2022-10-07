@@ -1,0 +1,6 @@
+passenger_event_id,date,timestamp,trip_id_performed,stop_sequence,event_type,vehicle_id,device_id,train_car_id,stop_id
+m,2022-01-29,01:59:00Z,b,18,Individual bike alighted,i,j,t,i
+s,2022-02-15,02:51:00Z,k,86,Kneel was engaged,f,u,z,l
+m,2022-02-24,01:08:00Z,c,12,Lift was raised,q,z,h,f
+i,2022-03-15,00:09:00Z,g,98,Door opened,j,h,r,x
+j,2022-02-14,01:49:00Z,n,96,Passenger boarded,i,o,y,m

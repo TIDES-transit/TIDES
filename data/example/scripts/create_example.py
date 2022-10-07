@@ -4,8 +4,9 @@ import glob
 import json
 import os
 import pathlib
+import string
 from random import choice, randrange
-from datetime import timedelta
+from datetime import timedelta, datetime
 
 import numpy as np
 import pandas as pd
@@ -56,11 +57,9 @@ def write_csv_for_schema(
     """
     schema = read_schema(schema_filename)
     schema_name = pathlib.Path(schema_filename).stem.split(".")[0]
-    fields_types = {
-        f["name"]: frictionless_to_pandas_types[f["type"]] for f in schema["fields"]
-    }
-    fields_series = {f: pd.Series(dtype=t) for f, t in fields_types.items()}
-    df = pd.DataFrame(fields_types)
+
+    fields_series = {f['name']: field_to_pd_series(f,example_length) for f in schema["fields"]}
+    df = pd.DataFrame(fields_series)
     out_filename = os.path.join(out_dir, schema_name + ".csv")
     df.to_csv(out_filename, index=False)
 
@@ -68,36 +67,68 @@ def write_csv_for_schema(
 def field_to_pd_series(field_def: dict, length: int):
     default_min = 0
     default_max = 100
+    default_str = list(string.ascii_lowercase)
+    default_dt_min = 'Jan 1 2022  12:01AM'
+    default_dt_max = 'Apr 1 2022  3:00AM'
+    
     if field_def["type"] in ["number","integer"]:
         _min = field_def.get("constraints", {}).get("minimum", default_min)
-        _max = field_def.get("constraints", {}).get("maximum", default_min)
+        _max = field_def.get("constraints", {}).get("maximum", default_max)
         return pd.Series(
             np.random.randint(_min, _max, length),
             dtype=frictionless_to_pandas_types[field_def["type"]],
         )
     elif field_def["type"] == "float":
         _min = field_def.get("constraints", {}).get("minimum", default_min)
-        _max = field_def.get("constraints", {}).get("maximum", default_min)
+        _max = field_def.get("constraints", {}).get("maximum", default_max)
         return pd.Series(
             np.random.rand(_min, _max) * length,
             dtype=frictionless_to_pandas_types[field_def["type"]],
         )
     elif field_def["type"] == "string":
-        default_str = "a value"
-        _enum = field_def.get("constraints", {}).get("enum", [default_str])
+        _enum = field_def.get("constraints", {}).get("enum", default_str)
         return pd.Series(
             [choice(_enum) for x in range(length)],
             dtype=frictionless_to_pandas_types[field_def["type"]],
         )
     elif field_def["type"]=="date":
-
+        _min = datetime.strptime(field_def.get("constraints", {}).get("minimum", default_dt_min), '%b %d %Y %I:%M%p').date()
+        _max = datetime.strptime(field_def.get("constraints", {}).get("maximum", default_dt_max), '%b %d %Y %I:%M%p').date()
+        _rand_int = np.random.randint(0, int((_max - _min).days), length).tolist()
+        return pd.Series(
+            [_min+timedelta(days=i) for i in _rand_int ],
+            dtype=frictionless_to_pandas_types[field_def["type"]],
+        )
 
     elif field_def["type"]=="time":
+        _min = datetime.strptime(field_def.get("constraints", {}).get("minimum", default_dt_min), '%b %d %Y %I:%M%p')
+        _max = datetime.strptime(field_def.get("constraints", {}).get("maximum", default_dt_max), '%b %d %Y %I:%M%p')
+        _rand_int = np.random.randint(0, int((_max - _min).seconds/60), length).tolist()
+        _dt_df = pd.Series(
+            [_min+timedelta(seconds=i*60) for i in _rand_int ],
+            dtype=frictionless_to_pandas_types[field_def["type"]],
+        )
+        #format as string
+        return pd.to_datetime(_dt_df).dt.strftime('%H:%M:%SZ')
 
     elif field_def["type"]=="datetime":
+        _min = datetime.strptime(field_def.get("constraints", {}).get("minimum", default_dt_min), '%b %d %Y %I:%M%p')
+        _max = datetime.strptime(field_def.get("constraints", {}).get("maximum", default_dt_max), '%b %d %Y %I:%M%p')
+        _rand_int = np.random.randint(0, int((_max - _min).seconds/60), length).tolist()
+        _dt_df = pd.Series(
+            [_min+timedelta(seconds=i*60) for i in _rand_int],
+            dtype=frictionless_to_pandas_types[field_def["type"]],
+        )
+        #format as ISO-8601 string
+        return pd.to_datetime(_dt_df).dt.strftime('%Y-%m-%dT%H:%M:%SZ')
+    elif field_def["type"]=="boolean":
 
+        return pd.Series(
+            [choice([True,False]) for x in range(length)],
+            dtype=frictionless_to_pandas_types[field_def["type"]],
+        )
     else:
-        raise ValueError(f'Don't recognize {field_def["type"]')
+        raise ValueError(f'Dont recognize {field_def["type"]}')
 
 
 def read_schema(schema_file: str) -> dict:
@@ -111,25 +142,6 @@ def read_schema(schema_file: str) -> dict:
     with open(schema_file, encoding="utf-8") as f:
         schema = json.load(f)
     return schema
-
-default_start_datetime = datetime.strptime('1/1/2022 1:30 PM', '%m/%d/%Y %I:%M %p')
-default_end_datetime = datetime.strptime('1/9/2022 6:30 PM', '%m/%d/%Y %I:%M %p'
-
-def random_date(start: datetime.datetime = , end: datetime.datetime):
-    """
-    This function will return a random datetime between two datetime 
-    objects.
-
-    Source: 
-    https://stackoverflow.com/questions/553303/generate-a-random-date-between-two-other-dates
-    """
-    
-    delta = end - start
-    int_delta = (delta.days * 24 * 60 * 60) + delta.seconds
-    random_second = randrange(int_delta)
-    return start + timedelta(seconds=random_second)
-
-
 
 if __name__ == "__main__":
     write_schema_examples(out_dir=EXAMPLE_DIR, generate_random=True)

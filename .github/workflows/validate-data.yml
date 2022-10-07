@@ -3,10 +3,12 @@ name: Validate Example TIDES Data
 on: 
   push:
     paths:
-      - 'data/*/TIDES/*'
+      - 'data/*/data/*'
+      - 'spec/*'
   pull_request:
     paths:
-      - 'data/*/TIDES/*'
+      - 'data/*/data/*'
+      - 'spec/*'
   workflow_dispatch:
   create:
 
@@ -19,4 +21,4 @@ jobs:
       - name: Validate data
         uses: frictionlessdata/repository@v2
         with:
-          packages: "data/*/TIDES/*.package.y?ml"
+          packages: "data/*/data/*.package.json"

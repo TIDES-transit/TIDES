@@ -20,6 +20,31 @@ Example data can be found in the `/data` directory, with one directory for each 
 
 Example data in the `/TIDES` subdirectories is validated upon a push action to the main repository according to the `TIDES` schema contained in the respective repository commit.
 
+## Validating TIDES data
+
+The easiest way to validate data to the TIDES specifications is to use the frictionless framework, which can be installed from the command line using:
+
+```sh
+pip install frictionless
+```
+
+### Data Package
+
+To validate a package of TIDES data, you must add a frictionless-compliant [`datapackage.json`](https://specs.frictionlessdata.io/data-package/) alongside your data which describes which files should be validated to which schemas.  Most of this can be copied from [`/data/example/data/datapackage.json`](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/data/example/data/datapackage.json).
+
+Once this is created, mapping the data files to the schema, simply run:
+
+```sh
+frictionless validate datapackage.json
+```
+
+### Specific files
+
+
+```sh
+frictionless validate datapackage.json
+```
+
 ## Contributing to TIDES
 
 Those who want to help with the development of the TIDES specification should review the guidance in the [CONTRIBUTING.md](CONTRIBUTING.md) file.
