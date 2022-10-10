@@ -14,7 +14,7 @@ Human-friendlier documentation is auto-generated and available at:
 
 ## Example Data
 
-Example data can be found in the `/data` directory, with one directory for each example.  
+Sample data can be found in the `/samples` directory, with one directory for each example.  
 
 ## Validating TIDES data
 
@@ -27,7 +27,7 @@ frictionless validate path/to/your/datapackage.json
 
 ### Data Package
 
-To validate a package of TIDES data, you must add a frictionless-compliant [`datapackage.json`](https://specs.frictionlessdata.io/data-package/) alongside your data which describes which files should be validated to which schemas.  Most of this can be copied from [`/data/template/TIDES/datapackage.json`](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/data/template/TIDES/datapackage.json).
+To validate a package of TIDES data, you must add a frictionless-compliant [`datapackage.json`](https://specs.frictionlessdata.io/data-package/) alongside your data which describes which files should be validated to which schemas.  Most of this can be copied from [`/data/template/datapackage.json`](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/data/template/datapackage.json).
 
 Once this is created, mapping the data files to the schema, simply run:
 
@@ -40,7 +40,7 @@ frictionless validate datapackage.json
 Specific files can be validated by running the frictionless framework against them and their corresponding schemas as follows:
 
 ```sh
-frictionless validate vehicles.csv https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/schema.vehicles.json
+frictionless validate vehicles.csv --schema https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/schema.vehicles.json
 ```
 
 ## Contributing to TIDES

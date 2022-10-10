@@ -1,4 +1,4 @@
-name: Validate Example TIDES Data
+name: Validate-Samples
 
 on:
   push:

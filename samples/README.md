@@ -4,10 +4,10 @@ Each TIDES Data Package example should follow the following directory structure,
 
 ```
 unique-example-name
-  \TIDES     # data to be validated against the TIDES specification
-  \TIDES\datapackages.json # data package metadata per https://specs.frictionlessdata.io/data-package/
-  \raw      # data which the agency uses to create TIDES data
-  \scripts  # scripts used to transform raw --> TIDES
+  \TIDES     # Required. Data to be validated against the TIDES specification
+  \datapackages.json # Required. Data package metadata per https://specs.frictionlessdata.io/data-package/
+  \raw      # Optional. Data which the agency uses to create TIDES data
+  \scripts  # Optional. Scripts used to transform raw --> TIDES
 ```
 
 ## Adding Examples
