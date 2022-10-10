@@ -36,23 +36,19 @@ def define_env(env):
         """
 
         fields = ["Sample", "Agency", "Resources", "Vendors"]
-        df = pd.DataFrame([], columns=fields)
 
         data_dir = os.path.join(env.project_dir, data_dir)
         samples = [
             d for d in os.listdir(data_dir) if os.path.isdir(os.path.join(data_dir, d))
         ]
 
+        md_table = (
+            "| *" + "** | **".join(fields) + "* |\n| " + " ----- |" * len(fields) + "\n"
+        )
+
         for s in samples:
-            df = pd.concat(
-                [
-                    df,
-                    pd.DataFrame(
-                        sample_metadata_as_dict(os.path.join(data_dir, s)), index=[0]
-                    ),
-                ]
-            )
-        return df.to_markdown(index=False)
+            md_table += datapackage_to_row(os.path.join(data_dir, s), fields)
+        return md_table
 
     @env.macro
     def include_file(
@@ -164,16 +160,19 @@ def define_env(env):
 TABLE_TYPES = ["Event", "Summary", "Supporting"]
 
 
-def sample_metadata_as_dict(dir: str) -> dict:
-    """Reads datapackage and translates key metadata to dictionary.
+def datapackage_to_row(dir: str, fields: list) -> str:
+    """Reads datapackage and translates key metadata to a row in a markdown table.
+
+    Right now, only works for fields: "Sample", "Agency", "Resources", "Vendors"
 
     Args:
         dir (str): fully qualified directory for sample data
+        fields (list): list of fields to return
 
     Returns:
-        dict: dictionary with data pacakge name, agency, resources and vendors.
+        str: row in a markdown table with name, agency, resources, vendors
     """
-    dp_filename = os.path.join(dir, "TIDES", "datapackage.json")
+    dp_filename = os.path.join(dir, "datapackage.json")
     if not os.path.isfile(dp_filename):
         raise ValueError(f"Can't find datapackage file:\n   {dp_filename}.")
     with open(dp_filename, "r") as dp_file:
@@ -184,14 +183,20 @@ def sample_metadata_as_dict(dir: str) -> dict:
         ]
         _vendors = list(set(_vendors) - set([None]))
 
-        return {
+        _md_cells = {
             "Sample": _to_sample_readme_link(dp["name"], dir),
             "Agency": dp["agency"],
-            "Resources": "<ul><li>`"
-            + "`</li><li>`".join([r["name"] for r in dp["resources"]])
-            + "`</li></ul>",
+            "Resources": (
+                "<ul><li>`"
+                + "`</li><li>`".join([r["name"] for r in dp["resources"]])
+                + "`</li></ul>"
+            ),
             "Vendors": "<ul><li>`" + "`</li><li>`".join(_vendors) + "`</li></ul>",
         }
+
+        md_row = "| " + " | ".join([_md_cells[f] for f in fields]) + " |\n"
+
+        return md_row
 
 
 def _to_sample_readme_link(sample_name, folder_dir):
