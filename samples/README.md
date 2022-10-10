@@ -75,7 +75,7 @@ frictionless validate path/to/your/datapackage.json
 Specific files can be validated by running the frictionless framework against them and their corresponding schemas as follows:
 
 ```sh
-frictionless validate vehicles.csv https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/schema.vehicles.json
+frictionless validate vehicles.csv --schema https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicles.schema.json
 ```
 
 ### Continuous Data Validation
