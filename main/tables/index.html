@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://TIDES-transit.github.io/TIDES/main/tables/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.4.0, mkdocs-material-8.5.6" name="generator"/>
+<meta content="mkdocs-1.4.1, mkdocs-material-8.5.6" name="generator"/>
 <title>Table Schemas - Transit ITS Data Exchange (TIDES) Data Specification Suite</title>
 <link href="../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
@@ -712,7 +712,7 @@ schema standards.</p>
 <h3 id="station-activities">Station Activities<a class="headerlink" href="#station-activities" title="Permanent link"> ¶</a></h3>
 <p><em>station_activities.schema.json</em></p>
 <p>Summarized transactions, entries, and exits by stop or station and time period for each service date (for events not associated with a trip).</p>
-<p>Primary key: {<code>time_period_start</code>, <code>date</code>, <code>time_period_end</code>, <code>stop_id</code>}</p>
+<p>Primary key: {<code>date</code>, <code>stop_id</code>, <code>time_period_end</code>, <code>time_period_start</code>}</p>
 <table>
 <thead>
 <tr>
@@ -925,7 +925,7 @@ schema standards.</p>
 <h3 id="stop-visits">Stop Visits<a class="headerlink" href="#stop-visits" title="Permanent link"> ¶</a></h3>
 <p><em>stop_visits.schema.json</em></p>
 <p>Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date.</p>
-<p>Primary key: {<code>date</code>, <code>vehicle_id</code>, <code>trip_id_performed</code>, <code>stop_sequence</code>}</p>
+<p>Primary key: {<code>date</code>, <code>stop_sequence</code>, <code>vehicle_id</code>, <code>trip_id_performed</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1566,7 +1566,7 @@ schema standards.</p>
 <h3 id="vehicle-train-cars">Vehicle Train Cars<a class="headerlink" href="#vehicle-train-cars" title="Permanent link"> ¶</a></h3>
 <p><em>vehicle_train_cars.schema.json</em></p>
 <p>Relationships between assets and vehicles.</p>
-<p>Primary key: {<code>vehicle_id</code>, <code>train_car_id</code>}</p>
+<p>Primary key: {<code>train_car_id</code>, <code>vehicle_id</code>}</p>
 <table>
 <thead>
 <tr>
