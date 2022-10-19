@@ -106,7 +106,6 @@ PMT Group Members
 * Jameelah Young, Jarv.us (on behalf of Caltrans)
 * Elizabeth Sall, UrbanLabs LLC (on behalf of Caltrans)
 * Benjamin Bressette, Caltrans
-* Blake Fleisher, Jarv.us (on behalf of Caltrans)
 * Joey Reid, Metro Transit (Minneapolis-St. Paul, MN)
 
 PMT Group Member [GitHub Access](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization): Admin
