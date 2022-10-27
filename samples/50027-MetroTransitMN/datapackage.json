@@ -6,13 +6,14 @@
     {
       "title": "Joey Reid",
       "organization": "Metro Transit a division of the Metropolitan Council",
-      "_github": "botanize",
+      "github": "botanize",
       "email": "botanize@users.noreply.github.com",
       "path": "https://www.metrotransit.org/"
     }
   ],
   "_CAD": "TransitMaster",
-  "_NTDID": 50027,
+  "ntd_id": 50027,
+  "agency": "Metro Transit",
   "resources": [
     {
       "path": "TIDES/vehicle_locations.csv",
