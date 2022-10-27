@@ -41,7 +41,7 @@
       "description": "Identifies an operator (person). If possible, this should match other internal agency operator IDs."
     }
   ],
-  "foreignKeys": [
+  "foreignReferences": [
     {
       "fields": "vehicle_id",
       "reference": {
