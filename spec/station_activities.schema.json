@@ -210,7 +210,7 @@
       }
     }
   ],
-  "foreignKeys": [
+  "foreignReferences": [
     {
       "fields": "stop_id",
       "reference": {

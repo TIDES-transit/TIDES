@@ -105,7 +105,7 @@
       "description": "Identifies the stop the vehicle is serving. References GTFS"
     }
   ],
-  "foreignKeys": [
+  "foreignReferences": [
     {
       "fields": "trip_id_performed",
       "reference": {

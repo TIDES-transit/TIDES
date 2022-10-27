@@ -171,7 +171,7 @@
       "description": "Stored value remaining on an account after the transaction is made."
     }
   ],
-  "foreignKeys": [
+  "foreignReferences": [
     {
       "fields": "trip_id_performed",
       "reference": {
