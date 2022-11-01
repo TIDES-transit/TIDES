@@ -25,8 +25,8 @@
     },
     {
       "name": "timestamp",
-      "type": "time",
-      "description": "Recorded event time, including for transactions that may be aggregated values associated with a trip or vehicle.",
+      "type": "datetime",
+      "description": "Recorded event timestamp, including for transactions that may be aggregated values associated with a trip or vehicle.",
       "constraints": {
         "required": true
       }

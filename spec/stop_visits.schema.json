@@ -68,23 +68,23 @@
     },
     {
       "name": "schedule_arrival_time",
-      "type": "time",
-      "description": "Scheduled time at which the vehicle arrives at a stop. References GTFS"
+      "type": "datetime",
+      "description": "Scheduled timestamp at which the vehicle arrives at a stop. References GTFS"
     },
     {
       "name": "schedule_departure_time",
-      "type": "time",
-      "description": "Scheduled time at which the vehicle departs from a stop. References GTFS"
+      "type": "datetime",
+      "description": "Scheduled timestamp at which the vehicle departs from a stop. References GTFS"
     },
     {
       "name": "actual_arrival_time",
-      "type": "time",
-      "description": "Time at which the vehicle arrives at a stop."
+      "type": "datetime",
+      "description": "Timestamp at which the vehicle arrives at a stop."
     },
     {
       "name": "actual_departure_time",
-      "type": "time",
-      "description": "Time at which the vehicle departs from a stop."
+      "type": "datetime",
+      "description": "Timestamp at which the vehicle departs from a stop."
     },
     {
       "name": "distance",
@@ -136,13 +136,13 @@
     },
     {
       "name": "door_open",
-      "type": "time",
-      "description": "Time at which the doors opened."
+      "type": "datetime",
+      "description": "Timestamp at which the doors opened."
     },
     {
       "name": "door_close",
-      "type": "time",
-      "description": "Time at which the doors closed."
+      "type": "datetime",
+      "description": "Timestamp at which the doors closed."
     },
     {
       "name": "door_status",

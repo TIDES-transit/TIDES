@@ -108,23 +108,23 @@
     },
     {
       "name": "schedule_trip_start",
-      "type": "time",
+      "type": "datetime",
       "description": "Scheduled departure time from the trip’s origin."
     },
     {
       "name": "schedule_trip_end",
-      "type": "time",
-      "description": "Scheduled end time at the trip’s destination."
+      "type": "datetime",
+      "description": "Scheduled end timestamp at the trip’s destination."
     },
     {
       "name": "actual_trip_start",
-      "type": "time",
-      "description": "Time at which the vehicle departed its origin."
+      "type": "datetime",
+      "description": "Timestamp at which the vehicle departed its origin."
     },
     {
       "name": "actual_trip_end",
-      "type": "time",
-      "description": "Time at which the vehicle arrived at its destination."
+      "type": "datetime",
+      "description": "Timestamp at which the vehicle arrived at its destination."
     },
     {
       "name": "in_service",
