@@ -17,13 +17,13 @@
     },
     {
       "name": "vehicle_start",
-      "type": "time",
-      "description": "The time at which the vehicle or train consist is first in operation (i.e., when the consist has been created). Required if Train_car is used."
+      "type": "datetime",
+      "description": "The timestamp at which the vehicle or train consist is first in operation (i.e., when the consist has been created). Required if Train_car is used."
     },
     {
       "name": "vehicle_end",
-      "type": "time",
-      "description": "The time at which the vehicle or train consist no longer exists (i.e., the consist is separated or modified). Only used if Train_car is used."
+      "type": "datetime",
+      "description": "The timestamp at which the vehicle or train consist no longer exists (i.e., the consist is separated or modified). Only used if Train_car is used."
     },
     {
       "name": "model_name",
