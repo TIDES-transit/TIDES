@@ -14,7 +14,13 @@
       "path": "https://www.metrotransit.org/"
     }
   ],
-  "_CAD": "TransitMaster",
+  "sources": [
+    {
+      "product": "TransitMaster",
+      "vendor": "Vontas",
+      "components": ["AVL", "APC"]
+    }
+  ],
   "ntd_id": 50027,
   "agency": "Metro Transit",
   "resources": [
