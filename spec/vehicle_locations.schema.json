@@ -131,7 +131,7 @@
     },
     {
       "name": "odometer",
-      "type": "integer",
+      "type": "number",
       "description": "Odometer value, in meters. References GTFS-Realtime",
       "constraints": {
         "minimum": 0
