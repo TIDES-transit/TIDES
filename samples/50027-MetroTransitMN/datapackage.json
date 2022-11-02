@@ -1,6 +1,9 @@
 {
   "profile": "tabular-data-package",
   "name": "50027-metrotransitmn",
+  "licenses": [
+    { "name": "Apache-2.0" }
+  ],
   "description": "",
   "contributors": [
     {
