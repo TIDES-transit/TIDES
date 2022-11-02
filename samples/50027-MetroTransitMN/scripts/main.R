@@ -16,7 +16,7 @@ vl_opt = c('device_id', 'stop_id', 'current_status', 'latitude', 'longitude', 'g
 vl = fread(file.path(RAW_PATH, 'vehicle_locations.csv'), colClasses = list('character' = c('logged_message_short_id', 'calendar_id', 'source_host'), 'numeric' = c('longitude', 'latitude', 'heading', 'speed'), 'integer' = c('odometer', 'adherence_seconds')), integer64 = 'character')
 
 # extract date/time
-vl[, `:=`(date = as.IDate(calendar_id, format = '1%Y%m%d'), timestamp = as.ITime(message_timestamp, tz = 'America/Chicago'))]
+vl[, `:=`(date = as.IDate(calendar_id, format = '1%Y%m%d'))]
 
 # convert integer lonlat to numeric
 lonlat = c('longitude', 'latitude')
@@ -32,7 +32,7 @@ vl[, `:=`(FOM = bitwAnd(validity, 15L))]
 vl[, gps_quality := fcase(FOM == 2L, 'Excellent', FOM %between% c(3L, 8L), 'Good', 8L < FOM, 'Poor', default = NA_character_)]
 
 # fix names
-setnames(vl, c('logged_message_short_id', 'adherence_seconds', 'source_host'), c('location_ping_id', 'schedule_deviation', 'vehicle_id'))
+setnames(vl, c('logged_message_short_id', 'adherence_seconds', 'source_host', 'message_timestamp'), c('location_ping_id', 'schedule_deviation', 'vehicle_id', 'timestamp'))
 
 # add NAs for required fields until I write code to merge in trip_id and stop_sequence
 if (!hasName(vl, 'trip_id_performed')) vl[, `:=`(trip_id_performed = NA_character_)]
