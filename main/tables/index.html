@@ -320,8 +320,8 @@ schema standards.</p>
 <tr>
 <td>timestamp</td>
 <td><strong>Required</strong><br/></td>
-<td>time</td>
-<td>Recorded event time, including for transactions that may be aggregated values associated with a trip or vehicle.</td>
+<td>datetime</td>
+<td>Recorded event timestamp, including for transactions that may be aggregated values associated with a trip or vehicle.</td>
 <td></td>
 <td></td>
 </tr>
@@ -503,8 +503,8 @@ schema standards.</p>
 <tr>
 <td>timestamp</td>
 <td><strong>Required</strong><br/></td>
-<td>time</td>
-<td>Recorded event time.</td>
+<td>datetime</td>
+<td>Recorded event timestamp.</td>
 <td></td>
 </tr>
 <tr>
@@ -590,8 +590,8 @@ schema standards.</p>
 <tr>
 <td>timestamp</td>
 <td><strong>Required</strong><br/></td>
-<td>time</td>
-<td>Recorded event time.</td>
+<td>datetime</td>
+<td>Recorded event timestamp.</td>
 <td></td>
 </tr>
 <tr>
@@ -674,7 +674,7 @@ schema standards.</p>
 <tr>
 <td>odometer</td>
 <td><br/>  minimum: 0<br/></td>
-<td>integer</td>
+<td>number</td>
 <td>Odometer value, in meters. References GTFS-Realtime</td>
 <td></td>
 </tr>
@@ -712,7 +712,7 @@ schema standards.</p>
 <h3 id="station-activities">Station Activities<a class="headerlink" href="#station-activities" title="Permanent link"> ¶</a></h3>
 <p><em>station_activities.schema.json</em></p>
 <p>Summarized transactions, entries, and exits by stop or station and time period for each service date (for events not associated with a trip).</p>
-<p>Primary key: {<code>date</code>, <code>stop_id</code>, <code>time_period_end</code>, <code>time_period_start</code>}</p>
+<p>Primary key: {<code>time_period_start</code>, <code>stop_id</code>, <code>time_period_end</code>, <code>date</code>}</p>
 <table>
 <thead>
 <tr>
@@ -925,7 +925,7 @@ schema standards.</p>
 <h3 id="stop-visits">Stop Visits<a class="headerlink" href="#stop-visits" title="Permanent link"> ¶</a></h3>
 <p><em>stop_visits.schema.json</em></p>
 <p>Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date.</p>
-<p>Primary key: {<code>date</code>, <code>vehicle_id</code>, <code>stop_sequence</code>, <code>trip_id_performed</code>}</p>
+<p>Primary key: {<code>trip_id_performed</code>, <code>vehicle_id</code>, <code>date</code>, <code>stop_sequence</code>}</p>
 <table>
 <thead>
 <tr>
@@ -989,29 +989,29 @@ schema standards.</p>
 <tr>
 <td>schedule_arrival_time</td>
 <td></td>
-<td>time</td>
-<td>Scheduled time at which the vehicle arrives at a stop. References GTFS</td>
+<td>datetime</td>
+<td>Scheduled timestamp at which the vehicle arrives at a stop. References GTFS</td>
 <td></td>
 </tr>
 <tr>
 <td>schedule_departure_time</td>
 <td></td>
-<td>time</td>
-<td>Scheduled time at which the vehicle departs from a stop. References GTFS</td>
+<td>datetime</td>
+<td>Scheduled timestamp at which the vehicle departs from a stop. References GTFS</td>
 <td></td>
 </tr>
 <tr>
 <td>actual_arrival_time</td>
 <td></td>
-<td>time</td>
-<td>Time at which the vehicle arrives at a stop.</td>
+<td>datetime</td>
+<td>Timestamp at which the vehicle arrives at a stop.</td>
 <td></td>
 </tr>
 <tr>
 <td>actual_departure_time</td>
 <td></td>
-<td>time</td>
-<td>Time at which the vehicle departs from a stop.</td>
+<td>datetime</td>
+<td>Timestamp at which the vehicle departs from a stop.</td>
 <td></td>
 </tr>
 <tr>
@@ -1059,15 +1059,15 @@ schema standards.</p>
 <tr>
 <td>door_open</td>
 <td></td>
-<td>time</td>
-<td>Time at which the doors opened.</td>
+<td>datetime</td>
+<td>Timestamp at which the doors opened.</td>
 <td></td>
 </tr>
 <tr>
 <td>door_close</td>
 <td></td>
-<td>time</td>
-<td>Time at which the doors closed.</td>
+<td>datetime</td>
+<td>Timestamp at which the doors closed.</td>
 <td></td>
 </tr>
 <tr>
@@ -1257,7 +1257,7 @@ schema standards.</p>
 <h3 id="trips-performed">Trips Performed<a class="headerlink" href="#trips-performed" title="Permanent link"> ¶</a></h3>
 <p><em>trips_performed.schema.json</em></p>
 <p>Trips performed for each service date.</p>
-<p>Primary key: {<code>date</code>, <code>trip_id_performed</code>}</p>
+<p>Primary key: {<code>trip_id_performed</code>, <code>date</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1356,29 +1356,29 @@ schema standards.</p>
 <tr>
 <td>schedule_trip_start</td>
 <td></td>
-<td>time</td>
+<td>datetime</td>
 <td>Scheduled departure time from the trip’s origin.</td>
 <td></td>
 </tr>
 <tr>
 <td>schedule_trip_end</td>
 <td></td>
-<td>time</td>
-<td>Scheduled end time at the trip’s destination.</td>
+<td>datetime</td>
+<td>Scheduled end timestamp at the trip’s destination.</td>
 <td></td>
 </tr>
 <tr>
 <td>actual_trip_start</td>
 <td></td>
-<td>time</td>
-<td>Time at which the vehicle departed its origin.</td>
+<td>datetime</td>
+<td>Timestamp at which the vehicle departed its origin.</td>
 <td></td>
 </tr>
 <tr>
 <td>actual_trip_end</td>
 <td></td>
-<td>time</td>
-<td>Time at which the vehicle arrived at its destination.</td>
+<td>datetime</td>
+<td>Timestamp at which the vehicle arrived at its destination.</td>
 <td></td>
 </tr>
 <tr>
@@ -1566,7 +1566,7 @@ schema standards.</p>
 <h3 id="vehicle-train-cars">Vehicle Train Cars<a class="headerlink" href="#vehicle-train-cars" title="Permanent link"> ¶</a></h3>
 <p><em>vehicle_train_cars.schema.json</em></p>
 <p>Relationships between assets and vehicles.</p>
-<p>Primary key: {<code>vehicle_id</code>, <code>train_car_id</code>}</p>
+<p>Primary key: {<code>train_car_id</code>, <code>vehicle_id</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1631,14 +1631,14 @@ schema standards.</p>
 <tr>
 <td>vehicle_start</td>
 <td></td>
-<td>time</td>
-<td>The time at which the vehicle or train consist is first in operation (i.e., when the consist has been created). Required if Train_car is used.</td>
+<td>datetime</td>
+<td>The timestamp at which the vehicle or train consist is first in operation (i.e., when the consist has been created). Required if Train_car is used.</td>
 </tr>
 <tr>
 <td>vehicle_end</td>
 <td></td>
-<td>time</td>
-<td>The time at which the vehicle or train consist no longer exists (i.e., the consist is separated or modified). Only used if Train_car is used.</td>
+<td>datetime</td>
+<td>The timestamp at which the vehicle or train consist no longer exists (i.e., the consist is separated or modified). Only used if Train_car is used.</td>
 </tr>
 <tr>
 <td>model_name</td>
