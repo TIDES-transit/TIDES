@@ -75,6 +75,12 @@
       "description": "Identifies the trip performed. May be null if the fare collection device is NOT located on a vehicle. May be null if on a vehicle but trip-level data is unavailable, in which case the data would be associated with the vehicle."
     },
     {
+      "name": "pattern_id",
+      "type": "string",
+      "title": "unique identifier for the route-pattern",
+      "description": "Identifies the unique stop-path for a trip, may be distinct from GTFS shapes.shape_id"
+    },
+    {
       "name": "stop_sequence",
       "type": "integer",
       "title": "positive integer referencing GTFS stop_times.stop_sequence",

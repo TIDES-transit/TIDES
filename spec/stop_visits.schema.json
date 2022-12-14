@@ -39,6 +39,12 @@
       }
     },
     {
+      "name": "pattern_id",
+      "type": "string",
+      "title": "unique identifier for the route-pattern",
+      "description": "Identifies the unique stop-path for a trip, may be distinct from GTFS shapes.shape_id"
+    },
+    {
       "name": "vehicle_id",
       "type": "string",
       "title": "ID referencing vehicles.vehicle_id",

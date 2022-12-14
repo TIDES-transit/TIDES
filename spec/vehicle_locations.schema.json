@@ -65,6 +65,12 @@
       "description": "Identifies the device that recorded the vehicle location. May be null if only a single device is reporting vehicle location and the device_id is not distinct from vehicle_id."
     },
     {
+      "name": "pattern_id",
+      "type": "string",
+      "title": "unique identifier for the route-pattern",
+      "description": "Identifies the unique stop-path for a trip, may be distinct from GTFS shapes.shape_id"
+    },
+    {
       "name": "stop_id",
       "type": "string",
       "title": "ID referencing GTFS stops.stop_id",
