@@ -31,7 +31,7 @@ vl[, `:=`(speed = speed * 0.44704, odometer = as.integer(odometer * 16.09344))]
 vl[, `:=`(FOM = bitwAnd(validity, 15L))]
 vl[, gps_quality := fcase(FOM == 2L, 'Excellent', FOM %between% c(3L, 8L), 'Good', 8L < FOM, 'Poor', default = NA_character_)]
 
-# fix names
+# update names
 setnames(vl, c('logged_message_short_id', 'adherence_seconds', 'source_host', 'message_timestamp'), c('location_ping_id', 'schedule_deviation', 'vehicle_id', 'timestamp'))
 
 # add NAs for required fields until I write code to merge in trip_id and stop_sequence
