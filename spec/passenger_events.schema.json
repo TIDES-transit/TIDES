@@ -103,6 +103,15 @@
       "type": "string",
       "title": "ID referencing GTFS stops.stop_id",
       "description": "Identifies the stop the vehicle is serving. References GTFS"
+    },
+    {
+      "name": "count",
+      "type": "integer",
+      "title": "Event count",
+      "description": "Count for this event, e.g., 3 for a Passenger Boarding event with 3 boardings, default is  `1`",
+      "constraints": {
+        "minimum": 0
+      }
     }
   ],
   "foreignReferences": [
