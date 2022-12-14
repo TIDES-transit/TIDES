@@ -14,7 +14,7 @@ Human-friendlier documentation is auto-generated and available at:
 
 ## Contributing to TIDES
 
-Those who want to help with the development of the TIDES specification should review the guidance in <CONTRIBUTING.md>.
+Those who want to help with the development of the TIDES specification should review the guidance in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Issues
 
