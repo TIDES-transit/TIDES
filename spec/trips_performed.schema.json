@@ -72,6 +72,12 @@
       "description": "Identifies a geospatial shape that describes the vehicle travel path for a trip. References GTFS"
     },
     {
+      "name": "pattern_id",
+      "type": "string",
+      "title": "unique identifier for the route-pattern",
+      "description": "Identifies the unique stop-path for a trip, may be distinct from GTFS shapes.shape_id"
+    },
+    {
       "name": "direction_id",
       "type": "integer",
       "description": "Indicates the direction of travel for a trip. References GTFS",
