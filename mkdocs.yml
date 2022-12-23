@@ -34,7 +34,18 @@ plugins:
         theme: |
             ^(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'
         securityLevel: 'loose'
+  - mike:
+      version_selector: true
+  - redirects:
+      redirect_maps: #original relative to /docs : redirect target
+        '../CODE_OF_CONDUCT.md': 'CODE_OF_CONDUCT.md'
+        '../CONTRIBUTING.md': 'CONTRIBUTING.md'
+        '../contributors.md': 'contributors.md'
   - search
+
+extra:
+  version:
+    provider: mike
 
 watch:
   - CONTRIBUTING.md
@@ -72,4 +83,5 @@ nav:
   - Home: index.md
   - Architecture: architecture.md
   - Table Schemas: tables.md
+  - Sample Data: samples.md
   - Development: development.md
