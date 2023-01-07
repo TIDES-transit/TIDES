@@ -5,7 +5,7 @@ Each TIDES Data Package example should follow the following directory structure,
 ```
 unique-example-name
   \TIDES     # Required. Data to be validated against the TIDES specification
-  \datapackages.json # Required. Data package metadata per https://specs.frictionlessdata.io/data-package/
+  \datapackage.json # Required. Data package metadata per https://specs.frictionlessdata.io/data-package/
   \raw      # Optional. Data which the agency uses to create TIDES data
   \scripts  # Optional. Scripts used to transform raw --> TIDES
 ```
@@ -34,12 +34,6 @@ TIDES data packages must include a [`datapackage.json`](https://specs.frictionle
 | `contributors` | Array of data contributors `[{"title": "My Name", "github": "my_handle", "email": "me@myself.com"}]` | Recommended |
 | `maintainers` |  Array of data maintainers `[{"title": "My Name", "github": "my_handle", "email": "me@myself.com"}]` | Recommended |
 | `resources` | Array of data files included in your package, formated as a [`tabular-data-resource`](#data-resource)| Required |
-
-### Template
-
-A `datapackage.json` template is available at [`/data/template/TIDES/datapackage.json`](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/data/template/TIDES/datapackage.json).
-
-Once `datapackage.json` is created for your data, you can easily conduct [data validation](#data-validation) using a variet of tools.
 
 ### Data Resource
 
@@ -78,6 +72,3 @@ Specific files can be validated by running the frictionless framework against th
 frictionless validate vehicles.csv --schema https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicles.schema.json
 ```
 
-### Continuous Data Validation
-
-Example data in the `\TIDES` subdirectories is validated upon a push action to the main repository according to the `TIDES` schema posted to the `main` branch.
