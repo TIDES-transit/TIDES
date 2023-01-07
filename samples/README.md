@@ -71,4 +71,6 @@ Specific files can be validated by running the frictionless framework against th
 ```sh
 frictionless validate vehicles.csv --schema https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicles.schema.json
 ```
+### Continuous Data Validation
 
+Example data in the `\TIDES` subdirectories is validated upon a push action to the main repository according to the `TIDES` schema posted to the `main` branch.
