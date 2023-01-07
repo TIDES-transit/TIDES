@@ -17,6 +17,7 @@ FIND_REPLACE = {  # original relative to /docs : redirect target
     "tables.md": "tables",
 }
 
+
 def define_env(env):
     """
     This is the hook for defining variables, macros and filters
@@ -26,7 +27,33 @@ def define_env(env):
     """
 
     @env.macro
-    def include_file(filename: str, downshift_h1 = True, start_line: int = 0, end_line: int = None):
+    def list_samples(data_dir: str) -> str:
+        """Outputs a simple list of the directories in a folder in markdown.
+        Args:
+            data_dir (str):directory to search in
+        Returns:
+            str: markdown-formatted list
+        """
+
+        fields = ["Sample", "Agency", "Resources", "Vendors"]
+
+        data_dir = os.path.join(env.project_dir, data_dir)
+        samples = [
+            d for d in os.listdir(data_dir) if os.path.isdir(os.path.join(data_dir, d))
+        ]
+
+        md_table = (
+            "| *" + "** | **".join(fields) + "* |\n| " + " ----- |" * len(fields) + "\n"
+        )
+
+        for s in samples:
+            md_table += datapackage_to_row(os.path.join(data_dir, s), fields)
+        return md_table
+
+    @env.macro
+    def include_file(
+        filename: str, downshift_h1=True, start_line: int = 0, end_line: int = None
+    ):
         """
         Include a file, optionally indicating start_line and end_line.
 
@@ -34,7 +61,8 @@ def define_env(env):
 
         args:
             filename: file to include, relative to the top directory of the documentation project.
-            downshift_h1: If true, will downshift headings by 1 if h1 heading found. Defaults to True. 
+            downshift_h1: If true, will downshift headings by 1 if h1 heading found.
+                Defaults to True.
             start_line (Optional): if included, will start including the file from this line
                 (indexed to 0)
             end_line (Optional): if included, will stop including at this line (indexed to 0)
@@ -53,20 +81,19 @@ def define_env(env):
             4: re.compile(r"(#{4}\s)(.*)"),
             5: re.compile(r"(#{5}\s)(.*)"),
         }
-        print(f"???before downshifting! {full_filename}")
+
         if md_heading_re[1].search(content) and downshift_h1:
-            print("!!!downshifting!")
-            content = re.sub(md_heading_re[5],r'#\1\2',content)
-            content = re.sub(md_heading_re[4],r'#\1\2',content)
-            content = re.sub(md_heading_re[3],r'#\1\2',content)
-            content = re.sub(md_heading_re[2],r'#\1\2',content)
-            content = re.sub(md_heading_re[1],r'#\1\2',content)
+            content = re.sub(md_heading_re[5], r"#\1\2", content)
+            content = re.sub(md_heading_re[4], r"#\1\2", content)
+            content = re.sub(md_heading_re[3], r"#\1\2", content)
+            content = re.sub(md_heading_re[2], r"#\1\2", content)
+            content = re.sub(md_heading_re[1], r"#\1\2", content)
 
         _filenamebase = env.page.file.url
         for _find, _replace in FIND_REPLACE.items():
             if _filenamebase in _replace:
                 _replace = _replace.replace(_filenamebase, "")
-                
+
             content = content.replace(_find, _replace)
         return content
 
@@ -95,7 +122,7 @@ def define_env(env):
             columns=["fullpath", "fullpath_schema", "path", "schema", "name"]
         ).reset_index()
         spec_df["name"] = spec_df["name"].apply(
-            lambda x: f"[`{x}`](tables.md#{x})".replace("_","-")
+            lambda x: f"[`{x}`](tables.md#{x})".replace("_", "-")
         )
 
         return spec_df.to_markdown(index=False)
@@ -131,6 +158,49 @@ def define_env(env):
 
 
 TABLE_TYPES = ["Event", "Summary", "Supporting"]
+
+
+def datapackage_to_row(dir: str, fields: list) -> str:
+    """Reads datapackage and translates key metadata to a row in a markdown table.
+
+    Right now, only works for fields: "Sample", "Agency", "Resources", "Vendors"
+
+    Args:
+        dir (str): fully qualified directory for sample data
+        fields (list): list of fields to return
+
+    Returns:
+        str: row in a markdown table with name, agency, resources, vendors
+    """
+    dp_filename = os.path.join(dir, "datapackage.json")
+    if not os.path.isfile(dp_filename):
+        raise ValueError(f"Can't find datapackage file:\n   {dp_filename}.")
+    with open(dp_filename, "r") as dp_file:
+        dp = json.loads(dp_file.read())
+
+        _vendors = [
+            s.get("vendor", None) for r in dp["resources"] for s in r.get("sources", [])
+        ]
+        _vendors = list(set(_vendors) - set([None]))
+
+        _md_cells = {
+            "Sample": _to_sample_readme_link(dp["name"], dir),
+            "Agency": dp["agency"],
+            "Resources": (
+                "<ul><li>`"
+                + "`</li><li>`".join([r["name"] for r in dp["resources"]])
+                + "`</li></ul>"
+            ),
+            "Vendors": "<ul><li>`" + "`</li><li>`".join(_vendors) + "`</li></ul>",
+        }
+
+        md_row = "| " + " | ".join([_md_cells[f] for f in fields]) + " |\n"
+
+        return md_row
+
+
+def _to_sample_readme_link(sample_name, folder_dir):
+    return f"[{sample_name.capitalize()}]({folder_dir}/README.md)"
 
 
 def _document_frictionless_schema(schema_filename: str) -> dict:

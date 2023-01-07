@@ -6,11 +6,42 @@ This repository provides data schemas and tools to support the access, managemen
 
 ## TIDES specification
 
-The TIDES specification is maintained in the `/spec` sub-directory as a series of JSON tables compatible with the [frictionless data](https://specs.frictionlessdata.io/table-schema/) table schema standards.
+The TIDES specification is maintained in the `/spec` sub-directory as a series of JSON tables compatible with the [frictionless data](https://specs.frictionlessdata.io/table-schema/) table schema and [data package](https://specs.frictionlessdata.io/data-package) standards.
 Human-friendlier documentation is auto-generated and available at:
 
 - [Architecture](https://tides-transit.github.io/TIDES/main/architecture)
 - [Table Schemas](https://tides-transit.github.io/TIDES/main/tables)
+
+## Example Data
+
+Sample data can be found in the `/samples` directory, with one directory for each example.  
+
+## Validating TIDES data
+
+TIDES data with a valid [`datapackage.json`](#data-package) can be easily validated using the [frictionless framework](https://framework.frictionlessdata.io/), which can be installed and invoke as follows:
+
+```bash
+pip install frictionless
+frictionless validate path/to/your/datapackage.json
+```
+
+### Data Package
+
+To validate a package of TIDES data, you must add a frictionless-compliant [`datapackage.json`](https://specs.frictionlessdata.io/data-package/) alongside your data which describes which files should be validated to which schemas.  Most of this can be copied from [`/data/template/datapackage.json`](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/data/template/datapackage.json).
+
+Once this is created, mapping the data files to the schema, simply run:
+
+```sh
+frictionless validate datapackage.json
+```
+
+### Specific files
+
+Specific files can be validated by running the frictionless framework against them and their corresponding schemas as follows:
+
+```sh
+frictionless validate vehicles.csv --schema https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/schema.vehicles.json
+```
 
 ## Contributing to TIDES
 
