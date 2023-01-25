@@ -109,6 +109,15 @@
       "type": "string",
       "title": "unique identifier for the route-pattern",
       "description": "Identifies the unique stop-path for a trip, may be distinct from GTFS shapes.shape_id"
+    },
+    {
+      "name": "count",
+      "type": "integer",
+      "title": "Event count",
+      "description": "Count for this event, e.g., 3 for a Passenger Boarding event with 3 boardings, default is  `1`",
+      "constraints": {
+        "minimum": 0
+      }
     }
   ],
   "foreignReferences": [
