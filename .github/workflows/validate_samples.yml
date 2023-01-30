@@ -3,11 +3,11 @@ name: Validate-Samples
 on:
   push:
     paths:
-      - 'data/*/TIDES/*'
+      - 'samples/*/TIDES/*'
       - 'spec/*'
   pull_request:
     paths:
-      - 'data/*/TIDES/*'
+      - 'samples/*/TIDES/*'
       - 'spec/*'
   workflow_dispatch:
   create:
@@ -18,8 +18,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Validate data
+      - name: Validate sample data
         uses: frictionlessdata/repository@v2
         with:
-          packages: "data/*/TIDES/datapackage.json"
+          packages: "samples/*/TIDES/datapackage.json"
 
