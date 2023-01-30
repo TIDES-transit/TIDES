@@ -14,7 +14,7 @@ unique-example-name
 
 We encourage the addition of examples, but please follow the following guidelines:
 
-1. *No large files* This isn't the place to store your data, rather to document some minimal examples.  The recommended size is 100-1000 records per file, more if absolutely required to reproduce an issue with the spec.  All individual files should be well under 50 MB.  
+1. *No large files* This isn't the place to store your data, rather to document some minimal examples.  The recommended size is 100-1000 records per file, more if absolutely required to reproduce an issue with the spec.  The whole data package should be well under 50 MB.  
 2. *Include Metadata* as specified in [`datapackage.json`](#data-package).
 3. *Include a README.md* in the base folder of your example with an overview so that it can be included in the documentation.
 
@@ -25,7 +25,7 @@ TIDES data packages must include a [`datapackage.json`](https://specs.frictionle
 | **Field** | **Description** | **Required** |
 | --------- | --------------- | ------------ |
 | `title` | A human-readable title. | Required |
-| `name` | Identifier string as a URL-friendly slug. | Required |
+| `name` | Short identifier string as a [URL-friendly slug](https://en.wikipedia.org/wiki/Clean_URL#Slug). | Recommended |
 | `description` | Short description of data package. | Recommended |
 | `agency` | Transit agency name. | Recommended |
 | `ntd_id` | ID for the National Transit Database. | Recommended |
@@ -41,7 +41,7 @@ Key fields for each [`tabular-data-resource`](https://specs.frictionlessdata.io/
 
 | **Field** | **Description** | **Required** |
 | --------- | --------------- | ------------ |
-| `name` | Short sluggable name used to refer to data in this file. | Required |
+| `name` | Short [sluggable](https://en.wikipedia.org/wiki/Clean_URL#Slug) name used to refer to data in this file. `name` must be unique within this datapackage. | Required |
 | `path` | Path of the data resource file relative to the `datapackage.json` | Required |
 | `schema` | Data schema to use to valdiate the data resource to | Required |
 | `sources` | Array of data sources formatted as a [`source`](#data-source) | Recommended |
@@ -53,6 +53,7 @@ Key fields for each [`tabular-data-resource`](https://specs.frictionlessdata.io/
 | `title` | Description of the data source. | Required |
 | `component` | What technology component was used to generate this data (directly or indirectly)? Examples include `AVL`, `APC`, `AFC`, etc.  | Recommended |
 | `product` | What product was used to generate this data (directly or indirectly)? | Recommended |
+| `product_version` | Describe the version of the product was used. | Optional |
 | `vendor` | What company makes this product? | Recommended |
 
 ## Data validation

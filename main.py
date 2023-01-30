@@ -181,6 +181,8 @@ def datapackage_to_row(dir: str, fields: list) -> str:
         _vendors = [
             s.get("vendor", None) for r in dp["resources"] for s in r.get("sources", [])
         ]
+        _vendors += dp.get("vendor",[])
+
         _vendors = list(set(_vendors) - set([None]))
 
         _md_cells = {
