@@ -40,7 +40,7 @@ frictionless validate datapackage.json
 Specific files can be validated by running the frictionless framework against them and their corresponding schemas as follows:
 
 ```sh
-frictionless validate vehicles.csv --schema https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/schema.vehicles.json --schema-sync 
+frictionless validate vehicles.csv --schema https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicles.schema.json --schema-sync 
 ```
 
 ## Contributing to TIDES
