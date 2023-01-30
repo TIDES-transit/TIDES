@@ -57,7 +57,7 @@ Key fields for each [`tabular-data-resource`](https://specs.frictionlessdata.io/
 
 ## Data validation
 
-Data with a valid [`datapackage.json`](#data-package) can be easily validated using the [frictionless framework](https://framework.frictionlessdata.io/), which can be installed and invoke as follows:
+Data with a valid [`datapackage.json`](#data-package) can be easily validated using the [frictionless framework](https://framework.frictionlessdata.io/), which can be installed and invoked as follows:
 
 ```bash
 pip install frictionless
@@ -69,6 +69,6 @@ frictionless validate path/to/your/datapackage.json
 Specific files can be validated by running the frictionless framework against them and their corresponding schemas as follows:
 
 ```sh
-frictionless validate vehicles.csv --schema https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicles.schema.json
+frictionless validate vehicles.csv --schema https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicles.schema.json  --schema-sync 
 ```
 

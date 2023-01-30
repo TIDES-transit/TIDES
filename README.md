@@ -18,7 +18,7 @@ Sample data can be found in the `/samples` directory, with one directory for eac
 
 ## Validating TIDES data
 
-TIDES data with a valid [`datapackage.json`](#data-package) can be easily validated using the [frictionless framework](https://framework.frictionlessdata.io/), which can be installed and invoke as follows:
+TIDES data with a valid [`datapackage.json`](#data-package) can be easily validated using the [frictionless framework](https://framework.frictionlessdata.io/), which can be installed and invoked as follows:
 
 ```bash
 pip install frictionless
@@ -40,7 +40,7 @@ frictionless validate datapackage.json
 Specific files can be validated by running the frictionless framework against them and their corresponding schemas as follows:
 
 ```sh
-frictionless validate vehicles.csv --schema https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/schema.vehicles.json
+frictionless validate vehicles.csv --schema https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/schema.vehicles.json --schema-sync 
 ```
 
 ## Contributing to TIDES
