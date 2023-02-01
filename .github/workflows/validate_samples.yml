@@ -1,0 +1,24 @@
+name: Validate-Samples
+
+on:
+  push:
+    paths:
+      - 'samples/*/TIDES/*'
+      - 'spec/*'
+  pull_request:
+    paths:
+      - 'samples/*/TIDES/*'
+      - 'spec/*'
+  workflow_dispatch:
+  create:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Validate sample data
+        uses: frictionlessdata/repository@v2
+        with:
+          packages: "samples/*/TIDES/datapackage.json"
