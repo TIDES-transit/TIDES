@@ -25,7 +25,7 @@ TIDES data packages must include a [`datapackage.json`](https://specs.frictionle
 | **Field** | **Description** | **Required** |
 | --------- | --------------- | ------------ |
 | `title` | A human-readable title. | Required |
-| `name` | Short identifier string as a [URL-friendly slug](https://en.wikipedia.org/wiki/Clean_URL#Slug). | Recommended |
+| `name` |  Short [sluggable](https://en.wikipedia.org/wiki/Clean_URL#Slug) identifier string. | Recommended |
 | `description` | Short description of data package. | Recommended |
 | `agency` | Transit agency name. | Recommended |
 | `ntd_id` | ID for the National Transit Database. | Recommended |
@@ -42,7 +42,7 @@ Key fields for each [`tabular-data-resource`](https://specs.frictionlessdata.io/
 
 | **Field** | **Description** | **Required** |
 | --------- | --------------- | ------------ |
-| `name` | Short [sluggable](https://en.wikipedia.org/wiki/Clean_URL#Slug) name used to refer to data in this file. `name` must be unique within this datapackage. | Required |
+| `name` | Short [sluggable](https://en.wikipedia.org/wiki/Clean_URL#Slug) identifier string used to refer to data in this file. `name` must be unique within this datapackage. | Required |
 | `path` | Path of the data resource file relative to the `datapackage.json` | Required |
 | `schema` | Data schema to use to valdiate the data resource to | Required |
 | `sources` | Array of data sources formatted as a [`source`](#data-source). Recommended to be documented *either* here for each individual `resource` or at the top-level. | Recommended |
@@ -73,4 +73,3 @@ Specific files can be validated by running the frictionless framework against th
 ```sh
 frictionless validate vehicles.csv --schema https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicles.schema.json  --schema-sync 
 ```
-
