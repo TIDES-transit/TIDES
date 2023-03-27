@@ -33,6 +33,7 @@ TIDES data packages must include a [`datapackage.json`](https://specs.frictionle
 | `licenses` | Should be `[{"name": "Apache-2.0"}]` to be consistent with this repository | Required |
 | `contributors` | Array of data contributors `[{"title": "My Name", "github": "my_handle", "email": "me@myself.com"}]` | Recommended |
 | `maintainers` |  Array of data maintainers `[{"title": "My Name", "github": "my_handle", "email": "me@myself.com"}]` | Recommended |
+| `sources` |  Array of data sources formatted as a [`source`](#data-source). Recommended to be documented *either* here at the top-level or for each individual `resource`. | Recommended |
 | `resources` | Array of data files included in your package, formated as a [`tabular-data-resource`](#data-resource)| Required |
 
 ### Data Resource
@@ -44,7 +45,7 @@ Key fields for each [`tabular-data-resource`](https://specs.frictionlessdata.io/
 | `name` | Short [sluggable](https://en.wikipedia.org/wiki/Clean_URL#Slug) name used to refer to data in this file. `name` must be unique within this datapackage. | Required |
 | `path` | Path of the data resource file relative to the `datapackage.json` | Required |
 | `schema` | Data schema to use to valdiate the data resource to | Required |
-| `sources` | Array of data sources formatted as a [`source`](#data-source) | Recommended |
+| `sources` | Array of data sources formatted as a [`source`](#data-source). Recommended to be documented *either* here for each individual `resource` or at the top-level. | Recommended |
 
 ### Data Source
 
