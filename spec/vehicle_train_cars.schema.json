@@ -28,7 +28,7 @@
       }
     },
     {
-      "name": "order",
+      "name": "train_car_order",
       "type": "integer",
       "description": "The assigned order of the train car or asset within the vehicle.",
       "constraints": {

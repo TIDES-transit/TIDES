@@ -12,7 +12,7 @@
   ],
   "fields": [
     {
-      "name": "date",
+      "name": "service_date",
       "type": "date",
       "description": "Service date. References GTFS indirectly via calendars.txt and calendar_dates.txt",
       "constraints": {
@@ -68,7 +68,7 @@
       "description": "Identifies the stop. References GTFS"
     },
     {
-      "name": "checkpoint",
+      "name": "timepoint",
       "type": "boolean",
       "description": "Indicates if the stop should be used for evaluating schedule adherence, on-time performance, and other KPIs. This could be populated to match the GTFS “timepoint” field."
     },
@@ -133,7 +133,7 @@
       }
     },
     {
-      "name": "load",
+      "name": "vehicle_load",
       "type": "integer",
       "description": "Number of riders on the vehicle when departing the stop.",
       "constraints": {

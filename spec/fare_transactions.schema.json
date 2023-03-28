@@ -16,7 +16,7 @@
       }
     },
     {
-      "name": "date",
+      "name": "service_date",
       "type": "date",
       "description": "Service date. References GTFS",
       "constraints": {
@@ -24,7 +24,7 @@
       }
     },
     {
-      "name": "timestamp",
+      "name": "event_timestamp",
       "type": "datetime",
       "description": "Recorded event timestamp, including for transactions that may be aggregated values associated with a trip or vehicle.",
       "constraints": {
