@@ -10,7 +10,7 @@
   ],
   "fields": [
     {
-      "name": "date",
+      "name": "service_date",
       "type": "date",
       "description": "Service date. References GTFS",
       "constraints": {

@@ -16,7 +16,7 @@
       }
     },
     {
-      "name": "date",
+      "name": "service_date",
       "type": "date",
       "description": "Service date. References GTFS",
       "constraints": {
@@ -24,7 +24,7 @@
       }
     },
     {
-      "name": "timestamp",
+      "name": "event_timestamp",
       "type": "datetime",
       "description": "Recorded event timestamp.",
       "constraints": {
@@ -111,7 +111,7 @@
       "description": "Identifies the unique stop-path for a trip, may be distinct from GTFS shapes.shape_id"
     },
     {
-      "name": "count",
+      "name": "event_count",
       "type": "integer",
       "title": "Event count",
       "description": "Count for this event, e.g., 3 for a Passenger Boarding event with 3 boardings, default is  `1`",
