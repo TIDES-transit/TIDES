@@ -133,7 +133,7 @@
       }
     },
     {
-      "name": "vehicle_load",
+      "name": "departure_load",
       "type": "integer",
       "description": "Number of riders on the vehicle when departing the stop.",
       "constraints": {
