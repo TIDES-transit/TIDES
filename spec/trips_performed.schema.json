@@ -1,6 +1,6 @@
 {
   "primaryKey": [
-    "date",
+    "service_date",
     "trip_id_performed"
   ],
   "missingValues": [

@@ -1,6 +1,6 @@
 {
   "primaryKey": [
-    "date",
+    "service_date",
     "stop_id",
     "time_period_start",
     "time_period_end"
