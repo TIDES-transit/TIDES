@@ -44,9 +44,6 @@
       "type": "string",
       "rdfType": "https://schema.org/currency",
       "description": "Currency used for the transaction. References GTFS",
-      "constraints": {
-        "required": true
-      }
     },
     {
       "name": "fare_action",
