@@ -59,6 +59,11 @@
           "Transfer entrance",
           "Transfer exit",
           "Add",
+          "New",
+          "Capture",
+          "Extend",
+          "Combine",
+          "Void",
           "Activate",
           "Adjust",
           "Other"
