@@ -164,11 +164,6 @@
       "description": "Identifies the individual fare medium used for the transaction. For example, the fare card ID."
     },
     {
-      "name": "fare_media_id_purchased",
-      "type": "string",
-      "description": "Identifies the individual fare medium purchased in the transaction. For example, the fare card ID."
-    },
-    {
       "name": "balance",
       "type": "number",
       "description": "Stored value remaining on an account after the transaction is made."
