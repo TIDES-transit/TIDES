@@ -256,23 +256,10 @@
           "title": "Tabular Data Resource",
           "description": "A Tabular Data Resource.",
           "type": "object",
-          "oneOf": [
-            {
-              "required": [
-                "name",
-                "data",
-                "schema",
-                "profile"
-              ]
-            },
-            {
-              "required": [
-                "name",
-                "path",
-                "schema",
-                "profile"
-              ]
-            }
+          "required": [
+              "name",
+              "path",
+              "schema"
           ],
           "properties": {
             "profile": {
@@ -2071,37 +2058,34 @@
                 "properties": {
                   "title": {
                     "title": "Title",
-                    "description": "A human-readable title.",
+                    "description": "Description of the data source.",
                     "type": "string",
                     "examples": [
                       "{\n  \"title\": \"My Package Title\"\n}\n"
                     ]
                   },
-                  "path": {
-                    "title": "Path",
-                    "description": "A fully qualified URL, or a POSIX file path.",
-                    "type": "string",
-                    "pattern": "^(?=^[^./~])(^((?!\\.{2}).)*$).*$",
-                    "examples": [
-                      "{\n  \"path\": \"file.csv\"\n}\n",
-                      "{\n  \"path\": \"http://example.com/file.csv\"\n}\n"
-                    ],
-                    "context": "Implementations need to negotiate the type of path provided, and dereference the data accordingly."
+                  "component": {
+                    "title": "Component",
+                    "description": "What technology component was used to generate this data (directly or indirectly)? Examples include `AVL`, `APC`, `AFC`, etc.",
+                    "type": "string"
                   },
-                  "email": {
-                    "title": "Email",
-                    "description": "An email address.",
-                    "type": "string",
-                    "format": "email",
-                    "examples": [
-                      "{\n  \"email\": \"example@example.com\"\n}\n"
-                    ]
+                  "product": {
+                    "title": "Product",
+                    "description": "What product was used to generate this data (directly or indirectly)?",
+                    "type": "string"
+                  },
+                  "product_version": {
+                    "title": "Product Version",
+                    "description": "Describe the version of the product was used.",
+                    "type": "string"
+                  },
+                  "vendor": {
+                    "title": "Vendor",
+                    "description": "What company makes this product?",
+                    "type": "string"
                   }
                 }
-              },
-              "examples": [
-                "{\n  \"sources\": [\n    {\n      \"title\": \"World Bank and OECD\",\n      \"path\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\"\n    }\n  ]\n}\n"
-              ]
+              }
             },
             "licenses": {
               "description": "Should be `[{\"name\": \"Apache-2.0\"}]` to be consistent with this repository",
