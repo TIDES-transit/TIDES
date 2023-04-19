@@ -247,7 +247,7 @@
       "description": "Timestamp at which the vehicle arrived at its destination."
     },
     {
-      "name": "in_service",
+      "name": "service_status",
       "type": "string",
       "description": "Indicates status of travel with regard to service.",
       "constraints": {
