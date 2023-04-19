@@ -111,15 +111,15 @@
       "description": "Identifies the stop. References GTFS"
     },
     {
-      "name": "group_size",
+      "name": "num_riders",
       "type": "integer",
-      "description": "The number of customers included in the transaction.",
+      "description": "The number of riders included in the transaction.",
       "constraints": {
         "minimum": 0
       }
     },
     {
-      "name": "media_type",
+      "name": "fare_media_id",
       "type": "string",
       "description": "Indicates the fare medium that was used for the transaction.",
       "constraints": {
@@ -159,9 +159,9 @@
       }
     },
     {
-      "name": "fare_media_id",
+      "name": "token_id",
       "type": "string",
-      "description": "Identifies the individual fare medium used for the transaction. For example, the fare card ID."
+      "description": "Identifies the individual fare instrument used for the transaction. For example, the fare card ID."
     },
     {
       "name": "fare_media_id_purchased",
