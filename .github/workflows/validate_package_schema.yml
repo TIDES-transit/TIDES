@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'spec/tides.spec.json$'
+      - 'spec/tides.spec.json'
 
 jobs:
   validate_data_package:

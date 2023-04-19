@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'spec/*.schema.json$'
+      - 'spec/*.schema.json'
       - '!spec/tides.spec.json'
 
 jobs:
