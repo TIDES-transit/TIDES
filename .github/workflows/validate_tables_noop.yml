@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths:
-      - '!spec/*.schema.json$'
-      - '!spec/tides.spec.json$'
+      - '!spec/*.schema.json'
+      - '!spec/tides.spec.json'
 
 jobs:
   validate_tables:
