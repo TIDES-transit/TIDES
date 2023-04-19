@@ -103,7 +103,7 @@
     {
       "name": "boarding_1",
       "type": "integer",
-      "description": "Number of riders that entered the front-most or right-most door of the vehicle",
+      "description": "Number of riders who entered through the vehicle's front doors (in vehicles with doors opening on only one side, or when passengers primarily board through the front, as is typical with buses) or the vehicle's right doors (in vehicles with doors on both sides, or when passengers board through all doors, as is typical with trains).",
       "constraints": {
         "minimum": 0
       }
@@ -111,7 +111,7 @@
     {
       "name": "alighting_1",
       "type": "integer",
-      "description": "Number of riders that exited the front-most or right-most door of the vehicle",
+      "description": "Number of riders who exited through the vehicle's front doors (in vehicles with doors opening on only one side, or when passengers primarily board through the front, as is typical with buses) or the vehicle's right doors (in vehicles with doors on both sides, or when passengers board through all doors, as is typical with trains).",
       "constraints": {
         "minimum": 0
       }
@@ -119,7 +119,7 @@
     {
       "name": "boarding_2",
       "type": "integer",
-      "description": "Number of riders that entered the rest of the vehicle’s doors.",
+      "description": "Number of riders who entered through other doors, such as a bus's rear door when boarding_1 captures the front door, or a train's left doors when boarding_1 captures right doors.",
       "constraints": {
         "minimum": 0
       }
@@ -127,7 +127,7 @@
     {
       "name": "alighting_2",
       "type": "integer",
-      "description": "Number of riders that exited the rest of the vehicle’s doors.",
+      "description": "Number of riders who exited through other doors, such as a bus's rear door when alighting_1 captures the front door, or a train's left doors when alighting_1 captures right doors.",
       "constraints": {
         "minimum": 0
       }
