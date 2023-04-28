@@ -39,7 +39,7 @@
       "name": "scheduled_stop_sequence",
       "type": "integer",
       "title": "positive integer referencing GTFS stop_times.stop_sequence",
-      "description": "The order in which the current stop is scheduled to served within its trip. References GTFS.",
+      "description": "The order in which the current stop is scheduled to be served within its trip. References GTFS.",
       "constraints": {
         "minimum": 0
       }
