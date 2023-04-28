@@ -45,7 +45,8 @@
       "type": "integer",
       "description": "The temporal sequence of this event's stop visit within its performed trip, starting at 1 and containing no gaps. This may differ from scheduled_stop_sequence.",
       "constraints": {
-        "required": true
+        "required": true,
+        "minimum": 1
       }
     },
     {
