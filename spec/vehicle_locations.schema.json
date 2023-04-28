@@ -38,12 +38,20 @@
       "description": "Identifies the trip performed."
     },
     {
-      "name": "stop_sequence",
+      "name": "trip_stop_sequence",
       "type": "integer",
-      "title": "positive integer referencing GTFS stop_times.stop_sequence",
-      "description": "Ordered stop the vehicle is approaching or serving on a particular trip. References GTFS",
+      "description": "The temporal sequence of the stop visit that the vehicle is serving or approaching within its performed trip, starting at 1 and containing no gaps. This may differ from scheduled_stop_sequence.",
       "constraints": {
         "required": true
+      }
+    },
+    {
+      "name": "scheduled_stop_sequence",
+      "type": "integer",
+      "title": "positive integer referencing GTFS stop_times.stop_sequence",
+      "description": "The order in which the stop being served or approached is scheduled to be served within its trip. References GTFS.",
+      "constraints": {
+        "minimum": 0
       }
     },
     {
