@@ -78,10 +78,18 @@
       "description": "Identifies the unique stop-path for a trip, may be distinct from GTFS shapes.shape_id"
     },
     {
-      "name": "stop_sequence",
+      "name": "trip_stop_sequence",
+      "type": "integer",
+      "description": "The temporal sequence of this transaction's enclosing stop visit, if any, within its performed trip, starting at 1 and containing no gaps. This may differ from scheduled_stop_sequence.",
+      "constraints": {
+        "minimum":1
+      }
+    },
+    {
+      "name": "scheduled_stop_sequence",
       "type": "integer",
       "title": "positive integer referencing GTFS stop_times.stop_sequence",
-      "description": "Ordered stop the vehicle is serving on a particular trip. May be null if the fare collection device is NOT located on a vehicle. May be null if on a vehicle but stop-level data is unavailable, in which case the data would be associated with the vehicle and/or trip. References GTFS",
+      "description": "The order in which the current stop, if any, is scheduled to be served within its trip. References GTFS.",
       "constraints": {
         "minimum": 0
       }
