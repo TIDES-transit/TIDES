@@ -2,8 +2,7 @@
   "primaryKey": [
     "service_date",
     "trip_id_performed",
-    "stop_sequence",
-    "vehicle_id"
+    "trip_stop_sequence"
   ],
   "missingValues": [
     "NA",
@@ -55,10 +54,7 @@
       "name": "vehicle_id",
       "type": "string",
       "title": "ID referencing vehicles.vehicle_id",
-      "description": "Identifies the vehicle.",
-      "constraints": {
-        "required": true
-      }
+      "description": "Identifies the vehicle."
     },
     {
       "name": "dwell",
