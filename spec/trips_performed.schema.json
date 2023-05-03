@@ -20,7 +20,7 @@
     {
       "name": "trip_id_performed",
       "type": "string",
-      "description": "Uniquely identifies the trip performed. If this trip was published in GTFS Schedule, this value should be consistent with the GTFS `trip_id`.",
+      "description": "Uniquely identifies the trip performed.",
       "constraints": {
         "required": true
       }
@@ -38,7 +38,7 @@
       "name": "trip_id_scheduled",
       "type": "string",
       "title": "ID referencing GTFS trips.trip_id",
-      "description": "Identifies the scheduled trip associated with the trip performed. One scheduled trip may be associated with multiple operated trips, or an operated trip may not be associated with a scheduled trip. References GTFS.  If this trip was published in GTFS Schedule, this value should be consistent with the GTFS `trip_id`."
+      "description": "Identifies the scheduled trip associated with the trip performed. One scheduled trip may be associated with multiple operated trips, or an operated trip may not be associated with a scheduled trip. References GTFS.  If this trip was published in GTFS Schedule, this value should be consistent with the GTFS `trip_id`.  If this trip was not scheduled, the value should be Null."
     },
     {
       "name": "route_id",
