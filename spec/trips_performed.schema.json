@@ -20,7 +20,7 @@
     {
       "name": "trip_id_performed",
       "type": "string",
-      "description": "Identifies the trip performed.",
+      "description": "Uniquely identifies the trip performed. If this trip was published in GTFS Schedule, this value should be consistent with the GTFS `trip_id",
       "constraints": {
         "required": true
       }
