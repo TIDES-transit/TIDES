@@ -120,7 +120,7 @@
         },
         "examples": [
           "{\n  \"contributors\": [\n    {\n      \"name\": \"Joe Bloggs\"\n    }\n  ]\n}\n",
-          "{\n  \"contributors\": [\n    {\n      \"name\": \"Joe Bloggs\",\n      \"email\": \"joe@example.com\",\n      \"role\": \"author\"\n    }\n  ]\n}\n"
+          "{\n  \"contributors\": [\n    {\n      \"name\": \"Miriam Coates\",\n      \"email\": \"joe@example.com\",\n      \"role\": \"author\"\n    }\n  ]\n}\n"
         ]
       },
       "maintainers": {
@@ -169,7 +169,7 @@
         },
         "examples": [
           "{\n  \"maintainers\": [\n    {\n      \"name\": \"Joe Bloggs\"\n    }\n  ]\n}\n",
-          "{\n  \"maintainers\": [\n    {\n      \"name\": \"Joe Bloggs\",\n      \"email\": \"joe@example.com\",\n      \"role\": \"author\"\n    }\n  ]\n}\n"
+          "{\n  \"maintainers\": [\n    {\n      \"name\": \"Miriam Coates\",\n      \"email\": \"joe@example.com\",\n      \"role\": \"author\"\n    }\n  ]\n}\n"
         ]
       },
       "licenses": {
