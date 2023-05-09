@@ -81,7 +81,7 @@
       "name": "trip_stop_sequence",
       "type": "integer",
       "title": "Positive integer referencing stop_visits.trip_stop_sequence"
-      "description": "Scheduled order of stops for a particular trip. The values must increase along the trip but do not need to be consecutive. References GTFS",
+      "description": "The actual order of stops visited within a performed trip. The values must start at 1 and must be consecutive along the trip.<br/> Example: A bus departs the first stop and detours around the second and third scheduled stops, visiting one unscheduled stop and resuming regular service at the 4th scheduled stop. The `scheduled_stop_sequence` is [1, null, 4], and the `trip_stop_sequence` is [1, 2, 3]."
       "constraints": {
         "minimum":1
       }
@@ -90,7 +90,7 @@
       "name": "scheduled_stop_sequence",
       "type": "integer",
       "title": "positive integer referencing GTFS stop_times.stop_sequence",
-      "description": "The order in which the current stop, if any, is scheduled to be served within its trip. References GTFS.",
+      "description": "Scheduled order of stops for a particular trip. The values must increase along the trip but do not need to be consecutive. References GTFS",
       "constraints": {
         "minimum": 0
       }
