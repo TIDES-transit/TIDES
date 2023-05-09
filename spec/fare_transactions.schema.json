@@ -80,6 +80,7 @@
     {
       "name": "trip_stop_sequence",
       "type": "integer",
+      "title": "Positive integer referencing stop_visits.trip_stop_sequence"
       "description": "The temporal sequence of this transaction's enclosing stop visit, if any, within its performed trip, starting at 1 and containing no gaps. This may differ from scheduled_stop_sequence.",
       "constraints": {
         "minimum":1
