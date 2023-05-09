@@ -308,7 +308,7 @@
                   "type": "string",
                   "pattern": "^(?=^[^./~])(^((?!\\.{2}).)*$).*$",
                   "examples": [
-                    "{\n  \"path\": \"/fare_transactions.csv\"\n}\n",
+                    "{\n  \"path\": \"/fare_transactions.schema.json\"\n}\n",
                     "{\n  \"path\": \"https://github.com/TIDES-transit/TIDES/blob/main/spec/train_cars.schema.json\"\n}\n"
                   ]
                 }
