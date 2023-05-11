@@ -87,4 +87,4 @@ graph LR;
 
     `trip_id_scheduled` in TIDES and `trip_id` in GTFS Schedule should be consistent when a performed trip exists in the published GTFS Schedule. 
 
-    If a trip does not exist in the published GTFS Schedule, `trip_id` values in TIDES do not have any assumed relationship. 
+    If a trip does not exist in the published GTFS Schedule, `trip_id_scheduled` values in TIDES do not have any assumed relationship with GTFS. 
