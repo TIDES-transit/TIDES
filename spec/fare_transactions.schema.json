@@ -153,10 +153,7 @@
     {
       "name": "fare_capped",
       "type": "boolean",
-      "description": "Indicates if fare capping is in effect (fare capping options defined by transit agency).",
-      "constraints": {
-        "required": true
-      }
+      "description": "Indicates if fare capping is in effect (fare capping options defined by transit agency)."
     },
     {
       "name": "token_id",
