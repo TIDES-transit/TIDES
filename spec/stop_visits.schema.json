@@ -30,7 +30,7 @@
     {
       "name": "trip_stop_sequence",
       "type": "integer",
-      "description": "The actual order of stops visited within a performed trip. The values must start at 1 and must be consecutive along the trip.<br/> Example: A bus departs the first stop and detours around the second and third scheduled stops, visiting one unscheduled stop and resuming regular service at the 4th scheduled stop. The `scheduled_stop_sequence` is [1, null, 4], and the `trip_stop_sequence` is [1, 2, 3]."
+      "description": "The actual order of stops visited within a performed trip. The values must start at 1 and must be consecutive along the trip.<br/> Example: A bus departs the first stop and detours around the second and third scheduled stops, visiting one unscheduled stop and resuming regular service at the 4th scheduled stop. The `scheduled_stop_sequence` is [1, null, 4], and the `trip_stop_sequence` is [1, 2, 3].",
       "constraints": {
         "required": true,
         "minimum": 1
