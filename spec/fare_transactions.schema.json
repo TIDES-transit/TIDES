@@ -187,7 +187,7 @@
       }
     },
     {
-      "fields": "stop_sequence",
+      "fields": "scheduled_stop_sequence",
       "reference": {
         "resource": "stop_times",
         "fields": "stop_sequence"
