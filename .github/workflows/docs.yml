@@ -6,7 +6,7 @@ on:
   create:
   push:
     branches:
-    - master
+    - main
 
 
 jobs:
