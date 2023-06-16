@@ -1,11 +1,10 @@
 name: Build and Publish Documentation
 
 on:
-  workflow_run:
-    workflows: ["Clean Docs for Deleted References"]
-    branches: [main]
-    types: 
-      - completed
+  - push
+  - pull_request
+  - workflow_dispatch
+  - create
 
 
 jobs:

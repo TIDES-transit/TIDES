@@ -1,9 +1,6 @@
 name: Clean Docs for Deleted References
 on:
-  - push
-  - pull_request
-  - workflow_dispatch
-  - create
+  delete:
 
 jobs:
   clean:
