@@ -1,10 +1,12 @@
 name: Build and Publish Documentation
 
 on:
-  - push
-  - pull_request
-  - workflow_dispatch
-  - create
+  pull_request:
+  workflow_dispatch:
+  create:
+  push:
+    branches:
+    - master
 
 
 jobs:
