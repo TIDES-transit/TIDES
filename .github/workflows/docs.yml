@@ -1,16 +1,34 @@
-name: Build docs on push
+name: Build and Publish Documentation
 
-on: [push]
+on:
+  pull_request:
+  workflow_dispatch:
+  create:
+  push:
+    branches:
+    - main
+
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout Repo
+      uses: actions/checkout@v3
       with:
         fetch-depth: 0
-    - name: Document which branch
-      run: echo ${{ github.ref_name }}
+    - name: Set github reference as Slug environment variable
+      run: |
+        echo "Slug=$(echo "${{ github.head_ref }}" | sed "s/\//\-/g")" >> "$GITHUB_ENV"
+    - name: If no github.head_ref, use last chunk of github.ref as Slug
+      if: github.head_ref == ''
+      run: | 
+        IFS="\/";
+        read -a strarr <<< "${{ github.ref }}"; 
+        last_ref="${strarr[${#strarr[*]}-1]}";
+        echo "Slug=$(echo $last_ref)" >> "$GITHUB_ENV"
+    - name: Document which reference
+      run: echo "Running for reference ${{ env.Slug }}"
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
@@ -26,4 +44,6 @@ jobs:
         git config --local user.name "github-actions[bot]"
     - name: Build docs
       run: |
-        mike deploy --push --rebase ${{ github.ref_name }}
+        git fetch origin gh-pages --depth=1
+        mike deploy --push --rebase ${{ env.Slug }}
+        echo "Documentation available at: http://tides-transit.github.io/TIDES/${{ env.Slug }}"
