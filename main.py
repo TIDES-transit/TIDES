@@ -37,7 +37,8 @@ def define_env(env):
 
         args:
             filename: file to include, relative to the top directory of the documentation project.
-            downshift_h1: If true, will downshift headings by 1 if h1 heading found. Defaults to True.
+            downshift_h1: If true, will downshift headings by 1 if h1 heading found.
+                Defaults to True.
             start_line (Optional): if included, will start including the file from this line
                 (indexed to 0)
             end_line (Optional): if included, will stop including at this line (indexed to 0)
