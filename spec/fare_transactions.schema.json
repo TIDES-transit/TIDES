@@ -16,7 +16,7 @@
       }
     },
     {
-      "name": "date",
+      "name": "service_date",
       "type": "date",
       "description": "Service date. References GTFS",
       "constraints": {
@@ -24,9 +24,9 @@
       }
     },
     {
-      "name": "timestamp",
-      "type": "time",
-      "description": "Recorded event time, including for transactions that may be aggregated values associated with a trip or vehicle.",
+      "name": "event_timestamp",
+      "type": "datetime",
+      "description": "Recorded event timestamp, including for transactions that may be aggregated values associated with a trip or vehicle.",
       "constraints": {
         "required": true
       }
@@ -43,10 +43,7 @@
       "name": "currency_type",
       "type": "string",
       "rdfType": "https://schema.org/currency",
-      "description": "Currency used for the transaction. References GTFS",
-      "constraints": {
-        "required": true
-      }
+      "description": "Currency used for the transaction. References GTFS"
     },
     {
       "name": "fare_action",
@@ -73,6 +70,12 @@
       "type": "string",
       "title": "ID referencing trips_performed.trip_id_performed",
       "description": "Identifies the trip performed. May be null if the fare collection device is NOT located on a vehicle. May be null if on a vehicle but trip-level data is unavailable, in which case the data would be associated with the vehicle."
+    },
+    {
+      "name": "pattern_id",
+      "type": "string",
+      "title": "unique identifier for the route-pattern",
+      "description": "Identifies the unique stop-path for a trip, may be distinct from GTFS shapes.shape_id"
     },
     {
       "name": "stop_sequence",
@@ -108,15 +111,15 @@
       "description": "Identifies the stop. References GTFS"
     },
     {
-      "name": "group_size",
+      "name": "num_riders",
       "type": "integer",
-      "description": "The number of customers included in the transaction.",
+      "description": "The number of riders included in the transaction.",
       "constraints": {
         "minimum": 0
       }
     },
     {
-      "name": "media_type",
+      "name": "fare_media_id",
       "type": "string",
       "description": "Indicates the fare medium that was used for the transaction.",
       "constraints": {
@@ -150,20 +153,12 @@
     {
       "name": "fare_capped",
       "type": "boolean",
-      "description": "Indicates if fare capping is in effect (fare capping options defined by transit agency).",
-      "constraints": {
-        "required": true
-      }
+      "description": "Indicates if fare capping is in effect (fare capping options defined by transit agency)."
     },
     {
-      "name": "fare_media_id",
+      "name": "token_id",
       "type": "string",
-      "description": "Identifies the individual fare medium used for the transaction. For example, the fare card ID."
-    },
-    {
-      "name": "fare_media_id_purchased",
-      "type": "string",
-      "description": "Identifies the individual fare medium purchased in the transaction. For example, the fare card ID."
+      "description": "Identifies the individual fare instrument used for the transaction. For example, the fare card ID."
     },
     {
       "name": "balance",
@@ -171,7 +166,7 @@
       "description": "Stored value remaining on an account after the transaction is made."
     }
   ],
-  "foreignKeys": [
+  "foreignReferences": [
     {
       "fields": "trip_id_performed",
       "reference": {

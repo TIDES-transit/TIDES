@@ -16,17 +16,14 @@
       }
     },
     {
-      "name": "date",
+      "name": "service_date",
       "type": "date",
-      "description": "Service date. References GTFS",
-      "constraints": {
-        "required": true
-      }
+      "description": "Service date. References GTFS"
     },
     {
-      "name": "timestamp",
-      "type": "time",
-      "description": "Recorded event time.",
+      "name": "event_timestamp",
+      "type": "datetime",
+      "description": "Recorded event timestamp.",
       "constraints": {
         "required": true
       }
@@ -35,19 +32,13 @@
       "name": "trip_id_performed",
       "type": "string",
       "title": "ID referencing trips_performed.trip_id_performed",
-      "description": "Identifies the trip performed.",
-      "constraints": {
-        "required": true
-      }
+      "description": "Identifies the trip performed. If trips_performed table is used, this must be populated in order to link to it."
     },
     {
       "name": "stop_sequence",
       "type": "integer",
       "title": "positive integer referencing GTFS stop_times.stop_sequence",
-      "description": "Ordered stop the vehicle is approaching or serving on a particular trip. References GTFS",
-      "constraints": {
-        "required": true
-      }
+      "description": "Ordered stop the vehicle is approaching or serving on a particular trip. References GTFS"
     },
     {
       "name": "vehicle_id",
@@ -63,6 +54,12 @@
       "type": "string",
       "title": "ID references devices.device_id",
       "description": "Identifies the device that recorded the vehicle location. May be null if only a single device is reporting vehicle location and the device_id is not distinct from vehicle_id."
+    },
+    {
+      "name": "pattern_id",
+      "type": "string",
+      "title": "unique identifier for the route-pattern",
+      "description": "Identifies the unique stop-path for a trip, may be distinct from GTFS shapes.shape_id"
     },
     {
       "name": "stop_id",
@@ -131,7 +128,7 @@
     },
     {
       "name": "odometer",
-      "type": "integer",
+      "type": "number",
       "description": "Odometer value, in meters. References GTFS-Realtime",
       "constraints": {
         "minimum": 0
@@ -177,7 +174,7 @@
       }
     }
   ],
-  "foreignKeys": [
+  "foreignReferences": [
     {
       "fields": "trip_id_performed",
       "reference": {
