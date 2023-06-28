@@ -20,7 +20,7 @@
     {
       "name": "trip_id_performed",
       "type": "string",
-      "description": "Uniquely identifies the trip performed.",
+      "description": "Uniquely identifies the trip performed. It must be unique for a service_date (and it can optionally be unique across all time). It does not have to equal trip_id_scheduled.",
       "constraints": {
         "required": true
       }
