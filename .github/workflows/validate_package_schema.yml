@@ -13,11 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Download schema
+        run: |
+          curl --request GET "https://specs.frictionlessdata.io/schemas/data-package.json" -o data-package.json
       - name: Validate Data Package schema
         uses: SorenSpicknall/json-schema-validator@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          json_schema: spec/tides-data-package.json
+          json_schema: data-package.json
           json_path_pattern: ^spec/tides\.spec\.json$
           send_comment: true
           clear_comments: true
