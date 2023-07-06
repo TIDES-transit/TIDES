@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Validate Data Package schema
-        uses: SorenSpicknall/json-schema-validator
+        uses: SorenSpicknall/json-schema-validator@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           json_schema: "https://specs.frictionlessdata.io/schemas/data-package.json"
