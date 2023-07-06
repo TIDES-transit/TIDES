@@ -4,6 +4,7 @@
   "name": "tides-dataset",
   "resources": [
     {
+      "title": "Vehicle Locations",
       "name": "vehicle_locations",
       "description": "Timestamped vehicle locations and speeds.",
       "path": "vehicle_locations.csv",
@@ -11,6 +12,7 @@
       "required": false
     },
     {
+      "title": "Passenger Events",
       "name": "passenger_events",
       "description": "Timestamped passenger-related events, including boardings and alightings.",
       "path": "passenger_events.csv",
@@ -18,6 +20,7 @@
       "required": false
     },
     {
+      "title": "Fare Transactions",
       "name": "fare_transactions",
       "description": "Timestamped fare transaction, associated with devices.",
       "path": "fare_transactions.csv",
@@ -25,6 +28,7 @@
       "required": false
     },
     {
+      "title": "Stop Visits",
       "name": "stop_visits",
       "description": "Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date.",
       "path": "Stop_visits.csv",
@@ -32,6 +36,7 @@
       "required": false
     },
     {
+      "title": "Trips Performed",
       "name": "trips_performed",
       "description": "Trips performed for each service date.",
       "path": "trips_performed.csv",
@@ -39,6 +44,7 @@
       "required": false
     },
     {
+      "title": "Station Activities",
       "name": "station_activities",
       "description": "Summarized transactions, entries, and exits by stop or station and time period for each service date (for events not associated with a trip).",
       "path": "station_activities.csv",
@@ -46,6 +52,7 @@
       "required": false
     },
     {
+      "title": "Devices",
       "name": "devices",
       "description": "Measurement devices, such as AVL, APC, and AFC devices, associated with vehicles or stops or stations.",
       "path": "devices.csv",
@@ -53,6 +60,7 @@
       "required": false
     },
     {
+      "title": "Train Cars",
       "name": "train_cars",
       "description": "Assets that comprise vehicles, such as train cars, with descriptive information.",
       "path": "train_cars.csv",
@@ -60,6 +68,7 @@
       "required": false
     },
     {
+      "title": "Vehicle Train Cars",
       "name": "vehicle_train_cars",
       "description": "Relationships between assets and vehicles.",
       "path": "vehicle_train_cars.csv",
@@ -67,6 +76,7 @@
       "required": false
     },
     {
+      "title": "Vehicles",
       "name": "vehicles",
       "description": "Vehicles, including buses and train consists, with descriptive information.",
       "path": "vehicles.csv",
@@ -74,6 +84,7 @@
       "required": false
     },
     {
+      "title": "Operators",
       "name": "operators",
       "description": "Personnel who operate vehicles",
       "path": "operators.csv",
