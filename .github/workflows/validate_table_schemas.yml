@@ -18,7 +18,7 @@ jobs:
         run: |
           curl --request GET "https://specs.frictionlessdata.io/schemas/table-schema.json" -o table-schema.json
       - name: Validate Table schema
-        uses: snapcart/json-schema-validator@v1.0.0
+        uses: SorenSpicknall/json-schema-validator
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           json_schema: table-schema.json
