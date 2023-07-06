@@ -1,6 +1,7 @@
 {
   "profile": "tides-data-package",
   "profile_version": 0,
+  "title": "Tides Dataset",
   "name": "tides-dataset",
   "resources": [
     {
