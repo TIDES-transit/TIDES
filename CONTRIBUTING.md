@@ -24,9 +24,55 @@ By making any contribution to the projects, contributors self-certify to the [Co
 1. Make sure you have a [GitHub](https://github.com/) account.  
 2. Make sure you have [git](https://git-scm.com/downloads), a terminal (e.g. Mac Terminal, CygWin, etc.), and a text editor installed on your local machine.  Optionally, you will likely find it easier to use [GitHub Desktop](https://desktop.github.com/), an IDE instead of a simple text editor like [VSCode](https://code.visualstudio.com/), [Eclipse](https://www.eclipse.org/), [Sublime Text](https://www.sublimetext.com/), etc.  
 3. [Fork the repository](https://github.com/TIDES-transit/TIDES/fork) into your own GitHub account and [clone it locally](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).  
-4. [Create a branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-and-deleting-branches-within-your-repository) to work on a new issue (or checkout an existing one where the issue is being worked on).  
-5. Install [pre-commit](https://pre-commit.com/) so you can check your code and text formatting.
-6. \[Optional\] [Install act](https://github.com/nektos/act) to run github actions locally.  
+4. Install development requirements packages `pip install -r requirements.txt`
+
+### Contribution Workflow
+
+1. [Create a branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-and-deleting-branches-within-your-repository) to work on a new issue (or checkout an existing one where the issue is being worked on).  
+2. Make your changes.
+3. Run `pre-commit run --all` to check and fix formatting.
+4. Validate schemas if you have changed them using either [act](https://github.com/nektos/act) or  [frictionless framework](https://framework.frictionlessdata.io/).
+5. [Commit](#commits) your work in `git`
+6. `push` your changes to Github and submit a [`pull request`](#pull-requests)
+
+!!! bug
+
+    Right now some github actions are broken due to some dependencies issues, so please validate changes to schemas using the [frictionless framework](https://framework.frictionlessdata.io/)
+
+??? tip "Manually Validating TIDES Schema Files with Frictionless"
+
+    === "CLI"
+
+        ```sh
+        frictionless validate spec/devices.schema.json
+        frictionless validate spec/fare_transactions.schema.json
+        frictionless validate spec/operators.schema.json
+        frictionless validate spec/passenger_events.schema.json
+        frictionless validate spec/station_activities.schema.json
+        frictionless validate spec/stop_visits.schema.json
+        frictionless validate spec/train_cars.schema.json
+        frictionless validate spec/trips_performed.schema.json
+        frictionless validate spec/vehicle_locations.schema.json
+        frictionless validate spec/vehicle_train_cars.schema.json
+        frictionless validate spec/vehicles.schema.json
+        ```
+
+    === "python"
+
+        ```python
+        import glob
+        from pprint import pprint
+        from frictionless import validate
+
+        schema_paths = glob.glob("spec/**.schema.json")
+        for p in schema_paths:
+            report = validate(p)
+            if not report['valid']:
+                print(f"!!! Invalid:{p}")
+                pprint(report)
+            else: 
+                print(f"Valid:{p}")
+        ```
 
 ### Issues
 
