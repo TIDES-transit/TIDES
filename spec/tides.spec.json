@@ -75,7 +75,7 @@
     },
     {
       "name": "operators",
-      "description": "Personnel who operate vehicles.",
+      "description": "Personnel who operate vehicles",
       "path": "operators.csv",
       "schema": "operators.schema.json",
       "required": false
