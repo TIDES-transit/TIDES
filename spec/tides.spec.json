@@ -12,7 +12,7 @@
     },
     {
       "name": "passenger_events",
-      "description": "Timestamped passenger-related events, including boardings and alightings.",
+      "description": "Timestamped passenger-related events, including boardings and alightings",
       "path": "passenger_events.csv",
       "schema": "passenger_events.schema.json",
       "required": false
