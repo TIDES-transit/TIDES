@@ -14,8 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Validate Data Package schema
-        uses: GrantBirki/json-yaml-validate@v1.5.0
-        with:
-          json_schema: spec/tides-data-package.json
-          base_dir: spec
-          json_exclude_regex: .*\.schema\.json$
+        uses: docker://orrosenblatt/validate-json-action:latest
+        env:
+          INPUT_SCHEMA: spec/tides-data-package.json
+          INPUT_JSONS: spec/tides.spec.json
