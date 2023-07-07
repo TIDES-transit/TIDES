@@ -17,7 +17,7 @@ jobs:
         uses: TIDES-transit/json-schema-validator@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          json_schema: /spec/tides-data-package.json
+          json_schema: spec/tides-data-package.json
           json_path_pattern: ^spec/tides\.spec\.json$
           send_comment: true
           clear_comments: true
