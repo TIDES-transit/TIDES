@@ -14,10 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Validate Data Package schema
-        uses: SorenSpicknall/json-schema-validator@master
+        uses: GrantBirki/json-yaml-validate@v1.5.0
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          json_schema: spec/tides-data-package.json
-          json_path_pattern: ^spec/tides\.spec\.json$
-          send_comment: false
-          clear_comments: false
+          json_schema: ./spec/tides-data-package.json
+          base_dir: ./spec
+          json_exclude_regex: .*\.schema\.json$
