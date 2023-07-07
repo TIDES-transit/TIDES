@@ -19,5 +19,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           json_schema: spec/tides-data-package.json
           json_path_pattern: ^spec/tides\.spec\.json$
-          send_comment: true
-          clear_comments: true
+          send_comment: false
+          clear_comments: false
