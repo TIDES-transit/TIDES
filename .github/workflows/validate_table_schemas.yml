@@ -14,11 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Download schema
+        run: |
+          curl --request GET "https://specs.frictionlessdata.io/schemas/table-schema.json" -o table-schema.json
       - name: Validate Table schema
-        uses: GrantBirki/json-yaml-validate@v1.5.0
+        uses: TIDES-transit/json-schema-validator@v1.0.0
         with:
-          mode: "warn"
-          comment: "true"
-          json_schema: spec/table-schema.json
-          base_dir: spec
-          json_exclude_regex: .*\.spec\.json$
+          token: ${{ secrets.GITHUB_TOKEN }}
+          json_schema: table-schema.json
+          json_path_pattern: ^spec/.*\.schema\.json$
+          send_comment: false
+          clear_comments: false

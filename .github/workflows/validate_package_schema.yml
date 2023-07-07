@@ -14,10 +14,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Validate Data Package schema
-        uses: GrantBirki/json-yaml-validate@v1.5.0
+        uses: TIDES-transit/json-schema-validator@master
         with:
-          mode: "warn"
-          comment: "true"
-          json_schema: spec/tides-data-package.json
-          base_dir: spec
-          json_exclude_regex: .*\.schema\.json$
+          token: ${{ secrets.GITHUB_TOKEN }}
+          json_schema: "https://specs.frictionlessdata.io/schemas/data-package.json"
+          json_path_pattern: ^spec/tides\.spec\.json$
+          send_comment: true
+          clear_comments: true
