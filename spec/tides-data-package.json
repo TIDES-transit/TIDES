@@ -1,5 +1,5 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "TIDES Data Package",
     "description": "TIDES Data Package is a simple specification for data access and delivery of tabular TIDES transit data.",
     "type": "object",
