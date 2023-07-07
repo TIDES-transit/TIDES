@@ -16,6 +16,6 @@ jobs:
       - name: Validate Data Package schema
         uses: GrantBirki/json-yaml-validate@v1.5.0
         with:
-          json_schema: ./spec/tides-data-package.json
-          base_dir: ./spec
+          json_schema: spec/tides-data-package.json
+          base_dir: spec
           json_exclude_regex: .*\.schema\.json$
