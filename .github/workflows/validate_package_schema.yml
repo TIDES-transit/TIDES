@@ -19,3 +19,5 @@ jobs:
           json_schema: spec/tides-data-package.json
           base_dir: spec
           json_exclude_regex: .*\.schema\.json$
+          mode: warn
+          comment: true
