@@ -14,11 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Download schema
-        run: |
-          curl --request GET "https://specs.frictionlessdata.io/schemas/table-schema.json" -o table-schema.json
       - name: Validate Table schema
-        uses: docker://orrosenblatt/validate-json-action:latest
-        env:
-          INPUT_SCHEMA: table-schema.json
-          INPUT_JSONS: spec/devices.schema.json,spec/fare_transactions.schema.json,spec/operators.schema.json,spec/passenger_events.schema.json,spec/station_activities.schema.json,spec/stop_visits.schema.json,spec/train_cars.schema.json,spec/trips_performed.schema.json,spec/vehicle_locations.schema.json,spec/vehicle_train_cars.schema.jsonspec/vehicles.schema.json
+        uses: GrantBirki/json-yaml-validate@v1.5.0
+        with:
+          json_schema: spec/table-schema.json
+          base_dir: spec
+          json_exclude_regex: .*\.spec\.json$
