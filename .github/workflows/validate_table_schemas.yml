@@ -17,8 +17,8 @@ jobs:
       - name: Validate Table schema
         uses: GrantBirki/json-yaml-validate@v1.5.0
         with:
+          mode: "warn"
+          comment: "true"
           json_schema: spec/table-schema.json
           base_dir: spec
           json_exclude_regex: .*\.spec\.json$
-          mode: "warn"
-          comment: "true"
