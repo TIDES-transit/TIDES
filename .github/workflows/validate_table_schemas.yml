@@ -20,5 +20,5 @@ jobs:
           json_schema: spec/table-schema.json
           base_dir: spec
           json_exclude_regex: .*\.spec\.json$
-          mode: warn
-          comment: true
+          mode: "warn"
+          comment: "true"
