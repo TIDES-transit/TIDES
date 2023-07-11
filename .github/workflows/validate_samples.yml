@@ -18,5 +18,55 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: 
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - name: Install Frictionless
         run: pip install frictionless[excel,json]>=5.0.0
+      - name: Find Sample Folders
+        id: sample_folders
+        run: |
+          pwd
+          samples=$(find ./samples -type d -name 'TIDES')
+          echo "::set-output name=samples::$samples"
+      - name: Validate Sample Data
+        id: validation
+        run: |
+          samples=(${{ steps.sample_folders.outputs.samples }})
+          results=""
+          for sample in "${samples[@]}"; do
+            result=$(frictionless validate "$sample/datapackage.json" --json)
+            results+="$result\n"
+          done
+          echo "::set-output name=results::$results"
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const samples = '${{ steps.sample_folders.outputs.samples }}'.trim().split('\n');
+            const results = '${{ steps.validation.outputs.results }}'.trim().split('\n');
+            let comment = `**Data Validation Report**\n\n`;
+            comment += '| Sample | Status |\n';
+            comment += '| ------ | ------ |\n';
+            for (let i = 0; i < samples.length; i++) {
+              const sample = samples[i];
+              const result = JSON.parse(results[i]);
+              let status = '';
+              if (result.valid) {
+                status = '![passing](https://via.placeholder.com/20/00ff00/000000?text=+)';
+              } else if (result.stats.errorCount > 0) {
+                status = '![failing](https://via.placeholder.com/20/ff0000/000000?text=+)';
+              } else {
+                status = '![warning](https://via.placeholder.com/20/ffff00/000000?text=+)';
+              }
+              comment += `| ${sample} | ${status} |\n`;
+            }
+            github.issues.createComment({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: comment
+                });
