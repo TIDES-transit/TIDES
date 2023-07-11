@@ -1,2 +1,3 @@
-pre-commit
 -r docs/requirements.txt
+pre-commit
+frictionless

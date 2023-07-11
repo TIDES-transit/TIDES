@@ -43,20 +43,22 @@ watch:
   - README.md
 
 extra_javascript:
-  - https://unpkg.com/mermaid/dist/mermaid.min.js
+  - https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js
 
 extra_css:
   - https://use.fontawesome.com/releases/v5.13.0/css/all.css
 
 markdown_extensions:
   - admonition
+  - pymdownx.details
   - codehilite:
       linenums: true
   - meta
   - pymdownx.inlinehilite
   - pymdownx.tasklist:
       custom_checkbox: true
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true 
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid

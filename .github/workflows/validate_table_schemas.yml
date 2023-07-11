@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'spec/*.spec.json$'
+      - 'spec/*.schema.json'
       - '!spec/tides.spec.json'
 
 jobs:
@@ -14,11 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Download schema
+        run: |
+          curl --request GET "https://specs.frictionlessdata.io/schemas/table-schema.json" -o table-schema.json
       - name: Validate Table schema
         uses: snapcart/json-schema-validator@v1.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          json_schema: "https://specs.frictionlessdata.io/schemas/table-schema.json"
+          json_schema: table-schema.json
           json_path_pattern: ^spec/.*\.schema\.json$
-          send_comment: true
-          clear_comments: true
+          send_comment: false
+          clear_comments: false

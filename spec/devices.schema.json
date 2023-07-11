@@ -19,7 +19,7 @@
       "name": "stop_id",
       "title": "ID referencing GTFS stops.stop_id",
       "type": "string",
-      "description": "Identifies the stop at which the device is located. May be null if the device is on a vehicle. References GTFS"
+      "description": "Identifies the stop (or other location) at which the device is located. May be null if the device is on a vehicle. References GTFS"
     },
     {
       "name": "vehicle_id",
@@ -39,10 +39,12 @@
       "description": "Indicates the type of device.",
       "constraints": {
         "enum": [
-          "APC",
-          "AFC",
-          "AVL",
-          "Other"
+          "farebox",
+          "fare gate",
+          "fare vending machine",
+          "passenger counter",
+          "vehicle location",
+          "other"
         ]
       }
     },
@@ -57,7 +59,7 @@
       "description": "Model of the device as specified by the vendor."
     },
     {
-      "name": "location",
+      "name": "device_location",
       "type": "string",
       "description": "Indicates the location of a device on the vehicle or at a station. For example:\nFront door.\nBack door.\nEntrance (not located on a vehicle).\nExit (not located on a vehicle).\nEntrance/exit (not located on a vehicle).\nOther."
     }

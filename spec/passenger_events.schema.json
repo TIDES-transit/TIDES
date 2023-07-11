@@ -16,7 +16,7 @@
       }
     },
     {
-      "name": "date",
+      "name": "service_date",
       "type": "date",
       "description": "Service date. References GTFS",
       "constraints": {
@@ -24,7 +24,7 @@
       }
     },
     {
-      "name": "timestamp",
+      "name": "event_timestamp",
       "type": "datetime",
       "description": "Recorded event timestamp.",
       "constraints": {
@@ -35,10 +35,7 @@
       "name": "trip_id_performed",
       "type": "string",
       "title": "ID referencing trips_performed.trip_id_performed",
-      "description": "Identifies the trip performed.",
-      "constraints": {
-        "required": true
-      }
+      "description": "Identifies the trip performed. If trips_performed table is used, this must be populated in order to link to it."
     },
     {
       "name": "stop_sequence",
@@ -111,7 +108,7 @@
       "description": "Identifies the unique stop-path for a trip, may be distinct from GTFS shapes.shape_id"
     },
     {
-      "name": "count",
+      "name": "event_count",
       "type": "integer",
       "title": "Event count",
       "description": "Count for this event, e.g., 3 for a Passenger Boarding event with 3 boardings, default is  `1`",
