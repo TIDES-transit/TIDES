@@ -47,3 +47,17 @@ jobs:
         git fetch origin gh-pages --depth=1
         mike deploy --push --rebase ${{ env.Slug }}
         echo "Documentation available at: http://tides-transit.github.io/TIDES/${{ env.Slug }}"
+  comment:
+    runs-on: ubuntu-latest
+    if: ${{ github.context.event_name }} == "pull_request"
+    steps:
+      - uses: actions/github-script@v6.4.1
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Documentation available at: [`http://tides-transit.github.io/TIDES/${{ github.head_ref }}`](http://tides-transit.github.io/TIDES/${{ github.head_ref }})'
+            })
