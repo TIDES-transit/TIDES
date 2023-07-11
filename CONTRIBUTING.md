@@ -30,49 +30,9 @@ By making any contribution to the projects, contributors self-certify to the [Co
 
 1. [Create a branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-and-deleting-branches-within-your-repository) to work on a new issue (or checkout an existing one where the issue is being worked on).  
 2. Make your changes.
-3. Run `pre-commit run --all` to check and fix formatting.
-4. Validate schemas if you have changed them using either [act](https://github.com/nektos/act) or  [frictionless framework](https://framework.frictionlessdata.io/).
-5. [Commit](#commits) your work in `git`
-6. `push` your changes to Github and submit a [`pull request`](#pull-requests)
-
-!!! bug
-
-    Right now some github actions are broken due to some dependencies issues, so please validate changes to schemas using the [frictionless framework](https://framework.frictionlessdata.io/)
-
-??? tip "Manually Validating TIDES Schema Files with Frictionless"
-
-    === "CLI"
-
-        ```sh
-        frictionless validate spec/devices.schema.json
-        frictionless validate spec/fare_transactions.schema.json
-        frictionless validate spec/operators.schema.json
-        frictionless validate spec/passenger_events.schema.json
-        frictionless validate spec/station_activities.schema.json
-        frictionless validate spec/stop_visits.schema.json
-        frictionless validate spec/train_cars.schema.json
-        frictionless validate spec/trips_performed.schema.json
-        frictionless validate spec/vehicle_locations.schema.json
-        frictionless validate spec/vehicle_train_cars.schema.json
-        frictionless validate spec/vehicles.schema.json
-        ```
-
-    === "python"
-
-        ```python
-        import glob
-        from pprint import pprint
-        from frictionless import validate
-
-        schema_paths = glob.glob("spec/**.schema.json")
-        for p in schema_paths:
-            report = validate(p)
-            if not report['valid']:
-                print(f"!!! Invalid:{p}")
-                pprint(report)
-            else: 
-                print(f"Valid:{p}")
-        ```
+3. Run `./test` script to check and fix formatting, validate schemas, and build documentation locally to preview
+4. [Commit](#commits) your work in `git`
+5. `push` your changes to Github and submit a [`pull request`](#pull-requests)
 
 ### Issues
 
