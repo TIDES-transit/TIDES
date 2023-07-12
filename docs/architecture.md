@@ -37,12 +37,24 @@ graph LR;
     vehicles  --- |vehicle_id| devices
     vehicles --> |vehicle_id|trips_performed
     operators[/operators/] -.-> |operator_id| trips_performed
-    stop_times.txt --> |stop_id,stop_sequence| stop_visits
+    stop_times.txt --> |"
+        stop_times.txt: stop_id,stop_sequence
+        stop_visits: stop_id,scheduled_stop_sequence
+    "| stop_visits
     stop_times.txt --> |trips.txt| trips_performed
     stops.txt --> |stop_id|station_activities
-    stop_times.txt --> |stop_id,stop_sequence| vehicle_locations
-    stop_times.txt --> |stop_id,stop_sequence| passenger_events
-    stop_times.txt --> |stop_id,stop_sequence| fare_transactions
+    stop_times.txt --> |"
+        stop_times.txt: stop_id,stop_sequence
+        vehicle_locations: stop_id,scheduled_stop_sequence
+    "| vehicle_locations
+    stop_times.txt --> |"
+        stop_times.txt: stop_id,stop_sequence
+        passenger_events: stop_id,scheduled_stop_sequence
+    "| passenger_events
+    stop_times.txt --> |"
+        stop_times.txt: stop_id,stop_sequence
+        fare_transactions: stop_id,scheduled_stop_sequence
+    "| fare_transactions
     subgraph eventf [Event Data]
         vehicle_locations
         passenger_events
