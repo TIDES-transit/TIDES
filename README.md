@@ -9,8 +9,8 @@ This repository provides data schemas and tools to support the access, managemen
 The TIDES specification is maintained in the `/spec` sub-directory as a series of JSON tables compatible with the [frictionless data](https://specs.frictionlessdata.io/table-schema/) table schema and [data package](https://specs.frictionlessdata.io/data-package) standards.
 Human-friendlier documentation is auto-generated and available at:
 
-- [Architecture](architecture.md)
-- [Table Schemas](tables.md)
+- [Architecture](https://tides-transit.github.io/TIDES/main/architecture)
+- [Table Schemas](https://tides-transit.github.io/TIDES/main/tables)
 
 ## Example Data
 
@@ -45,7 +45,7 @@ frictionless validate vehicles.csv --schema https://raw.githubusercontent.com/TI
 
 ## Contributing to TIDES
 
-Those who want to help with the development of the TIDES specification should review the guidance in <CONTRIBUTING.md>.
+Those who want to help with the development of the TIDES specification should review the guidance in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Issues
 

@@ -28,7 +28,7 @@
       }
     },
     {
-      "name": "order",
+      "name": "train_car_order",
       "type": "integer",
       "description": "The assigned order of the train car or asset within the vehicle.",
       "constraints": {
@@ -41,7 +41,7 @@
       "description": "Identifies an operator (person). If possible, this should match other internal agency operator IDs."
     }
   ],
-  "foreignKeys": [
+  "foreignReferences": [
     {
       "fields": "vehicle_id",
       "reference": {

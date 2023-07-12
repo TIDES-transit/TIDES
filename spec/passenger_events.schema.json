@@ -16,7 +16,7 @@
       }
     },
     {
-      "name": "date",
+      "name": "service_date",
       "type": "date",
       "description": "Service date. References GTFS",
       "constraints": {
@@ -24,9 +24,9 @@
       }
     },
     {
-      "name": "timestamp",
-      "type": "time",
-      "description": "Recorded event time.",
+      "name": "event_timestamp",
+      "type": "datetime",
+      "description": "Recorded event timestamp.",
       "constraints": {
         "required": true
       }
@@ -35,10 +35,7 @@
       "name": "trip_id_performed",
       "type": "string",
       "title": "ID referencing trips_performed.trip_id_performed",
-      "description": "Identifies the trip performed.",
-      "constraints": {
-        "required": true
-      }
+      "description": "Identifies the trip performed. If trips_performed table is used, this must be populated in order to link to it."
     },
     {
       "name": "stop_sequence",
@@ -103,9 +100,24 @@
       "type": "string",
       "title": "ID referencing GTFS stops.stop_id",
       "description": "Identifies the stop the vehicle is serving. References GTFS"
+    },
+    {
+      "name": "pattern_id",
+      "type": "string",
+      "title": "unique identifier for the route-pattern",
+      "description": "Identifies the unique stop-path for a trip, may be distinct from GTFS shapes.shape_id"
+    },
+    {
+      "name": "event_count",
+      "type": "integer",
+      "title": "Event count",
+      "description": "Count for this event, e.g., 3 for a Passenger Boarding event with 3 boardings, default is  `1`",
+      "constraints": {
+        "minimum": 0
+      }
     }
   ],
-  "foreignKeys": [
+  "foreignReferences": [
     {
       "fields": "trip_id_performed",
       "reference": {

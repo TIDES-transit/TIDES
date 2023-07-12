@@ -5,6 +5,9 @@ default: true
 MD007:
   indent: 4
 
+# remove top-lvel heading b/c have some include files
+MD041: false
+
 # Remove line length limit
 MD013: false
 
@@ -12,6 +15,10 @@ MD013: false
 MD040: false
 
 # Remove "no inline HTML"
+# Remove code block style because it also fails on admonition
+MD046: false
+
+# Remove no in line HTML
 MD033: false
 
 # Remove "no emphasis as heading"

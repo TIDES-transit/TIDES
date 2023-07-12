@@ -5,6 +5,8 @@ import json
 import os
 import pathlib
 
+from frictionless import Schema
+
 
 EXAMPLE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_REPO_DIR = os.path.dirname(os.path.dirname(EXAMPLE_DIR))
@@ -80,27 +82,6 @@ def write_datapackage_template(
     json.dumps
 
 
-def schema_to_resources(schema_filename: str) -> dict:
-    """Transform a schema filename into a frictionless resource for listing in datapackage.json
-
-    Args:
-        schema_filename (str): Schema file in frictionless format.
-
-    Returns:
-        dict: object consistent with frictionless data resource specification
-    """
-    schema_filename = pathlib.Path(schema_filename)
-    name = schema_filename.stem.split(".")[0]
-    path = name + ".csv"
-    schema_loc = SCHEMAS_LOC + name + ".schema.json"
-    return {
-        "name": name,
-        "path": path,
-        "schema": schema_loc,
-        "sources": RESOURCE_SOURCES,
-    }
-
-
 def write_csv_for_schema(
     schema_filename: str,
     out_dir: str,
@@ -111,25 +92,12 @@ def write_csv_for_schema(
         schema_filename (str): Filename with the Frictionless data schema
         out_dir (str): Where the csv will be written
     """
-    schema = read_schema(schema_filename)
+    _schema = Schema(schema_filename)
     fields = [s["name"] for s in schema["fields"]]
-    schema_name = pathlib.Path(schema_filename).stem.split(".")[0]
-    out_filename = os.path.join(out_dir, schema_name + ".csv")
+    _schema_name = pathlib.Path(schema_filename).stem.split(".")[0]
+    out_filename = os.path.join(out_dir, _schema_name + ".csv")
     with open(out_filename, "w") as outfile:
         outfile.write(",".join(fields))
-
-
-def read_schema(schema_file: str) -> dict:
-    """
-    Reads in schema from schema json file and returns as dictionary.
-
-    Args:
-        schema_file: File location of the schema json file.
-    Returns: The schema as a dictionary
-    """
-    with open(schema_file, encoding="utf-8") as f:
-        schema = json.load(f)
-    return schema
 
 
 if __name__ == "__main__":
