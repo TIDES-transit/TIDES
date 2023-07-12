@@ -24,7 +24,11 @@ By making any contribution to the projects, contributors self-certify to the [Co
 1. Make sure you have a [GitHub](https://github.com/) account.  
 2. Make sure you have [git](https://git-scm.com/downloads), a terminal (e.g. Mac Terminal, CygWin, etc.), and a text editor installed on your local machine.  Optionally, you will likely find it easier to use [GitHub Desktop](https://desktop.github.com/), an IDE instead of a simple text editor like [VSCode](https://code.visualstudio.com/), [Eclipse](https://www.eclipse.org/), [Sublime Text](https://www.sublimetext.com/), etc.  
 3. [Fork the repository](https://github.com/TIDES-transit/TIDES/fork) into your own GitHub account and [clone it locally](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).  
-4. Install development requirements packages `pip install -r requirements.txt`
+4. Install development requirements packages `pip install -r requirements.txt` or in a virtual environment.
+
+!!! tip "Using a virtual environment"
+
+    It is often helpful to install requirements for vairous projects inside a virtual environment rather than in your main python installation. Some virtual environments to consider include: [`conda`](https://docs.conda.io/),[`pipenv`](https://pipenv.pypa.io/en/latest/index.html),[`poetry`](https://python-poetry.org/), and [`rye`](https://github.com/mitsuhiko/rye).
 
 ### Contribution Workflow
 
