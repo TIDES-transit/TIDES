@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 echo "Validating sample data"
-for file in samples/**/TIDES/datapackage.json; do
+shopt -s nullglob
+for file in samples/*/TIDES/datapackage.json; do
     echo "Validating: $file"
     frictionless validate --schema-sync $file
 done
+shopt -u nullglob
