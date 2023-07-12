@@ -30,7 +30,7 @@ By making any contribution to the projects, contributors self-certify to the [Co
 
 1. [Create a branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-and-deleting-branches-within-your-repository) to work on a new issue (or checkout an existing one where the issue is being worked on).  
 2. Make your changes.
-3. Run `./test` script to check and fix formatting, validate schemas, and build documentation locally to preview
+3. Run `/tests/test_all` script to check and fix formatting, validate schemas, and build documentation locally to preview
 4. [Commit](#commits) your work in `git`
 5. `push` your changes to Github and submit a [`pull request`](#pull-requests)
 
