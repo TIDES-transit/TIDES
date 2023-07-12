@@ -5,6 +5,7 @@
 # Get the list of script files in the directory
 script_files=("$(dirname "$(realpath "$0")")"/*)
 num_files=$((${#script_files[@]} + 1))
+test_num=1
 error_scripts=()
 
 echo "Found $num_files tests"
@@ -17,9 +18,10 @@ for script_file in "${script_files[@]}"; do
 
   # Exclude the current script and non-executable files from execution
   if [ "$(basename "$script_file")" != "test_all" ]; then
+    ((test_num++))
     if [ -x "$script_file" ]; then
       # Update progress
-      echo "----- Running test $((i + 1)) of $num_files: $script_file"
+      echo "----- Running test $test_num of $num_files: $script_file"
 
       # Execute the script and capture errors if there are any
       if output=$("$script_file" 2>&1); then
@@ -36,7 +38,7 @@ for script_file in "${script_files[@]}"; do
     fi
   fi
 done
-echo "----- Running test $num_files/$num_file: Building documentation locally"
+echo "----- Running test $num_files/$num_files: Building documentation locally"
 mkdocs build --quiet
 
 if [ ${#error_scripts[@]}  -gt 0 ]; then
