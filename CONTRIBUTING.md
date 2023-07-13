@@ -70,7 +70,7 @@ By making any contribution to the projects, contributors self-certify to the [Co
             if not report['valid']:
                 print(f"!!! Invalid:{p}")
                 pprint(report)
-            else: 
+            else:
                 print(f"Valid:{p}")
         ```
 
