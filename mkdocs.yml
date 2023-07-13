@@ -34,7 +34,13 @@ plugins:
         theme: |
             ^(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'
         securityLevel: 'loose'
+  - mike:
+      version_selector: true
   - search
+
+extra:
+  version:
+    provider: mike
 
 watch:
   - CONTRIBUTING.md
@@ -58,7 +64,7 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tabbed:
-      alternate_style: true 
+      alternate_style: true
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
