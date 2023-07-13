@@ -20,18 +20,12 @@
   ],
   "properties": {
     "profile": {
-      "enum": [
-        "tides-data-package"
-      ],
+      "const":  "tides-data-package",
       "propertyOrder": 10,
       "title": "Profile",
-      "description": "The profile of this descriptor.",
+      "description": "The json-schema profile used to validate this datapackage descriptor.",
       "context": "Every Package and Resource descriptor has a profile. The default profile, if none is declared, is `data-package` for Package and `data-resource` for Resource.",
-      "type": "string",
-      "examples": [
-        "{\n  \"profile\": \"tides-data-package\"\n}\n",
-        "{\n  \"profile\": \"http://example.com/my-profiles-json-schema.json\"\n}\n"
-      ]
+      "type": "string"
     },
     "title": {
       "propertyOrder": 20,
@@ -39,18 +33,18 @@
       "description": "A human-readable title.",
       "type": "string",
       "examples": [
-        "{\n  \"title\": \"My Package Title\"\n}\n"
+        "Make Believe Trolley 1/1/2001-2/1/2001"
       ]
     },
     "name": {
       "propertyOrder": 30,
       "title": "Name",
-      "description": "Short sluggable (https://en.wikipedia.org/wiki/Clean_URL#Slug) identifier string.",
+      "description": "Short, unique [sluggable](https://en.wikipedia.org/wiki/Clean_URL#Slug) identifier string.",
       "type": "string",
       "pattern": "^([-a-z0-9._/])+$",
       "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent descriptor is updated.",
       "examples": [
-        "{\n  \"name\": \"tides-data-package\"\n}\n"
+        "trolley_2001_1"
       ]
     },
     "description": {
@@ -60,7 +54,7 @@
       "description": "Short description of TIDES data package.",
       "type": "string",
       "examples": [
-        "{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"
+        "Raw and processed data from the Neighborhood of Make Believe Trolley recorded 1/1/2001-2/1/2001"
       ]
     },
     "agency": {
@@ -70,7 +64,7 @@
       "description": "Transit agency name.",
       "type": "string",
       "examples": [
-        "{\n  \"agency\": \"Coos County Area Transit\"\n}\n"
+        "Make Believe Neighborhood Trolley"
       ]
     },
     "ntd_id": {
@@ -81,25 +75,26 @@
       "pattern": "^([-a-z0-9._/])+$",
       "context": "Background on NTD available at https://www.transit.dot.gov/ntd",
       "examples": [
-        "{\n  \"ntd_id\": \"0R02-00307\"\n}\n"
+        "0R02-00307"
       ]
     },
     "contributors": {
       "propertyOrder": 70,
       "title": "Contributors",
-      "description": "Array of data contributors `[{\"title\": \"My Name\", \"github\": \"my_handl\", \"email\": \"me@myself.com\"}]`",
+      "description": "Array of data contributors.",
       "type": "array",
       "minItems": 1,
       "items": {
         "title": "Contributor",
         "description": "A contributor to this descriptor.",
+        "type": "object",
         "properties": {
           "name": {
             "title": "Name",
             "description": "A human-readable name.",
             "type": "string",
             "examples": [
-              "{\n  \"title\": \"Frank Julian Sprague\"\n}\n"
+              "Daniel Tiger"
             ]
           },
           "email": {
@@ -108,13 +103,14 @@
             "type": "string",
             "format": "email",
             "examples": [
-              "{\n  \"email\": \"example@example.com\"\n}\n"
+              "daniel@makebelievetrolley.gov"
             ]
           },
           "organization": {
             "title": "Organization",
             "description": "An organizational affiliation for this contributor.",
-            "type": "string"
+            "type": "string",
+            "example": "Make Believe Neighborhood Trolley"
           },
           "role": {
             "title": "Role",
@@ -129,26 +125,26 @@
         "context": "Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."
       },
       "examples": [
-        "{\n  \"contributors\": [\n    {\n      \"name\": \"Joe Bloggs\"\n    }\n  ]\n}\n",
-        "{\n  \"contributors\": [\n    {\n      \"name\": \"Miriam Coates\",\n      \"email\": \"joe@example.com\",\n      \"role\": \"author\"\n    }\n  ]\n}\n"
+       "{'name':'Daniel Tiger','email': 'daniel@makebelievetrolley.gov','organization':'Make Believe Neighborhood Trolley','role':'contributor'}"
       ]
     },
     "maintainers": {
       "propertyOrder": 80,
       "title": "Maintainers",
-      "description": "Array of data maintainers `[{\"title\": \"My Name\", \"github\": \"my_handl\", \"email\": \"me@myself.com\"}]`",
+      "description": "Array of data maintainers",
       "type": "array",
       "minItems": 1,
       "items": {
         "title": "Maintainer",
         "description": "A maintainer of this descriptor.",
+        "type": "object",
         "properties": {
           "name": {
             "title": "Name",
             "description": "A human-readable name.",
             "type": "string",
             "examples": [
-              "{\n  \"name\": \"George Francis Train\"\n}\n"
+              "Henrietta Pussycat"
             ]
           },
           "email": {
@@ -157,7 +153,7 @@
             "type": "string",
             "format": "email",
             "examples": [
-              "{\n  \"email\": \"example@example.com\"\n}\n"
+              "henrietta@makebelievetrolley.gov"
             ]
           },
           "organization": {
@@ -178,8 +174,8 @@
         "context": "Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."
       },
       "examples": [
-        "{\n  \"maintainers\": [\n    {\n      \"name\": \"Joe Bloggs\"\n    }\n  ]\n}\n",
-        "{\n  \"maintainers\": [\n    {\n      \"name\": \"Miriam Coates\",\n      \"email\": \"joe@example.com\",\n      \"role\": \"author\"\n    }\n  ]\n}\n"
+        "{'name':'Henrietta Pussycat','email': 'henrietta@makebelievetrolley.gov','organization':'Make Believe Neighborhood Trolley','role':'maintainer'}"
+
       ]
     },
     "licenses": {
@@ -190,7 +186,7 @@
       "minItems": 1,
       "items": {
         "title": "License",
-        "description": "A license for this descriptor.",
+        "description": "An array of license objects which apply to this data package.  Must include at least a `name` or `path`",
         "type": "object",
         "anyOf": [
           {
@@ -209,7 +205,8 @@
             "title": "Open Definition license identifier",
             "description": "MUST be an Open Definition license identifier, see http://licenses.opendefinition.org/",
             "type": "string",
-            "pattern": "^([-a-zA-Z0-9._])+$"
+            "pattern": "^([-a-zA-Z0-9._])+$",
+            "examples": ["odc-by","CC-BY-4.0"]
           },
           "path": {
             "title": "Path",
@@ -217,30 +214,30 @@
             "type": "string",
             "pattern": "^(?=^[^./~])(^((?!\\.{2}).)*$).*$",
             "examples": [
-              "{\n  \"path\": \"/license.md\"\n}\n",
-              "{\n  \"path\": \"https://opensource.org/license/gpl-2-0/\"\n}\n"
+              "https://opendefinition.org/licenses/odc-by/",
+              "license.md"
             ],
             "context": "Implementations need to negotiate the type of path provided, and dereference the data accordingly."
           },
           "title": {
             "title": "Title",
-            "description": "A human-readable title.",
+            "description": "A human-readable title of the license.",
             "type": "string",
             "examples": [
-              "{\n  \"title\": \"My Package Title\"\n}\n"
+              "Creative Commons Attribution 4.0"
             ]
           }
         }
       },
       "context": "This property is not legally binding and does not guarantee that the package is licensed under the terms defined herein.",
       "examples": [
-        "{\n  \"licenses\": [\n    {\n      \"name\": \"odc-pddl-1.0\",\n      \"path\": \"http://opendatacommons.org/licenses/pddl/\",\n      \"title\": \"Open Data Commons Public Domain Dedication and License v1.0\"\n    }\n  ]\n}\n"
+        "{'name':'CC-BY-4.0','path':'https://opendefinition.org/licenses/cc-by/','name':'Creative Commons Attribution 4.0'}"
       ]
     },
     "resources": {
       "propertyOrder": 100,
       "title": "Tabular Data Resources",
-      "description": "Array of data files included in your package, formated as a tabular-data-resource",
+      "description": "Array describing the data files included in your package, formated as a [`tabular-data-resource`](#tabular-data-resource)",
       "type": "array",
       "minItems": 1,
       "items": {
@@ -250,32 +247,35 @@
         "required": [
             "name",
             "path",
-            "schema"
+            "schema",
+            "profile"
         ],
+        "recommended": [
+          "title",
+          "description",
+          "sources",
+          "licenses"
+      ],
         "properties": {
           "profile": {
-            "enum": [
-              "tabular-data-resource"
-            ],
+            "const": "tabular-data-resource",
             "propertyOrder": 10,
             "title": "Profile",
-            "description": "Should be `tides-data-package`",
-            "context": "Every Package and Resource descriptor has a profile. The default profile, if none is declared, is `data-package` for Package and `data-resource` for Resource.",
+            "description": "Must be `tabular-data-resource`",
             "type": "string",
             "examples": [
-              "{\n  \"profile\": \"tides-data-package\"\n}\n",
-              "{\n  \"profile\": \"http://example.com/my-profiles-json-schema.json\"\n}\n"
+              "tabular-data-resource"
             ]
           },
           "name": {
             "propertyOrder": 20,
             "title": "Name",
-            "description": "An identifier string. Lower case characters with `.`, `_`, `-` and `/` are allowed.",
+            "description": "Short, unique [sluggable](https://en.wikipedia.org/wiki/Clean_URL#Slug) identifier string for a data table.",
             "type": "string",
             "pattern": "^([-a-z0-9._/])+$",
             "context": "This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent descriptor is updated.",
             "examples": [
-              "{\n  \"name\": \"tabular-data-resource\"\n}\n"
+              "vehicle_locations_2001_01"
             ]
           },
           "path": {
@@ -285,16 +285,15 @@
             "type": "string",
             "pattern": "^(?=^[^./~])(^((?!\\.{2}).)*$).*$",
             "examples": [
-              "{\n  \"path\": \"file.csv\"\n}\n",
-              "{\n  \"path\": \"http://example.com/file.csv\"\n}\n"
+              "event/2001/vehicle_locations_2001_01.csv"
             ],
             "context": "Implementations need to negotiate the type of path provided, and dereference the data accordingly."
           },
           "schema": {
             "propertyOrder": 40,
             "title": "Table Schema",
-            "description": "A Table Schema for this resource, compliant with one of the [TIDES](/) table specifications.",
-            "type": "string",
+            "description": "An object describing the TIDES Table Schema for this resource.",
+            "type": "object",
             "required": [
               "name",
               "path"
@@ -303,12 +302,24 @@
               "name": {
                 "propertyOrder": 10,
                 "title": "Name",
+                "enum": [
+                  "devices",
+                  "fare_transactions",
+                  "operators",
+                  "station_activities",
+                  "passenger_events",
+                  "stop_visits",
+                  "train_cars",
+                  "trips_performed",
+                  "vehicle_locations",
+                  "vehicle_train_cars",
+                  "vehicles"
+                ],
                 "description": "An identifier string corresponding to the name of one of the table specs in the TIDES data package",
                 "type": "string",
-                "pattern": "^([-a-z0-9._/])+$",
                 "examples": [
-                  "{\n  \"name\": \"fare_transactions\"\n}\n",
-                  "{\n  \"name\": \"train_cars\"\n}\n"
+                  "fare_transactions",
+                  "train_cars"
                 ]
               },
               "path": {
@@ -318,30 +329,30 @@
                 "type": "string",
                 "pattern": "^(?=^[^./~])(^((?!\\.{2}).)*$).*$",
                 "examples": [
-                  "{\n  \"path\": \"/fare_transactions.schema.json\"\n}\n",
-                  "{\n  \"path\": \"https://github.com/TIDES-transit/TIDES/blob/main/spec/train_cars.schema.json\"\n}\n"
+                  "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/train_cars.schema.json",
+                  "fare_transactions.schema.json"
                 ]
               }
             },
             "examples": [
-              "{\n  \"schema\": {\n    \"fields\": [\n      {\n        \"name\": \"first_name\",\n        \"type\": \"string\"\n        \"constraints\": {\n          \"required\": true\n        }\n      },\n      {\n        \"name\": \"age\",\n        \"type\": \"integer\"\n      },\n    ],\n    \"primaryKey\": [\n      \"name\"\n    ]\n  }\n}\n"
+              "`{'name': 'devices' ,'path': 'https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/devices.schema.json'}`"
             ]
           },
           "title": {
             "title": "Title",
-            "description": "A human-readable title.",
+            "description": "A human-readable title for the data resource.",
             "type": "string",
             "examples": [
-              "{\n  \"title\": \"My Package Title\"\n}\n"
+              "Neighborhood Trolley Vehicle Locations: 1/1/2001-2/1/2001"
             ],
             "propertyOrder": 50
           },
           "description": {
             "title": "Description",
-            "description": "A text description. Markdown is encouraged.",
+            "description": "D",
             "type": "string",
             "examples": [
-              "{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"
+              "Vehicle location event data from the Neighborhood of Make Believe Trolley recorded 1/1/2001-2/1/2001"
             ],
             "propertyOrder": 60,
             "format": "textarea"
@@ -353,7 +364,7 @@
             "type": "string",
             "format": "uri",
             "examples": [
-              "{\n  \"homepage\": \"http://example.com/\"\n}\n"
+              "http://example.com"
             ]
           },
           "sources": {
@@ -362,12 +373,14 @@
               "hidden": true
             },
             "title": "Sources",
-            "description": "The raw sources for this resource.",
+            "description": "The raw sources for this resource which describe where the data came from.",
             "type": "array",
             "minItems": 0,
+            "examples": [
+              "[ {'title':'Trolley CAD/AVL System','component':'CAD/AVL','product':'TrolleyMaster','product_version':'3.1.4'} ]"
+            ],
             "items": {
               "title": "Source",
-              "description": "A source file.",
               "type": "object",
               "required": [
                 "title"
@@ -375,21 +388,29 @@
               "properties": {
                 "title": {
                   "title": "Title",
-                  "description": "Description of the data source.",
+                  "description": "Human-readable title of the data source.",
                   "type": "string",
                   "examples": [
-                    "{\n  \"title\": \"My Package Title\"\n}\n"
+                    "Trolley CAD/AVL System"
                   ]
                 },
                 "component": {
                   "title": "Component",
-                  "description": "What technology component was used to generate this data (directly or indirectly)? Examples include `AVL`, `APC`, `AFC`, etc.",
-                  "type": "string"
+                  "description": "The technology component used to generate this data (directly or indirectly)",
+                  "type": "string",
+                  "examples": [
+                    "CAD/AVL",
+                    "AFC",
+                    "APC"
+                  ]
                 },
                 "product": {
                   "title": "Product",
                   "description": "What product was used to generate this data (directly or indirectly)?",
-                  "type": "string"
+                  "type": "string",
+                  "examples": [
+                    "TrolleyMaster"
+                  ]
                 },
                 "product_version": {
                   "title": "Product Version",
@@ -405,17 +426,14 @@
             }
           },
           "licenses": {
-            "description": "Should be `[{\"name\": \"Apache-2.0\"}]` to be consistent with this repository",
-            "propertyOrder": 150,
-            "options": {
-              "hidden": true
-            },
+            "propertyOrder": 90,
             "title": "Licenses",
+            "description": "The license(s) under which this package is published.",
             "type": "array",
             "minItems": 1,
             "items": {
               "title": "License",
-              "description": "A license for this descriptor.",
+              "description": "An array of license objects which apply to this data package.  Must include at least a `name` or `path`",
               "type": "object",
               "anyOf": [
                 {
@@ -434,32 +452,33 @@
                   "title": "Open Definition license identifier",
                   "description": "MUST be an Open Definition license identifier, see http://licenses.opendefinition.org/",
                   "type": "string",
-                  "pattern": "^([-a-zA-Z0-9._])+$"
+                  "pattern": "^([-a-zA-Z0-9._])+$",
+                  "examples": ["odc-by","CC-BY-4.0"]
                 },
                 "path": {
                   "title": "Path",
-                  "description": "A fully qualified public URL, or a relative Unix-style file path.",
+                  "description": "A fully qualified public URL, or a Unix-style relative file path.",
                   "type": "string",
                   "pattern": "^(?=^[^./~])(^((?!\\.{2}).)*$).*$",
                   "examples": [
-                    "{\n  \"path\": \"/license.md\"\n}\n",
-                    "{\n  \"path\": \"https://opensource.org/license/apache-2-0/\"\n}\n"
+                    "https://opendefinition.org/licenses/odc-by/",
+                    "license.md"
                   ],
                   "context": "Implementations need to negotiate the type of path provided, and dereference the data accordingly."
                 },
                 "title": {
                   "title": "Title",
-                  "description": "A human-readable title.",
+                  "description": "A human-readable title of the license.",
                   "type": "string",
                   "examples": [
-                    "{\n  \"title\": \"My Package Title\"\n}\n"
+                    "Creative Commons Attribution 4.0"
                   ]
                 }
               }
             },
             "context": "This property is not legally binding and does not guarantee that the package is licensed under the terms defined herein.",
             "examples": [
-              "{\n  \"licenses\": [\n    {\n      \"name\": \"odc-pddl-1.0\",\n      \"path\": \"http://opendatacommons.org/licenses/pddl/\",\n      \"title\": \"Open Data Commons Public Domain Dedication and License v1.0\"\n    }\n  ]\n}\n"
+              "{'name':'CC-BY-4.0','path':'https://opendefinition.org/licenses/cc-by/','name':'Creative Commons Attribution 4.0'}"
             ]
           },
           "dialect": {
@@ -481,7 +500,7 @@
                 "type": "number",
                 "default": 1.2,
                 "examples:": [
-                  "{\n  \"csvddfVersion\": \"1.2\"\n}\n"
+                  "1.2"
                 ]
               },
               "delimiter": {
@@ -490,8 +509,8 @@
                 "type": "string",
                 "default": ",",
                 "examples": [
-                  "{\n  \"delimiter\": \",\"\n}\n",
-                  "{\n  \"delimiter\": \";\"\n}\n"
+                  "`;`",
+                  "`|`"
                 ]
               },
               "doubleQuote": {
@@ -499,10 +518,7 @@
                 "description": "Specifies the handling of quotes inside fields.",
                 "context": "If Double Quote is set to true, two consecutive quotes must be interpreted as one.",
                 "type": "boolean",
-                "default": true,
-                "examples": [
-                  "{\n  \"doubleQuote\": true\n}\n"
-                ]
+                "default": true
               },
               "lineTerminator": {
                 "title": "Line Terminator",
@@ -510,8 +526,8 @@
                 "type": "string",
                 "default": "\r\n",
                 "examples": [
-                  "{\n  \"lineTerminator\": \"\\r\\n\"\n}\n",
-                  "{\n  \"lineTerminator\": \"\\n\"\n}\n"
+                  "`\r`",
+                  "`\n`"
                 ]
               },
               "nullSequence": {
@@ -519,7 +535,7 @@
                 "description": "Specifies the null sequence, for example, `\\N`.",
                 "type": "string",
                 "examples": [
-                  "{\n  \"nullSequence\": \"\\N\"\n}\n"
+                  "`\\N`"
                 ]
               },
               "quoteChar": {
@@ -528,7 +544,7 @@
                 "type": "string",
                 "default": "\"",
                 "examples": [
-                  "{\n  \"quoteChar\": \"'\"\n}\n"
+                  "`'`"
                 ]
               },
               "escapeChar": {
@@ -536,33 +552,27 @@
                 "description": "Specifies a one-character string to use as the escape character.",
                 "type": "string",
                 "examples": [
-                  "{\n  \"escapeChar\": \"\\\\\"\n}\n"
+                  "`\\`"
                 ]
               },
               "skipInitialSpace": {
                 "title": "Skip Initial Space",
                 "description": "Specifies the interpretation of whitespace immediately following a delimiter. If false, whitespace immediately after a delimiter should be treated as part of the subsequent field.",
                 "type": "boolean",
-                "default": false,
-                "examples": [
-                  "{\n  \"skipInitialSpace\": true\n}\n"
-                ]
+                "default": false
               },
               "header": {
                 "title": "Header",
                 "description": "Specifies if the file includes a header row, always as the first row in the file.",
                 "type": "boolean",
-                "default": true,
-                "examples": [
-                  "{\n  \"header\": true\n}\n"
-                ]
+                "default": true
               },
               "commentChar": {
                 "title": "Comment Character",
                 "description": "Specifies that any row beginning with this one-character string, without preceeding whitespace, causes the entire line to be ignored.",
                 "type": "string",
                 "examples": [
-                  "{\n  \"commentChar\": \"#\"\n}\n"
+                  "`#`"
                 ]
               },
               "caseSensitiveHeader": {
@@ -570,16 +580,12 @@
                 "description": "Specifies if the case of headers is meaningful.",
                 "context": "Use of case in source CSV files is not always an intentional decision. For example, should \"CAT\" and \"Cat\" be considered to have the same meaning.",
                 "type": "boolean",
-                "default": false,
-                "examples": [
-                  "{\n  \"caseSensitiveHeader\": true\n}\n"
-                ]
+                "default": false
               }
             },
             "examples": [
-              "{\n  \"dialect\": {\n    \"delimiter\": \";\"\n  }\n}\n",
-              "{\n  \"dialect\": {\n    \"delimiter\": \"\\t\",\n    \"quoteChar\": \"'\",\n    \"commentChar\": \"#\"\n  }\n}\n"
-            ]
+              "{'delimiter': ';' }"
+       ]
           },
           "format": {
             "propertyOrder": 80,
@@ -588,7 +594,7 @@
             "context": "`csv`, `xls`, `json` are examples of common formats.",
             "type": "string",
             "examples": [
-              "{\n  \"format\": \"xls\"\n}\n"
+              "`xls`"
             ]
           },
           "mediatype": {
@@ -598,7 +604,7 @@
             "type": "string",
             "pattern": "^(.+)/(.+)$",
             "examples": [
-              "{\n  \"mediatype\": \"text/csv\"\n}\n"
+              "`text/csv`"
             ]
           },
           "encoding": {
@@ -608,7 +614,7 @@
             "type": "string",
             "default": "utf-8",
             "examples": [
-              "{\n  \"encoding\": \"utf-8\"\n}\n"
+              "`utf-8`"
             ]
           },
           "bytes": {
@@ -620,7 +626,7 @@
             "description": "The size of this resource in bytes.",
             "type": "integer",
             "examples": [
-              "{\n  \"bytes\": 2082\n}\n"
+              "2082"
             ]
           },
           "hash": {
@@ -633,28 +639,27 @@
             "description": "The MD5 hash of this resource. Indicate other hashing algorithms with the {algorithm}:{hash} format.",
             "pattern": "^([^:]+:[a-fA-F0-9]+|[a-fA-F0-9]{32}|)$",
             "examples": [
-              "{\n  \"hash\": \"d25c9c77f588f5dc32059d2da1136c02\"\n}\n",
-              "{\n  \"hash\": \"SHA256:5262f12512590031bbcc9a430452bfd75c2791ad6771320bb4b5728bfb78c4d0\"\n}\n"
+              "d25c9c77f588f5dc32059d2da1136c02",
+              "SHA256:5262f12512590031bbcc9a430452bfd75c2791ad6771320bb4b5728bfb78c4d0"
             ]
           }
         }
-      },
-      "examples": [
-        "{\n  \"resources\": [\n    {\n      \"name\": \"my-data\",\n      \"data\": [\n        \"data.csv\"\n      ],\n      \"schema\": \"tableschema.json\",\n      \"mediatype\": \"text/csv\"\n    }\n  ]\n}\n"
-      ]
+      }
     },
     "sources": {
-      "propertyOrder": 110,
+      "propertyOrder": 140,
       "options": {
         "hidden": true
       },
       "title": "Sources",
-      "description": "Array of data sources formatted as a source. Recommended to be documented either here at the top-level or for each individual resource",
+      "description": "The raw sources for this data package which describe where the data came from. Can be alternatively specified at the individual resource-level.",
       "type": "array",
       "minItems": 0,
+      "examples": [
+        "[ {'title':'Trolley CAD/AVL System','component':'CAD/AVL','product':'TrolleyMaster','product_version':'3.1.4'} ]"
+      ],
       "items": {
         "title": "Source",
-        "description": "A source file.",
         "type": "object",
         "required": [
           "title"
@@ -662,37 +667,42 @@
         "properties": {
           "title": {
             "title": "Title",
-            "description": "A human-readable title.",
+            "description": "Human-readable title of the data source.",
             "type": "string",
             "examples": [
-              "{\n  \"title\": \"My Package Title\"\n}\n"
+              "Trolley CAD/AVL System"
             ]
           },
-          "path": {
-            "title": "Path",
-            "description": "A fully qualified URL, or a POSIX file path.",
+          "component": {
+            "title": "Component",
+            "description": "What technology component was used to generate this data (directly or indirectly)? Examples include `AVL`, `APC`, `AFC`, etc.",
             "type": "string",
-            "pattern": "^(?=^[^./~])(^((?!\\.{2}).)*$).*$",
             "examples": [
-              "{\n  \"path\": \"file.csv\"\n}\n",
-              "{\n  \"path\": \"http://example.com/file.csv\"\n}\n"
-            ],
-            "context": "Implementations need to negotiate the type of path provided, and dereference the data accordingly."
-          },
-          "email": {
-            "title": "Email",
-            "description": "An email address.",
-            "type": "string",
-            "format": "email",
-            "examples": [
-              "{\n  \"email\": \"example@example.com\"\n}\n"
+              "CAD/AVL",
+              "AFC",
+              "APC"
             ]
+          },
+          "product": {
+            "title": "Product",
+            "description": "What product was used to generate this data (directly or indirectly)?",
+            "type": "string",
+            "examples": [
+              "TrolleyMaster"
+            ]
+          },
+          "product_version": {
+            "title": "Product Version",
+            "description": "Describe the version of the product was used.",
+            "type": "string"
+          },
+          "vendor": {
+            "title": "Vendor",
+            "description": "What company makes this product?",
+            "type": "string"
           }
         }
-      },
-      "examples": [
-        "{\n  \"sources\": [\n    {\n      \"title\": \"World Bank and OECD\",\n      \"path\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\"\n    }\n  ]\n}\n"
-      ]
+      }
     }
   }
 }

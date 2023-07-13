@@ -20,54 +20,20 @@ We encourage the addition of examples, but please follow the following guideline
 
 ## Data Package
 
-TIDES data packages must include a `datapackage.json` in the format specified by the [`tides-data-package` json schema](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/tides-data-package.json) format (an extension of the [frictionless data package](https://specs.frictionlessdata.io/data-package/)).  Key information to include in `datapackage.json` includes:
+TIDES sample data must include a `datapackage.json` in the format specified by the [`tides-data-package` json schema](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/tides-data-package.json) (an extension of the [frictionless data package](https://specs.frictionlessdata.io/data-package/)).  
 
-| **Field** | **Description** | **Required** |
-| --------- | --------------- | ------------ |
-| `title` | A human-readable title. | Required |
-| `name` | Identifier string as a URL-friendly slug. | Required |
-| `description` | Short description of data package. | Recommended |
-| `agency` | Transit agency name. | Recommended |
-| `ntd_id` | ID for the National Transit Database. | Recommended |
-| `profile` | Should be `tabular-data-package` | Required |
-| `licenses` | Should be `[{"name": "Apache-2.0"}]` to be consistent with this repository | Required |
-| `contributors` | Array of data contributors `[{"title": "My Name", "github": "my_handle", "email": "me@myself.com"}]` | Recommended |
-| `maintainers` |  Array of data maintainers `[{"title": "My Name", "github": "my_handle", "email": "me@myself.com"}]` | Recommended |
-| `resources` | Array of data files included in your package, formated as a [`tabular-data-resource`](#data-resource)| Required |
+See:
 
-### Template
-
-A `datapackage.json` template is available at [`/data/template/TIDES/datapackage.json`](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/data/template/TIDES/datapackage.json).
-
-Once `datapackage.json` is created for your data, you can easily conduct [data validation](#data-validation) using a variet of tools.
-
-### Data Resource
-
-Key fields for each [`tabular-data-resource`](https://specs.frictionlessdata.io/tabular-data-resource/) are as follows:
-
-| **Field** | **Description** | **Required** |
-| --------- | --------------- | ------------ |
-| `name` | Short sluggable name used to refer to data in this file. | Required |
-| `path` | Path of the data resource file relative to the `datapackage.json` | Required |
-| `schema` | Data schema to use to valdiate the data resource to | Required |
-| `sources` | Array of data sources formatted as a [`source`](#data-source) | Recommended |
-
-### Data Source
-
-| **Field** | **Description** | **Required** |
-| --------- | --------------- | ------------ |
-| `title` | Description of the data source. | Required |
-| `component` | What technology component was used to generate this data (directly or indirectly)? Examples include `AVL`, `APC`, `AFC`, etc.  | Recommended |
-| `product` | What product was used to generate this data (directly or indirectly)? | Recommended |
-| `vendor` | What company makes this product? | Recommended |
+- [Full documentation on the `tides-data-package`]({{ site_url }}/datapackage)
+- [Example `tides-data-package` file](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/samples/template)
 
 ## Data validation
 
-Data with a valid [`datapackage.json`](#data-package) can be easily validated using the [frictionless framework](https://framework.frictionlessdata.io/), which can be installed and invoke as follows:
+Data with a valid [`datapackage.json`](#data-package) can be easily validated using the [frictionless framework](https://framework.frictionlessdata.io/), which can be installed and invoked as follows:
 
 ```bash
 pip install frictionless
-frictionless validate path/to/your/datapackage.json
+frictionless validate --schema-sync path/to/your/datapackage.json
 ```
 
 ### Specific files
@@ -80,4 +46,4 @@ frictionless validate vehicles.csv --schema https://raw.githubusercontent.com/TI
 
 ### Continuous Data Validation
 
-Example data in the `\TIDES` subdirectories is validated upon a push action to the main repository according to the `TIDES` schema posted to the `main` branch.
+Sample data in the `\TIDES` subdirectories of each sample is validated upon a push action to the main repository.

@@ -80,5 +80,6 @@ nav:
   - Home: index.md
   - Architecture: architecture.md
   - Table Schemas: tables.md
+  - Data Package: datapackage.md
   - Sample Data: samples.md
   - Development: development.md
