@@ -5,7 +5,7 @@ Each TIDES Data Package example should follow the following directory structure,
 ```
 unique-example-name
   \TIDES     # Required. Data to be validated against the TIDES specification
-  \datapackages.json # Required. Data package metadata per https://specs.frictionlessdata.io/data-package/
+  \datapackage.json # Required. [`tides-data-package`](#tides-data-package) metadata
   \raw      # Optional. Data which the agency uses to create TIDES data
   \scripts  # Optional. Scripts used to transform raw --> TIDES
 ```
@@ -15,12 +15,12 @@ unique-example-name
 We encourage the addition of examples, but please follow the following guidelines:
 
 1. *No large files* This isn't the place to store your data, rather to document some minimal examples.  The recommended size is 100-1000 records per file, more if absolutely required to reproduce an issue with the spec.  All individual files should be well under 50 MB.  
-2. *Include Metadata* as specified in [`datapackage.json`](#data-package).
+2. *Include Metadata* as specified in [tides-data-package](#data-package).
 3. *Include a README.md* in the base folder of your example with an overview so that it can be included in the documentation.
 
 ## Data Package
 
-TIDES data packages must include a [`datapackage.json`](https://specs.frictionlessdata.io/data-package/).  Key information to include in [`datapackage.json`](https://specs.frictionlessdata.io/data-package/) includes:
+TIDES data packages must include a `datapackage.json` in the format specified by the [`tides-data-package` json schema](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/tides-data-package.json) format (an extension of the [frictionless data package](https://specs.frictionlessdata.io/data-package/)).  Key information to include in `datapackage.json` includes:
 
 | **Field** | **Description** | **Required** |
 | --------- | --------------- | ------------ |
