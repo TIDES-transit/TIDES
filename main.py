@@ -57,9 +57,8 @@ def define_env(env):
             4: re.compile(r"(#{4}\s)(.*)"),
             5: re.compile(r"(#{5}\s)(.*)"),
         }
-        print(f"???before downshifting! {full_filename}")
+
         if md_heading_re[1].search(content) and downshift_h1:
-            print("!!!downshifting!")
             content = re.sub(md_heading_re[5], r"#\1\2", content)
             content = re.sub(md_heading_re[4], r"#\1\2", content)
             content = re.sub(md_heading_re[3], r"#\1\2", content)
