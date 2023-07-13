@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+echo "Validating tides-data-package.json profile"
+
+# Set the temporary directory path
+temp_dir=$(mktemp -d)
+
+# Download the schema file to the temporary directory
+schema_url="https://specs.frictionlessdata.io/schemas/data-package.json"
+schema_file="$temp_dir/data-package.json"
+curl -o "$schema_file" "$schema_url"
+
+# Validate datapackage against the downloaded schema
+datapackage_file="spec/tides-data.json"
+jsonschema-cli validate "$schema_file" "$datapackage_file"
+
+# Clean up the temporary directory
+rm -rf "$temp_dir"

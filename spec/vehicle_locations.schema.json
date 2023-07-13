@@ -35,6 +35,12 @@
       "description": "Identifies the trip performed. If trips_performed table is used, this must be populated in order to link to it."
     },
     {
+      "name": "trip_id_scheduled",
+      "type": "string",
+      "title": "ID referencing trips_performed.trip_id_scheduled",
+      "description": "Identifies the scheduled trip. "
+    },
+    {
       "name": "stop_sequence",
       "type": "integer",
       "title": "positive integer referencing GTFS stop_times.stop_sequence",
