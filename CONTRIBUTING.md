@@ -21,9 +21,9 @@ By making any contribution to the projects, contributors self-certify to the [Co
 
 ### Setup
 
-1. Make sure you have a [GitHub](https://github.com/) account.  
-2. Make sure you have [git](https://git-scm.com/downloads), a terminal (e.g. Mac Terminal, CygWin, etc.), and a text editor installed on your local machine. Optionally, you will likely find it easier to use [GitHub Desktop](https://desktop.github.com/), an IDE instead of a simple text editor like [VSCode](https://code.visualstudio.com/), [Eclipse](https://www.eclipse.org/), [Sublime Text](https://www.sublimetext.com/), etc.  
-3. [Fork the repository](https://github.com/TIDES-transit/TIDES/fork) into your own GitHub account and [clone it locally](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).  
+1. Make sure you have a [GitHub](https://github.com/) account.
+2. Make sure you have [git](https://git-scm.com/downloads), a terminal (e.g. Mac Terminal, CygWin, etc.), and a text editor installed on your local machine. Optionally, you will likely find it easier to use [GitHub Desktop](https://desktop.github.com/), an IDE instead of a simple text editor like [VSCode](https://code.visualstudio.com/), [Eclipse](https://www.eclipse.org/), [Sublime Text](https://www.sublimetext.com/), etc.
+3. [Clone the repository locally](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository). Non-registered contributors should [fork the repository](https://github.com/TIDES-transit/TIDES/fork) first, since they will be unable to push branches directly to the main repository.
 4. Install development requirements packages `pip install -r requirements.txt` or in a virtual environment.
 
 !!! tip "Using a virtual environment"
@@ -50,7 +50,7 @@ Use the following guidance in creating and responding to pull requests
 * Keep pull requests small and focused. One issue is best.
 * Link Pull Requests to Issues as appropriate.
 * Complete the pull request template as best you can.
-* In order to run all GitHub Actions automations, contributors with adequate permissions should submit pull requests from a branch on the main repo, rather than from a fork.
+* In order to run all GitHub Actions automations, contributors with adequate permissions (i.e. Registered Contributors) should submit pull requests from a branch on the main repo, rather than from a fork.
 
 ### Commits
 
