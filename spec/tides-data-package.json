@@ -258,7 +258,7 @@
       ],
         "properties": {
           "profile": {
-            "const": "tabular-data-resource",
+            "default": "tabular-data-resource",
             "propertyOrder": 10,
             "title": "Profile",
             "description": "Must be `tabular-data-resource`",

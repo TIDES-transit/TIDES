@@ -3,7 +3,7 @@
     "title": "Template TIDES Data Package Example",
     "agency": "Transit Agency Name",
     "ntd_id": "1234-56",
-    "profile": "tabular-data-package",
+    "profile": "../../spec/tides-data-package.json",
     "licenses": [
         {
             "name": "Apache-2.0"
@@ -26,6 +26,7 @@
     "resources": [
         {
             "name": "devices",
+            "profile": "tabular-data-resource",
             "path": "devices.csv",
             "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/devices.schema.json",
             "sources": [
@@ -39,6 +40,7 @@
         },
         {
             "name": "vehicle_locations",
+            "profile": "tabular-data-resource",
             "path": "vehicle_locations.csv",
             "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicle_locations.schema.json",
             "sources": [
@@ -52,6 +54,7 @@
         },
         {
             "name": "fare_transactions",
+            "profile": "tabular-data-resource",
             "path": "fare_transactions.csv",
             "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/fare_transactions.schema.json",
             "sources": [
@@ -65,6 +68,7 @@
         },
         {
             "name": "train_cars",
+            "profile": "tabular-data-resource",
             "path": "train_cars.csv",
             "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/train_cars.schema.json",
             "sources": [
@@ -78,6 +82,7 @@
         },
         {
             "name": "operators",
+            "profile": "tabular-data-resource",
             "path": "operators.csv",
             "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/operators.schema.json",
             "sources": [
@@ -91,6 +96,7 @@
         },
         {
             "name": "stop_visits",
+            "profile": "tabular-data-resource",
             "path": "stop_visits.csv",
             "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/stop_visits.schema.json",
             "sources": [
@@ -104,6 +110,7 @@
         },
         {
             "name": "vehicle_train_cars",
+            "profile": "tabular-data-resource",
             "path": "vehicle_train_cars.csv",
             "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicle_train_cars.schema.json",
             "sources": [
@@ -117,6 +124,7 @@
         },
         {
             "name": "vehicles",
+            "profile": "tabular-data-resource",
             "path": "vehicles.csv",
             "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicles.schema.json",
             "sources": [
@@ -130,6 +138,7 @@
         },
         {
             "name": "trips_performed",
+            "profile": "tabular-data-resource",
             "path": "trips_performed.csv",
             "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/trips_performed.schema.json",
             "sources": [
@@ -143,6 +152,7 @@
         },
         {
             "name": "station_activities",
+            "profile": "tabular-data-resource",
             "path": "station_activities.csv",
             "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/station_activities.schema.json",
             "sources": [
@@ -156,6 +166,7 @@
         },
         {
             "name": "passenger_events",
+            "profile": "tabular-data-resource",
             "path": "passenger_events.csv",
             "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/passenger_events.schema.json",
             "sources": [
