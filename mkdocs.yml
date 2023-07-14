@@ -6,6 +6,7 @@ edit_uri: edit/main/docs
 theme:
   name: material
   features:
+    - content.code.copy
     - navigation.tabs
     - navigation.expand
     - toc.integrate

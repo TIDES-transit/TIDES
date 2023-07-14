@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 echo "Validating sample data"
 shopt -s nullglob
-for file in samples/*/TIDES/datapackage.json; do
-    echo "Validating: $file"
-    frictionless validate --schema-sync $file
+for dir in samples/*/TIDES; do
+    echo "Validating: $dir to canonical spec"
+    ..bin/validate-data-package -d $dir -v main
+    echo "Validating: $dir to local spec"
+    ..bin/validate-data-package -d $dir -v local
 done
 shopt -u nullglob

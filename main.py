@@ -30,19 +30,21 @@ def define_env(env):
     """
 
     @env.macro
-    def list_samples(data_dir: str) -> str:
+    def list_samples(sample_dir: str) -> str:
         """Outputs a simple list of the directories in a folder in markdown.
         Args:
-            data_dir (str):directory to search in
+            sample_dir (str):directory to search in
         Returns:
             str: markdown-formatted list
         """
-
+        EXCLUDE = ["template"]
         fields = ["Sample", "Agency", "Resources", "Vendors"]
 
-        data_dir = os.path.join(env.project_dir, data_dir)
+        sample_dir = os.path.join(env.project_dir, sample_dir)
         samples = [
-            d for d in os.listdir(data_dir) if os.path.isdir(os.path.join(data_dir, d))
+            d
+            for d in os.listdir(sample_dir)
+            if os.path.isdir(os.path.join(sample_dir, d)) and d not in EXCLUDE
         ]
 
         md_table = (
@@ -50,12 +52,16 @@ def define_env(env):
         )
 
         for s in samples:
-            md_table += datapackage_to_row(os.path.join(data_dir, s), fields)
+            md_table += datapackage_to_row(os.path.join(sample_dir, s, "TIDES"), fields)
         return md_table
 
     @env.macro
     def include_file(
-        filename: str, downshift_h1=True, start_line: int = 0, end_line: int = None
+        filename: str,
+        downshift_h1=True,
+        start_line: int = 0,
+        end_line: int = None,
+        code_type: str = None,
     ):
         """
         Include a file, optionally indicating start_line and end_line.
@@ -69,6 +75,8 @@ def define_env(env):
             start_line (Optional): if included, will start including the file from this line
                 (indexed to 0)
             end_line (Optional): if included, will stop including at this line (indexed to 0)
+            code_type: if not None, will encapsulate the resulting file in
+                ```<code_type>..file contents...```
         """
         full_filename = os.path.join(env.project_dir, filename)
         with open(full_filename, "r") as f:
@@ -98,6 +106,9 @@ def define_env(env):
                 _replace = _replace.replace(_filenamebase, "")
 
             content = content.replace(_find, _replace)
+
+        if code_type is not None:
+            content = f"\n```{code_type} title='{filename}'\n{content}\n```"
         return content
 
     @env.macro
@@ -143,7 +154,6 @@ def define_env(env):
                 return "Cannot find sub-schema {sub_schema} in data package file {dp_filename}"
             if dp["type"] == "array":
                 dp = dp["items"]
-            log.info(f"dp: \n{dp}")
 
         _field_names = []
 
@@ -153,13 +163,13 @@ def define_env(env):
             _field_names += dp.get("recommended", [])
         if include == "all":
             _field_names = list(dp["properties"].keys())
-        log.info(f"Documenting {len(_field_names)} fields")
+
         if not _field_names:
             return "No fields found to document with parameters."
 
         _fields = []
         for _f in _field_names:
-            log.info(f"Documenting: {_f}")
+            log.debug(f"Documenting: {_f}")
             _row_entry = {k: v for k, v in dp["properties"][_f].items() if k in INCLUDE}
             if _f in dp.get("required", []):
                 _row_entry["requirement"] = "required"
@@ -184,7 +194,6 @@ def define_env(env):
                 _row_entry["description"] += f"<br>**Example**:<br>`{_ex}`"
 
             _fields.append(_row_entry)
-        log.info(f"_fields: {_fields}")
 
         dp_df = pd.DataFrame(_fields, columns=INCLUDE)
         dp_md = dp_df.to_markdown(index=False)
