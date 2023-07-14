@@ -11,6 +11,7 @@ on:
 
 jobs:
   build-deploy:
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
@@ -49,7 +50,7 @@ jobs:
         echo "Documentation available at: http://tides-transit.github.io/TIDES/${{ env.Slug }}"
   comment:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.merged == false }}
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.merged == false && github.event.pull_request.head.repo.full_name == github.repository }}
     steps:
       - uses: actions/github-script@v6.4.1
         with:
