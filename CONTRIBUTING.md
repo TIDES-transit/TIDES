@@ -1,6 +1,6 @@
 # Contributing to TIDES
 
-Thank you for contributing to the TIDES Project.  This document defines the roles and process for contributing to the project and documents the governance roles and approach for decision-making.
+Thank you for contributing to the TIDES Project. This document defines the roles and process for contributing to the project and documents the governance roles and approach for decision-making.
 
 ## Roles
 
@@ -22,7 +22,7 @@ By making any contribution to the projects, contributors self-certify to the [Co
 ### Setup
 
 1. Make sure you have a [GitHub](https://github.com/) account.  
-2. Make sure you have [git](https://git-scm.com/downloads), a terminal (e.g. Mac Terminal, CygWin, etc.), and a text editor installed on your local machine.  Optionally, you will likely find it easier to use [GitHub Desktop](https://desktop.github.com/), an IDE instead of a simple text editor like [VSCode](https://code.visualstudio.com/), [Eclipse](https://www.eclipse.org/), [Sublime Text](https://www.sublimetext.com/), etc.  
+2. Make sure you have [git](https://git-scm.com/downloads), a terminal (e.g. Mac Terminal, CygWin, etc.), and a text editor installed on your local machine. Optionally, you will likely find it easier to use [GitHub Desktop](https://desktop.github.com/), an IDE instead of a simple text editor like [VSCode](https://code.visualstudio.com/), [Eclipse](https://www.eclipse.org/), [Sublime Text](https://www.sublimetext.com/), etc.  
 3. [Fork the repository](https://github.com/TIDES-transit/TIDES/fork) into your own GitHub account and [clone it locally](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).  
 4. Install development requirements packages `pip install -r requirements.txt` or in a virtual environment.
 
@@ -40,8 +40,8 @@ By making any contribution to the projects, contributors self-certify to the [Co
 
 ### Issues
 
-Create issues to start discussion on a new topic.  If the issue is associated with a pull
-request, be sure to link the two.  There are shortcuts [here](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword)
+Create issues to start discussion on a new topic. If the issue is associated with a pull
+request, be sure to link the two. There are shortcuts [here](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword)
 
 ### Pull Requests
 
@@ -50,12 +50,13 @@ Use the following guidance in creating and responding to pull requests
 * Keep pull requests small and focused. One issue is best.
 * Link Pull Requests to Issues as appropriate.
 * Complete the pull request template as best you can.
+* In order to run all GitHub Actions automations, contributors with adequate permissions should submit pull requests from a branch on the main repo, rather than from a fork.
 
 ### Commits
 
 Use the following guidance for commits
 
-* Provide a short, clear title.  Capitalize. No period at the end
+* Provide a short, clear title. Capitalize. No period at the end
 * Wrap the body of text at 72 characters
 
 ### Continuous Integration / Continuous Deployment
@@ -84,7 +85,7 @@ Workflows are defined in `/.github/workflows/` include the following:
 
 The documentation for the TIDES specification is available at <https://tides-transit.github.io/TIDES/> This site is automatically recreated each time a change is made to the specification.
 
-When a change is pushed to the TIDES specification repository, Github Actions deployes the workflow `docs.yml` that rebuilds the files for the TIDES documentation site.
+When a change is pushed to the TIDES specification repository, Github Actions deployes the workflow `docs.yml` that rebuilds the files for the TIDES documentation site. When a pull request is opened from a branch on the main repository, a draft version of the docs is built for preview purposes via the same process. For security purposes, documentation is not automatically built on pull requests opened from forks.
 
 ??? info "Files used in TIDES Documentation"
 
@@ -192,7 +193,7 @@ Development of the TIDES specification shall be managed by the following groups:
 * [Leadership Group](#leadership-group)
 * [Product Management Team](#product-management-team)
 * [Registered Contributors](#registered-contributors)
-* [All Other Stakeholders](#stakeholders-group)
+* [All Other Stakeholders](#stakeholder-group)
 
 These groups will have the following rights and responsibilities:
 
@@ -213,12 +214,13 @@ Leadership Group Member [GitHub Access](https://docs.github.com/en/organizations
 
 ### Product Management Team
 
-The Product Management Team (PMT) is responsible for creating and maintaining backbone standards infrastructure, processes, and resources to support the development of the TIDES specification.  The PMT will support Leadership in developing, reviewing, and recommending for approval changes to the draft specification.  The PMT will support Contributors and Stakeholders in their work on the specification.  
+The Product Management Team (PMT) is responsible for creating and maintaining backbone standards infrastructure, processes, and resources to support the development of the TIDES specification. The PMT will support Leadership in developing, reviewing, and recommending for approval changes to the draft specification. The PMT will support Contributors and Stakeholders in their work on the specification.  
 
 PMT Group Members
 
 * Hunter Owens, Caltrans
-* Jameelah Young, Jarv.us (on behalf of Caltrans)
+* Jameelah Young, Jarvus Innovations (on behalf of Caltrans)
+* Soren Spicknall, Jarvus Innovations (on behalf of Caltrans)
 * Elizabeth Sall, UrbanLabs LLC (on behalf of Caltrans)
 * Benjamin Bressette, Caltrans
 * Joey Reid, Metro Transit (Minneapolis-St. Paul, MN)
@@ -227,9 +229,9 @@ PMT Group Member [GitHub Access](https://docs.github.com/en/organizations/managi
 
 ### Registered Contributors
 
-Registered Contributors actively work to develop the TIDES specification. They propose additions, modifications, and improvements to the speciation document through issues and pull requests in this GitHub repository.
+Registered Contributors actively work to develop the TIDES specification. They propose additions, modifications, and improvements to the specification through issues and pull requests in this GitHub repository.
 
-Registered Contributors must request [here][contributor-registration] to be registered in order to gain access.  Requests to become a Contributor must be approved by project Leadership.
+Registered Contributors must request [here][contributor-registration] to be registered in order to gain access. Requests to become a Contributor must be approved by project Leadership.
 
 Registered Contributor Group Members:
 
@@ -237,9 +239,9 @@ The list of registered contributors is maintained in the [contributors.md](contr
 
 Registered Contributor Group [GitHub Access](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization): Write
 
-### Stakeholders Group
+### Stakeholder Group
 
-Stakeholders will be informed about progress on TIDES and given the opportunity to review the specification as it is developed.  They may provide comments on the specification by creating or responding to Issues in this repository.  Stakeholders are not able to generate or comment on pull requests.  To be included as a TIDES Stakeholder, join the TIDES Project Google Group.
+Stakeholders will be informed about progress on TIDES and given the opportunity to review the specification as it is developed. They may provide comments on the specification by creating or responding to Issues in this repository. Stakeholders are not able to generate or comment on pull requests. To be included as a TIDES Stakeholder, join the TIDES Project Google Group.
 
 Stakeholder Group Membership:
 
@@ -250,7 +252,7 @@ Stakeholder Group [GitHub Access](https://docs.github.com/en/organizations/manag
 
 ## Review and Approval Process
 
-Prior to release of Version 1.0 of the specification, the PMT and Leadership will have final approval of all changes.   All Contributors are permitted and encouraged to discuss and comment on issues and pull requests and make recommendations for changes to the specification.
+Prior to release of Version 1.0 of the specification, the PMT and Leadership will have final approval of all changes. All Contributors are permitted and encouraged to discuss and comment on issues and pull requests and make recommendations for changes to the specification.
 
 Leadership will convene a governance group to refine this and decide the approval process for Version 1.0 and the governance and approval process for future revisions to the specification.
 
