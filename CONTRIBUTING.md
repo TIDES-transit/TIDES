@@ -34,9 +34,10 @@ By making any contribution to the projects, contributors self-certify to the [Co
 
 1. [Create a branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-and-deleting-branches-within-your-repository) to work on a new issue (or checkout an existing one where the issue is being worked on).  
 2. Make your changes.
-3. Run `/tests/test_all` script to check and fix formatting, validate schemas, and build documentation locally to preview
-4. [Commit](#commits) your work in `git`
-5. `push` your changes to Github and submit a [`pull request`](#pull-requests)
+3. Run `tests/test_local_spec` script to check and fix formatting, validate profile and schemas with frictionless and with each other, and confirm that documentation can be built locally.
+4. Run `tests/test_samples_to_local` script to check if samples conform to any changes to the spec.
+5. [Commit](#commits) your work in `git`
+6. `push` your changes to Github and submit a [`pull request`](#pull-requests)
 
 ### Issues
 
@@ -105,7 +106,7 @@ When a change is pushed to the TIDES specification repository, Github Actions de
     | **Name** |  **What it does** |
     | -------- | ----------------- |
     | GitHub Actions | Runs following workflow on each push to the TIDES github repository:  /.github/workflows/docs.yml |
-    | mike | runs mkdocs and puts output in a folder in gh_pages branch which corresponds to the name of the branch (i.e. main, develop, pr-163, etc) <br> For new branches with documentation, adds an entry in `versions.json` | 
+    | mike | runs mkdocs and puts output in a folder in gh_pages branch which corresponds to the name of the branch (i.e. main, develop, pr-163, etc) <br> For new branches with documentation, adds an entry in `versions.json` |
     | `mkdocs` | Package which generates documentation from markdown and code |
 
 ??? info "Overview of Documentation Building Process"
@@ -116,7 +117,7 @@ When a change is pushed to the TIDES specification repository, Github Actions de
     subgraph mkdocs["<b>mkdocs:</b> run on execution of mike"]
     md_mike["mike"] -->|runs for current branch| md_mkdocs["mkdocs"]
     md_mkdocs.yml["mkdocs.yml"] -->|specifieds parameters| md_mkdocs["mkdocs"]
-    md_mkdocs_macros["mkdocs-macros"] -->|"plugin for"| md_mkdocs["mkdocs"] 
+    md_mkdocs_macros["mkdocs-macros"] -->|"plugin for"| md_mkdocs["mkdocs"]
     main.py[/"main.py"/] -->|defines macros in code available for| md_mkdocs_macros["mkdocs-macros"]
     end
 

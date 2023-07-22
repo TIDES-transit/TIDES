@@ -20,12 +20,14 @@
   ],
   "properties": {
     "profile": {
-      "const":  "tides-data-package",
+      "default":  "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/tides-datapackage-profile.json",
       "propertyOrder": 10,
       "title": "Profile",
-      "description": "The json-schema profile used to validate this datapackage descriptor.",
-      "context": "Every Package and Resource descriptor has a profile. The default profile, if none is declared, is `data-package` for Package and `data-resource` for Resource.",
-      "type": "string"
+      "description": "The json-schema profile used to validate this datapackage descriptor. Should be `https://raw.githubusercontent.com/TIDES-transit/TIDES/<spec-version-or-reference>/spec/tides-datapackage-profile.json`. Defaults to `https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/tides-datapackage-profile.json`",
+      "format": "uri",
+      "examples": [
+        "`https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/tides-datapackage-profile.json`"
+      ]
     },
     "title": {
       "propertyOrder": 20,
@@ -289,53 +291,33 @@
             ],
             "context": "Implementations need to negotiate the type of path provided, and dereference the data accordingly."
           },
-          "schema": {
-            "propertyOrder": 40,
-            "title": "Table Schema",
-            "description": "An object describing the TIDES Table Schema for this resource.",
-            "type": "object",
-            "required": [
-              "name",
-              "path"
+          "tides-table": {
+            "enum": [
+              "devices",
+              "fare_transactions",
+              "operators",
+              "station_activities",
+              "passenger_events",
+              "stop_visits",
+              "train_cars",
+              "trips_performed",
+              "vehicle_locations",
+              "vehicle_train_cars",
+              "vehicles"
             ],
-            "properties": {
-              "name": {
-                "propertyOrder": 10,
-                "title": "Name",
-                "enum": [
-                  "devices",
-                  "fare_transactions",
-                  "operators",
-                  "station_activities",
-                  "passenger_events",
-                  "stop_visits",
-                  "train_cars",
-                  "trips_performed",
-                  "vehicle_locations",
-                  "vehicle_train_cars",
-                  "vehicles"
-                ],
-                "description": "An identifier string corresponding to the name of one of the table specs in the TIDES data package",
-                "type": "string",
-                "examples": [
-                  "fare_transactions",
-                  "train_cars"
-                ]
-              },
-              "path": {
-                "propertyOrder": 20,
-                "title": "Path",
-                "description": "A fully qualified public URL, or a relative Unix-style file path, leading to a place where the relevant table spec is defined.",
-                "type": "string",
-                "pattern": "^(?=^[^./~])(^((?!\\.{2}).)*$).*$",
-                "examples": [
-                  "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/train_cars.schema.json",
-                  "fare_transactions.schema.json"
-                ]
-              }
-            },
+            "description": "An identifier string corresponding to the name of one of the table specs in the TIDES data package",
+            "type": "string",
             "examples": [
-              "`{'name': 'devices' ,'path': 'https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/devices.schema.json'}`"
+              "fare_transactions",
+              "train_cars"
+            ]
+          },
+          "schema": {
+            "title": "Table Schema",
+            "description": "Location of the table schema for this resource.",
+            "type": "string",
+            "examples": [
+              "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/fare_transactions.schema.json"
             ]
           },
           "title": {

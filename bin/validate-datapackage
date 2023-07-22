@@ -1,0 +1,125 @@
+#!/usr/bin/env bash
+
+description="Bash script to validate a Frictionless Data Package using the Frictionless CLI."
+
+usage="
+Usage: validate-datapackage [-v remote_spec_ref | -l local_spec_path] [-d dataset_path]
+    -r remote_spec_ref: Optional. Specify the ref name of the GitHub repository for validating agianst
+           a remote profile. Should not be used with -l option. Example: `-r main`
+    -l local_spec_path: Optional. Specify the path of the local schema directory.
+         Default is '../spec'. Is only used if remote_spec_ref = local.
+    -d dataset_path: Optional. Specify the path of the TIDES datapackage.json.
+        Default is the current directory.
+"
+
+example_usage="Example Usage: bin/validate-datapackage -l spec -d samples/template/TIDES"
+
+################################################################################
+# Help                                                                         #
+################################################################################
+
+# Display help message
+function display_help() {
+  echo "$description"
+  echo "$usage"
+  echo "$example_usage"
+}
+
+# Check for help flag
+if [ "$1" == "--help" ]; then
+  display_help
+  exit 0
+fi
+
+################################################################################
+# MAIN                                                                         #
+################################################################################
+
+echo "$description"
+
+################################################################################
+# Source utility functions                                                     #
+################################################################################
+source "$(dirname "${BASH_SOURCE[0]}")/utils"
+script_dir=$(dirname "$0")
+
+################################################################################
+# Process the parameters + input options.                                      #
+################################################################################
+remote_spec_ref=""
+local_spec_path=""
+dataset_path="."
+
+# Parse command-line arguments
+while getopts ":r:l:d:" opt; do
+  case $opt in
+    r)
+      remote_spec_ref=$OPTARG
+      ;;
+    l)
+      local_spec_path=$OPTARG
+      ;;
+    d)
+      dataset_path=$OPTARG
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      display_help
+      exit 1
+      ;;
+  esac
+done
+
+echo "Running validate-datapackage with configs:"
+echo "  remote_spec_ref: $remote_spec_ref"
+echo "  local_spec_path: $local_spec_path"
+echo "  dataset_path: $dataset_path"
+
+if [ "$local_spec_path" != "" ] && [ "$remote_spec_ref" != "" ]; then
+  echo "Cannot specify both local profile location (-l) and remote spec reference (-r)" >&2
+  exit 1
+fi
+
+# Convert local_spec_path to an absolute path
+if [ -n "$local_spec_path" ]; then
+  local_spec_path=$(realpath "$local_spec_path")
+fi
+
+################################################################################
+# Specify datapackage and update if necessary                                  #
+################################################################################
+
+datapackage_file="$dataset_path/datapackage.json"
+check_valid_path "$datapackage_file"
+
+[ -n "$local_spec_path" ] && spec_path_prefix="$local_spec_path"
+[ -n "$remote_spec_ref" ] && spec_path_prefix="https://raw.githubusercontent.com/TIDES-transit/TIDES/$remote_spec_ref/spec"
+
+# Create a temporary data package if using a different spec than specified in datapackage
+if [ "$spec_path_prefix" != "" ]; then
+  tmp_datapackage=$("$script_dir/replace-spec-in-datapackage" "$dataset_path" "$spec_path_prefix" 2>&1 | tee /dev/tty | tail -1)
+  echo "...using Temporary datapackage at: $tmp_datapackage"
+  check_valid_path "$tmp_datapackage"
+  datapackage_file="$tmp_datapackage"
+fi
+
+################################################################################
+# Validate datapackage file against TIDES profile                              #
+################################################################################
+
+echo "...validate the data package JSON against the TIDES profile"
+
+if ! "$script_dir"/validate-datapackage-to-profile -d "$datapackage_file"; then
+  echo -e "\033[31m!!! ERROR: Data package validation against the TIDES profile failed.\033[0m"
+fi
+
+################################################################################
+# Validate datapackage contents                                                #
+################################################################################
+echo "...validate the Frictionless Data Package using the Frictionless CLI"
+frictionless validate --schema-sync "$datapackage_file" --trusted
+
+# Remove the temporary data package file, if applicable
+if [ "$tmp_datapackage" != "" ]; then
+  rm "$tmp_datapackage"
+fi

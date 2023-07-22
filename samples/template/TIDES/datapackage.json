@@ -3,7 +3,7 @@
     "title": "Template TIDES Data Package Example",
     "agency": "Transit Agency Name",
     "ntd_id": "1234-56",
-    "profile": "../../spec/tides-data-package.json",
+    "profile": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/tides-datapackage-profile.json",
     "licenses": [
         {
             "name": "Apache-2.0"
@@ -56,7 +56,7 @@
             "name": "fare_transactions",
             "profile": "tabular-data-resource",
             "path": "fare_transactions.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/fare_transactions.schema.json",
+            "schema":"https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/fare_transactions.schema.json",
             "sources": [
                 {
                     "title": "Where did data come from?",

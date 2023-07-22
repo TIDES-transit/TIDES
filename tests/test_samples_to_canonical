@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+description="Run test to validate local samples to canonical remote spec"
+usage="tests/test_samples_to_canonical"
+
+################################################################################
+# Specify Scripts and Parameters                                               #
+################################################################################
+test_dir=$(dirname "$0")
+script="$test_dir/validate_samples"
+args="-R"
+
+################################################################################
+# Run Test                                                                     #
+################################################################################
+
+echo "Running the test to validate local samples to canonical remote spec"
+
+# Execute the script and capture errors if there are any
+if output=$("$script" $args 2>&1); then
+  echo ":-) $script ran successfully."
+else
+  printf "\033[31m!!! %s encountered an error.\033[0m\n" "$script"
+  echo "$output" >&2
+fi

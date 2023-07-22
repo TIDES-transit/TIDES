@@ -20,7 +20,7 @@ We encourage the addition of examples, but please follow the following guideline
 
 ## Data Package
 
-TIDES sample data must include a `datapackage.json` in the format specified by the [`tides-data-package` json schema](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/tides-data-package.json) (an extension of the [frictionless data package](https://specs.frictionlessdata.io/data-package/)).  
+TIDES sample data must include a `datapackage.json` in the format specified by the [`tides-data-package` json schema](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/tides-datapackage-profile.json) (an extension of the [frictionless data package](https://specs.frictionlessdata.io/data-package/)).  
 
 See:
 

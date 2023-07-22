@@ -1,18 +1,18 @@
 # Data Package
 
-TIDES data must include a `datapackage.json` in the format specified by the [`tides-data-package` json schema](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/tides-data-package.json), which is an extension of the [frictionless data package](https://specs.frictionlessdata.io/data-package/) schema.
+TIDES data must include a `datapackage.json` in the format specified by the [`tides-data-package` json schema](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/tides-datapackage-profile.json), which is an extension of the [frictionless data package](https://specs.frictionlessdata.io/data-package/) schema.
 
 You may create your own `datapackage.json` based on the documentaiton or start with the provided [template](#template), but don't forget to [validate](#validation) it to make sure it is in the correct format!
 
 ## Data Package Format
 
-{{ frictionless_data_package('spec/tides-data-package.json') }}
+{{ frictionless_data_package('spec/tides-datapackage-profile.json') }}
 
 ## Tabular Data Resource
 
 Required and recommended fields for each `tabluar-data-resource` are as follows:
 
-{{ frictionless_data_package('spec/tides-data-package.json',sub_schema="resources") }}
+{{ frictionless_data_package('spec/tides-datapackage-profile.json',sub_schema="resources") }}
 
 ## Template
 
@@ -51,9 +51,9 @@ validate-data-package-json -f my-datapackage.json
 
 ### Point-and-Drool
 
-Because a `tides-data-package` is just a json-schema, you can use the myriad of different json-schema validator out there on the web.  Use the [canonical `tides-data-package`](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/tides-data-package.json) or copy and paste the version from below.
+Because a `tides-datapackage-profile` is just a json-schema, you can use the myriad of different json-schema validator out there on the web.  Use the [canonical `tides-datapackage-profile`](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/tides-datapackage-profile.json) or copy and paste the version from below.
 
 !!! warning
-    This version of `tides-data-package` is dependent on the version of the documentation you are viewing and only represents the canonical `tides-data-package` if you are viewing the `main` documentation version.
+    This version of `tides-datapackage-profile` is dependent on the version of the documentation you are viewing and only represents the canonical `tides-datapackage-profile` if you are viewing the `main` documentation version.
 
-{{ include_file('spec/tides-data-package.json',code_type='json') }}
+{{ include_file('spec/tides-datapackage-profile.json',code_type='json') }}
