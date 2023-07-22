@@ -10,6 +10,16 @@ check_jsonschema-cli() {
   fi
 }
 
+# Check if frictionless is installed
+check_frictionless() {
+  if ! command -v frictionless >/dev/null 2>&1; then 
+    echo >&2 "\033[31m!!! frictionless is required but not found.\033[0m 
+    
+    You can install it using 'pip install frictionless'. Aborting."
+    exit 1
+  fi
+}
+
 # Function to check jq and provide installation instructions if not found
 check_jq() {
   if ! command -v jq >/dev/null 2>&1; then
