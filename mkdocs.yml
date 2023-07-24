@@ -35,11 +35,6 @@ plugins:
         theme: |
             ^(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'
         securityLevel: 'loose'
-  - redirects:
-      redirect_maps: #original relative to /docs : redirect target
-        '../CODE_OF_CONDUCT.md': 'CODE_OF_CONDUCT.md'
-        '../CONTRIBUTING.md': 'CONTRIBUTING.md'
-        '../contributors.md': 'contributors.md'
   - search
 
 
