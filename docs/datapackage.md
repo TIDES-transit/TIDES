@@ -32,22 +32,38 @@ There are lots of options for validating your `datapackage.json` file including:
 
 ### CLI
 
-You can easily validate your data package file with the script provided in [`/bin/validate-data-package-json`](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/bin/validate-data-package-json)
+You can easily validate your data package file with the script provided in [`/bin/validate-data-package-to-profile`](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/bin/validate-data-package-to-profile)
 
 ??? tip "installation requirements"
 
     Make sure you have jsonschema-cli installed. You can install it specifically or with all of the other suggested tools using one of the commands below:
 
-    ```sh
-    pip install jsonschema-cli
-    pip install -r requirements.txt
-    ```
+    === "Mac"
+
+        ```sh
+        brew install jq # mac
+        pip install -r requirements.txt
+        ```
+
+    === "Windows"
+
+        ```sh
+        curl -L -o /usr/bin/jq.exe https://github.com/stedolan/jq/releases/latest/download/jq-win64.exe #windows
+        pip install -r requirements.txt
+        ```
+
+    === "Linux"
+
+        ```sh
+        sudo apt-get install jq # linux
+        pip install -r requirements.txt
+        ```
 
 ```sh title="usage"
 validate-data-package-json -f my-datapackage.json
 ```
 
-{{ include_file('bin/validate-data-package-json',code_type='sh') }}
+{{ include_file('bin/validate-datapackage-to-profile',code_type='sh') }}
 
 ### Point-and-Drool
 
