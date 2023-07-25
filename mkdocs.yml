@@ -50,13 +50,15 @@ extra_css:
 
 markdown_extensions:
   - admonition
+  - pymdownx.details
   - codehilite:
       linenums: true
   - meta
   - pymdownx.inlinehilite
   - pymdownx.tasklist:
       custom_checkbox: true
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid

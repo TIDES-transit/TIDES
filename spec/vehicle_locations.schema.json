@@ -18,10 +18,7 @@
     {
       "name": "service_date",
       "type": "date",
-      "description": "Service date. References GTFS",
-      "constraints": {
-        "required": true
-      }
+      "description": "Service date. References GTFS"
     },
     {
       "name": "event_timestamp",
@@ -35,7 +32,13 @@
       "name": "trip_id_performed",
       "type": "string",
       "title": "ID referencing trips_performed.trip_id_performed",
-      "description": "Identifies the trip performed."
+      "description": "Identifies the trip performed. If trips_performed table is used, this must be populated in order to link to it."
+    },
+    {
+      "name": "trip_id_scheduled",
+      "type": "string",
+      "title": "ID referencing trips_performed.trip_id_scheduled",
+      "description": "Identifies the scheduled trip. "
     },
     {
       "name": "trip_stop_sequence",

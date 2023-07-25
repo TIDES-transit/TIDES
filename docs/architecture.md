@@ -94,3 +94,9 @@ graph LR;
     click passenger_events "../tables/#passenger-events"
     click fare_transactions "../tables/#fare-transactions"
 ```
+
+!!! tip "Relationship of `trip_id_scheduled` to GTFS Schedule `trip_id`"
+
+    `trip_id_scheduled` in TIDES and `trip_id` in GTFS Schedule should be consistent when a performed trip exists in the published GTFS Schedule.
+
+    If a trip does not exist in the published GTFS Schedule, `trip_id_scheduled` values in TIDES do not have any assumed relationship with GTFS.

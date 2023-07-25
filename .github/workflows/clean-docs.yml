@@ -9,6 +9,18 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
+    - name: Set github reference as Slug environment variable
+      run: |
+        echo "Slug=$(echo "${{ github.head_ref }}" | sed "s/\//\-/g")" >> "$GITHUB_ENV"
+    - name: If no github.head_ref, use last chunk of github.ref as Slug
+      if: github.head_ref == ''
+      run: |
+        IFS="\/";
+        read -a strarr <<< "${{ github.ref }}";
+        last_ref="${strarr[${#strarr[*]}-1]}";
+        echo "Slug=$(echo $last_ref)" >> "$GITHUB_ENV"
+    - name: Document which reference
+      run: echo "Running for reference ${{ env.Slug }}"
     - name: Set up Python $PYTHON_VERSION
       uses: actions/setup-python@v4
       with:
@@ -24,5 +36,5 @@ jobs:
         git config --local user.name "github-actions[bot]"
     - name: Delete defunct docs versions
       run: |
-        echo "Deleting ${{ github.event.ref_name }} version from docs"
-        mike delete --rebase --push ${{ github.event.ref_name }}
+        echo "Deleting ${{ env.Slug }} version from docs"
+        mike delete --rebase --push ${{ env.Slug }}

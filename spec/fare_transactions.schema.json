@@ -72,6 +72,12 @@
       "description": "Identifies the trip performed. May be null if the fare collection device is NOT located on a vehicle. May be null if on a vehicle but trip-level data is unavailable, in which case the data would be associated with the vehicle."
     },
     {
+      "name": "trip_id_scheduled",
+      "type": "string",
+      "title": "ID referencing trips_performed.trip_id_scheduled",
+      "description": "Identifies the scheduled trip. May be null if the fare collection device is NOT located on a vehicle. May be null if on a vehicle but schedule data is unavailable, in which case the data would be associated with the vehicle."
+    },
+    {
       "name": "pattern_id",
       "type": "string",
       "title": "unique identifier for the route-pattern",
@@ -162,7 +168,7 @@
     {
       "name": "fare_capped",
       "type": "boolean",
-      "description": "Indicates if fare capping is in effect (fare capping options defined by transit agency).",
+      "description": "Indicates if the fare charged in this transaction was modified by a fare capping policy.",
       "constraints": {
         "required": true
       }
