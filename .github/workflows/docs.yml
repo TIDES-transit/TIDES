@@ -52,13 +52,19 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'pull_request' && github.event.pull_request.merged == false && github.event.pull_request.head.repo.full_name == github.repository }}
     steps:
-      - uses: actions/github-script@v6.4.1
+      - uses: peter-evans/find-comment@v2
+        if: ${{ github.event_name == 'pull_request' }}
+        id: fc
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: 'Documentation available at: [`http://tides-transit.github.io/TIDES/${{ github.head_ref }}`](http://tides-transit.github.io/TIDES/${{ github.head_ref }})'
-            })
+          issue-number: ${{ github.event.number }}
+          comment-author: "github-actions[bot]"
+          body-includes: "Documentation available at:"
+
+      - uses: peter-evans/create-or-update-comment@v2
+        if: ${{ github.event_name == 'pull_request' }}
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.number }}
+          body: "Documentation available at: [`http://tides-transit.github.io/TIDES/${{ github.head_ref }}`](http://tides-transit.github.io/TIDES/${{ github.head_ref }})"
+          edit-mode: replace
+
