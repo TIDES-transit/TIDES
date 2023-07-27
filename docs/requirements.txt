@@ -1,5 +1,5 @@
 mike
-mkdocs
+mkdocs==1.4.3
 mkdocs-autorefs
 mkdocs-awesome-pages-plugin
 mkdocs-jupyter
