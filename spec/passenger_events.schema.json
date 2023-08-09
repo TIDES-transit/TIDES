@@ -141,10 +141,10 @@
       }
     },
     {
-      "fields": "scheduled_stop_sequence",
+      "fields": ["service_date", "trip_id_performed", "scheduled_stop_sequence"],
       "reference": {
         "resource": "stop_times",
-        "fields": "stop_sequence"
+        "fields": ["service_date", "trip_id_performed", "stop_sequence"]
       }
     },
     {
