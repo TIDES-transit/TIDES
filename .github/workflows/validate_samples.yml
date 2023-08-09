@@ -4,11 +4,11 @@ on:
   push:
     paths:
       - 'samples/*/TIDES/*'
-      - 'spec/*'
+      # - 'spec/*' (TODO: Reinstate once samples folder exists)
   pull_request:
     paths:
       - 'samples/*/TIDES/*'
-      - 'spec/*'
+      # - 'spec/*' (TODO: Reinstate once samples folder exists)
   workflow_dispatch:
   create:
 
