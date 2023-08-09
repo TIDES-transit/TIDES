@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+echo "Validating table schemas"
+
+echo "Processing file: $file"
+for file in spec/*schema.json; do
+  echo "Validating: $file"
+  frictionless validate $file
+done
