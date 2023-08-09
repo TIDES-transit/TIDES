@@ -18,10 +18,7 @@
     {
       "name": "service_date",
       "type": "date",
-      "description": "Service date. References GTFS",
-      "constraints": {
-        "required": true
-      }
+      "description": "Service date. References GTFS"
     },
     {
       "name": "event_timestamp",
@@ -35,16 +32,19 @@
       "name": "trip_id_performed",
       "type": "string",
       "title": "ID referencing trips_performed.trip_id_performed",
-      "description": "Identifies the trip performed."
+      "description": "Identifies the trip performed. If trips_performed table is used, this must be populated in order to link to it."
+    },
+    {
+      "name": "trip_id_scheduled",
+      "type": "string",
+      "title": "ID referencing trips_performed.trip_id_scheduled",
+      "description": "Identifies the scheduled trip. "
     },
     {
       "name": "stop_sequence",
       "type": "integer",
       "title": "positive integer referencing GTFS stop_times.stop_sequence",
-      "description": "Ordered stop the vehicle is approaching or serving on a particular trip. References GTFS",
-      "constraints": {
-        "required": true
-      }
+      "description": "Ordered stop the vehicle is approaching or serving on a particular trip. References GTFS"
     },
     {
       "name": "vehicle_id",
@@ -186,6 +186,13 @@
       "reference": {
         "resource": "trips_performed",
         "fields": "trip_id_performed"
+      }
+    },
+    {
+      "fields": ["service_date", "trip_id_performed", "stop_sequence"],
+      "reference": {
+        "resource": "stop_times",
+        "fields": ["service_date", "trip_id_performed", "stop_sequence"]
       }
     },
     {

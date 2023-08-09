@@ -77,6 +77,12 @@
       "description": "Identifies the trip performed. May be null if the fare collection device is NOT located on a vehicle. May be null if on a vehicle but trip-level data is unavailable, in which case the data would be associated with the vehicle."
     },
     {
+      "name": "trip_id_scheduled",
+      "type": "string",
+      "title": "ID referencing trips_performed.trip_id_scheduled",
+      "description": "Identifies the scheduled trip. May be null if the fare collection device is NOT located on a vehicle. May be null if on a vehicle but schedule data is unavailable, in which case the data would be associated with the vehicle."
+    },
+    {
       "name": "pattern_id",
       "type": "string",
       "title": "unique identifier for the route-pattern",
@@ -116,15 +122,15 @@
       "description": "Identifies the stop. References GTFS"
     },
     {
-      "name": "group_size",
+      "name": "num_riders",
       "type": "integer",
-      "description": "The number of customers included in the transaction.",
+      "description": "The number of riders included in the transaction.",
       "constraints": {
         "minimum": 0
       }
     },
     {
-      "name": "media_type",
+      "name": "fare_media_id",
       "type": "string",
       "description": "Indicates the fare medium that was used for the transaction.",
       "constraints": {
@@ -158,20 +164,15 @@
     {
       "name": "fare_capped",
       "type": "boolean",
-      "description": "Indicates if fare capping is in effect (fare capping options defined by transit agency).",
+      "description": "Indicates if the fare charged in this transaction was modified by a fare capping policy.",
       "constraints": {
         "required": true
       }
     },
     {
-      "name": "fare_media_id",
+      "name": "token_id",
       "type": "string",
-      "description": "Identifies the individual fare medium used for the transaction. For example, the fare card ID."
-    },
-    {
-      "name": "fare_media_id_purchased",
-      "type": "string",
-      "description": "Identifies the individual fare medium purchased in the transaction. For example, the fare card ID."
+      "description": "Identifies the individual fare instrument used for the transaction. For example, the fare card ID."
     },
     {
       "name": "balance",
@@ -188,10 +189,10 @@
       }
     },
     {
-      "fields": "stop_sequence",
+      "fields": ["service_date", "trip_id_performed", "stop_sequence"],
       "reference": {
         "resource": "stop_times",
-        "fields": "stop_sequence"
+        "fields": ["service_date", "trip_id_performed", "stop_sequence"]
       }
     },
     {
