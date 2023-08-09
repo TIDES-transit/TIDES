@@ -189,6 +189,13 @@
       }
     },
     {
+      "fields": ["service_date", "trip_id_performed", "stop_sequence"],
+      "reference": {
+        "resource": "stop_times",
+        "fields": ["service_date", "trip_id_performed", "stop_sequence"]
+      }
+    },
+    {
       "fields": "vehicle_id",
       "reference": {
         "resource": "vehicles",
