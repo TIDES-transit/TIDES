@@ -46,11 +46,13 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            console.log("Begin sample construction")
             const samples = '${{ env.samples }}'.split('\n');
             const results = '${{ env.results }}'.split('\n\n');
             let comment = `**Data Validation Report**\n\n`;
             comment += '| Sample | Status |\n';
             comment += '| ------ | ------ |\n';
+            console.log("Constructed header")
             for (let i = 0; i < samples.length; i++) {
               console.log(samples[i])
               console.log(results[i])
