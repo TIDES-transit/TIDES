@@ -37,7 +37,7 @@ jobs:
           results=""
           for sample in "${samples[@]}"; do
             result=$(frictionless validate --schema-sync "$sample/datapackage.json" --json)
-            results+="$result\n"
+            results+="$result\n\n"
           done
           echo "{name}=${results}" >> $GITHUB_ENV
       - name: Comment on PR
@@ -47,7 +47,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const samples = '${{ env.samples }}'.trim().split('\n');
-            const results = '${{ env.results }}'.trim().split('\n');
+            const results = '${{ env.results }}'.trim().split('\n\n');
             let comment = `**Data Validation Report**\n\n`;
             comment += '| Sample | Status |\n';
             comment += '| ------ | ------ |\n';
