@@ -35,7 +35,9 @@ jobs:
         run: |
           samples=(${{ steps.sample_folders.outputs.samples }})
           results=""
+          console.log(samples.length)
           for sample in "${samples[@]}"; do
+            console.log(sample)
             result=$(frictionless validate --schema-sync "$sample/datapackage.json" --json)
             results+="$result\n\n"
           done
