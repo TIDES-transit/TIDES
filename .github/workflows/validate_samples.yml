@@ -30,7 +30,7 @@ jobs:
           pwd
           samples=$(find ./samples -type d -name 'TIDES')
           echo $samples
-          echo "{name}={samples}" >> $GITHUB_OUTPUT
+          echo "{name}=${samples}" >> $GITHUB_OUTPUT
       - name: Validate Sample Data
         id: validation
         run: |
