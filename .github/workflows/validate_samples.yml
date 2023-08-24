@@ -46,14 +46,14 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const samples = '${{ env.samples }}'.split('\n').trim().;
-            const results = '${{ env.results }}'.split('\n\n').trim();
+            const samples = '${{ env.samples }}'.split('\n');
+            const results = '${{ env.results }}'.split('\n\n');
             let comment = `**Data Validation Report**\n\n`;
             comment += '| Sample | Status |\n';
             comment += '| ------ | ------ |\n';
             for (let i = 0; i < samples.length; i++) {
               const sample = samples[i];
-              const result = JSON.parse(results[i]);
+              const result = JSON.parse(results[i].trim());
               let status = '';
               if (result.valid) {
                 status = ':heavy_check_mark:';
