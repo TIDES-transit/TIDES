@@ -46,8 +46,8 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const samples = '${{ env.samples }}'.trim().split('\n');
-            const results = '${{ env.results }}'.trim().split('\n\n');
+            const samples = '${{ env.samples }}'.split('\n').trim().;
+            const results = '${{ env.results }}'.split('\n\n').trim();
             let comment = `**Data Validation Report**\n\n`;
             comment += '| Sample | Status |\n';
             comment += '| ------ | ------ |\n';
