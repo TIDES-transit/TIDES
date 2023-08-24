@@ -53,7 +53,7 @@ jobs:
             comment += '| ------ | ------ |\n';
             for (let i = 0; i < samples.length; i++) {
               const sample = samples[i];
-              const result = JSON.parse(results[i].trim());
+              const result = JSON.parse(results[i]);
               let status = '';
               if (result.valid) {
                 status = ':heavy_check_mark:';
