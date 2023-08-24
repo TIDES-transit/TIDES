@@ -29,12 +29,12 @@ jobs:
         run: |
           pwd
           samples=$(find ./samples -type d -name 'TIDES')
+          console.log(samples)
           echo "{name}={value}" >> $GITHUB_OUTPUT
       - name: Validate Sample Data
         id: validation
         run: |
           samples=(${{ steps.sample_folders.outputs.samples }})
-          console.log(samples)
           results=""
           for sample in "${samples[@]}"; do
             console.log(sample)
