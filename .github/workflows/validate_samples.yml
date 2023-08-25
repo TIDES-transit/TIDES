@@ -38,10 +38,11 @@ jobs:
           results="{\"values\": ["
           result=""
           for sample in "${samples[@]}"; do
-            results+="$result,"
+            results+="$result"
             result=$(frictionless validate --schema-sync "${sample}/datapackage.json" --json) || true
             result="${result//\'s/}"
             result="${result//\\\"/\\\\\"}"
+            result="$result,"
           done
 
           result="${result%?}"
