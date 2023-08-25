@@ -37,11 +37,12 @@ jobs:
           samples=(${{ steps.sample_folders.outputs.samples }})
           results=""
           for sample in "${samples[@]}"; do
-            frictionless validate --schema-sync "${sample}/datapackage.json" --json
             result=$(frictionless validate --schema-sync "${sample}/datapackage.json" --json)
             results+="$result\n\n"
           done
-          echo "results=${results}" >> $GITHUB_ENV
+          echo 'results<<EOF' >> $GITHUB_ENV
+          cat $results >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
       - name: Comment on PR
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v4
