@@ -35,11 +35,9 @@ jobs:
         id: validation
         run: |
           samples=(${{ steps.sample_folders.outputs.samples }})
-          echo $samples
           results=""
           for sample in "${samples[@]}"; do
-            echo $sample
-            result=$(frictionless validate --schema-sync "$sample/datapackage.json" --json)
+            result=$(frictionless validate --schema-sync "${sample}/datapackage.json" --json)
             results+="$result\n\n"
           done
           echo "results=${results}" >> $GITHUB_ENV
