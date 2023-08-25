@@ -36,13 +36,15 @@ jobs:
         run: |
           samples=(${{ steps.sample_folders.outputs.samples }})
           results="{\"values\": ["
+          result=""
           for sample in "${samples[@]}"; do
+            results+="$result,"
             result=$(frictionless validate --schema-sync "${sample}/datapackage.json" --json) || true
             result="${result//\'s/}"
             result="${result//\\\"/\\\\\"}"
-            results+="$result,\n"
           done
 
+          results+="$result"
           results+="]}"
 
           echo "RESULTS<<EOF" >> $GITHUB_OUTPUT
