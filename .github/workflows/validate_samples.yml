@@ -38,7 +38,7 @@ jobs:
           results=""
           for sample in "${samples[@]}"; do
             result=$(frictionless validate --schema-sync "${sample}/datapackage.json" --json) || true
-            result="${result//\'/\\\'}"
+            result="${result//\'/\\\"}"
             results+="$result\n\n"
           done
 
@@ -62,7 +62,7 @@ jobs:
               console.log(samples[i])
               console.log(results[i])
               const sample = samples[i];
-              const result = JSON.parse(results[i].replace('\\\'','\''));
+              const result = JSON.parse(results[i]);
               let status = '';
               if (result.valid) {
                 status = ':heavy_check_mark:';
