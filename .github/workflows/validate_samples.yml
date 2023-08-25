@@ -38,7 +38,6 @@ jobs:
           results=""
           for sample in "${samples[@]}"; do
             result=$(frictionless validate --schema-sync "${sample}/datapackage.json" --json) || true
-            result="${result//\'/\\\'}"
             results+="$result\n\n"
           done
 
@@ -52,8 +51,8 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             console.log("Begin sample construction")
-            const samples = '${{ steps.sample_folders.outputs.samples }}'.split('\n');
-            const results = '${{ steps.validation.outputs.results }}'.split('\n\n');
+            const samples = "${{ steps.sample_folders.outputs.samples }}".split('\n');
+            const results = "${{ steps.validation.outputs.results }}".split('\n\n');
             let comment = `**Data Validation Report**\n\n`;
             comment += '| Sample | Status |\n';
             comment += '| ------ | ------ |\n';
