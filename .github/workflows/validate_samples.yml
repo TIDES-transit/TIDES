@@ -54,8 +54,8 @@ jobs:
             comment += '| ------ | ------ |\n';
             console.log("Constructed header")
             for (let i = 0; i < samples.length; i++) {
-              console.log(samples.length)
-              console.log(results.length)
+              console.log(samples[i])
+              console.log(results[i])
               const sample = samples[i];
               const result = JSON.parse(results[i]);
               let status = '';
