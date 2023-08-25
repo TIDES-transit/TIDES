@@ -30,7 +30,7 @@ jobs:
           pwd
           samples=$(find ./samples -type d -name 'TIDES')
           echo $samples
-          echo "{name}=${samples}" >> $GITHUB_OUTPUT
+          echo "samples=${samples}" >> $GITHUB_OUTPUT
       - name: Validate Sample Data
         id: validation
         run: |
@@ -41,7 +41,7 @@ jobs:
             result=$(frictionless validate --schema-sync "$sample/datapackage.json" --json)
             results+="$result\n\n"
           done
-          echo "{name}=${results}" >> $GITHUB_ENV
+          echo "results=${results}" >> $GITHUB_ENV
       - name: Comment on PR
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v4
