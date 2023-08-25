@@ -24,8 +24,6 @@ jobs:
           python-version: 3.x
       - name: Install Frictionless
         run: pip install frictionless[excel,json]>=5.0.0
-      - name: Experimentally upgrade attrs
-        run: pip install attrs --upgrade
       - name: Find Sample Folders
         id: sample_folders
         run: |
@@ -39,6 +37,7 @@ jobs:
           samples=(${{ steps.sample_folders.outputs.samples }})
           results=""
           for sample in "${samples[@]}"; do
+            frictionless validate --schema-sync "${sample}/datapackage.json" --json
             result=$(frictionless validate --schema-sync "${sample}/datapackage.json" --json)
             results+="$result\n\n"
           done
