@@ -1,1 +1,1 @@
-passenger_event_id,date,timestamp,trip_id_performed,stop_sequence,event_type,vehicle_id,device_id,train_car_id,stop_id,service_date,passenger_events,event_timestamp
+passenger_event_id,date,timestamp,trip_id_performed,stop_sequence,trip_stop_sequence,event_type,vehicle_id,device_id,train_car_id,stop_id,service_date,passenger_events,event_timestamp
