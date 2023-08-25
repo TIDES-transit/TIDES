@@ -20,13 +20,13 @@
   ],
   "properties": {
     "profile": {
-      "default":  "https://raw.githubusercontent.com/TIDES-transit/TIDES/sample-data-doc/spec/tides-datapackage-profile.json",
+      "default":  "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/tides-datapackage-profile.json",
       "propertyOrder": 10,
       "title": "Profile",
       "description": "The json-schema profile used to validate this datapackage descriptor. Should be `https://raw.githubusercontent.com/TIDES-transit/TIDES/<spec-version-or-reference>/spec/tides-datapackage-profile.json`. Defaults to `https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/tides-datapackage-profile.json`",
       "format": "uri",
       "examples": [
-        "`https://raw.githubusercontent.com/TIDES-transit/TIDES/sample-data-doc/spec/tides-datapackage-profile.json`"
+        "`https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/tides-datapackage-profile.json`"
       ]
     },
     "title": {

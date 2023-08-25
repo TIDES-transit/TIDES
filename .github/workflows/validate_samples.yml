@@ -41,7 +41,7 @@ jobs:
             results+="$result\n\n"
           done
 
-          echo ${results}
+          echo "$results"
 
           echo "RESULTS<<EOF" >> $GITHUB_OUTPUT
           echo ${results} >> $GITHUB_OUTPUT
