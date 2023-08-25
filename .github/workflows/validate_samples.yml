@@ -37,7 +37,7 @@ jobs:
           samples=(${{ steps.sample_folders.outputs.samples }})
           echo "RESULTS<<EOF" >> $GITHUB_ENV
           for sample in "${samples[@]}"; do
-          "$(frictionless validate --schema-sync "${sample}/datapackage.json" --json)" >> $GITHUB_ENV
+            "$(frictionless validate --schema-sync "${sample}/datapackage.json" --json)" >> $GITHUB_ENV
           done
           echo "EOF" >> $GITHUB_ENV
           echo "$RESULTS"
