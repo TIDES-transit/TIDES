@@ -39,7 +39,7 @@ jobs:
           for sample in "${samples[@]}"; do
             result=$(frictionless validate --schema-sync "${sample}/datapackage.json" --json) || true
             result="${result//\'/\\\"}"
-            results+="$result\n\n"
+            results+="$result,\n"
           done
 
           echo "RESULTS<<EOF" >> $GITHUB_OUTPUT
@@ -53,7 +53,7 @@ jobs:
           script: |
             console.log("Begin sample construction")
             const samples = '${{ steps.sample_folders.outputs.samples }}'.split('\n');
-            const results = '${{ steps.validation.outputs.results }}'.split('\n\n');
+            const results = JSON.parse('[${{ steps.validation.outputs.results }}]');
             let comment = `**Data Validation Report**\n\n`;
             comment += '| Sample | Status |\n';
             comment += '| ------ | ------ |\n';
@@ -62,7 +62,7 @@ jobs:
               console.log(samples[i])
               console.log(results[i])
               const sample = samples[i];
-              const result = JSON.parse(results[i]);
+              const result = results[i];
               let status = '';
               if (result.valid) {
                 status = ':heavy_check_mark:';
