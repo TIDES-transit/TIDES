@@ -40,8 +40,9 @@ jobs:
             result=$(frictionless validate --schema-sync "${sample}/datapackage.json" --json)
             results+="$result\n\n"
           done
+          echo $results
           echo "results<<EOF" >> $GITHUB_ENV
-          cat "$results" >> $GITHUB_ENV
+          cat $results >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
       - name: Comment on PR
         if: github.event_name == 'pull_request'
