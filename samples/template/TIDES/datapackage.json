@@ -3,7 +3,7 @@
     "title": "Template TIDES Data Package Example",
     "agency": "Transit Agency Name",
     "ntd_id": "1234-56",
-    "profile": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/tides-datapackage-profile.json",
+    "profile": "https://raw.githubusercontent.com/TIDES-transit/TIDES/tree/sample-data-doc/spec/tides-datapackage-profile.json",
     "licenses": [
         {
             "name": "Apache-2.0"
@@ -28,7 +28,7 @@
             "name": "devices",
             "profile": "tabular-data-resource",
             "path": "devices.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/devices.schema.json",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/tree/sample-data-doc/spec/devices.schema.json",
             "sources": [
                 {
                     "title": "Where did data come from?",
@@ -42,7 +42,7 @@
             "name": "vehicle_locations",
             "profile": "tabular-data-resource",
             "path": "vehicle_locations.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicle_locations.schema.json",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/tree/sample-data-doc/spec/vehicle_locations.schema.json",
             "sources": [
                 {
                     "title": "Where did data come from?",
@@ -56,7 +56,7 @@
             "name": "fare_transactions",
             "profile": "tabular-data-resource",
             "path": "fare_transactions.csv",
-            "schema":"https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/fare_transactions.schema.json",
+            "schema":"https://raw.githubusercontent.com/TIDES-transit/TIDES/tree/sample-data-doc/spec/fare_transactions.schema.json",
             "sources": [
                 {
                     "title": "Where did data come from?",
@@ -70,7 +70,7 @@
             "name": "train_cars",
             "profile": "tabular-data-resource",
             "path": "train_cars.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/train_cars.schema.json",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/tree/sample-data-doc/spec/train_cars.schema.json",
             "sources": [
                 {
                     "title": "Where did data come from?",
@@ -84,7 +84,7 @@
             "name": "operators",
             "profile": "tabular-data-resource",
             "path": "operators.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/operators.schema.json",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/tree/sample-data-doc/spec/operators.schema.json",
             "sources": [
                 {
                     "title": "Where did data come from?",
@@ -98,7 +98,7 @@
             "name": "stop_visits",
             "profile": "tabular-data-resource",
             "path": "stop_visits.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/stop_visits.schema.json",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/tree/sample-data-doc/spec/stop_visits.schema.json",
             "sources": [
                 {
                     "title": "Where did data come from?",
@@ -112,7 +112,7 @@
             "name": "vehicle_train_cars",
             "profile": "tabular-data-resource",
             "path": "vehicle_train_cars.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicle_train_cars.schema.json",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/tree/sample-data-doc/spec/vehicle_train_cars.schema.json",
             "sources": [
                 {
                     "title": "Where did data come from?",
@@ -126,7 +126,7 @@
             "name": "vehicles",
             "profile": "tabular-data-resource",
             "path": "vehicles.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicles.schema.json",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/tree/sample-data-doc/spec/vehicles.schema.json",
             "sources": [
                 {
                     "title": "Where did data come from?",
@@ -140,7 +140,7 @@
             "name": "trips_performed",
             "profile": "tabular-data-resource",
             "path": "trips_performed.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/trips_performed.schema.json",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/tree/sample-data-doc/spec/trips_performed.schema.json",
             "sources": [
                 {
                     "title": "Where did data come from?",
@@ -154,7 +154,7 @@
             "name": "station_activities",
             "profile": "tabular-data-resource",
             "path": "station_activities.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/station_activities.schema.json",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/tree/sample-data-doc/spec/station_activities.schema.json",
             "sources": [
                 {
                     "title": "Where did data come from?",
@@ -168,7 +168,7 @@
             "name": "passenger_events",
             "profile": "tabular-data-resource",
             "path": "passenger_events.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/passenger_events.schema.json",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/tree/sample-data-doc/spec/passenger_events.schema.json",
             "sources": [
                 {
                     "title": "Where did data come from?",
