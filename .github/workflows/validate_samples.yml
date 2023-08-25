@@ -42,9 +42,9 @@ jobs:
           done
 
           echo "RESULTS<<EOF" >> $GITHUB_ENV
-          cat $results >> $GITHUB_ENV
+          echo ${results} >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
-          echo "$RESULTS"
+          echo "$GITHUB_ENV"
       - name: Comment on PR
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v4
