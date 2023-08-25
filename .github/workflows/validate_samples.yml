@@ -38,6 +38,7 @@ jobs:
           results="{"values": ["
           for sample in "${samples[@]}"; do
             result=$(frictionless validate --schema-sync "${sample}/datapackage.json" --json) || true
+            result="${result//\'s/}"
             results+="$result,\n"
           done
 
@@ -54,7 +55,7 @@ jobs:
           script: |
             console.log("Begin sample construction")
             const samples = '${{ steps.sample_folders.outputs.samples }}'.split('\n');
-            const results = JSON.parse(${{ steps.validation.outputs.results }});
+            const results = JSON.parse('${{ steps.validation.outputs.results }}');
             let comment = `**Data Validation Report**\n\n`;
             comment += '| Sample | Status |\n';
             comment += '| ------ | ------ |\n';
