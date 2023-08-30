@@ -1,0 +1,1 @@
+transaction_id,date,timestamp,amount,currency_type,fare_action,trip_id_performed,stop_sequence,vehicle_id,device_id,fare_id,stop_id,group_size,media_type,rider_category,fare_product,fare_period,fare_capped,fare_media_id,fare_media_id_purchased,balance,service_date,event_timestamp

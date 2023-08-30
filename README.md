@@ -12,6 +12,35 @@ Human-friendlier documentation is auto-generated and available at:
 - [Architecture](https://tides-transit.github.io/TIDES/main/architecture)
 - [Table Schemas](https://tides-transit.github.io/TIDES/main/tables)
 
+### Data Package
+
+Directories with TIDES data must contain metadata in a [`datapackage.json`](https://tides-transit.github.io/TIDES/main/datapackage) file in a format compliant with the [`tides-datapackage-profile`](https://tides-transit.github.io/TIDES/main/datapackage) of a [`frictionless data package`](https://specs.frictionlessdata.io/data-package/).  
+
+[`/samples/template/datapackage.json`](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/samples/template/datapackage.json) has a template datapackage which can be used.
+
+## Sample Data
+
+[Sample data](https://tides-transit.github.io/TIDES/main/samples) can be found in the `/samples` directory, with one directory for each sample.
+
+### Template
+
+Templates of `datapackage.json` and each TIDES file type are located in the `/samples/template` directory.
+
+## Validating TIDES data
+
+TIDES data with a valid [`datapackage.json`](#data-package) can be easily validated using the [frictionless framework](https://framework.frictionlessdata.io/), which can be installed and invoked as follows:
+
+```bash
+pip install frictionless
+frictionless validate --schema-sync path/to/your/datapackage.json
+```
+
+Several other validation scripts and tools with more flexibility such as validating to the canonical, named version or a local spec can be found in the `/bin` directory, with usage available with the `--help` flag.
+
+```bash
+bin/validate-datapackage [-v remote_spec_ref | -l local_spec_path] [-d dataset_path]
+```
+
 ## Contributing to TIDES
 
 Those who want to help with the development of the TIDES specification should review the guidance in [CONTRIBUTING.md](CONTRIBUTING.md).
