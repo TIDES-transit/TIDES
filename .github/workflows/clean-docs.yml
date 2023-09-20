@@ -4,6 +4,7 @@ on:
 
 jobs:
   clean:
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -14,9 +15,9 @@ jobs:
         echo "Slug=$(echo "${{ github.head_ref }}" | sed "s/\//\-/g")" >> "$GITHUB_ENV"
     - name: If no github.head_ref, use last chunk of github.ref as Slug
       if: github.head_ref == ''
-      run: | 
+      run: |
         IFS="\/";
-        read -a strarr <<< "${{ github.ref }}"; 
+        read -a strarr <<< "${{ github.ref }}";
         last_ref="${strarr[${#strarr[*]}-1]}";
         echo "Slug=$(echo $last_ref)" >> "$GITHUB_ENV"
     - name: Document which reference

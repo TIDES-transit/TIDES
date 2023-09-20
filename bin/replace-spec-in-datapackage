@@ -1,0 +1,98 @@
+#!/usr/bin/env bash
+
+description="Create a temporary data package if a spec_path_prefix is provided."
+
+usage="
+Usage: replace-spec-in-datapackage <dataset_path> [spec_path_prefix] [output_file]
+
+Arguments:
+  <dataset_path>   The path to the dataset directory containing the 'datapackage.json' file.
+  <spec_path_prefix>   The path or URL to the spec to be referenced in the updated data package.
+  [output_file]   (Optional) The path to save the temporary data package. If not provided, the temporary data package will be saved as 'datapackage.tmp.json' in the dataset directory.
+
+"
+
+example_usage="
+Example Usage: 
+bin/replace-spec-in-datapackage samples/template/TIDES spec samples/template/TIDES/datapackage.tmp.json
+"
+
+################################################################################
+# Help                                                                         #
+################################################################################
+
+# Display help message
+function display_help() {
+  echo "$description"
+  echo "$usage"
+  echo "$example_usage"
+}
+
+# Check for help flag
+if [ "$1" == "--help" ]; then
+  display_help
+  exit 0
+fi
+
+################################################################################
+# SET DEFAULTS                                                                 #
+################################################################################
+DEFAULT_TMP_DATAPACKAGE="datapackage.tmp.json"
+PROFILE_FILE="tides-datapackage-profile.json"
+
+################################################################################
+# MAIN                                                                         #
+################################################################################
+
+echo "$description"
+
+################################################################################
+# Check Requirements                                                           #
+################################################################################
+source "$(dirname "${BASH_SOURCE[0]}")/utils"
+check_jq
+
+################################################################################
+# Process the input options.                                                   #
+################################################################################
+dataset_path=$1
+spec_path_prefix=$2
+output_file=${3:-"$dataset_path/$DEFAULT_TMP_DATAPACKAGE"}
+
+echo "Parameters:
+    dataset_path: $dataset_path
+    spec_path_prefix: $spec_path_prefix
+    output_file: $output_file
+"
+
+# Check if required arguments are missing
+if [ -z "$dataset_path" ]; then
+  echo "Error: Missing dataset_path argument." >&2
+  display_help
+  exit 1
+fi
+
+# Check if required arguments are missing
+if [ -z "spec_path_prefix" ]; then
+  echo "Error: Missing spec_path_prefix argument." >&2
+  display_help
+  exit 1
+fi
+
+datapackage_file="$dataset_path/datapackage.json"
+
+check_valid_path "$datapackage_file"
+
+profile_file="$spec_path_prefix/$PROFILE_FILE"
+check_valid_path "$profile_file"
+
+################################################################################
+# Create updated datapackage                                                   #
+################################################################################
+cp "$datapackage_file" "$output_file"
+jq --arg spec_path_prefix "$spec_path_prefix" --arg profile_file "$profile_file" '
+  .resources |= map(.schema |= ($spec_path_prefix + "/\(. | split("/") | last)"))
+  | .profile = ($profile_file)
+' "$output_file" > "$output_file.tmp" && mv "$output_file.tmp" "$output_file"
+
+echo "$output_file"

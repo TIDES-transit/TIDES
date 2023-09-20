@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+
+# Check if jsonschema-cli is installed
+check_jsonschema-cli() {
+  if ! command -v jsonschema-cli >/dev/null 2>&1; then 
+    echo >&2 "\033[31m!!! jsonschema-cli is required but not found.\033[0m 
+    
+    You can install it using 'pip install jsonschema-cli'. Aborting."
+    exit 1
+  fi
+}
+
+# Check if frictionless is installed
+check_frictionless() {
+  if ! command -v frictionless >/dev/null 2>&1; then 
+    echo >&2 "\033[31m!!! frictionless is required but not found.\033[0m 
+    
+    You can install it using 'pip install frictionless'. Aborting."
+    exit 1
+  fi
+}
+
+# Function to check jq and provide installation instructions if not found
+check_jq() {
+  if ! command -v jq >/dev/null 2>&1; then
+    echo >&2 "\033[31m!!! jq is required but not found.\033[0m"
+
+    # Determine the operating system
+    os_type=$(uname -s)
+
+    case "$os_type" in
+      Linux*)
+        echo >&2 "Please install jq using your package manager."
+        echo >&2 "For example, on Debian/Ubuntu-based systems, you can use:"
+        echo >&2 "sudo apt-get install jq"
+        ;;
+      Darwin*)
+        echo >&2 "Please install jq using Homebrew."
+        echo >&2 "If you don't have Homebrew installed, you can install it from https://brew.sh/."
+        echo >&2 "Once Homebrew is installed, run the following command:"
+        echo >&2 "brew install jq"
+        ;;
+      CYGWIN*|MINGW32*|MSYS*|MINGW*)
+        echo >&2 "Please download the jq binary for Windows from https://stedolan.github.io/jq/download/."
+        echo >&2 "Extract the downloaded ZIP file and add the 'jq.exe' binary to your PATH..."
+        echo >&2 "Or run the following command: "
+        echo >&2 "curl -L -o /usr/bin/jq.exe https://github.com/stedolan/jq/releases/latest/download/jq-win64.exe"
+        ;;
+      *)
+        echo >&2 "Unknown operating system. Please install jq from https://stedolan.github.io/jq/download/."
+        ;;
+    esac
+
+    exit 1
+  fi
+}
+
+# Function to check if this is a valid spec path
+check_valid_path() {
+  local path=$1
+
+  if [ -n "$path" ]; then
+    if [ ! -e "$path" ] && [[ ! "$path" =~ ^http ]]; then
+      echo "\033[31mError: $path is an invalid path. It must be a valid file path, directory path, or a URL starting with 'http'.\033[0m" >&2
+      display_help
+      exit 1
+    elif [[ "$path" =~ ^http ]]; then
+      # Check if the URL is valid
+      if ! curl --output /dev/null --silent --head --fail "$path"; then
+        echo "\033[31mError: Invalid URL. The $path URL is not reachable or does not exist.\033[0m" >&2
+        exit 1
+      fi
+    fi
+  fi
+}

@@ -1,0 +1,138 @@
+#!/usr/bin/env bash
+
+description="Script to validate a local JSON file against a profile for tides-data-package specified in 
+profile field or optionally against a remote or local profile."
+
+usage="
+Usage: validate-datapackage-to-profile [-r remote_spec_ref | -l local_spec_path] [-f datapackage_file]
+   -r remote_spec_ref: Optional. Specify the ref name of the GitHub repository for validating agianst
+             a remote profile where the profile is in the sub-path /spec/tides-data-package.json. 
+             Should not be used with -l option. Example: -r main
+   -l local_spec_path: Optional. Specify the location of the local tides-data-package-json to use.
+             Should not be used with -r option. Example: -l spec
+   -d dataset_path: Optional. Specify the path of the datapackage.json file. 
+             Default is datapackage.json. Example: -d samples/template/TIDES/datapackage.json
+"
+
+example_usage="Example Usage: bin/validate-datapackage-to-profile -d samples/template/TIDES/datapackage.tmp.json"
+
+################################################################################
+# Help                                                                         #
+################################################################################
+
+# Display help message
+function display_help() {
+  echo "$description"
+  echo "$usage"
+  echo "$example_usage"
+}
+
+# Check for help flag
+if [ "$1" == "--help" ]; then
+  display_help
+  exit 0
+fi
+
+################################################################################
+# MAIN                                                                         #
+################################################################################
+
+echo "$description"
+
+################################################################################
+# Source utility functions                                                     #
+################################################################################
+source "$(dirname "${BASH_SOURCE[0]}")/utils"
+script_dir=$(dirname "$0")
+
+################################################################################
+# Check Requirements                                                           #
+################################################################################
+check_jsonschema-cli
+check_jq
+
+################################################################################
+# Process the input options.                                                   #
+################################################################################
+# Set default values
+remote_spec_ref=""
+local_spec_path=""
+dataset_path="datapackage.json"
+
+# Parse command-line arguments
+while getopts ":r:l:d:" opt; do
+  case $opt in
+    r)
+      remote_spec_ref=$OPTARG
+      ;;
+    l)
+      local_spec_path=$OPTARG
+      ;;
+    d)
+      dataset_path=$OPTARG
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      display_help
+      exit 1
+      ;;
+  esac
+done
+
+echo "validate-datapackage-to-profile configs:"
+echo "  remote_spec_ref: $remote_profile_ref"
+echo "  local_spec_path: $local_profile_path"
+echo "  dataset_path: $dataset_path"
+
+if [ "$local_spec_path" != "" ] && [ "$remote_spec_path" != "" ]; then
+  echo "Cannot specify both local spec location (-l) and remote spec reference (-r)" >&2
+  exit 1
+fi
+
+################################################################################
+# Specify datapackage and update if necessary                                  #
+################################################################################
+
+# Set appropriate datapackage_file vs dataset_path
+if [ -f "$dataset_path" ]; then
+  datapackage_file="$dataset_path"
+  dataset_path=$(dirname "$dataset_path")
+else 
+  datapackage_file="$dataset_path/datapackage.json"
+fi
+check_valid_path "$datapackage_file"
+
+################################################################################
+# Find and download if necessary the profile file                              #
+################################################################################
+
+[ -n "$local_spec_path" ] && spec_prefix="$local_spec_path"
+[ -n "$remote_spec_ref" ] && spec_prefix="https://raw.githubusercontent.com/TIDES-transit/TIDES/$remote_spec_ref/spec"
+
+if [ "$spec_prefix" != "" ]; then
+  profile_file="$spec_prefix/tides-datapackage-profile.json"
+else
+  profile_file=$(jq -r '.profile' "$datapackage_file")
+fi
+echo "...using profile: $profile_file"
+check_valid_path "$profile_file"
+
+if [[ "$profile_file" =~ ^http ]]; then
+  temp_dir=$(mktemp -d)
+  profile_file="$temp_dir/$(basename $profile_file)"
+  echo "...downloading profile to: $profile_file"
+  curl -L "$profile_file" -o "$profile_file"
+fi
+
+################################################################################
+# Validate Datapackage to Profile                                              #
+################################################################################
+echo "...validating $datapackage_file to $profile_file"
+jsonschema-cli validate "$profile_file" "$datapackage_file"
+
+################################################################################
+# Cleanup                                                                      #
+################################################################################
+if [ -d "$temp_dir" ]; then
+  rm -r "$temp_dir"
+fi

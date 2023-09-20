@@ -48,7 +48,7 @@
     {
       "name": "fare_action",
       "type": "string",
-      "description": "Indicates the type of action performed.",
+      "description": "Indicates the type of action performed.<br>Unknown action type: the action type is unknown or missing<br>Purchase: purchase a new card, ticket, pass, or other fare product<br>Enter: enter a fare-controlled area or vehicle<br>Exit: exit a fare-controlled area or vehicle<br>Transfer entrance: enter a fare-controlled area or vehicle at no charge due to network or fare policy rules, such as a desginated free transfer at two nearby fare-controlled stations<br>Transfer exit: exit a fare-controlled area or vehicle at no charge due to network or fare policy rules, such as a desginated free transfer at two nearby fare-controlled stations<br>Add: add stored value or stored rides to an existing fare instrument<br>New: obtain a new fare instrument<br>Capture: the device confiscated or retained the fare instrument<br>Extend: extend a fare product's temporal validity<br>Combine: combine two or more fare instruments or products into one<br>Void: void, cancel, negate, or undo a previous fare transaction<br>Activate: make a fare product active for travel<br>Adjust: credit or debit a fare instrument to balance an earlier transaction<Br>Other: other action not included in this enumeration",
       "constraints": {
         "required": true,
         "enum": [
@@ -59,6 +59,11 @@
           "Transfer entrance",
           "Transfer exit",
           "Add",
+          "New",
+          "Capture",
+          "Extend",
+          "Combine",
+          "Void",
           "Activate",
           "Adjust",
           "Other"
@@ -84,10 +89,19 @@
       "description": "Identifies the unique stop-path for a trip, may be distinct from GTFS shapes.shape_id"
     },
     {
-      "name": "stop_sequence",
+      "name": "trip_stop_sequence",
+      "type": "integer",
+      "title": "Positive integer referencing stop_visits.trip_stop_sequence",
+      "description": "The actual order of stops visited within a performed trip. The values must start at 1 and must be consecutive along the trip.<br/> Example: A bus departs the first stop and detours around the second and third scheduled stops, visiting one unscheduled stop and resuming regular service at the 4th scheduled stop. The `scheduled_stop_sequence` is [1, null, 4], and the `trip_stop_sequence` is [1, 2, 3].",
+      "constraints": {
+        "minimum":1
+      }
+    },
+    {
+      "name": "scheduled_stop_sequence",
       "type": "integer",
       "title": "positive integer referencing GTFS stop_times.stop_sequence",
-      "description": "Ordered stop the vehicle is serving on a particular trip. May be null if the fare collection device is NOT located on a vehicle. May be null if on a vehicle but stop-level data is unavailable, in which case the data would be associated with the vehicle and/or trip. References GTFS",
+      "description": "Scheduled order of stops for a particular trip. The values must increase along the trip but do not need to be consecutive. References GTFS",
       "constraints": {
         "minimum": 0
       }
@@ -184,10 +198,10 @@
       }
     },
     {
-      "fields": "stop_sequence",
+      "fields": ["service_date", "trip_id_performed", "scheduled_stop_sequence"],
       "reference": {
         "resource": "stop_times",
-        "fields": "stop_sequence"
+        "fields": ["service_date", "trip_id_performed", "stop_sequence"]
       }
     },
     {

@@ -6,6 +6,7 @@ edit_uri: edit/main/docs
 theme:
   name: material
   features:
+    - content.code.copy
     - navigation.tabs
     - navigation.expand
     - toc.integrate
@@ -80,4 +81,6 @@ nav:
   - Home: index.md
   - Architecture: architecture.md
   - Table Schemas: tables.md
+  - Data Package: datapackage.md
+  - Sample Data: samples.md
   - Development: development.md

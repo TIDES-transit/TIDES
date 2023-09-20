@@ -1,11 +1,14 @@
 import glob
 import json
+import logging
 import os
 import pathlib
 import re
-from typing import Union
+from typing import Union, Literal
 
 import pandas as pd
+
+log = logging.getLogger("mkdocs")
 
 FIND_REPLACE = {  # original relative to /docs : redirect target
     "<CONTRIBUTING.md>": "[Contributing Section](development/#CONTRIBUTING)",
@@ -27,8 +30,38 @@ def define_env(env):
     """
 
     @env.macro
+    def list_samples(sample_dir: str) -> str:
+        """Outputs a simple list of the directories in a folder in markdown.
+        Args:
+            sample_dir (str):directory to search in
+        Returns:
+            str: markdown-formatted list
+        """
+        EXCLUDE = ["template"]
+        fields = ["Sample", "Agency", "Resources", "Vendors"]
+
+        sample_dir = os.path.join(env.project_dir, sample_dir)
+        samples = [
+            d
+            for d in os.listdir(sample_dir)
+            if os.path.isdir(os.path.join(sample_dir, d)) and d not in EXCLUDE
+        ]
+
+        md_table = (
+            "| *" + "** | **".join(fields) + "* |\n| " + " ----- |" * len(fields) + "\n"
+        )
+
+        for s in samples:
+            md_table += datapackage_to_row(os.path.join(sample_dir, s, "TIDES"), fields)
+        return md_table
+
+    @env.macro
     def include_file(
-        filename: str, downshift_h1=True, start_line: int = 0, end_line: int = None
+        filename: str,
+        downshift_h1=True,
+        start_line: int = 0,
+        end_line: int = None,
+        code_type: str = None,
     ):
         """
         Include a file, optionally indicating start_line and end_line.
@@ -42,6 +75,8 @@ def define_env(env):
             start_line (Optional): if included, will start including the file from this line
                 (indexed to 0)
             end_line (Optional): if included, will stop including at this line (indexed to 0)
+            code_type: if not None, will encapsulate the resulting file in
+                ```<code_type>..file contents...```
         """
         full_filename = os.path.join(env.project_dir, filename)
         with open(full_filename, "r") as f:
@@ -57,9 +92,8 @@ def define_env(env):
             4: re.compile(r"(#{4}\s)(.*)"),
             5: re.compile(r"(#{5}\s)(.*)"),
         }
-        print(f"???before downshifting! {full_filename}")
+
         if md_heading_re[1].search(content) and downshift_h1:
-            print("!!!downshifting!")
             content = re.sub(md_heading_re[5], r"#\1\2", content)
             content = re.sub(md_heading_re[4], r"#\1\2", content)
             content = re.sub(md_heading_re[3], r"#\1\2", content)
@@ -72,7 +106,99 @@ def define_env(env):
                 _replace = _replace.replace(_filenamebase, "")
 
             content = content.replace(_find, _replace)
+
+        if code_type is not None:
+            content = f"\n```{code_type} title='{filename}'\n{content}\n```"
         return content
+
+    @env.macro
+    def frictionless_data_package(
+        data_package_path: str = "**/data-package.json",
+        sub_schema: str = None,
+        include: Literal["required", "recommended", "all"] = "recommended",
+    ) -> str:
+        """Describes top-level fields of a data package as a markdown table.
+
+        Note: Right now if it finds more than one, it will take the first one.
+
+        Args:
+            data_package_path (str, optional): location or glob pattern of data package. If glob,
+                will use the first found match.
+            sub_schema: if provided, will look for that portion of the schema and use that as
+                the "top level"
+            include: specifies the fields to include. Must be one of:
+                 - "required": will only document required fields
+                 - "recommended": will document required and recommended fields
+                 - "all": will document all fields
+                Defaults to "recommended".
+
+        Returns: a markdown table string
+        """
+        INCLUDE = ["name", "description", "type", "requirement"]
+
+        dp_filename = glob.glob(data_package_path, recursive=True)[0]
+
+        log.info(
+            f"Documenting spec_file: {dp_filename}.{sub_schema} including {include}"
+        )
+
+        with open(dp_filename, "r") as dp_file:
+            dp = json.loads(dp_file.read())
+
+        if sub_schema is not None:
+            if sub_schema in dp["properties"]:
+                dp = dp["properties"][sub_schema]
+            elif sub_schema in dp["$defs"]:
+                dp = dp["$defs"][sub_schema]
+            else:
+                return "Cannot find sub-schema {sub_schema} in data package file {dp_filename}"
+            if dp["type"] == "array":
+                dp = dp["items"]
+
+        _field_names = []
+
+        if include in ["required", "recommended"]:
+            _field_names += dp.get("required", [])
+        if include == "recommended":
+            _field_names += dp.get("recommended", [])
+        if include == "all":
+            _field_names = list(dp["properties"].keys())
+
+        if not _field_names:
+            return "No fields found to document with parameters."
+
+        _fields = []
+        for _f in _field_names:
+            log.debug(f"Documenting: {_f}")
+            _row_entry = {k: v for k, v in dp["properties"][_f].items() if k in INCLUDE}
+            if _f in dp.get("required", []):
+                _row_entry["requirement"] = "required"
+            elif _f in dp.get("recommended", []):
+                _row_entry["requirement"] = "recommended"
+            else:
+                _row_entry["requirement"] = " - "
+
+            _row_entry["name"] = f"`{_f}`"
+            if dp["properties"][_f].get("enum"):
+                _row_entry["description"] += "<br>**Must** be one of:<ul><li>`"
+                _row_entry["description"] += "`</li><li>`".join(
+                    dp["properties"][_f]["enum"]
+                )
+                _row_entry["description"] += "`</li></ul>"
+            elif dp["properties"][_f].get("const"):
+                _row_entry[
+                    "description"
+                ] += f"<br>**Must** be: `{dp['properties'][_f]['const']}`"
+            elif dp["properties"][_f].get("examples"):
+                _ex = dp["properties"][_f]["examples"][0].replace("\n", "<br>")
+                _row_entry["description"] += f"<br>**Example**:<br>`{_ex}`"
+
+            _fields.append(_row_entry)
+
+        dp_df = pd.DataFrame(_fields, columns=INCLUDE)
+        dp_md = dp_df.to_markdown(index=False)
+
+        return dp_md
 
     @env.macro
     def frictionless_spec(
@@ -80,18 +206,18 @@ def define_env(env):
     ) -> str:
         """Translate the frictionless .spec file to a markdown table.
 
-        Note: Right now if it finds more than one, it will take the first one.
+        Note: Right now if it finds more than one, it will take the first one. If glob,
+                will use the first found match.
 
         Args:
-            spec_path (str, optional): base path of repo. Defaults to two directories
-                up from this file.
+            spec_path (str, optional): location or glob pattern of spec
 
         Returns: a markdown table string
         """
 
         spec_file = glob.glob(spec_path, recursive=True)[0]
 
-        print("Documenting spec_file: ", spec_file)
+        log.info(f"Documenting spec_file: {spec_file}")
 
         # Generate a table for overall file requirements
         spec_df = read_config(spec_file)
@@ -118,7 +244,7 @@ def define_env(env):
         # Create markdown with a table for each schema file
         schema_files = glob.glob(schema_path, recursive=True)
 
-        print("Documenting schemas from: {}".format(schema_files))
+        log.info("Documenting schemas from: {schema_files}")
 
         file_schema_markdown = [
             _document_frictionless_schema(_s) for _s in schema_files
@@ -137,6 +263,49 @@ def define_env(env):
 TABLE_TYPES = ["Event", "Summary", "Supporting"]
 
 
+def datapackage_to_row(dir: str, fields: list) -> str:
+    """Reads datapackage and translates key metadata to a row in a markdown table.
+
+    Right now, only works for fields: "Sample", "Agency", "Resources", "Vendors"
+
+    Args:
+        dir (str): fully qualified directory for sample data
+        fields (list): list of fields to return
+
+    Returns:
+        str: row in a markdown table with name, agency, resources, vendors
+    """
+    dp_filename = os.path.join(dir, "datapackage.json")
+    if not os.path.isfile(dp_filename):
+        raise ValueError(f"Can't find datapackage file:\n   {dp_filename}.")
+    with open(dp_filename, "r") as dp_file:
+        dp = json.loads(dp_file.read())
+
+        _vendors = [
+            s.get("vendor", None) for r in dp["resources"] for s in r.get("sources", [])
+        ]
+        _vendors = list(set(_vendors) - set([None]))
+
+        _md_cells = {
+            "Sample": _to_sample_readme_link(dp["name"], dir),
+            "Agency": dp["agency"],
+            "Resources": (
+                "<ul><li>`"
+                + "`</li><li>`".join([r["name"] for r in dp["resources"]])
+                + "`</li></ul>"
+            ),
+            "Vendors": "<ul><li>`" + "`</li><li>`".join(_vendors) + "`</li></ul>",
+        }
+
+        md_row = "| " + " | ".join([_md_cells[f] for f in fields]) + " |\n"
+
+        return md_row
+
+
+def _to_sample_readme_link(sample_name, folder_dir):
+    return f"[{sample_name.capitalize()}]({folder_dir}/README.md)"
+
+
 def _document_frictionless_schema(schema_filename: str) -> dict:
     """Documents a single frictionless schema.
 
@@ -150,7 +319,7 @@ def _document_frictionless_schema(schema_filename: str) -> dict:
             "schema_md": markdown table documenting fields
 
     """
-    print(f"Documenting schema from file: {schema_filename}")
+    log.info(f"Documenting schema from file: {schema_filename}")
     spec_name = schema_filename.split("/")[-1].split(".")[0]
     spec_title = " ".join([x.capitalize() for x in spec_name.split("_")])
     schema = read_schema(schema_filename)

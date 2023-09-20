@@ -1,0 +1,100 @@
+#!/usr/bin/env bash
+
+description="Validate all the TIDES data in the samples directory"
+
+usage="
+Usage: bin/validate_samples.sh [-R] [-L] [-r remote_spec_ref] [-l local_spec_ref]
+     -R: Optional. Use the default remote profile ref (DEFAULT_REMOTE_REF, which is set to "main").
+     -L: Optional. Use the default local spec path (DEFAULT_LOCAL_SPEC), which is set to "spec"..
+     -r remote_spec_ref: Optional. Specify the ref name of the GitHub repository for validating agianst
+             a remote profile where the profile is in the sub-path /spec/tides-data-package.json.
+             Should not be used with -l option. Example: -r main.
+     -l local_spec_path: Optional. Specify the location of the local tides-data-package-json to use.
+             Should not be used with -r option. Example: -l spec.
+"
+
+example_usage="tests/validate_samples -r main"
+
+################################################################################
+# Default Parameters                                                           #
+################################################################################
+DEFAULT_REMOTE_REF="main"
+DEFAULT_LOCAL_SPEC="spec"
+
+################################################################################
+# Help                                                                         #
+################################################################################
+
+# Display help message
+function display_help() {
+  echo "$description"
+  echo "$usage"
+  echo "$example_usage"
+}
+
+# Check for help flag
+if [ "$1" == "--help" ]; then
+  display_help
+  exit 0
+fi
+
+################################################################################
+# Source utility functions                                                     #
+################################################################################
+
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+bin_path="$script_dir/../bin"
+
+################################################################################
+# Process the input options.                                                   #
+################################################################################
+remote_spec_ref=""
+local_spec_path=""
+use_default_remote=false
+use_default_local=false
+
+# Parse command-line arguments
+while getopts "RLr:l:" opt; do
+  case $opt in
+    R)
+      use_default_remote=true
+      ;;
+    L)
+      use_default_local=true
+      ;;
+    r)
+      remote_spec_ref="$OPTARG"
+      ;;
+    l)
+      local_spec_path="$OPTARG"
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      display_help
+      exit 1
+      ;;
+  esac
+done
+
+###############################################################################
+# Main                                                                       #
+################################################################################
+
+echo "$description"
+
+# Set default values if requested
+if [ "$use_default_local" = true ]; then
+  local_spec_path="$DEFAULT_LOCAL_SPEC"
+fi
+
+if [ "$use_default_remote" = true ]; then
+  remote_spec_ref="$DEFAULT_REMOTE_REF"
+fi
+
+shopt -s nullglob
+for file in samples/*/TIDES/datapackage.json; do
+    sample_dir=$(echo "$file" | sed 's|/datapackage.json$||')
+    echo "...validating $sample_dir"
+    "$bin_path/validate-datapackage" -d "$sample_dir" -r "$remote_spec_ref" -l "$local_spec_path"
+done
+shopt -u nullglob

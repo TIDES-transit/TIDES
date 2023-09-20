@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+description="Validates the local spec and documentation."
+usage="tests/test_local_spec"
+
+################################################################################
+# Run Pre-Commit                                                               #
+################################################################################
+echo "Running pre-commit."
+for _ in {1..2}; do
+  if output=$(pre-commit run --all-files 2>&1); then
+    echo ":-) pre-commit ran successfully on try $_."
+    break
+  fi
+done
+
+################################################################################
+# Run Tests                                                                    #
+################################################################################
+echo "Running tests for local compatibility."
+
+# Function to execute the script and capture errors if there are any
+execute_script() {
+  script=$1
+  shift
+  echo "--- Running $script $@ ---"
+  if output=$("$script" "$@" 2>&1); then
+    echo ":-) $script ran successfully."
+  else
+    echo "\033[31m!!! $script encountered an error.\033[0m"
+    echo "$output" >&2
+    error_scripts+=("$script")
+  fi
+}
+
+error_scripts=()
+# Execute the scripts
+execute_script "tests/validate_profile"
+execute_script "tests/validate_table_schemas"
+
+################################################################################
+# Build Docs Locally                                                           #
+################################################################################
+echo "Building docs locally."
+if output=$(mkdocs build --quiet 2>&1); then
+  echo ":-) Docs built successfully."
+else
+  echo "\033[31m!!! mkdocs encountered an error.\033[0m"
+  echo "$output" >&2
+  error_scripts+=("mkdocs build --quiet")
+fi
+
+################################################################################
+# Summarize Errors                                                             #
+################################################################################
+if [ ${#error_scripts[@]}  -gt 0 ]; then
+  echo "The following scripts executed with errors:"
+  for script in "${error_scripts[@]}"; do
+    echo "$script"
+  done
+fi

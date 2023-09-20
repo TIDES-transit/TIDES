@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# Validate "tides-datapackage-profile.json" against the Frictionless Data Package schema.
+# The script downloads the Data Packaage schema file to a temporary directory using curl and
+# then uses the jsonschema-cli tool to perform the validation.
+
+# Usage: ./tests/validate_profile
+# Note: should be run from the base directory of the repo
+
+echo "--- Validating tides-datapackage-profile.json ---"
+
+# Set the temporary directory path
+temp_dir=$(mktemp -d)
+
+# Download the data package schema file to the temporary directory
+schema_url="https://specs.frictionlessdata.io/schemas/data-package.json"
+schema_file="$temp_dir/data-package.json"
+curl -o "$schema_file" "$schema_url"
+
+echo "Validate tides-datapackage-profile against the downloaded schema"
+datapackage_file="spec/tides-datapackage-profile.json"
+jsonschema-cli validate "$schema_file" "$datapackage_file"
+
+# Clean up the temporary directory
+rm -rf "$temp_dir"
