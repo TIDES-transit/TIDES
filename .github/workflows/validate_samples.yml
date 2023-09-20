@@ -4,11 +4,11 @@ on:
   push:
     paths:
       - 'samples/*/TIDES/*'
-      - 'spec/*'
+      # - 'spec/*' (TODO: Reinstate once samples folder exists)
   pull_request:
     paths:
       - 'samples/*/TIDES/*'
-      - 'spec/*'
+      # - 'spec/*' (TODO: Reinstate once samples folder exists)
   workflow_dispatch:
   create:
 
@@ -29,31 +29,47 @@ jobs:
         run: |
           pwd
           samples=$(find ./samples -type d -name 'TIDES')
-          echo "{name}={value}" >> $GITHUB_OUTPUT
+          echo $samples
+          echo "samples=${samples}" >> $GITHUB_OUTPUT
       - name: Validate Sample Data
         id: validation
         run: |
           samples=(${{ steps.sample_folders.outputs.samples }})
-          results=""
+          results="{\"values\": ["
+          result=""
           for sample in "${samples[@]}"; do
-            result=$(frictionless validate --schema-sync "$sample/datapackage.json" --json)
-            results+="$result\n"
+            results+="$result"
+            result=$(frictionless validate --schema-sync "${sample}/datapackage.json" --json) || true
+            result="${result//\'s/}"
+            result="${result//\\\"/\\\\\"}"
+            result="$result,"
           done
-          echo "{name}=${results}" >> $GITHUB_ENV
+
+          result="${result%?}"
+          results+="$result"
+          results+="]}"
+
+          echo "RESULTS<<EOF" >> $GITHUB_OUTPUT
+          echo ${results} >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
       - name: Comment on PR
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const samples = '${{ env.samples }}'.trim().split('\n');
-            const results = '${{ env.results }}'.trim().split('\n');
+            console.log("Begin sample construction")
+            const samples = '${{ steps.sample_folders.outputs.samples }}'.split('\n');
+            const results = JSON.parse('${{ steps.validation.outputs.results }}');
             let comment = `**Data Validation Report**\n\n`;
             comment += '| Sample | Status |\n';
             comment += '| ------ | ------ |\n';
+            console.log("Constructed header")
             for (let i = 0; i < samples.length; i++) {
+              console.log(samples[i])
+              console.log(results[i])
               const sample = samples[i];
-              const result = JSON.parse(results[i]);
+              const result = results.values[i];
               let status = '';
               if (result.valid) {
                 status = ':heavy_check_mark:';

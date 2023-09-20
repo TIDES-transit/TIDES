@@ -6,33 +6,32 @@ This repository provides data schemas and tools to support the access, managemen
 
 ## TIDES specification
 
-The TIDES specification is maintained in the `/spec` sub-directory as a series of JSON tables compatible with the [frictionless data](https://specs.frictionlessdata.io/table-schema/) table schema and [data package](https://specs.frictionlessdata.io/data-package) standards.
+The TIDES specification is is a series of interrelated table schemas which are defined by a series of `<table_name>.schema.json` files in the `/spec` sub-directory in the [frictionless data table schema format](https://specs.frictionlessdata.io/table-schema/) and accompanied by [`tides-datapackage-profile.json`](https://tides-transit.github.io/TIDES/main/datapackage) which describes the schema of the required [datapackage.json](#data_package) file which must accompany TIDES data.
+
 Human-friendlier documentation is auto-generated and available at:
 
 - [Architecture](https://tides-transit.github.io/TIDES/main/architecture)
 - [Table Schemas](https://tides-transit.github.io/TIDES/main/tables)
 
-## Example Data
+### Data Package
 
-Sample data can be found in the `/samples` directory, with one directory for each example.  
+Directories with TIDES data must contain metadata in a [`datapackage.json`](https://tides-transit.github.io/TIDES/main/datapackage) file in a format compliant with the [`tides-datapackage-profile`](https://tides-transit.github.io/TIDES/main/datapackage) of a [`frictionless data package`](https://specs.frictionlessdata.io/data-package/).  
+
+[`/samples/template/datapackage.json`](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/samples/template/datapackage.json) has a template datapackage which can be used.
 
 ## Validating TIDES data
 
-TIDES data with a valid [`datapackage.json`](#data-package) can be easily validated using the [frictionless framework](https://framework.frictionlessdata.io/), which can be installed and invoke as follows:
+TIDES data with a valid [`datapackage.json`](#data-package) can be easily validated using the [frictionless framework](https://framework.frictionlessdata.io/), which can be installed and invoked as follows:
 
 ```bash
 pip install frictionless
-frictionless validate path/to/your/datapackage.json
+frictionless validate --schema-sync path/to/your/datapackage.json
 ```
 
-### Data Package
+Several other validation scripts and tools with more flexibility such as validating to the canonical, named version or a local spec can be found in the `/bin` directory, with usage available with the `--help` flag.
 
-To validate a package of TIDES data, you must add a frictionless-compliant [`datapackage.json`](https://specs.frictionlessdata.io/data-package/) alongside your data which describes which files should be validated to which schemas.  Most of this can be copied from [`/data/template/datapackage.json`](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/data/template/datapackage.json).
-
-Once this is created, mapping the data files to the schema, simply run:
-
-```sh
-frictionless validate datapackage.json
+```bash
+bin/validate-datapackage [-v remote_spec_ref | -l local_spec_path] [-d dataset_path]
 ```
 
 ### Specific files
@@ -42,6 +41,14 @@ Specific files can be validated by running the frictionless framework against th
 ```sh
 frictionless validate vehicles.csv --schema https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/schema.vehicles.json
 ```
+
+## Sample Data
+
+[Sample data](https://tides-transit.github.io/TIDES/main/samples) can be found in the `/samples` directory, with one directory for each sample.
+
+### Template
+
+Templates of `datapackage.json` and each TIDES file type are located in the `/samples/template` directory.
 
 ## Contributing to TIDES
 
