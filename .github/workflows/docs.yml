@@ -65,4 +65,3 @@ jobs:
           issue-number: ${{ github.event.number }}
           body: "Documentation available at: [`http://tides-transit.github.io/TIDES/${{ github.head_ref }}`](http://tides-transit.github.io/TIDES/${{ github.head_ref }})"
           edit-mode: replace
-

@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
-description="Script to validate a local JSON file against a profile for tides-data-package specified in 
+description="Script to validate a local JSON file against a profile for tides-data-package specified in
 profile field or optionally against a remote or local profile."
 
 usage="
 Usage: validate-datapackage-to-profile [-r remote_spec_ref | -l local_spec_path] [-f datapackage_file]
    -r remote_spec_ref: Optional. Specify the ref name of the GitHub repository for validating agianst
-             a remote profile where the profile is in the sub-path /spec/tides-data-package.json. 
+             a remote profile where the profile is in the sub-path /spec/tides-data-package.json.
              Should not be used with -l option. Example: -r main
    -l local_spec_path: Optional. Specify the location of the local tides-data-package-json to use.
              Should not be used with -r option. Example: -l spec
-   -d dataset_path: Optional. Specify the path of the datapackage.json file. 
+   -d dataset_path: Optional. Specify the path of the datapackage.json file.
              Default is datapackage.json. Example: -d samples/template/TIDES/datapackage.json
 "
 
@@ -97,7 +97,7 @@ fi
 if [ -f "$dataset_path" ]; then
   datapackage_file="$dataset_path"
   dataset_path=$(dirname "$dataset_path")
-else 
+else
   datapackage_file="$dataset_path/datapackage.json"
 fi
 check_valid_path "$datapackage_file"
