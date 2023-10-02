@@ -34,7 +34,7 @@
     {
       "name": "location_ping_id",
       "type": "string",
-      "title": "ID referencing vehicle_locations.location_ping_id"
+      "title": "ID referencing vehicle_locations.location_ping_id",
       "description": "Identifies a vehicle_location that is the location where the passenger_event occurred"
     },
     {
