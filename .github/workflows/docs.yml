@@ -11,7 +11,6 @@ on:
 
 jobs:
   build-deploy:
-    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
@@ -65,4 +64,3 @@ jobs:
           issue-number: ${{ github.event.number }}
           body: "Documentation available at: [`http://tides-transit.github.io/TIDES/${{ github.head_ref }}`](http://tides-transit.github.io/TIDES/${{ github.head_ref }})"
           edit-mode: replace
-
