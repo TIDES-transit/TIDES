@@ -35,8 +35,13 @@ plugins:
         theme: |
             ^(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'
         securityLevel: 'loose'
+  - mike:
+      version_selector: true
   - search
 
+extra:
+  version:
+    provider: mike
 
 watch:
   - CONTRIBUTING.md
