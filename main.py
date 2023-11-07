@@ -28,6 +28,60 @@ def define_env(env):
     - variables: the dictionary that contains the environment variables
     - macro: a decorator function, to declare a macro.
     """
+    @env.macro
+    def list_artifacts(directory: str):
+        """
+        List all artifacts in the specified directory, including PDF files.
+        Use the first H1 heading in Markdown files as the link text.
+        """
+        artifacts_dir = os.path.join(env.project_dir, directory)
+        if not os.path.exists(artifacts_dir):
+            return "Directory does not exist."
+        
+        files = os.listdir(artifacts_dir)
+        links = []
+        for file in files:
+            full_path = os.path.join(artifacts_dir, file)
+            if file.endswith('.md'):
+                with open(full_path, 'r', encoding='utf-8') as md_file:
+                    content = md_file.read()
+                match = re.search(r'^#\s(.+)$', content, re.MULTILINE)
+                link_text = match.group(1).strip() if match else os.path.splitext(file)[0]
+                url = url_for(os.path.join(directory, file))
+            elif file.endswith('.pdf'):
+                link_text = os.path.splitext(file)[0]
+                url = url_for(os.path.join(directory, file))
+            else:
+                continue
+            links.append(f'- [{link_text}]({url})')
+        return '\n'.join(links)
+
+    @env.macro
+    def url_for(file_path):
+        """
+        Create a relative URL for a file given its path within the MkDocs source directory.
+
+        :param file_path: The file path relative to the MkDocs documentation source directory.
+        :return: A relative URL that can be used in the MkDocs site.
+        """
+        # Remove the leading 'docs/' if present, because URLs do not include it
+        if file_path.startswith('docs/'):
+            file_path = file_path.replace("docs/", "TIDES/")
+
+        # MkDocs will convert the .md files to a folder structure
+        if file_path.endswith('.md'):
+            file_path = file_path[:-3] + '/'
+
+        # Ensure leading slash
+        if not file_path.startswith('/'):
+            file_path = '/' + file_path
+
+        # Append 'index.html' if the file path points to a directory (this should be adjusted if MkDocs is configured differently)
+        if not file_path.endswith('/'):
+            file_path += '/index.html'
+
+        return file_path
+
 
     @env.macro
     def list_samples(sample_dir: str) -> str:
