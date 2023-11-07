@@ -1,4 +1,4 @@
-mike
+mike<2.0
 mkdocs
 mkdocs-autorefs
 mkdocs-awesome-pages-plugin
