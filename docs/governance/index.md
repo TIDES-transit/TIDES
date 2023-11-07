@@ -113,5 +113,5 @@ Documentation, documents, and decisions of the Board will be stored in a TIDES-t
 
 ### Version 1.0
 
-- Initial release of the ODS Governance document.
+- Initial release of the TIDES Governance document.
 - Establishment of governance principles, roles, policies, and procedures.
