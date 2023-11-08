@@ -84,7 +84,7 @@ nav:
   - Data Package: datapackage.md
   - Sample Data: samples.md
   - Development: development.md
-  - Governance: governance/index.md
+  - Governance: governance.md
 
 copyright: |
     <footer>
@@ -96,3 +96,4 @@ copyright: |
             </div>
         </div>
     </footer>
+

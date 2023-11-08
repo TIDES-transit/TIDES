@@ -11,13 +11,15 @@ import pandas as pd
 log = logging.getLogger("mkdocs")
 
 FIND_REPLACE = {  # original relative to /docs : redirect target
-    "<CONTRIBUTING.md>": "[Contributing Section](development/#CONTRIBUTING)",
-    "(CODE_OF_CONDUCT.md)": "(development/#CODE_OF_CONDUCT)",
-    "CONTRIBUTING.md)": "development/#CONTRIBUTING)",
+    "<CONTRIBUTING.md>": "[Contributing Section](development/)",
+    "(CODE_OF_CONDUCT.md)": "(development/#tides-code-of-conduct)",
+    "(CLA.md)": "(development/#tides-contributor-license-agreement)",
+    "CONTRIBUTING.md)": "development/)",
     "<LICENSES>": "[LICENSES](https://github.com/TIDES-transit/TIDES/blob/main/LICENSES)",
     "contributors.md)": "development/#contributors)",
     "architecture.md)": "architecture)",
     "tables.md": "tables",
+    "https://tides-transit.github.io/TIDES/governance/":"governance.md"
 }
 
 
@@ -108,6 +110,63 @@ def define_env(env):
         for s in samples:
             md_table += datapackage_to_row(os.path.join(sample_dir, s, "TIDES"), fields)
         return md_table
+
+
+    @env.macro
+    def include_file_sections(
+        filename: str,
+        include_sections: list[str] = [],
+        exclude_sections: list[str] = [],
+        downshift_h1=True,
+        start_line: int = 0,
+        end_line: int = None,
+        code_type: str = None,
+    ):
+        """Wrapper around include_file to only include some sections.
+
+        Args:
+            filename (str): _description_
+            sections: list of sections to include in order If not found will skip.
+            downshift_h1 (bool, optional): _description_. Defaults to True.
+            start_line (int, optional): _description_. Defaults to 0.
+            end_line (int, optional): _description_. Defaults to None.
+            code_type (str, optional): _description_. Defaults to None.
+        """
+
+        full_file_md = include_file(filename,downshift_h1,start_line,end_line,code_type)
+
+        # Normalize titles for comparison
+        include_titles = set(title.lower().strip() for title in include_sections)
+        exclude_titles = set(title.lower().strip() for title in exclude_sections)
+
+        # Check for conflicts between include and exclude lists
+        if not include_titles.isdisjoint(exclude_titles):
+            conflicting_titles = include_titles.intersection(exclude_titles)
+            raise ValueError(f"Conflicting section titles to include and exclude: {conflicting_titles}")
+
+        # Regex to find a markdown heading (e.g., # Heading, ## Sub-heading, etc.)
+        heading_regex = re.compile(r'^(#{1,6})\s+(.*)', re.MULTILINE)
+
+        # Split the markdown content by headings to process sections
+        parts = re.split(heading_regex, full_file_md)
+        parts=parts[1:]
+
+        # Process in triples: (level, title, content)
+        sections = []
+        for i in range(0, len(parts), 3):
+            level, title, content = parts[i:i+3]
+            sections.append((level, title.strip(), content.strip()))
+        
+        # Extract the desired sections
+        extracted_content = []
+        for level, title, content in sections:
+            title_lower = title.lower()
+            if (title_lower in include_titles or not include_titles) and title_lower not in exclude_titles:
+                heading = f"{level} {title}"
+                extracted_content.append(heading)
+                extracted_content.append(content)
+
+        return "\n\n".join(extracted_content)
 
     @env.macro
     def include_file(
