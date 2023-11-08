@@ -1,4 +1,4 @@
-# Contributor Covenant Code of Conduct
+# TIDES Code of Conduct
 
 [project governance]:./docs/governance.md
 

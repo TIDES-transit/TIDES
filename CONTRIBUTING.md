@@ -1,29 +1,36 @@
 # Contributing to TIDES
 
-Thank you for contributing to the TIDES Project. This document defines the roles and process for contributing to the project and documents the governance roles and approach for decision-making.
+Thank you for contributing to the TIDES Project. This document outlines the process for contributing to the project and documents the governance roles and approach for decision-making. Where [TIDES Governance][TIDES-governance] and this document differ, the [TIDES Governance][TIDES-governance] shall take precedence.
 
-[contributor registration form]: https://forms.office.com/Pages/ResponsePage.aspx?id=i_a_3SpIc0WB4P74FWpP0Hpd6kyRp1VEg8rnx5-CwORUMFFGTzBYRktEMkJRWVg4Qlg3SkM0VEJKVi4u
-[code of conduct]:CODE_OF_CONDUCT.md
-[contributor agreement]:CLA.md
-[license]:LICENSE.md
-[contributors.md]:contributors.md
+[contributor-registration]: https://forms.office.com/Pages/ResponsePage.aspx?id=i_a_3SpIc0WB4P74FWpP0Hpd6kyRp1VEg8rnx5-CwORUMFFGTzBYRktEMkJRWVg4Qlg3SkM0VEJKVi4u
+[TIDES-governance]: https://tides-transit.github.io/TIDES/governance/
+[TIDES-Board]:https://tides-transit.github.io/TIDES/governance/#tides-board-of-directors
+[TIDES-Contributor]:https://tides-transit.github.io/TIDES/governance/#tides-contributor
+[TIDES-Manager]:https://tides-transit.github.io/TIDES/governance/#tides-manager
+[TIDES-Stakeholder]: https://tides-transit.github.io/TIDES/governance/#tides-stakeholder
 
-## Roles
+## Becoming a TIDES Contributor
 
-There are two types of contributors to TIDES:
+As defined in the [TIDES Governance][TIDES-governance], a [TIDES-Contributor][TIDES-contributor] has the rights to:
 
-* Registered Contributors can create and respond to issues and can generate and comment on pull requests, and
-* All other Stakeholders can create and respond to issues.
+- Create issues, discussions, and pull requests in the TIDES repository.
+- Vote in decisions on changes to the TIDES spec and other aspects of TIDES.
 
-All contributors and stakeholders are asked to adhere to the [Code of Conduct][code of conduct].
+These roles and responsibilities are further detailed in the [TIDES Governance][TIDES-governance] and documents linked to from it.  
 
-To become a registered Contributor, fill out the [contributor registration form].
+Individuals may request to be a Contributor by completing [the registration form][contributor-registration]that includes acknowledgement of the [Contributor Agreement](#tides-contributor-license-agreement) and [Code of Conduct](#tides-code-of-conduct).
 
 ## How to Contribute
 
-Contributions should be offered through GitHub issues and pull requests.
+1. Become a [TIDES Contributor](#becoming-a-tides-contributor)
+2. Follow [setup](#setup) instructions if you'd like to contribute code or provide code reviews.
+3. Offer to help research an issue
+4. Offer to help resolve an issue with a pull-request
+5. Offer to review a pull-request
 
-By making any contribution to the projects, contributors self-certify to the [Contributor Agreement][contributor agreement].
+!!! warning
+
+    By making any contribution to the projects, contributors self-certify to the [Contributor Agreement](#tides-contributor-license-agreement).
 
 ### Setup
 
@@ -54,17 +61,17 @@ request, be sure to link the two. There are shortcuts [here](https://docs.github
 
 Use the following guidance in creating and responding to pull requests
 
-* Keep pull requests small and focused. One issue is best.
-* Link Pull Requests to Issues as appropriate.
-* Complete the pull request template as best you can.
-* In order to run all GitHub Actions automations, contributors with adequate permissions (i.e. Registered Contributors) should submit pull requests from a branch on the main repo, rather than from a fork.
+- Keep pull requests small and focused. One issue is best.
+- Link Pull Requests to Issues as appropriate.
+- Complete the pull request template as best you can.
+- In order to run all GitHub Actions automations, contributors with adequate permissions (i.e. Registered Contributors) should submit pull requests from a branch on the main repo, rather than from a fork.
 
 ### Commits
 
 Use the following guidance for commits
 
-* Provide a short, clear title. Capitalize. No period at the end
-* Wrap the body of text at 72 characters
+- Provide a short, clear title. Capitalize. No period at the end
+- Wrap the body of text at 72 characters
 
 ### Continuous Integration / Continuous Deployment
 
@@ -171,21 +178,9 @@ When a change is pushed to the TIDES specification repository, Github Actions de
     if_spec--> architecture.html
     ```
 
-## Contributor Agreement
+## TIDES Contributor License Agreement
 
-By making any contribution to the projects, contributors self-certify to the following Contributor Agreement:
-
-By making a contribution to this project, I certify that:
->  
-> a. The contribution was created in whole or in part by me and I have the right to submit it under the open source license indicated in the file; or
->  
-> b. The contribution is based upon previous work that, to the best of my knowledge, is covered under an appropriate open source license and I have the right under that license to submit that work with modifications, whether created in whole or in part by me, under the same open source license (unless I am permitted to submit under a different license), as indicated in the file; or
->  
-> c. The contribution was provided directly to me by some other person who certified (a), (b) or (c) and I have not modified it.
->  
-> d. I understand and agree that this project and the contribution are public and that a record of the contribution (including all personal information I submit with it, including my sign-off) is maintained indefinitely and may be redistributed consistent with this project or the open source license(s) involved.
->  
-Attribution: This Contributor Agreement is adapted from the node.js project available here: <https://github.com/nodejs/node/blob/main/CONTRIBUTING.md>.
+By making any contribution to the projects, contributors self-certify to the the [TIDES Contributor Agreement](CLA.md).
 
 ## License to Use
 
@@ -193,76 +188,35 @@ The TIDES specification is licensed under the Apache License 2.0 as defined in t
 
 ## Project Governance
 
-Ahead of Version 1.0 release, the governance for the TIDES specification is being kept limited and lightweight. The governance approach will be revisited as release of Version 1.0 approaches.
+The TIDES Project Governance and the roles within are detailed in the [TIDES-governance][TIDES-governance] documentation.  At this time, the following people fulfill the TIDES roles:
 
-Development of the TIDES specification shall be managed by the following groups:
+### Roles
 
-* [Leadership Group](#leadership-group)
-* [Product Management Team](#product-management-team)
-* [Registered Contributors](#registered-contributors)
-* [All Other Stakeholders](#stakeholder-group)
+- [**TIDES Board**][TIDES-Board]
+    - John Levin, Metro Transit (Minneapolis-St. Paul, MN)
+- **Board Coordinator**: *TBD*
+- [**TIDES Manager**][TIDES-Manager]: *Currently in discussion*
+- **Program Manager**: *TBD*
+- [**TIDES-Contributors**][TIDES-Contributor]: [List of Contributors](contributors.md)
+- [**TIDES-Stakeholders**][TIDES-Stakeholder]: Anyone who has an interest in or could be directly affected by the TIDES specification and tools.
 
-These groups will have the following rights and responsibilities:
+### [GitHub Access Levels](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization)
 
-### Leadership Group
-
-The Leadership Group is responsible for overall direction and decision-making on the project including:
-
-* approval of registered contributors
-* creation, scoping, and management of working groups
-* approval of the final specification for Version 1.0
-* approval of changes to project governance
-
-Leadership Group Members
-
-* John Levin, Metro Transit (Minneapolis-St. Paul, MN)
-
-Leadership Group Member [GitHub Access](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization): Admin
-
-### Product Management Team
-
-The Product Management Team (PMT) is responsible for creating and maintaining backbone standards infrastructure, processes, and resources to support the development of the TIDES specification. The PMT will support Leadership in developing, reviewing, and recommending for approval changes to the draft specification. The PMT will support Contributors and Stakeholders in their work on the specification.  
-
-PMT Group Members
-
-* Hunter Owens, Caltrans
-* Jameelah Young, Jarvus Innovations (on behalf of Caltrans)
-* Soren Spicknall, Jarvus Innovations (on behalf of Caltrans)
-* Elizabeth Sall, UrbanLabs LLC (on behalf of Caltrans)
-* Benjamin Bressette, Caltrans
-* Joey Reid, Metro Transit (Minneapolis-St. Paul, MN)
-
-PMT Group Member [GitHub Access](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization): Admin
-
-### Registered Contributors
-
-Registered Contributors actively work to develop the TIDES specification. They propose additions, modifications, and improvements to the specification through issues and pull requests in this GitHub repository.
-
-Registered Contributors must request [here][contributor registration form] to be registered in order to gain access. Requests to become a Contributor must be approved by project Leadership.
-
-Registered Contributor Group Members:
-
-The list of registered contributors is maintained in [contributors.md][contributors.md] file.
-
-Registered Contributor Group [GitHub Access](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization): Write
-
-### Stakeholder Group
-
-Stakeholders will be informed about progress on TIDES and given the opportunity to review the specification as it is developed. They may provide comments on the specification by creating or responding to Issues in this repository. Stakeholders are not able to generate or comment on pull requests. To be included as a TIDES Stakeholder, join the TIDES Project Google Group.
-
-Stakeholder Group Membership:
-
-* Members of the TIDES Project Google Group
-* Others who have expressed interest in following progress or contributing to TIDES, but who have not requested to be a registered Contributor
-
-Stakeholder Group [GitHub Access](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization): Read/Create Issues (same as general public)
+| **Role**            | **Access Level**   |
+|---------------------|--------------------|
+| Board               | Admin              |
+| Program Manager     | Admin              |
+| Board Coordinator   | Triage             |
+| Manager             | Triage             |
+| Contributor Group   | Triage             |
+| Stakeholder         | Read/Create Issues |
 
 ## Review and Approval Process
 
-Prior to release of Version 1.0 of the specification, the PMT and Leadership will have final approval of all changes. All Contributors are permitted and encouraged to discuss and comment on issues and pull requests and make recommendations for changes to the specification.
+Prior to release of Version 1.0 of the specification, the TIDES Board will have final approval of all changes. All Contributors are permitted and encouraged to discuss and comment on issues and pull requests and make recommendations for changes to the specification.
 
-Leadership will convene a governance group to refine this and decide the approval process for Version 1.0 and the governance and approval process for future revisions to the specification.
+Following v1.0, TIDES will adhere to a change management policy currently in development.
 
-## Code of Conduct
+## TIDES Code of Conduct
 
-Contributors to the TIDES Project are expected to read and follow the [Code of Conduct][code of conduct] for the project.
+Contributors to the TIDES Project are expected to read and follow the [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) for the project.

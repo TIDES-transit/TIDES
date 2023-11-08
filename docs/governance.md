@@ -95,7 +95,7 @@ TIDES is governed by a Board of Directors.
 
 ### TIDES Contributor
 
-- Individuals will request to be a Contributor by completing an online form that includes acknowledgement of the Contributor Agreement and TIDES Code of Conduct.
+- Individuals will request to be a Contributor by completing an [online form][contributor-registration] that includes acknowledgement of the Contributor Agreement and TIDES Code of Conduct.
 - A TIDES Contributor has rights to create issues, discussions, and pull requests in the TIDES repository.
 - A TIDES Contributor has rights to vote in decisions on changes to the TIDES spec and other aspects of TIDES.
 
@@ -115,3 +115,5 @@ Documentation, documents, and decisions of the Board will be stored in a TIDES-t
 
 - Initial release of the TIDES Governance document.
 - Establishment of governance principles, roles, policies, and procedures.
+
+[contributor-registration]: https://forms.office.com/Pages/ResponsePage.aspx?id=i_a_3SpIc0WB4P74FWpP0Hpd6kyRp1VEg8rnx5-CwORUMFFGTzBYRktEMkJRWVg4Qlg3SkM0VEJKVi4u
