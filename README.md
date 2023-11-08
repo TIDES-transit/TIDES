@@ -6,7 +6,7 @@ This repository provides data schemas and tools to support the access, managemen
 
 [architecture]:./docs/architecture.md
 [table schemas]:./docs/tables.md
-[tides-datapackage-profile]:/.docs/datapackage.md
+[tides-datapackage-profile]:./docs/datapackage
 [samples]:./samples
 [template-datapackage]:./samples/template/TIDES/datapackage.json
 [contributing]:./CONTRIBUTING.md
