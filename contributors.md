@@ -1,1 +1,26 @@
 # Contributors
+
+*Presented alphabetically by first name*
+
+- [@AztecCyclocross](https://github.com/azteccyclocross)
+- [Benjamin Bressette](https://github.com/benjaminbressette)
+- [Daniel Patterson](https://github.com/Bikingman)
+- [Diego](https://github.com/diluisi)
+- [Elizabeth Sall](https://github.com/e-lo)
+- [@emma162](https://github.com/emma162)
+- [Gabriel Sánchez Martínez](https://github.com/gabriel-korbato)
+- [Hunter Owens](https://github.com/hunterowens)
+- [Jameelah Young](https://github.com/j-meelah)
+- [Jay Gordon](https://github.com/jaygordon)
+- [Joey Reid](https://github.com/botanize)
+- [John Levin](https://github.com/jlstpaul)
+- [Katrina Kaiser](https://github.com/KatrinaMKaiser)
+- [Michael Eichler](https://github.com/planitmichael)
+- [@mtnsguy](https://github.com/mtnsguy)
+- [Nisar Ahmed](https://github.com/jewel1965)
+- [Paul Swartz](https://github.com/paulswartz)
+- [Sandy Brennan](https://github.com/SrBrennan12)
+- [Soren Spicknall](https://github.com/SorenSpicknall)
+- [Stephan Schindehette](https://github.com/sschindehette)
+- [Thomas Craig](https://github.com/tsherlockcraig)
+- [Wylie Timmerman](https://github.com/wtimmerman-fitp)
