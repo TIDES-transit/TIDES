@@ -14,7 +14,7 @@ FIND_REPLACE = {  # original relative to /docs : redirect target
     "<CONTRIBUTING.md>": "[Contributing Section](development/#CONTRIBUTING)",
     "(CODE_OF_CONDUCT.md)": "(development/#CODE_OF_CONDUCT)",
     "CONTRIBUTING.md)": "development/#CONTRIBUTING)",
-    "<LICENSE>": "[LICENSE](https://github.com/TIDES-transit/TIDES/blob/main/LICENSE)",
+    "<LICENSES>": "[LICENSES](https://github.com/TIDES-transit/TIDES/blob/main/LICENSES)",
     "contributors.md)": "development/#contributors)",
     "architecture.md)": "architecture)",
     "tables.md": "tables",

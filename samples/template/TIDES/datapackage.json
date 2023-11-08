@@ -6,7 +6,7 @@
     "profile": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/tides-datapackage-profile.json",
     "licenses": [
         {
-            "name": "Apache-2.0"
+            "name": "CC-BY-4.0"
         }
     ],
     "contributors": [
