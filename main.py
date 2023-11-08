@@ -10,8 +10,14 @@ import pandas as pd
 
 log = logging.getLogger("mkdocs")
 
+BRANCH_NAME_KEYWORD = "{branch_name}"
+GITHUB_REPO = f"http://github.com/TIDES-transit/TIDES/tree/{BRANCH_NAME_KEYWORD}"
+
 FIND_REPLACE = {  # original relative to /docs : redirect target
+    "[CONTRIBUTING.md]": "[Contributing Section](development/#CONTRIBUTING)",
     "<CONTRIBUTING.md>": "[Contributing Section](development/#CONTRIBUTING)",
+    "[tides-datapackage-profile]:/.datapackage": "[tides-datapackage-profile]:datapackage",
+    "[template-datapackage]:./samples/template/TIDES/datapackage.json":f"[template-datapackage]:{GITHUB_REPO}/samples/template/TIDES/datapackage.json",
     "(CODE_OF_CONDUCT.md)": "(development/#CODE_OF_CONDUCT)",
     "CONTRIBUTING.md)": "development/#CONTRIBUTING)",
     "<LICENSE>": "[LICENSE](https://github.com/TIDES-transit/TIDES/blob/main/LICENSE)",
@@ -20,6 +26,11 @@ FIND_REPLACE = {  # original relative to /docs : redirect target
     "tables.md": "tables",
 }
 
+def get_git_branch_name():
+    import subprocess
+    branch = subprocess.check_output(['git', 'rev-parse', '--abbrev-ref', 'HEAD']).decode('utf-8').strip()
+    log.info("On branch: {branch}")
+    return branch
 
 def define_env(env):
     """
@@ -132,6 +143,7 @@ def define_env(env):
             code_type: if not None, will encapsulate the resulting file in
                 ```<code_type>..file contents...```
         """
+        
         full_filename = os.path.join(env.project_dir, filename)
         with open(full_filename, "r") as f:
             lines = f.readlines()
@@ -155,12 +167,16 @@ def define_env(env):
             content = re.sub(md_heading_re[1], r"#\1\2", content)
 
         _filenamebase = env.page.file.url
+        
+
         for _find, _replace in FIND_REPLACE.items():
             if _filenamebase in _replace:
                 _replace = _replace.replace(_filenamebase, "")
-
             content = content.replace(_find, _replace)
 
+        if BRANCH_NAME_KEYWORD in content:
+            _branch_name = get_git_branch_name()
+            content = content.replace(BRANCH_NAME_KEYWORD, _branch_name)
         if code_type is not None:
             content = f"\n```{code_type} title='{filename}'\n{content}\n```"
         return content
