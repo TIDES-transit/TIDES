@@ -225,7 +225,7 @@ def define_env(env):
         # Append all link definitions
         link_content = ""
         for link_label, link_href in link_definitions:
-            link_content += f"\n[{link_label}]: {link_href}"
+            link_content += f"\n{link_label}: {link_href}\n"
         extracted_content.append(link_content)
        
         return "\n\n".join(extracted_content)
