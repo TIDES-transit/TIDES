@@ -2,6 +2,12 @@
 
 Thank you for contributing to the TIDES Project. This document defines the roles and process for contributing to the project and documents the governance roles and approach for decision-making.
 
+[contributor registration form]: https://forms.office.com/Pages/ResponsePage.aspx?id=i_a_3SpIc0WB4P74FWpP0Hpd6kyRp1VEg8rnx5-CwORUMFFGTzBYRktEMkJRWVg4Qlg3SkM0VEJKVi4u
+[code of conduct]:CODE_OF_CONDUCT.md
+[contributor agreement]:CLA.md
+[license]:LICENSE.md
+[contributors.md]:contributors.md
+
 ## Roles
 
 There are two types of contributors to TIDES:
@@ -9,15 +15,15 @@ There are two types of contributors to TIDES:
 * Registered Contributors can create and respond to issues and can generate and comment on pull requests, and
 * All other Stakeholders can create and respond to issues.
 
-All contributors and stakeholders are asked to adhere to the [Code of Conduct](#code-of-conduct).
+All contributors and stakeholders are asked to adhere to the [Code of Conduct][code of conduct].
 
-To become a registered Contributor, fill out the registration form at [this link][contributor-registration].
+To become a registered Contributor, fill out the [contributor registration form].
 
 ## How to Contribute
 
 Contributions should be offered through GitHub issues and pull requests.
 
-By making any contribution to the projects, contributors self-certify to the [Contributor Agreement](#contributor-agreement).
+By making any contribution to the projects, contributors self-certify to the [Contributor Agreement][contributor agreement].
 
 ### Setup
 
@@ -183,7 +189,7 @@ Attribution: This Contributor Agreement is adapted from the node.js project avai
 
 ## License to Use
 
-The TIDES specification is licensed under the Apache License 2.0 as defined in <LICENSE> file.
+The TIDES specification is licensed under the Apache License 2.0 as defined in the [LICENSE][license].
 
 ## Project Governance
 
@@ -232,11 +238,11 @@ PMT Group Member [GitHub Access](https://docs.github.com/en/organizations/managi
 
 Registered Contributors actively work to develop the TIDES specification. They propose additions, modifications, and improvements to the specification through issues and pull requests in this GitHub repository.
 
-Registered Contributors must request [here][contributor-registration] to be registered in order to gain access. Requests to become a Contributor must be approved by project Leadership.
+Registered Contributors must request [here][contributor registration form] to be registered in order to gain access. Requests to become a Contributor must be approved by project Leadership.
 
 Registered Contributor Group Members:
 
-The list of registered contributors is maintained in the [contributors.md](contributors.md) file.
+The list of registered contributors is maintained in [contributors.md][contributors.md] file.
 
 Registered Contributor Group [GitHub Access](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization): Write
 
@@ -259,6 +265,4 @@ Leadership will convene a governance group to refine this and decide the approva
 
 ## Code of Conduct
 
-Contributors to the TIDES Project are expected to read and follow the [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) for the project.
-
-[contributor-registration]: https://forms.office.com/Pages/ResponsePage.aspx?id=i_a_3SpIc0WB4P74FWpP0Hpd6kyRp1VEg8rnx5-CwORUMFFGTzBYRktEMkJRWVg4Qlg3SkM0VEJKVi4u
+Contributors to the TIDES Project are expected to read and follow the [Code of Conduct][code of conduct] for the project.

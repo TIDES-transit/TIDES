@@ -1,5 +1,7 @@
 # Contributor Covenant Code of Conduct
 
+[project governance]:./docs/governance.md
+
 ## Our Pledge
 
 We as members, contributors, and leaders pledge to make participation in our
@@ -37,7 +39,7 @@ Examples of unacceptable behavior include:
 
 ## Enforcement Responsibilities
 
-The community leaders for this effort include project Leadership and the Product Management Team as described in the [Project Governance](CONTRIBUTING.md#project-governance).
+The community leaders for this effort include project Leadership and the Product Management Team as described in the [Project Governance][project governance].
 
 Community leaders are responsible for clarifying and enforcing our standards of
 acceptable behavior and will take appropriate and fair corrective action in

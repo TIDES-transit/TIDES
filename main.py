@@ -13,17 +13,17 @@ log = logging.getLogger("mkdocs")
 BRANCH_NAME_KEYWORD = "{branch_name}"
 GITHUB_REPO = f"http://github.com/TIDES-transit/TIDES/tree/{BRANCH_NAME_KEYWORD}"
 
-FIND_REPLACE = {  # original relative to /docs : redirect target
-    "[CONTRIBUTING.md]": "[Contributing Section](development/#CONTRIBUTING)",
-    "<CONTRIBUTING.md>": "[Contributing Section](development/#CONTRIBUTING)",
-    "[tides-datapackage-profile]:/.datapackage": "[tides-datapackage-profile]:datapackage",
-    "[template-datapackage]:./samples/template/TIDES/datapackage.json":f"[template-datapackage]:{GITHUB_REPO}/samples/template/TIDES/datapackage.json",
-    "(CODE_OF_CONDUCT.md)": "(development/#CODE_OF_CONDUCT)",
-    "CONTRIBUTING.md)": "development/#CONTRIBUTING)",
-    "<LICENSE>": "[LICENSE](https://github.com/TIDES-transit/TIDES/blob/main/LICENSE)",
-    "contributors.md)": "development/#contributors)",
-    "architecture.md)": "architecture)",
-    "tables.md": "tables",
+# targets for these link keys will be updated upon doc build
+UPDATE_LINKS = {
+    "[architecture]":"./architecture",
+    "[table schemas]":"./tables",
+    "[contributors]":"./development/#contributors",
+    "[contributing]": "./development",
+    "[code of conduct]": "development/#code_of_conduct",
+    "[license]": f"{GITHUB_REPO}/LICENSE)",
+    "[tides-datapackage-profile]": "./datapackage",
+    "[template-datapackage]":f"{GITHUB_REPO}/samples/template/TIDES/datapackage.json",
+    "[project governance]":"governance.md"
 }
 
 def get_git_branch_name():
@@ -31,6 +31,22 @@ def get_git_branch_name():
     branch = subprocess.check_output(['git', 'rev-parse', '--abbrev-ref', 'HEAD']).decode('utf-8').strip()
     log.info("On branch: {branch}")
     return branch
+
+# The pattern to match markdown links like [Architecture]:./architecture
+md_link_pattern = re.compile(r'^(\[[^\]]+\]):\s*(.+)$', re.MULTILINE)
+
+def replace_links_in_markdown(content_md:str, replacement_links:dict = UPDATE_LINKS):
+   
+    def replace_match(match):
+        key = match.group(1)
+        # If the key in the markdown matches one in our dictionary, replace it
+        if key in replacement_links:
+            return f"{key}: {replacement_links[key]}"
+        else:
+            return match.group(0)  # No replacement found, return the original text
+
+    # Replace all occurrences in the content
+    new_content = md_link_pattern.sub(replace_match, content_md)
 
 def define_env(env):
     """
@@ -166,17 +182,12 @@ def define_env(env):
             content = re.sub(md_heading_re[2], r"#\1\2", content)
             content = re.sub(md_heading_re[1], r"#\1\2", content)
 
-        _filenamebase = env.page.file.url
-        
-
-        for _find, _replace in FIND_REPLACE.items():
-            if _filenamebase in _replace:
-                _replace = _replace.replace(_filenamebase, "")
-            content = content.replace(_find, _replace)
+        content = replace_links_in_markdown(content)
 
         if BRANCH_NAME_KEYWORD in content:
-            _branch_name = get_git_branch_name()
-            content = content.replace(BRANCH_NAME_KEYWORD, _branch_name)
+            content = content.replace(BRANCH_NAME_KEYWORD,  get_git_branch_name())
+
+        # Add code fences if applicable
         if code_type is not None:
             content = f"\n```{code_type} title='{filename}'\n{content}\n```"
         return content
