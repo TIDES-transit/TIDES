@@ -1,6 +1,6 @@
 # TIDES Code of Conduct
 
-[project governance]:./docs/governance.md
+[TIDES-governance]:./docs/governance.md
 
 ## Our Pledge
 
@@ -39,7 +39,7 @@ Examples of unacceptable behavior include:
 
 ## Enforcement Responsibilities
 
-The community leaders for this effort include project Leadership and the Product Management Team as described in the [Project Governance][project governance].
+The community leaders for this effort include project Leadership and the Product Management Team as described in the [Project Governance][TIDES-governance].
 
 Community leaders are responsible for clarifying and enforcing our standards of
 acceptable behavior and will take appropriate and fair corrective action in

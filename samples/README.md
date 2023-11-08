@@ -10,6 +10,10 @@ unique-example-name
   \scripts  # Optional. Scripts used to transform raw --> TIDES
 ```
 
+[tides-datapackage-profile]:.docs/datapackage
+[tides-datapackage-profile-json]:.spec/tides-datapackage-profile.json
+[template-datapackage]:./samples/template/TIDES/datapackage.json"
+
 ## Adding Examples
 
 We encourage the addition of examples, but please follow the following guidelines:
@@ -20,12 +24,12 @@ We encourage the addition of examples, but please follow the following guideline
 
 ## Data Package
 
-TIDES sample data must include a `datapackage.json` in the format specified by the [`tides-data-package` json schema](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/tides-datapackage-profile.json) (an extension of the [frictionless data package](https://specs.frictionlessdata.io/data-package/)).  
+TIDES sample data must include a [`datapackage.json`][tides-datapackage-profile] in the format specified by the [`tides-data-package` json schema][tides-datapackage-profile-json] (an extension of the [frictionless data package](https://specs.frictionlessdata.io/data-package/)).  
 
 See:
 
-- [Full documentation on the `tides-data-package`]({{ site_url }}/datapackage)
-- [Example `tides-data-package` file](https://raw.githubusercontent.com/TIDES-transit/TIDES/main/samples/template)
+- [Full documentation on the `tides-data-package`][tides-datapackage-profile]
+- [Example `tides-data-package` file][template-datapackage]
 
 ## Data validation
 

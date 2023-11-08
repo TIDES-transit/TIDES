@@ -59,7 +59,7 @@ Those who want to help with the development of the TIDES specification should re
 
 ## Issues
 
-Please add issues, bugs, and feature requests to [GitHub][gitHub issues].
+Please add issues, bugs, and feature requests to [GitHub][github issues].
 
 ## Acknowledgment
 
