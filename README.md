@@ -20,7 +20,7 @@ Directories with TIDES data must contain metadata in a [`datapackage.json`](http
 
 ## Sample Data
 
-[Sample data](https://tides-transit.github.io/TIDES/main/samples) can be found in the `/samples` directory, with one directory for each sample.
+[Sample data](./samples) can be found in the `/samples` directory, with one directory for each sample.
 
 ### Template
 
