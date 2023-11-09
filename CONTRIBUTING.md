@@ -5,7 +5,6 @@ Thank you for contributing to the TIDES Project. This document outlines the proc
 [contributor registration form]: https://forms.office.com/Pages/ResponsePage.aspx?id=i_a_3SpIc0WB4P74FWpP0Hpd6kyRp1VEg8rnx5-CwORUMFFGTzBYRktEMkJRWVg4Qlg3SkM0VEJKVi4u
 [code of conduct]:CODE_OF_CONDUCT.md
 [CLA]:CLA.md
-[license]:LICENSE.md
 [contributors.md]:contributors.md
 [TIDES-governance]: ./docs/governance.md
 [TIDES-board]:./docs/governance.md#tides-board-of-directors
@@ -188,7 +187,7 @@ By making any contribution to the projects, contributors self-certify to the the
 
 ## License to Use
 
-The TIDES specification is licensed under the Apache License 2.0 as defined in the [LICENSE][license].
+The TIDES specification is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt) (code) and [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/) (sample data, specification, and documentation) as defined in <LICENSES> file.
 
 ## Project Governance
 
