@@ -184,7 +184,7 @@ By making any contribution to the projects, contributors self-certify to the the
 
 ## License to Use
 
-The TIDES specification is licensed under the Apache License 2.0 as defined in <LICENSE> file.
+The TIDES specification is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt) (code) and [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/) (sample data, specification, and documentation) as defined in <LICENSES> file.
 
 ## Project Governance
 
