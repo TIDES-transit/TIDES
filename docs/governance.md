@@ -54,13 +54,13 @@ TIDES is governed by a Board of Directors.
 - Board members may abstain from any vote.
 - Decisions of the Board will be documented in writing and saved within the TIDES GitHub repository.
 - The primary decisions that Board members are expected to make include:
-  - Selection of new Board members, and removal of Board members if needed.
-  - Selection of the TIDES Manager.
-  - Approval of the MOU with the TIDES Manager.
-  - Approve list of proposed changes for each development cycle.
-  - Review and approve each new release of TIDES.
-  - Manage Urgent Changes to the standard in collaboration with the TIDES Manager.
-  - Resolve issues that arise during the Change Management process that cannot be addressed by the TIDES Manager.
+    - Selection of new Board members, and removal of Board members if needed.
+    - Selection of the TIDES Manager.
+    - Approval of the MOU with the TIDES Manager.
+    - Approve list of proposed changes for each development cycle.
+    - Review and approve each new release of TIDES.
+    - Manage Urgent Changes to the standard in collaboration with the TIDES Manager.
+    - Resolve issues that arise during the Change Management process that cannot be addressed by the TIDES Manager.
 
 #### Board Member Role and Term
 

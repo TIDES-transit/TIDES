@@ -2,12 +2,15 @@
 
 Thank you for contributing to the TIDES Project. This document outlines the process for contributing to the project and documents the governance roles and approach for decision-making. Where [TIDES Governance][TIDES-governance] and this document differ, the [TIDES Governance][TIDES-governance] shall take precedence.
 
-[contributor-registration]: https://forms.office.com/Pages/ResponsePage.aspx?id=i_a_3SpIc0WB4P74FWpP0Hpd6kyRp1VEg8rnx5-CwORUMFFGTzBYRktEMkJRWVg4Qlg3SkM0VEJKVi4u
-[TIDES-governance]: https://tides-transit.github.io/TIDES/governance/
-[TIDES-Board]:https://tides-transit.github.io/TIDES/governance/#tides-board-of-directors
-[TIDES-Contributor]:https://tides-transit.github.io/TIDES/governance/#tides-contributor
-[TIDES-Manager]:https://tides-transit.github.io/TIDES/governance/#tides-manager
-[TIDES-Stakeholder]: https://tides-transit.github.io/TIDES/governance/#tides-stakeholder
+[contributor registration form]: https://forms.office.com/Pages/ResponsePage.aspx?id=i_a_3SpIc0WB4P74FWpP0Hpd6kyRp1VEg8rnx5-CwORUMFFGTzBYRktEMkJRWVg4Qlg3SkM0VEJKVi4u
+[code of conduct]:CODE_OF_CONDUCT.md
+[CLA]:CLA.md
+[contributors.md]:contributors.md
+[TIDES-governance]: ./docs/governance.md
+[TIDES-board]:./docs/governance.md#tides-board-of-directors
+[TIDES-contributor]:./docs/governance.md/#tides-contributor
+[TIDES-manager]:./docs/governance.md/#tides-manager
+[TIDES-stakeholder]: ./docs/governance.md/#tides-stakeholder
 
 ## Becoming a TIDES Contributor
 
@@ -18,7 +21,7 @@ As defined in the [TIDES Governance][TIDES-governance], a [TIDES-Contributor][TI
 
 These roles and responsibilities are further detailed in the [TIDES Governance][TIDES-governance] and documents linked to from it.  
 
-Individuals may request to be a Contributor by completing [the registration form][contributor-registration]that includes acknowledgement of the [Contributor Agreement](#tides-contributor-license-agreement) and [Code of Conduct](#tides-code-of-conduct).
+Individuals may request to be a Contributor by completing [the registration form][contributor registration form]that includes acknowledgement of the [Contributor Agreement](#tides-contributor-license-agreement) and [Code of Conduct](#tides-code-of-conduct).
 
 ## How to Contribute
 
@@ -180,7 +183,7 @@ When a change is pushed to the TIDES specification repository, Github Actions de
 
 ## TIDES Contributor License Agreement
 
-By making any contribution to the projects, contributors self-certify to the the [TIDES Contributor Agreement](CLA.md).
+By making any contribution to the projects, contributors self-certify to the the [TIDES Contributor Agreement][CLA].
 
 ## License to Use
 
@@ -192,13 +195,13 @@ The TIDES Project Governance and the roles within are detailed in the [TIDES-gov
 
 ### Roles
 
-- [**TIDES Board**][TIDES-Board]
+- [**TIDES Board**][TIDES-board]
     - John Levin, Metro Transit (Minneapolis-St. Paul, MN)
 - **Board Coordinator**: *TBD*
-- [**TIDES Manager**][TIDES-Manager]: *Currently in discussion*
+- [**TIDES Manager**][TIDES-manager]: *Currently in discussion*
 - **Program Manager**: *TBD*
-- [**TIDES-Contributors**][TIDES-Contributor]: [List of Contributors](contributors.md)
-- [**TIDES-Stakeholders**][TIDES-Stakeholder]: Anyone who has an interest in or could be directly affected by the TIDES specification and tools.
+- [**TIDES-Contributors**][TIDES-contributor]: [List of Contributors][contributors.md]
+- [**TIDES-Stakeholders**][TIDES-stakeholder]: Anyone who has an interest in or could be directly affected by the TIDES specification and tools.
 
 ### [GitHub Access Levels](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization)
 
@@ -219,4 +222,4 @@ Following v1.0, TIDES will adhere to a change management policy currently in dev
 
 ## TIDES Code of Conduct
 
-Contributors to the TIDES Project are expected to read and follow the [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) for the project.
+Contributors to the TIDES Project are expected to read and follow the [code of conduct] for the project.
