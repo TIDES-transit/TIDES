@@ -5,26 +5,18 @@ edit_uri: edit/main/docs
 
 theme:
   name: material
+  logo: assets/bus-surf.svg
   features:
     - content.code.copy
     - navigation.tabs
     - navigation.expand
     - toc.integrate
   palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: blue
-      accent: grey
-      toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: blue
-      accent: grey
-      toggle:
-        icon: material/toggle-switch
-        name: Switch to light mode
+      primary: custom
+      accent: custom
+      text: custom
+      background: custom
+      highlight: custom
 
 plugins:
   - autorefs
@@ -54,6 +46,7 @@ extra_javascript:
 
 extra_css:
   - https://use.fontawesome.com/releases/v5.13.0/css/all.css
+  - stylesheets/tides.css
 
 markdown_extensions:
   - admonition
