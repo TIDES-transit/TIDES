@@ -6,6 +6,7 @@ edit_uri: edit/main/docs
 theme:
   name: material
   logo: assets/bus-surf.svg
+  favicon: assets/tides.ico
   features:
     - content.code.copy
     - navigation.tabs
