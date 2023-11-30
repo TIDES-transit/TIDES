@@ -39,12 +39,12 @@
       "description": "Indicates the type of device.",
       "constraints": {
         "enum": [
-          "farebox",
-          "fare gate",
-          "fare vending machine",
-          "passenger counter",
-          "vehicle location",
-          "other"
+          "Farebox",
+          "Fare gate",
+          "Fare vending machine",
+          "Passenger counter",
+          "Vehicle location",
+          "Other"
         ]
       }
     },
