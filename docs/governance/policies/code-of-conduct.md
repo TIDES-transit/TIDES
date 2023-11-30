@@ -1,6 +1,6 @@
 # TIDES Code of Conduct
 
-[TIDES-governance]:./docs/governance.md
+[TIDES-governance]:../../governance.md
 
 ## Our Pledge
 

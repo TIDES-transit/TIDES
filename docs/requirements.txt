@@ -4,8 +4,9 @@ mkdocs-autorefs
 mkdocs-awesome-pages-plugin
 mkdocs-jupyter
 mkdocs-macros-plugin
-mkdocs-material
+mkdocs-material>9.2.2
 mkdocs-mermaid2-plugin
 mkdocs-redirects
 pandas
 tabulate
+yaml
