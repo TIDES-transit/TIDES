@@ -140,10 +140,10 @@
   ],
   "foreignReferences": [
     {
-      "fields": "trip_id_performed",
+      "fields": ["service_date", "trip_id_performed"],
       "reference": {
         "resource": "trips_performed",
-        "fields": "trip_id_performed"
+        "fields": ["service_date", "trip_id_performed"]
       }
     },
     {
@@ -154,10 +154,10 @@
       }
     },
     {
-      "fields": ["service_date", "trip_id_performed", "scheduled_stop_sequence"],
+      "fields": ["service_date", "trip_id_performed", "trip_stop_sequence"],
       "reference": {
-        "resource": "stop_times",
-        "fields": ["service_date", "trip_id_performed", "stop_sequence"]
+        "resource": "stop_visits",
+        "fields": ["service_date", "trip_id_performed", "trip_stop_sequence"]
       }
     },
     {
@@ -177,7 +177,7 @@
     {
       "fields": "train_car_id",
       "reference": {
-        "resource": "train_car",
+        "resource": "train_cars",
         "fields": "train_car_id"
       }
     },

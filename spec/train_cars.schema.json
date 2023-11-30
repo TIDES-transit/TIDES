@@ -34,7 +34,7 @@
       }
     },
     {
-      "name": "wheelchair_capacity",
+      "name": "capacity_wheelchair",
       "type": "integer",
       "description": "Number of wheelchair spaces on the train car or asset.",
       "constraints": {
@@ -42,7 +42,7 @@
       }
     },
     {
-      "name": "bike_capacity",
+      "name": "capacity_bike",
       "type": "integer",
       "description": "Number of bike spaces on the train car or asset.",
       "constraints": {
