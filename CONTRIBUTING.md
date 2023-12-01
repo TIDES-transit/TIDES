@@ -48,12 +48,16 @@ Individuals may request to be a Contributor by completing [the registration form
 
 ### Contribution Workflow
 
-1. [Create a branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-and-deleting-branches-within-your-repository) to work on a new issue (or checkout an existing one where the issue is being worked on).  
+1. [Create a feature branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-and-deleting-branches-within-your-repository) to work on a new issue (or checkout an existing one where the issue is being worked on).  
 2. Make your changes.
 3. Run `tests/test_local_spec` script to check and fix formatting, validate profile and schemas with frictionless and with each other, and confirm that documentation can be built locally.
 4. Run `tests/test_samples_to_local` script to check if samples conform to any changes to the spec.
 5. [Commit](#commits) your work in `git`
 6. `push` your changes to Github and submit a [`pull request`](#pull-requests)
+
+!!! tip "Create a branch, not a fork"
+
+    If you have the permissions (which you should if you are a TIDE Contributor), you need to complete your work on a branch of the main TIDES repository rather than a fork of it so that when you submit a pull request the continuous integration tests will have the right permissions to run. 
 
 ### Issues
 
@@ -68,6 +72,16 @@ Use the following guidance in creating and responding to pull requests
 - Link Pull Requests to Issues as appropriate.
 - Complete the pull request template as best you can.
 - In order to run all GitHub Actions automations, contributors with adequate permissions (i.e. Registered Contributors) should submit pull requests from a branch on the main repo, rather than from a fork.
+
+!!! tip "If you worked from a local fork"
+
+    If you worked from a local fork instead of a feature branch of the main repository, you will not have the right permissions to run the continuous integration tests when you submit a pull request.  To remedy, please push the branch of your local fork to a feature branch of the main repository:
+
+    ```sh
+    git push origin <my-feature-branch-name>
+    ``` 
+
+    ...and now you should be able to submit a pull request from that feature branch which should have the permission to run the continuous integration tests.
 
 ### Commits
 
