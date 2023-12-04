@@ -55,9 +55,9 @@ Individuals may request to be a Contributor by completing [the registration form
 5. [Commit](#commits) your work in `git`
 6. `push` your changes to Github and submit a [`pull request`](#pull-requests)
 
-!!! tip "Create a branch, not a fork"
+!!! tip "Create a feature branch on a clone of `tides-transit/TIDES`, not a fork"
 
-    If you have the permissions (which you should if you are a TIDE Contributor), you need to complete your work on a branch of the main TIDES repository rather than a fork of it so that when you submit a pull request the continuous integration tests will have the right permissions to run. 
+    If you have the permissions (which you should if you are a TIDE Contributor), you should complete your work on a feature branch from a **clone** of the main TIDES repository (`tides-transit/TIDES`) rather than a fork of it (e.g. `my-github-handle/TIDES`) so that when you submit a pull request the continuous integration tests will have the right permissions to run. 
 
 ### Issues
 
@@ -73,15 +73,18 @@ Use the following guidance in creating and responding to pull requests
 - Complete the pull request template as best you can.
 - In order to run all GitHub Actions automations, contributors with adequate permissions (i.e. Registered Contributors) should submit pull requests from a branch on the main repo, rather than from a fork.
 
-!!! tip "If you worked from a local fork"
+!!! tip "If you worked from a fork"
 
-    If you worked from a local fork instead of a feature branch of the main repository, you will not have the right permissions to run the continuous integration tests when you submit a pull request.  To remedy, please push the branch of your local fork to a feature branch of the main repository:
+    If you worked from a fork of the `TIDES/tides-transit` repo instead of a feature branch of a clone of the `TIDES/tides-transit` repo, you will not have the right permissions to run the continuous integration tests when you submit a pull request.  To remedy, please push the branch of your local fork to a feature branch of the main repository:
 
     ```sh
-    git push origin <my-feature-branch-name>
+    git remote add upstream git@github.com/TIDES-transit/TIDES.git
+    git push upstream <my-feature-branch-name>
     ``` 
 
     ...and now you should be able to submit a pull request from that feature branch which should have the permission to run the continuous integration tests.
+
+    Run into a permissions issue with that command? Make sure you a registered contributor and that you have accepted the resulting invitation to join the `tides-transit` team on Github. 
 
 ### Commits
 
