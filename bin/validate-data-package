@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-# Script: validate_frictionless_package.sh
+# Script: validate_data_package
 # Description: Bash script to validate a Frictionless Data Package using the Frictionless CLI.
-# Usage: validate_frictionless_package.sh [-v tides_version | -l local_schema_location] [-d dataset_location]
+# Usage: validate_data_package [-v tides_version | -l local_schema_location] [-d dataset_location]
 #   -v tides_version: Optional. Specify the version of the TIDES specification or 'local' to
 #       use a local schema. Default is to use the schema specified in the datapackage.
 #   -l local_schema_location: Optional. Specify the location of the local schema directory.
@@ -36,7 +36,7 @@ done
 
 # Create a temporary data package if using a different schema reference or a local schema
 tmp_datapackage=""
-if [ "$tides_version" != "" ] then
+if [ "$tides_version" != "" ]; then
   tmp_datapackage=$(mktemp)
   cp "$dataset_location/datapackage.json" "$tmp_datapackage"
 fi
@@ -57,10 +57,10 @@ if [ "$tmp_datapackage" != "" ]; then
 fi
 
 # Validate the data package JSON against the TIDES schema
-./validate-data-package-json.sh -v "$tides_version" -d "$dataset_location" -l "$local_schema_location"
+./validate-data-package-json -v "$tides_version" -f "$dataset_location" -l "$local_schema_location"
 
 # Validate the Frictionless Data Package using the Frictionless CLI
-frictionless validate "$dataset_location"
+frictionless validate "$dataset_location" --schema-sync
 
 # Remove the temporary data package file, if applicable
 if [ "$tmp_datapackage" != "" ]; then

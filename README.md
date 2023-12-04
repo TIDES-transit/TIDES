@@ -39,7 +39,7 @@ bin/validate-datapackage [-v remote_spec_ref | -l local_spec_path] [-d dataset_p
 Specific files can be validated by running the frictionless framework against them and their corresponding schemas as follows:
 
 ```sh
-frictionless validate vehicles.csv --schema https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/schema.vehicles.json
+frictionless validate vehicles.csv --schema https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/schema.vehicles.json --schema-sync
 ```
 
 ## Sample Data
@@ -48,7 +48,7 @@ frictionless validate vehicles.csv --schema https://raw.githubusercontent.com/TI
 
 ### Template
 
-Templates of `datapackage.json` and each TIDES file type are located in the `/samples/template` directory.
+Templates of `datapackage.json` and each TIDES file type are located in the `/samples/template` directory. They can be used to build out TIDES data, particuarly samples.  Most TIDES data in practice will be directly produced as an output from software or scripts.
 
 ## Contributing to TIDES
 

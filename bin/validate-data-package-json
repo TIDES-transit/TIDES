@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Script to validate a local JSON file against a schema specified in a GitHub repository.
-# Usage: validate-data-package-json.sh [-r ref | -l local_schema_location] [-f datapackage_file]
+# Usage: validate-data-package-json [-r ref | -l local_schema_location] [-f datapackage_file]
 #   -r ref: Optional. Specify the ref name of the GitHub repository. Default is 'main'.
 #   -l local_schema_location: Optional. Specify the location of the local schema directory.
 #   -f datapackage_file: Optional. Specify the location of the datapackage.json file. Default is 'datapackage.json' in the execution directory.
