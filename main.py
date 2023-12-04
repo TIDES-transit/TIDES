@@ -1,25 +1,115 @@
+from datetime import datetime, date
 import glob
 import json
 import logging
 import os
 import pathlib
 import re
+import yaml
 from typing import Union, Literal
 
 import pandas as pd
 
 log = logging.getLogger("mkdocs")
 
-FIND_REPLACE = {  # original relative to /docs : redirect target
-    "<CONTRIBUTING.md>": "[Contributing Section](development/#CONTRIBUTING)",
-    "(CODE_OF_CONDUCT.md)": "(development/#CODE_OF_CONDUCT)",
-    "CONTRIBUTING.md)": "development/#CONTRIBUTING)",
-    "<LICENSE>": "[LICENSE](https://github.com/TIDES-transit/TIDES/blob/main/LICENSE)",
-    "contributors.md)": "development/#contributors)",
-    "architecture.md)": "architecture)",
-    "tables.md": "tables",
+BRANCH_NAME_KEYWORD = "{branch_name}"
+GITHUB_REPO = f"http://github.com/TIDES-transit/TIDES/tree/{BRANCH_NAME_KEYWORD}"
+
+# targets for these link keys will be updated upon doc build
+UPDATE_LINKS = {
+    "[architecture]":"architecture.md",
+    "[table schemas]":"tables.md",
+    "[contributors]":"development.md#contributors",
+    "[contributors.md]":"development.md#contributors",
+    "[contributing]": "development.md",
+    "[code of conduct]": "./governance/policies/code_of_conduct.md",
+    "[license]": f"{GITHUB_REPO}/LICENSE)",
+    "[tides-datapackage-profile]": "datapackage.md",
+    "[tides-datapackage-profile-json]":f"{GITHUB_REPO}/spec/tides-datapackage-profile.json",
+    "[template-datapackage]":f"{GITHUB_REPO}/samples/template/TIDES/datapackage.json",
+    "[TIDES-governance]":"governance.md",
+    "[TIDES-board]":"governance.md#tides-board-of-directors",
+    "[TIDES-contributor]":"governance.md#tides-contributor",
+    "[TIDES-manager]":"governance.md#tides-manager",
+    "[TIDES-stakeholder]":"governance.md#tides-stakeholder",
+    "[`tides.spec.json`]": f"{GITHUB_REPO}/spec/tides.spec.json"
 }
 
+# The pattern to match markdown links like [Architecture]:./architecture
+MD_LINK_DEF_REGEX = re.compile(r'^(\[[^\]]+\]):\s*(.+)$', re.MULTILINE)
+MD_LINK_USE_REGEX = re.compile(r'\[(.*?)\]\s*\[([^\]]*?)\](?:(?!\n\n).)*\[\2\]:\s*(\S+)')
+MD_HEADING_REGEX = re.compile(r'^(#{1,6})\s+(.*)', re.MULTILINE)
+
+def split_yaml_header(text:str,delimeter:str = '---'):
+    """Splits text (i.e. a markdown file) into structured yaml frontmatter and text.
+    """
+    _,y,t = text.split(delimeter)
+    y = yaml.safe_load(y)
+    return y,t
+
+def get_git_branch_name():
+    import subprocess
+    branch = subprocess.check_output(['git', 'rev-parse', '--abbrev-ref', 'HEAD']).decode('utf-8').strip()
+    log.info(f"On branch: {branch}")
+    return branch
+
+def downshift_md_heading(content_md:str):
+    """Downshift heading level in markdown content by 1.
+
+    Args:
+        content_md (str): Markdown content
+    """
+    def _downshift_headings_in_match(match):
+        heading = match.group(0)
+        # Add a '#' to the heading, but only if it's not already an h6.
+        if heading.count('#') < 6:
+            return '#' + heading
+        return heading
+
+    content_md = re.sub(MD_HEADING_REGEX, _downshift_headings_in_match, content_md)
+    return content_md
+
+def replace_links_in_markdown(content_md:str, replacement_links:dict = UPDATE_LINKS):
+    """Replace links in a markdown document. 
+
+    Args:
+        content_md (str): Markdown content to replace links for.
+        replacement_links (dict, optional): Dictionary with links to update in a markdown document. 
+            key: link handle (e.g. '[code of conduct]')
+            value: updated link target (e.g. `code_of_conduct.md`)
+            Defaults to UPDATE_LINKS.
+    """
+    MD_LINK_DEF_REGEX = re.compile(r'^(\[[^\]]+\]):\s*(.+)$', re.MULTILINE)
+    def _replace_defs_in_match(match):
+        #log.info(f"REPLACE DEFS MATCH: {match}")
+        key = match.group(1)
+        # If the key in the markdown matches one in our dictionary, replace it
+        if key in replacement_links:
+            return f"{key}: {replacement_links[key]}"
+        else:
+            return match.group(0)  # No replacement found, return the original text
+
+    # Replace all occurrences in the content
+    content_md = re.sub(MD_LINK_DEF_REGEX,_replace_defs_in_match, content_md)
+    return content_md
+
+def list_to_file_list(input_list: Union[str,list[str]]) -> list[str]:
+    all_files = []
+    if type(input_list) is str:
+        input_list = [input_list]
+
+    for item in input_list:
+        # If item is a file, add it to the list
+        if os.path.isfile(item):
+            all_files.append(item)
+        # If item is a directory, add all files from that directory
+        elif os.path.isdir(item):
+            for dirpath, dirnames, filenames in os.walk(item):
+                for filename in filenames:
+                    all_files.append(os.path.join(dirpath, filename))
+        else:
+            log.warning(f"{item} is neither a file nor a directory")
+    return all_files
 
 def define_env(env):
     """
@@ -28,6 +118,64 @@ def define_env(env):
     - variables: the dictionary that contains the environment variables
     - macro: a decorator function, to declare a macro.
     """
+    @env.macro
+    def list_actions(files: Union[str,list[str]]):
+        filepaths = list_to_file_list(files)
+
+        def _fmt_action_to_admon(action:dict,adm_type = "abstract"):
+            _indent = " "*4
+            title = f'"{action["date"]} {action["title"]}"' 
+            a = f"??? {adm_type} {title}\n\n"
+            if "via" in action:
+                a += f"\n{_indent}:material-file-check: {action['via']}"
+            if "loc" in action:
+                a += f"\n\n{_indent}:material-folder-open: [full document]({action['loc']})"
+            a += f"\n\n{_indent}{action['md_txt'].strip()}\n"
+            
+            return a
+
+        actions = []
+        for fp in filepaths:
+            with open(fp,'r') as f:
+                action,md_txt = split_yaml_header(f.read())
+                action['md_txt'] = md_txt
+            actions.append(action)
+        
+        actions.sort(
+            key=lambda x: x['date'] if 
+                    isinstance(x['date'], date) 
+                else 
+                    datetime.strptime(x['date'], '%Y-%m-%d'), 
+            reverse=True
+        )
+        adm = [_fmt_action_to_admon(x) for x in actions]
+        
+        return '\n'.join(adm)
+
+
+    @env.macro
+    def url_for(file_path):
+        """
+        Create a relative URL for a file given its path within the MkDocs source directory.
+
+        :param file_path: The file path relative to the MkDocs documentation source directory.
+        :return: A relative URL that can be used in the MkDocs site.
+        """
+        # Remove the leading 'docs/' if present, because URLs do not include it
+        if file_path.startswith('docs/'):
+            file_path = file_path.replace("docs/", "TIDES/")
+
+        # MkDocs will convert the .md files to a folder structure
+        if file_path.endswith('.md'):
+            file_path = file_path[:-3] + '/'
+
+        # Ensure leading slash
+        if not file_path.startswith('/'):
+            file_path = '/' + file_path
+
+
+        return file_path
+
 
     @env.macro
     def list_samples(sample_dir: str) -> str:
@@ -55,6 +203,66 @@ def define_env(env):
             md_table += datapackage_to_row(os.path.join(sample_dir, s, "TIDES"), fields)
         return md_table
 
+
+    @env.macro
+    def include_file_sections(
+        filename: str,
+        include_sections: list[str] = [],
+        exclude_sections: list[str] = [],
+        downshift_h1=True,
+        start_line: int = 0,
+        end_line: int = None,
+        code_type: str = None,
+    ):
+        """Wrapper around include_file to only include some sections.
+
+        Args:
+            filename (str): _description_
+            sections: list of sections to include in order If not found will skip.
+            downshift_h1 (bool, optional): _description_. Defaults to True.
+            start_line (int, optional): _description_. Defaults to 0.
+            end_line (int, optional): _description_. Defaults to None.
+            code_type (str, optional): _description_. Defaults to None.
+        """
+
+        full_file_md = include_file(filename,downshift_h1,start_line,end_line,code_type)
+        link_definitions = MD_LINK_DEF_REGEX.findall(full_file_md)
+        #log.info(f"LINK DEFS:\n{link_definitions}")
+        # Normalize titles for comparison
+        include_titles = set(title.lower().strip() for title in include_sections)
+        exclude_titles = set(title.lower().strip() for title in exclude_sections)
+
+        # Check for conflicts between include and exclude lists
+        if not include_titles.isdisjoint(exclude_titles):
+            conflicting_titles = include_titles.intersection(exclude_titles)
+            raise ValueError(f"Conflicting section titles to include and exclude: {conflicting_titles}")
+
+        # Split the markdown content by headings to process sections
+        parts = re.split(MD_HEADING_REGEX, full_file_md)
+        parts=parts[1:]
+
+        # Process in triples: (level, title, content)
+        sections = []
+        for i in range(0, len(parts), 3):
+            level, title, content = parts[i:i+3]
+            sections.append((level, title.strip(), content.strip()))
+        
+        # Extract the desired sections
+        extracted_content = []
+        for level, title, content in sections:
+            title_lower = title.lower()
+            if (title_lower in include_titles or not include_titles) and title_lower not in exclude_titles:
+                extracted_content.append(f"{level} {title}")
+                extracted_content.append(content)
+
+        # Append all link definitions
+        link_content = ""
+        for link_label, link_href in link_definitions:
+            link_content += f"\n{link_label}: {link_href}\n"
+        extracted_content.append(link_content)
+       
+        return "\n\n".join(extracted_content)
+
     @env.macro
     def include_file(
         filename: str,
@@ -78,35 +286,23 @@ def define_env(env):
             code_type: if not None, will encapsulate the resulting file in
                 ```<code_type>..file contents...```
         """
+        
         full_filename = os.path.join(env.project_dir, filename)
         with open(full_filename, "r") as f:
             lines = f.readlines()
+
         line_range = lines[start_line:end_line]
         content = "".join(line_range)
 
-        # Downshift headings if h1 found
-        md_heading_re = {
-            1: re.compile(r"(#{1}\s)(.*)"),
-            2: re.compile(r"(#{2}\s)(.*)"),
-            3: re.compile(r"(#{3}\s)(.*)"),
-            4: re.compile(r"(#{4}\s)(.*)"),
-            5: re.compile(r"(#{5}\s)(.*)"),
-        }
+        if downshift_h1 and re.search(r'^#\s', content, re.MULTILINE):
+            content = downshift_md_heading(content)
 
-        if md_heading_re[1].search(content) and downshift_h1:
-            content = re.sub(md_heading_re[5], r"#\1\2", content)
-            content = re.sub(md_heading_re[4], r"#\1\2", content)
-            content = re.sub(md_heading_re[3], r"#\1\2", content)
-            content = re.sub(md_heading_re[2], r"#\1\2", content)
-            content = re.sub(md_heading_re[1], r"#\1\2", content)
+        content = replace_links_in_markdown(content)
 
-        _filenamebase = env.page.file.url
-        for _find, _replace in FIND_REPLACE.items():
-            if _filenamebase in _replace:
-                _replace = _replace.replace(_filenamebase, "")
+        if BRANCH_NAME_KEYWORD in content:
+            content = content.replace(BRANCH_NAME_KEYWORD,  get_git_branch_name())
 
-            content = content.replace(_find, _replace)
-
+        # Add code fences if applicable
         if code_type is not None:
             content = f"\n```{code_type} title='{filename}'\n{content}\n```"
         return content

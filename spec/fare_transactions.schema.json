@@ -32,6 +32,12 @@
       }
     },
     {
+       "name": "location_ping_id",
+       "type": "string",
+       "title": "ID referencing vehicle_locations.location_ping_id",
+       "description": "Identifies the vehicle location where the fare transaction occurred"
+     },
+     {
       "name": "amount",
       "type": "number",
       "description": "Value of the transaction.",
@@ -195,6 +201,13 @@
       "reference": {
         "resource": "trips_performed",
         "fields": "trip_id_performed"
+      }
+    },
+    {
+      "fields": "location_ping_id",
+      "reference": {
+        "resource": "vehicle_locations",
+        "fields": "location_ping_id"
       }
     },
     {

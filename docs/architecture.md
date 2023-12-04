@@ -2,15 +2,17 @@
 
 Schemas for TIDES suite.
 
+[`tides.spec.json`]:../spec/tides.spec.json
+
 ## Files in Specification
 
 TIDES consists of a package of files as defined in the following table.
 
-**The following table is automatically generated from [`tides.spec.json`]( https://github.com/TIDES-transit/TIDES/blob/main/spec/tides.spec.json)**
+**The following table is automatically generated from [`tides.spec.json`]**
 
 {{ frictionless_spec('spec/tides.spec.json') }}
 
-File components for TIDES are specified in [`tides.spec.json`](http://github.com/TIDES-transit/TIDES/blob/main/spec/tides.spec.json) in a format compatible with the
+File components for TIDES are specified in [`tides.spec.json`] in a format compatible with the
 [frictionless data](https://specs.frictionlessdata.io/tabular-data-package/) data package standard.
 
 ## Relationships

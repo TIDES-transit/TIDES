@@ -10,6 +10,7 @@ theme:
     - navigation.tabs
     - navigation.expand
     - toc.integrate
+    - toc.follow
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -35,17 +36,16 @@ plugins:
         theme: |
             ^(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'
         securityLevel: 'loose'
-  - redirects:
-      redirect_maps: #original relative to /docs : redirect target
-        '../CODE_OF_CONDUCT.md': 'CODE_OF_CONDUCT.md'
-        '../CONTRIBUTING.md': 'CONTRIBUTING.md'
-        '../contributors.md': 'contributors.md'
+  - mike:
+      version_selector: true
   - search
 
+extra:
+  version:
+    provider: mike
 
 watch:
   - CONTRIBUTING.md
-  - CODE_OF_CONDUCT.md
   - contributors.md
   - README.md
 
@@ -57,6 +57,10 @@ extra_css:
 
 markdown_extensions:
   - admonition
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.details
   - codehilite:
       linenums: true
@@ -76,11 +80,34 @@ markdown_extensions:
   - toc:
       # insert a blank space before the character
       permalink: " ¶"
+      toc_depth: 3
 
 nav:
   - Home: index.md
-  - Architecture: architecture.md
-  - Table Schemas: tables.md
-  - Data Package: datapackage.md
+  - Specification:
+      - Architecture: architecture.md
+      - Table Schemas: tables.md
+      - Data Package: datapackage.md
   - Sample Data: samples.md
-  - Development: development.md
+  - Contributing:
+      - Development: development.md
+      - Documentation: documentation.md
+  - Governance: 
+      - Governance Structure: governance.md
+      - Change Management: governance/policies/change-management.md
+      - Other Policies: 
+          - Code of conduct: governance/policies/code-of-conduct.md
+          - Contributor license agreement: governance/policies/CLA.md
+      - Board Actions: governance/actions.md 
+
+copyright: |
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/TIDES-transit/TIDES/">TIDES Project</a> by <span property="cc:attributionName">TIDES Board of Directors</span> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+

@@ -226,16 +226,13 @@
     {
       "name": "schedule_relationship",
       "type": "string",
-      "description": "Indicates the status of stop’s service on the trip.(Note: schedule_arrival_time and schedule_departure_time may differ from GTFS in the case of a schedule modification). References GTFS-realtime TripUpdate",
+      "description": "Indicates the status of the stop.",
       "constraints": {
         "enum": [
           "Scheduled",
           "Skipped",
-          "Missing data",
-          "Unscheduled",
-          "Canceled",
-          "Duplicated",
-          "Schedule modified"
+          "Added",
+          "Missing"
         ]
       }
     }

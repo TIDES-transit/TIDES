@@ -32,6 +32,12 @@
       }
     },
     {
+      "name": "location_ping_id",
+      "type": "string",
+      "title": "ID referencing vehicle_locations.location_ping_id",
+      "description": "Identifies the vehicle location where the passenger event occurred"
+    },
+    {
       "name": "trip_id_performed",
       "type": "string",
       "title": "ID referencing trips_performed.trip_id_performed",
@@ -138,6 +144,13 @@
       "reference": {
         "resource": "trips_performed",
         "fields": "trip_id_performed"
+      }
+    },
+    {
+      "fields": "location_ping_id",
+      "reference": {
+        "resource": "vehicle_locations",
+        "fields": "location_ping_id"
       }
     },
     {

@@ -1,0 +1,13 @@
+
+# Default owner of repository is all tides contributors
+* @tides-transit/contributors
+
+# The TIDES Board must approval all normative changes to the TIDES specification
+/spec/ @tides-transit/tides-board
+
+# The TIDES Board must approve all changes to governance and its associated documents
+/docs/governance.md @tides-transit/tides-board
+/docs/governance/ @tides-transit/tides-board
+/LICENSES @tides-transit/tides-board
+/CODE_OF_CONDUCT.md @tides-transit/tides-board
+/CLA.md @tides-transit/tides-board

@@ -1,0 +1,22 @@
+The contents of this repository are Copyright 2023 by TIDES Board of Directors and licensed as follows:
+
+[Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+All code, its parameters and tests including the contents of:
+
+- `/bin`
+- `/tests`
+- `main.py`
+- `mkdocs.yml`
+- `/samples/*/scripts`
+
+[CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)
+
+All documentation, sample data, and the TIDES Specification itself including the contents of:
+
+- `/spec`
+- `/docs`
+- `/samples/*/TIDES`
+- `*README.md`
+- `CONTRIBUTING.md`
+- `contributors.md`

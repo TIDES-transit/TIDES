@@ -247,17 +247,20 @@
       "description": "Timestamp at which the vehicle arrived at its destination."
     },
     {
-      "name": "service_status",
+      "name": "trip_type",
       "type": "string",
       "description": "Indicates status of travel with regard to service.",
       "constraints": {
         "enum": [
-          "In passenger service",
-          "En-route to service",
-          "Traveling from a service trip",
-          "On a layover",
-          "Returning to a garage due to a suspension or breakdown",
-          "Travel for on-route replacement of breakdown",
+          "In service",
+          "Deadhead",
+          "Layover",
+          "Pullout",
+          "Pullin",
+          "Extra Pullout",
+          "Extra Pullin",
+          "Deadhead To Layover",
+          "Deadhead From Layover",
           "Other not in service"
         ]
       }
