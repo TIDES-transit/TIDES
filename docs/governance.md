@@ -1,28 +1,31 @@
 # TIDES Governance
 
-Governance of the TIDES Project is achieved through the definition and filling of the following [roles](#roles) as defined here:
+Governance of the TIDES Project is achieved through the definition and filling of the following [roles](#roles) as defined here and fulfilled by the following individuals as noted:
 
-- [TIDES Owner](#tides-owner)
-- [TIDES Board of Directors](#tides-board-of-directors)
-- [TIDES Board Member](#board-membership)
-- [TIDES Board Coordinator](#board-coordinator)
-- [TIDES Manager](#tides-manager)
-- [TIDES Program Manager](#tides-program-manager)
-- [TIDES Contributor](#tides-contributor)
-- [TIDES Stakeholder](#tides-stakeholder)
+| **Role** | **Who** |
+| -------- | ----- |
+| [TIDES Board](#tides-board-of-directors) | John Levin, Metro Transit (Minneapolis-St. Paul, MN) |
+| [TIDES Board Coordinator](#board-coordinator) | TBD |
+| TIDES Board Chair | TBD |
+| [TIDES Manager](#tides-manager) | TBD |
+| [TIDES Program Manager](#tides-program-manager) | TBD |
+| [TIDES Contributor](#tides-contributor) | [List of Contributors](development.md#contributors.md) |
+| [TIDES Stakeholder](#tides-stakeholder) | Anyone who has an interest in or could be directly affected by the TIDES specification and tools. |
 
-## Definition of TIDES Project
+## Definitions
 
-The TIDES Project is made up of:
+`TIDES Project`
 
-- The specification itself
-- Documentation of the specification
-- The structure and templates for sample data and scripts
-- Validation/CI/documentation scripts
-- The GitHub Organization “TIDES-transit”
-- Contents of the GitHub repositories owned by the TIDES-transit organization
-- Documentation and records for the governance and management of TIDES
-- Other documentation of the TIDES Project overall
+:    The TIDES Project is made up of:
+
+    - The specification itself
+    - Documentation of the specification
+    - The structure and templates for sample data and scripts
+    - Validation/CI/documentation scripts
+    - The GitHub Organization “TIDES-transit”
+    - Contents of the GitHub repositories owned by the TIDES-transit organization
+    - Documentation and records for the governance and management of TIDES
+    - Other documentation of the TIDES Project overall
 
 ## Roles
 
@@ -102,12 +105,6 @@ TIDES is governed by a Board of Directors.
 ### TIDES Stakeholder
 
 - Anyone who has an interest in or could be directly affected by the TIDES specification and tools.
-
-## Governance Documentation
-
-Documentation, documents, and decisions of the Board will be stored in a TIDES-transit GitHub Repository in `/docs/governance/artifacts`:
-
-{{ list_artifacts('docs/governance/artifacts') }}
 
 ## Document History
 

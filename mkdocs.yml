@@ -10,6 +10,7 @@ theme:
     - navigation.tabs
     - navigation.expand
     - toc.integrate
+    - toc.follow
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -45,7 +46,6 @@ extra:
 
 watch:
   - CONTRIBUTING.md
-  - CODE_OF_CONDUCT.md
   - contributors.md
   - README.md
 
@@ -57,6 +57,10 @@ extra_css:
 
 markdown_extensions:
   - admonition
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.details
   - codehilite:
       linenums: true
@@ -76,15 +80,25 @@ markdown_extensions:
   - toc:
       # insert a blank space before the character
       permalink: " ¶"
+      toc_depth: 3
 
 nav:
   - Home: index.md
-  - Architecture: architecture.md
-  - Table Schemas: tables.md
-  - Data Package: datapackage.md
+  - Specification:
+      - Architecture: architecture.md
+      - Table Schemas: tables.md
+      - Data Package: datapackage.md
   - Sample Data: samples.md
-  - Development: development.md
-  - Governance: governance.md
+  - Contributing:
+      - Development: development.md
+      - Documentation: documentation.md
+  - Governance: 
+      - Governance Structure: governance.md
+      - Change Management: governance/policies/change-management.md
+      - Other Policies: 
+          - Code of conduct: governance/policies/code-of-conduct.md
+          - Contributor license agreement: governance/policies/CLA.md
+      - Board Actions: governance/actions.md 
 
 copyright: |
     <footer>

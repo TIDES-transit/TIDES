@@ -1,9 +1,11 @@
+from datetime import datetime, date
 import glob
 import json
 import logging
 import os
 import pathlib
 import re
+import yaml
 from typing import Union, Literal
 
 import pandas as pd
@@ -15,15 +17,14 @@ GITHUB_REPO = f"http://github.com/TIDES-transit/TIDES/tree/{BRANCH_NAME_KEYWORD}
 
 # targets for these link keys will be updated upon doc build
 UPDATE_LINKS = {
-    "[architecture]":"./architecture",
-    "[table schemas]":"./tables",
-    "[contributors]":"./development.md#contributors",
-    "[contributors.md]":"./development.md#contributors",
-    "[contributing]": "./development",
-    "[code of conduct]": "development#code_of_conduct",
-    "[CLA]":f"{GITHUB_REPO}/CLA.md",
+    "[architecture]":"architecture.md",
+    "[table schemas]":"tables.md",
+    "[contributors]":"development.md#contributors",
+    "[contributors.md]":"development.md#contributors",
+    "[contributing]": "development.md",
+    "[code of conduct]": "./governance/policies/code_of_conduct.md",
     "[license]": f"{GITHUB_REPO}/LICENSE)",
-    "[tides-datapackage-profile]": "./datapackage.md",
+    "[tides-datapackage-profile]": "datapackage.md",
     "[tides-datapackage-profile-json]":f"{GITHUB_REPO}/spec/tides-datapackage-profile.json",
     "[template-datapackage]":f"{GITHUB_REPO}/samples/template/TIDES/datapackage.json",
     "[TIDES-governance]":"governance.md",
@@ -38,6 +39,13 @@ UPDATE_LINKS = {
 MD_LINK_DEF_REGEX = re.compile(r'^(\[[^\]]+\]):\s*(.+)$', re.MULTILINE)
 MD_LINK_USE_REGEX = re.compile(r'\[(.*?)\]\s*\[([^\]]*?)\](?:(?!\n\n).)*\[\2\]:\s*(\S+)')
 MD_HEADING_REGEX = re.compile(r'^(#{1,6})\s+(.*)', re.MULTILINE)
+
+def split_yaml_header(text:str,delimeter:str = '---'):
+    """Splits text (i.e. a markdown file) into structured yaml frontmatter and text.
+    """
+    _,y,t = text.split(delimeter)
+    y = yaml.safe_load(y)
+    return y,t
 
 def get_git_branch_name():
     import subprocess
@@ -85,6 +93,24 @@ def replace_links_in_markdown(content_md:str, replacement_links:dict = UPDATE_LI
     content_md = re.sub(MD_LINK_DEF_REGEX,_replace_defs_in_match, content_md)
     return content_md
 
+def list_to_file_list(input_list: Union[str,list[str]]) -> list[str]:
+    all_files = []
+    if type(input_list) is str:
+        input_list = [input_list]
+
+    for item in input_list:
+        # If item is a file, add it to the list
+        if os.path.isfile(item):
+            all_files.append(item)
+        # If item is a directory, add all files from that directory
+        elif os.path.isdir(item):
+            for dirpath, dirnames, filenames in os.walk(item):
+                for filename in filenames:
+                    all_files.append(os.path.join(dirpath, filename))
+        else:
+            log.warning(f"{item} is neither a file nor a directory")
+    return all_files
+
 def define_env(env):
     """
     This is the hook for defining variables, macros and filters
@@ -93,32 +119,39 @@ def define_env(env):
     - macro: a decorator function, to declare a macro.
     """
     @env.macro
-    def list_artifacts(directory: str):
-        """
-        List all artifacts in the specified directory, including PDF files.
-        Use the first H1 heading in Markdown files as the link text.
-        """
-        artifacts_dir = os.path.join(env.project_dir, directory)
-        if not os.path.exists(artifacts_dir):
-            return "Directory does not exist."
+    def list_actions(files: Union[str,list[str]]):
+        filepaths = list_to_file_list(files)
+
+        def _fmt_action_to_admon(action:dict,adm_type = "abstract"):
+            _indent = " "*4
+            title = f'"{action["date"]} {action["title"]}"' 
+            a = f"??? {adm_type} {title}\n\n"
+            if "via" in action:
+                a += f"\n{_indent}:material-file-check: {action['via']}"
+            if "loc" in action:
+                a += f"\n\n{_indent}:material-folder-open: [full document]({action['loc']})"
+            a += f"\n\n{_indent}{action['md_txt'].strip()}\n"
+            
+            return a
+
+        actions = []
+        for fp in filepaths:
+            with open(fp,'r') as f:
+                action,md_txt = split_yaml_header(f.read())
+                action['md_txt'] = md_txt
+            actions.append(action)
         
-        files = os.listdir(artifacts_dir)
-        links = []
-        for file in files:
-            full_path = os.path.join(artifacts_dir, file)
-            if file.endswith('.md'):
-                with open(full_path, 'r', encoding='utf-8') as md_file:
-                    content = md_file.read()
-                match = re.search(r'^#\s(.+)$', content, re.MULTILINE)
-                link_text = match.group(1).strip() if match else os.path.splitext(file)[0]
-                url = url_for(os.path.join(directory, file))
-            elif file.endswith('.pdf'):
-                link_text = os.path.splitext(file)[0]
-                url = url_for(os.path.join(directory, file))
-            else:
-                continue
-            links.append(f'- [{link_text}]({url})')
-        return '\n'.join(links)
+        actions.sort(
+            key=lambda x: x['date'] if 
+                    isinstance(x['date'], date) 
+                else 
+                    datetime.strptime(x['date'], '%Y-%m-%d'), 
+            reverse=True
+        )
+        adm = [_fmt_action_to_admon(x) for x in actions]
+        
+        return '\n'.join(adm)
+
 
     @env.macro
     def url_for(file_path):
