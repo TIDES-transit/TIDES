@@ -93,7 +93,7 @@ def replace_links_in_markdown(content_md:str, replacement_links:dict = UPDATE_LI
     content_md = re.sub(MD_LINK_DEF_REGEX,_replace_defs_in_match, content_md)
     return content_md
 
-def list_to_file_list(input_list: Union[str,list[str]]) -> list[str]:
+def list_to_file_list(input_list: Union[str,list[str]], glob_pattern = '*') -> list[str]:
     all_files = []
     if type(input_list) is str:
         input_list = [input_list]
@@ -104,9 +104,7 @@ def list_to_file_list(input_list: Union[str,list[str]]) -> list[str]:
             all_files.append(item)
         # If item is a directory, add all files from that directory
         elif os.path.isdir(item):
-            for dirpath, dirnames, filenames in os.walk(item):
-                for filename in filenames:
-                    all_files.append(os.path.join(dirpath, filename))
+            all_files+=glob.glob(os.path.join(item, glob_pattern))
         else:
             log.warning(f"{item} is neither a file nor a directory")
     return all_files
@@ -120,17 +118,20 @@ def define_env(env):
     """
     @env.macro
     def list_actions(files: Union[str,list[str]]):
-        filepaths = list_to_file_list(files)
+        filepaths = list_to_file_list(files, glob_pattern='*.md')
 
         def _fmt_action_to_admon(action:dict,adm_type = "abstract"):
             _indent = " "*4
+            _nl = "\n"
             title = f'"{action["date"]} {action["title"]}"' 
             a = f"??? {adm_type} {title}\n\n"
             if "via" in action:
                 a += f"\n{_indent}:material-file-check: {action['via']}"
             if "loc" in action:
-                a += f"\n\n{_indent}:material-folder-open: [full document]({action['loc']})"
-            a += f"\n\n{_indent}{action['md_txt'].strip()}\n"
+                a += f"\n{_indent}:material-folder-open: [full document]({action['loc']})"
+    
+            _indented_md = f"{_indent}{action['md_txt'].replace(_nl, f'{_nl}{_indent}')}"
+            a += _indented_md
             
             return a
 
