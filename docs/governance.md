@@ -108,7 +108,11 @@ TIDES is governed by a Board of Directors.
 
 ## Document History
 
-### Version 1.0
+### 2023-12-04
+
+- Updated board composition per [2023-11-29 board action](governance/actions.md).
+
+### Initial Version
 
 - Initial release of the TIDES Governance document.
 - Establishment of governance principles, roles, policies, and procedures.
