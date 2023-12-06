@@ -1,0 +1,14 @@
+on:
+    schedule:
+      - cron: "0 0 * * *" # Everday at midnight
+  
+jobs:
+    remove-stale-branches:
+        name: Remove Stale Branches
+        runs-on: ubuntu-latest
+        steps:
+        - uses: fpicalausa/remove-stale-branches@v1
+          with:
+            dry-run: true # Check out the console output before setting this to false
+            days-before-branch-stale: 30
+            days-before-branch-delete: 7
