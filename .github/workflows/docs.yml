@@ -20,11 +20,14 @@ jobs:
         fetch-depth: 0
     - name: Set github reference as Slug environment variable
       run: |
+        echo "github.head_ref: "${{ github.head_ref }};
         echo "Slug=$(echo "${{ github.head_ref }}" | sed "s/\//\-/g")" >> "$GITHUB_ENV"
+        echo "Slug: "${{ env.Slug }};
     - name: If no github.head_ref, use last chunk of github.ref as Slug
       if: github.head_ref == ''
       run: |
         IFS="\/";
+        echo "github.ref: "${{ github.ref }};
         read -a strarr <<< "${{ github.ref }}";
         last_ref="${strarr[${#strarr[*]}-1]}";
         echo "Slug=$(echo $last_ref)" >> "$GITHUB_ENV"
