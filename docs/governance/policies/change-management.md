@@ -327,4 +327,4 @@ The following branches SHOULD always be maintained:
 
 ### v1.0 2023-11-29 Initial Version
 
-* Converted from [draft document](https://docs.google.com/document/d/1kEJHIGv5YWeZa13iWWtdcNooPxhZQ42kwTwEhrZbrTM/edit)
+* Converted from [draft document](https://docs.google.com/document/d/1UyQDlpdfz2oMwh9kFIby-Z6jDxArZmsY6WQyIl3sQBA/edit?usp=sharing)
