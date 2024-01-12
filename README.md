@@ -12,40 +12,6 @@ TIDES is a data specification for transit operations data including vehicle loca
 
 TIDES frees your transit data and gives you more options to turn operations data into information on ridership, passenger loads, fare revenue, vehicle speed and delay, service reliability, and more!
 
-```mermaid
-
-graph LR
-
-    subgraph TO  [Transit Operations Systems]
-        AVL[CAD/AVL]
-        APC[APC]
-        AFC[AFC]
-    end
-
-    style TO fill:#F6AE2D,stroke:#333,stroke-width:2px
-    style AVL fill:#ffffff,stroke:#333,stroke-width:2px
-    style APC fill:#ffffff,stroke:#333,stroke-width:2px
-    style AFC fill:#ffffff,stroke:#333,stroke-width:2px
-
-    subgraph TIDES
-        Storage[Storage]
-        Processes[Processes]
-        Storage --> Processes
-        Processes --> Storage
-    end
-    style TIDES fill:#86BBD8, stroke:#333, stroke-width:2px
-    style Storage fill:#33658A,stroke:#333,stroke-width:1px
-    style Processes fill:#33658A,stroke:#333,stroke-width:1px
-
-    Reporting[Reporting]
-    style Reporting fill:#F26419,stroke:#333,stroke-width:2px
-
-    TO ---> TIDES
-    TIDES ---> TO
-    TIDES --> Reporting
-
-```
-
 TIDES is open-source, free for use, and is community governed, developed and supported. This repository provides data schemas and tools to support the access, management, and improvement of historical transit operations data, including vehicle operations, passenger activity, fare collection, and other similar data.
 
 [architecture]:./docs/architecture.md
