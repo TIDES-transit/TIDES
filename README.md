@@ -1,8 +1,18 @@
 # TIDES
 
-Transit ITS Data Exchange Specification (TIDES) for historical transit operation data.
+TIDES is the Transit ITS Data Exchange Specification and is your key to accessing, managing, and using transit operations data.
 
-This repository provides data schemas and tools to support the access, management, and improvement of historical transit operations data, including vehicle operations, passenger activity, fare collection, and other similar data.
+## Why TIDES?
+
+TIDES is a data specification for transit operations data including vehicle location data, passenger count data, and fare transaction data.
+
+- For **transit agencies**, TIDES simplifies data access and offers industry best practice tools to improve data quality, integrate data sources, and create the reports and tools you need to plan and manage service.
+- For **consultants, researchers, and partners**, TIDES simplifies access to agency data and allows creation of standard reports and tools across agencies and data sets.
+- For **ITS system vendors**, TIDES makes it easier to give your customers access to their data and allows them to use the data in more ways.
+
+TIDES frees your transit data and gives you more options to turn operations data into information on ridership, passenger loads, fare revenue, vehicle speed and delay, service reliability, and more!
+
+TIDES is open-source, free for use, and is community governed, developed and supported. This repository provides data schemas and tools to support the access, management, and improvement of historical transit operations data, including vehicle operations, passenger activity, fare collection, and other similar data.
 
 [architecture]:./docs/architecture.md
 [table schemas]:./docs/tables.md
