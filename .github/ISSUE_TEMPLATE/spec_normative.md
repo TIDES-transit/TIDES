@@ -2,7 +2,7 @@
 name: Normative change to specification
 about: This would require a [**normative content change**](https://tides-transit.org/main/governance/policies/change-management/#normative-content) to the spec, requiring the [official change-making process](https://tides-transit.org/main/governance/policies/change-management/#change-making-stages).
 title: '🔄 '
-labels:  ['📄 spec', '🚀 feature', '🔄  normative change']
+labels:  ['📄 spec', '🚀 feature', '🔄 normative change']
 assignees: ''
 ---
 
