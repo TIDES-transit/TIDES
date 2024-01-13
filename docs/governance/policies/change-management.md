@@ -317,6 +317,42 @@ The following branches SHOULD always be maintained:
     - [ ] Each branch SHOULD represent a maximum of one [change proposa](#change-making-stages)l.
     - [ ] Feature branches in the TIDES version control repository which have not been updated in 6 months MAY be archived.
 
+Example branching actions shown below:
+
+```mermaid
+%%{init: { 'logLevel': 'debug', 'theme': 'base' } }%%
+    gitGraph:
+        commit tag: "v1.0.0"
+        branch develop
+        commit
+        branch spec-change-a
+        branch spec-change-b
+        checkout spec-change-a
+        commit id: "Add table"
+        commit id: "Add documentation for table"
+        checkout develop
+        merge spec-change-a tag: "v1.1-alpha.1"
+        checkout spec-change-b
+        commit id: "Add column"
+        commit id: "Add documentation for column"
+        checkout develop
+        merge spec-change-b tag: "v1.1-alpha.2"
+        commit id: "Update sample data"
+        checkout main
+        commit id: "documentation update"
+        branch code-feature
+        commit id: "add new test"
+        commit id: "add documentation about test"
+        checkout main
+        merge code-feature
+        checkout develop
+        merge main id: "Update with changes to main" tag: "v1.1-beta.1"
+        commit id: "bugfix"
+        commit id: "Add changelog, documentation for release" tag: "v1.1-beta.2"
+        checkout main
+        merge develop tag: "v1.1"
+```
+
 ## Attribution
 
 **_This change management policy is adapted from:_**
