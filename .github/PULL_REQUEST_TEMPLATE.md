@@ -8,10 +8,15 @@
 - [ ] Relevant documentation updated
 - [ ] Certify to the Developer Certificate of Origin in [CONTRIBUTING.md](CONTRIBUTING.md#contributor-agreement).
 
-### Checklist for changes in `/samples` or `/spec`
+## Checklist for changes in `/samples` or `/spec`
 <!-- Delete if not relevant -->
 - [ ] Ran `tests/test_local_spec` script to check and fix formatting, validate profile and schemas with frictionless and with each other, and confirm that documentation can be built locally.
 - [ ] Ran `tests/test_samples_to_local` script to check if samples conform to any changes to the spec.
+
+## Checklist for **non-normative changes
+<!-- Delete if not relevant -->
+- [ ] Meets requirement of a [**non-normative changes**](https://tides-transit.org/main/governance/policies/change-management/#normative-content)
+- [ ] PR Approved by 2+ members of the TIDES Board – or their designees – for accuracy and consistency with the changes’ intent.
 
 ## Checklist for **normative** changes
 <!-- Delete if not relevant -->
@@ -53,3 +58,11 @@ If any reviewer requests substantial changes, they must also agree to work with 
 - [ ] Alternative solution being developed.
 - [ ] Working Group does not agree with the suggested change and appeal submitted to the TIDES Board.
     - [ ] TIDES Board approves this change.
+
+## Checklist for **expedited** change
+<!-- Delete if not relevant -->
+
+- [ ] A supermajority of the Urgent Working Group members have approve the proposed change to meet the urgent need.
+- [ ] If the decision is deadlocked, the decision is escalated to the TIDES Board.
+    - [ ] TIDES Board approves this change.
+
