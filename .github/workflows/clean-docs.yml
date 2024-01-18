@@ -4,7 +4,7 @@ on:
 
 jobs:
   clean:
-    if: github.event.pull_request.head.repo.full_name == github.repository
+    if: github.repository_owner == 'TIDES-transit'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
