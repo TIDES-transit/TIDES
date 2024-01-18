@@ -17,7 +17,7 @@ jobs:
       if: github.head_ref == ''
       run: |
         IFS="\/";
-        read -a strarr <<< "${{ github.ref }}";
+        read -a strarr <<< "${{ github.event.ref }}";
         last_ref="${strarr[${#strarr[*]}-1]}";
         echo "Slug=$(echo $last_ref)" >> "$GITHUB_ENV"
     - name: Document which reference
