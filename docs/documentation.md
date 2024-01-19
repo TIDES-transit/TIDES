@@ -1,6 +1,6 @@
 # Documentation
 
-The documentation for the TIDES specification is available at <https://tides-transit.github.io/TIDES/> This site is automatically recreated each time a change is made to the specification.
+The documentation \[TEST\] for the TIDES specification is available at <https://tides-transit.github.io/TIDES/> This site is automatically recreated each time a change is made to the specification.
 
 When a change is pushed to the TIDES specification repository, Github Actions deployes the workflow `docs.yml` that rebuilds the files for the TIDES documentation site. When a pull request is opened from a branch on the main repository, a draft version of the docs is built for preview purposes via the same process. For security purposes, documentation is not automatically built on pull requests opened from forks.
 
