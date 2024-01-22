@@ -46,6 +46,7 @@ jobs:
     - name: Build docs
       run: |
         git fetch origin gh-pages --depth=1
+        mike set-default v1.0-beta.1 
         mike deploy --push --rebase ${{ env.Slug }}
         echo "Documentation available at: http://tides-transit.github.io/TIDES/${{ env.Slug }}"
   comment:
