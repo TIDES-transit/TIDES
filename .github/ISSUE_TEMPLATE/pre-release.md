@@ -1,6 +1,6 @@
 ---
-name: Checklist for an TIDES pre-release
-about: Process for creating an TIDES pre-release
+name: Checklist for a TIDES pre-release
+about: Process for creating a TIDES pre-release
 title: '⭐ Pre-release Checklist for '
 labels:  ['📄 spec']
 assignees: ''
