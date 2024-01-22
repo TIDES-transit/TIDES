@@ -339,10 +339,10 @@ Example branching actions shown below:
         merge spec-change-b tag: "v1.1-alpha.2"
         commit id: "Update sample data"
         checkout main
-        commit id: "documentation update"
+        commit id: "Documentation update"
         branch code-feature
-        commit id: "add new test"
-        commit id: "add documentation about test"
+        commit id: "Add new test"
+        commit id: "Add documentation about test"
         checkout main
         merge code-feature
         checkout develop
