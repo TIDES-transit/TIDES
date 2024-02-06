@@ -1,0 +1,858 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://TIDES-transit.github.io/TIDES/add-program-manager/governance/policies/change-management/" rel="canonical"/>
+<link href="../../" rel="prev"/>
+<link href="../code-of-conduct/" rel="next"/>
+<link href="../../../assets/tides.ico" rel="icon"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.5.7" name="generator"/>
+<title>Change Management - Transit ITS Data Exchange (TIDES) Data Specification Suite</title>
+<link href="../../../assets/stylesheets/main.f2e4d321.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet"/>
+<link href="../../../stylesheets/tides.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="custom" data-md-color-primary="custom" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#tides-change-management-policy">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<div data-md-color-scheme="default" data-md-component="outdated" hidden="">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Transit ITS Data Exchange (TIDES) Data Specification Suite" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Transit ITS Data Exchange (TIDES) Data Specification Suite">
+<img alt="logo" src="../../../assets/bus-surf.svg"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Transit ITS Data Exchange (TIDES) Data Specification Suite
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Change Management
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/TIDES-transit/TIDES" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../..">
+        
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../architecture/">
+          
+  
+  Specification
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../samples/">
+        
+  
+    
+  
+  Sample Data
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../development/">
+          
+  
+  Contributing
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../../">
+          
+  
+  Governance
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Transit ITS Data Exchange (TIDES) Data Specification Suite" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Transit ITS Data Exchange (TIDES) Data Specification Suite">
+<img alt="logo" src="../../../assets/bus-surf.svg"/>
+</a>
+    Transit ITS Data Exchange (TIDES) Data Specification Suite
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/TIDES-transit/TIDES" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
+    Home
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-ellipsis">
+    Specification
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Specification
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../architecture/">
+<span class="md-ellipsis">
+    Architecture
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tables/">
+<span class="md-ellipsis">
+    Table Schemas
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../datapackage/">
+<span class="md-ellipsis">
+    Data Package
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../samples/">
+<span class="md-ellipsis">
+    Sample Data
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+<span class="md-ellipsis">
+    Contributing
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Contributing
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../development/">
+<span class="md-ellipsis">
+    Development
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../documentation/">
+<span class="md-ellipsis">
+    Documentation
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+<span class="md-ellipsis">
+    Governance
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            Governance
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../">
+<span class="md-ellipsis">
+    Governance Structure
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Change Management
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    Change Management
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#principles">
+<span class="md-ellipsis">
+      Principles
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#change-making-process">
+<span class="md-ellipsis">
+      Change-Making Process
+    </span>
+</a>
+<nav aria-label="Change-Making Process" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#normative-content">
+<span class="md-ellipsis">
+      Normative Content
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#change-making-stages">
+<span class="md-ellipsis">
+      Change-making Stages
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#expedited-change-management">
+<span class="md-ellipsis">
+      Expedited Change Management
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#versions-and-release-management">
+<span class="md-ellipsis">
+      Versions and Release Management
+    </span>
+</a>
+<nav aria-label="Versions and Release Management" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#releases">
+<span class="md-ellipsis">
+      Releases
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#version-numbering">
+<span class="md-ellipsis">
+      Version Numbering
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#version-control">
+<span class="md-ellipsis">
+      Version Control
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#attribution">
+<span class="md-ellipsis">
+      Attribution
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#revision-history">
+<span class="md-ellipsis">
+      Revision History
+    </span>
+</a>
+<nav aria-label="Revision History" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#v10-2023-11-29-initial-version">
+<span class="md-ellipsis">
+      v1.0 2023-11-29 Initial Version
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Other Policies
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_3">
+<span class="md-nav__icon md-icon"></span>
+            Other Policies
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../code-of-conduct/">
+<span class="md-ellipsis">
+    Code of conduct
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../CLA/">
+<span class="md-ellipsis">
+    Contributor license agreement
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../actions/">
+<span class="md-ellipsis">
+    Board Actions
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../meetings/">
+<span class="md-ellipsis">
+    Board Meetings
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="tides-change-management-policy">TIDES Change Management Policy<a class="headerlink" href="#tides-change-management-policy" title="Permanent link"> ¶</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When capitalized in this document, the words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”,  “MAY”, and “OPTIONAL” refer to their respective definitions in <a href="https://datatracker.ietf.org/doc/html/rfc2119">RFC 2119</a>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Definitions of various roles such as TIDES Board, TIDES Manager and TIDES Contributor refer to their respective definitions in the <a href="../../">TIDES Governance Policy</a>.</p>
+</div>
+<p>Over time, the TIDES data standard will need to evolve to meet stakeholder needs.  Changes may include the addition of new tables, new fields to existing tables, or the modification of existing fields.  Occasionally this may also include significant structural changes which may not be backwards compatible with existing datasets.</p>
+<p>The change management process covers:</p>
+<ul>
+<li><a href="#change-making-process">Change-making Process</a>: how normative content of the TIDES specification is changed</li>
+<li><a href="#version-numbering">Versioning and Release Processes</a>: how changes are identified</li>
+<li><a href="#version-control">Version Control</a>: how the change process, versioning, and releases are managed in practice</li>
+</ul>
+<h2 id="principles">Principles<a class="headerlink" href="#principles" title="Permanent link"> ¶</a></h2>
+<p>The revision process is designed with the following principles in mind:</p>
+<div class="admonition success">
+<p class="admonition-title">Merit</p>
+<ul>
+<li>Changes should have a clear purpose.</li>
+<li>Consequences of a change should be evaluated from the perspective of different affected stakeholder groups.</li>
+<li>Changes should be prioritized by the community.</li>
+</ul>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Openness + Transparency</p>
+<ul>
+<li>Discussion and decisions about changes should be publicly noticed and accessible.</li>
+<li>Change-making process should be straight-forward and easy to follow.</li>
+<li>Change proposals should have a reliable timeline for being decided on and incorporated.</li>
+<li>Each change (or bundled set of changes) should be identified by assigning a new <a href="#version-numbering">version number</a>.</li>
+</ul>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Efficiency</p>
+<ul>
+<li>Change-making process should be simple for simple changes.</li>
+<li>Complex changes should be made with careful consideration.</li>
+<li>Streamlined, purpose-driven change management should be applied to maximize stakeholder efficiency.</li>
+<li>Changes should be straightforward to incorporate by existing TIDES users.</li>
+<li>Significant changes, especially those which are not backwards compatible with existing datasets, should be limited in number and in frequency in order to limit the number of times existing processes and tools need to be re-engineered.<ul>
+<li>A significant change merits a new version number.</li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="change-making-process">Change-Making Process<a class="headerlink" href="#change-making-process" title="Permanent link"> ¶</a></h2>
+<p>This change-making process covers all <a href="#normative-content">normative content</a> changes to the TIDES specification.</p>
+<h3 id="normative-content">Normative Content<a class="headerlink" href="#normative-content" title="Permanent link"> ¶</a></h3>
+<p><a href="https://en.wikipedia.org/wiki/Normativity#Standards_documents"><strong>Normative</strong></a> <strong>Content</strong> is the prescriptive part of a standard**. It sets the rules to be followed in order to be evaluated as compliant with the standard, and from which no deviation is permitted.</p>
+<details class="info">
+<summary>Normative Content in TIDES</summary>
+<p>In the TIDES data schemas, the following properties are considered normative content within any <code>schema.json</code> file:</p>
+<ul>
+<li><code>name</code></li>
+<li><code>primaryKey</code></li>
+<li><code>missingValues</code></li>
+<li><code>type</code></li>
+<li><code>constraints</code></li>
+</ul>
+<p>Similarly, the entirety of the <a href="../../../datapackage/">TIDES Data Package Profile</a> is considered normative with the <strong>exception</strong> of the following properties:</p>
+<ul>
+<li><code>description</code></li>
+<li><code>context</code></li>
+<li><code>examples</code></li>
+</ul>
+</details>
+<p><strong>Non-normative content</strong> is the non-prescriptive, or ‘descriptive’, part of a standard. This may include analogies, synonyms, explanations, illustrations, context, and examples. In the event non-normative content contradicts normative content, the normative content is to be followed.</p>
+<details class="info">
+<summary>Non-Normative Content in TIDES</summary>
+<p>Changes outside the <code>/spec</code> are all considered non-normative. Within the <code>/spec</code> folder, non-normative changes to the specification are typically limited to the following properties in the <code>tides-datapackage-profile.json</code> and any <code>...schema.json</code>file:</p>
+<ul>
+<li><code>description</code></li>
+<li><code>examples</code></li>
+<li><code>context</code></li>
+</ul>
+</details>
+<h3 id="change-making-stages">Change-making Stages<a class="headerlink" href="#change-making-stages" title="Permanent link"> ¶</a></h3>
+<p>The process by which normative changes are made to the TIDES data specification occurs in the following stages:</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>When</th>
+<th>Who (led by)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Need Identification</td>
+<td>Anytime</td>
+<td>Anyone</td>
+</tr>
+<tr>
+<td>Prioritization</td>
+<td>Quarterly (or as determined by TIDES Board or TIDES Manager)</td>
+<td>Contributors (Manager)</td>
+</tr>
+<tr>
+<td>Proposal Development</td>
+<td>Prioritized quarter</td>
+<td>Working Group (Manager)</td>
+</tr>
+<tr>
+<td>Review + Adoption</td>
+<td>Pull request for proposed change submitted after consensus in the Working Group</td>
+<td>Working Group (Manager)</td>
+</tr>
+<tr>
+<td>Implementation</td>
+<td>When decision made to consensus achieved on proposal</td>
+<td>Working Group (Manager)</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>Next quarterly release</td>
+<td>Manager</td>
+</tr>
+</tbody>
+</table>
+<p>Each of these stages is discussed in more detail below.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:6"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><input id="__tabbed_1_4" name="__tabbed_1" type="radio"><input id="__tabbed_1_5" name="__tabbed_1" type="radio"><input id="__tabbed_1_6" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1"><span class="twemoji"><svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M512 32c0 113.6-84.6 207.5-194.2 222-7.1-53.4-30.6-101.6-65.3-139.3C290.8 46.3 364 0 448 0h32c17.7 0 32 14.3 32 32zM0 96c0-17.7 14.3-32 32-32h32c123.7 0 224 100.3 224 224v192c0 17.7-14.3 32-32 32s-32-14.3-32-32V320C100.3 320 0 219.7 0 96z"></path></svg></span> Need Identification</label><label for="__tabbed_1_2"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16.59 9.42 12 4.83 7.41 9.42 6 8l6-6 6 6-1.41 1.42m0 6L12 10.83l-4.59 4.59L6 14l6-6 6 6-1.41 1.42m0 6L12 16.83l-4.59 4.59L6 20l6-6 6 6-1.41 1.42Z"></path></svg></span> Prioritization</label><label for="__tabbed_1_3"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg></span> Proposal Development</label><label for="__tabbed_1_4"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v9.5A1.75 1.75 0 0 1 14.25 14H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 15.543V14H1.75A1.75 1.75 0 0 1 0 12.25v-9.5C0 1.784.784 1 1.75 1ZM1.5 2.75v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25Z"></path><path d="M22.5 8.75a.25.25 0 0 0-.25-.25h-3.5a.75.75 0 0 1 0-1.5h3.5c.966 0 1.75.784 1.75 1.75v9.5A1.75 1.75 0 0 1 22.25 20H21v1.543a1.457 1.457 0 0 1-2.487 1.03L15.939 20H10.75A1.75 1.75 0 0 1 9 18.25v-1.465a.75.75 0 0 1 1.5 0v1.465c0 .138.112.25.25.25h5.5a.75.75 0 0 1 .53.22l2.72 2.72v-2.19a.75.75 0 0 1 .75-.75h2a.25.25 0 0 0 .25-.25v-9.5Z"></path></svg></span> Review + <span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 13h-.68l-2 2h1.91L19 17H5l1.78-2h2.05l-2-2H6l-3 3v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4l-3-3m-1-5.05-4.95 4.95L8.5 9.36l4.96-4.95L17 7.95m-4.24-5.66L6.39 8.66a.996.996 0 0 0 0 1.41L11.34 15c.39.41 1.02.41 1.41 0l6.36-6.34a.996.996 0 0 0 0-1.41L14.16 2.3a.975.975 0 0 0-1.4-.01Z"></path></svg></span> Adoption</label><label for="__tabbed_1_5"><span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M308.5 135.3c7.1-6.3 9.9-16.2 6.2-25-2.3-5.3-4.8-10.5-7.6-15.5l-3.1-5.4c-3-5-6.3-9.9-9.8-14.6-5.7-7.6-15.7-10.1-24.7-7.1L241.3 77c-10.7-8.8-23-16-36.2-20.9l-6.1-29c-1.9-9.3-9.1-16.7-18.5-17.8-6.6-.9-13.3-1.3-20.1-1.3h-.7c-6.8 0-13.5.4-20.1 1.2-9.4 1.1-16.6 8.6-18.5 17.8L115 56.1c-13.3 5-25.5 12.1-36.2 20.9l-28.3-9.2c-9-3-19-.5-24.7 7.1-3.5 4.7-6.8 9.6-9.9 14.6l-3 5.3c-2.8 5-5.3 10.2-7.6 15.6-3.7 8.7-.9 18.6 6.2 25l22.2 19.8c-1.1 6.7-1.7 13.7-1.7 20.8s.6 14.1 1.7 20.9l-22.2 19.8c-7.1 6.3-9.9 16.2-6.2 25 2.3 5.3 4.8 10.5 7.6 15.6l3 5.2c3 5.1 6.3 9.9 9.9 14.6 5.7 7.6 15.7 10.1 24.7 7.1l28.2-9.3c10.7 8.8 23 16 36.2 20.9l6.1 29.1c1.9 9.3 9.1 16.7 18.5 17.8 6.7.8 13.5 1.2 20.4 1.2s13.7-.4 20.4-1.2c9.4-1.1 16.6-8.6 18.5-17.8l6.1-29.1c13.3-5 25.5-12.1 36.2-20.9l28.2 9.3c9 3 19 .5 24.7-7.1 3.5-4.7 6.8-9.5 9.8-14.6l3.1-5.4c2.8-5 5.3-10.2 7.6-15.5 3.7-8.7.9-18.6-6.2-25l-22.2-19.8c1.1-6.8 1.7-13.8 1.7-20.9s-.6-14.1-1.7-20.9l22.2-19.8zM112 176a48 48 0 1 1 96 0 48 48 0 1 1-96 0zm392.7 324.5c6.3 7.1 16.2 9.9 25 6.2 5.3-2.3 10.5-4.8 15.5-7.6l5.4-3.1c5-3 9.9-6.3 14.6-9.8 7.6-5.7 10.1-15.7 7.1-24.7l-9.3-28.2c8.8-10.7 16-23 20.9-36.2L613 391c9.3-1.9 16.7-9.1 17.8-18.5.8-6.7 1.2-13.5 1.2-20.4s-.4-13.7-1.2-20.4c-1.1-9.4-8.6-16.6-17.8-18.5l-29.1-6.2c-5-13.3-12.1-25.5-20.9-36.2l9.3-28.2c3-9 .5-19-7.1-24.7-4.7-3.5-9.6-6.8-14.6-9.9l-5.3-3c-5-2.8-10.2-5.3-15.6-7.6-8.7-3.7-18.6-.9-25 6.2l-19.8 22.2c-6.8-1.1-13.8-1.7-20.9-1.7s-14.1.6-20.9 1.7l-19.8-22.2c-6.3-7.1-16.2-9.9-25-6.2-5.3 2.3-10.5 4.8-15.6 7.6l-5.2 3c-5.1 3-9.9 6.3-14.6 9.9-7.6 5.7-10.1 15.7-7.1 24.7l9.3 28.2c-8.8 10.7-16 23-20.9 36.2l-29.1 6c-9.3 1.9-16.7 9.1-17.8 18.5-.8 6.7-1.2 13.5-1.2 20.4s.4 13.7 1.2 20.4c1.1 9.4 8.6 16.6 17.8 18.5l29.1 6.1c5 13.3 12.1 25.5 20.9 36.2l-9.3 28.2c-3 9-.5 19 7.1 24.7 4.7 3.5 9.5 6.8 14.6 9.8l5.4 3.1c5 2.8 10.2 5.3 15.5 7.6 8.7 3.7 18.6.9 25-6.2l19.8-22.2c6.8 1.1 13.8 1.7 20.9 1.7s14.1-.6 20.9-1.7l19.8 22.2zM464 304a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path></svg></span> Implementation</label><label for="__tabbed_1_6"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 3v7l15 2-15 2v7l21-9m-1 3.5L18.5 19l-2-2-1.5 1.5 3.5 3.5 5-5Z"></path></svg></span> Release</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 14h2v3h5v-3l4 4-4 4v-3H4v3H2v-8m17 5V8H5v4H3V5c0-1.11.89-2 2-2h1V.998h2V3h8V.998h2V3h1a2 2 0 0 1 2 2v14c0 1.1-.9 2-2 2h-6.17l2-2H19Z"></path></svg></span> Any TIDES Contributor identifies a need that should be addressed in the TIDES specification.</p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8h-2c0 3.32-2.68 6-6 6a6 6 0 0 1-6-6 6 6 0 0 1 6-6c.43 0 .86.05 1.27.14l1.61-1.6C15.96 2.18 15 2 14 2m6.59 1.58L14 10.17l-2.38-2.38-1.41 1.42L14 13l8-8m-17.07.82A8.01 8.01 0 0 0 2 12a8 8 0 0 0 8 8c.64 0 1.27-.08 1.88-.23-1.76-.39-3.38-1.27-4.71-2.48A6.001 6.001 0 0 1 4 12c0-.3.03-.59.07-.89C4.03 10.74 4 10.37 4 10c0-1.44.32-2.87.93-4.18Z"></path></svg></span> <strong>Actions</strong>:</p>
+<ul>
+<li>A TIDES Contributor submits an issue to GitHub which identifies the need that they would like addressed and a rough assessment of its addressable audience.</li>
+<li>TIDES Manager triages issue and asks for more detail from the Contributor if needed.</li>
+<li>TIDES Manager determines if issue resolution would require a normative change.</li>
+</ul>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 5 9 17l-5.5-5.5 1.41-1.41L9 14.17 19.59 3.59 21 5M3 21v-2h18v2H3Z"></path></svg></span> <strong>Resolution</strong>: TIDES Manager puts issue into consideration for next quarterly issue prioritization</p>
+</div>
+<div class="tabbed-block">
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 14h2v3h5v-3l4 4-4 4v-3H4v3H2v-8m17 5V8H5v4H3V5c0-1.11.89-2 2-2h1V.998h2V3h8V.998h2V3h1a2 2 0 0 1 2 2v14c0 1.1-.9 2-2 2h-6.17l2-2H19Z"></path></svg></span> The TIDES Manager starts a development cycle after or near the end of a quarterly release.</p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8h-2c0 3.32-2.68 6-6 6a6 6 0 0 1-6-6 6 6 0 0 1 6-6c.43 0 .86.05 1.27.14l1.61-1.6C15.96 2.18 15 2 14 2m6.59 1.58L14 10.17l-2.38-2.38-1.41 1.42L14 13l8-8m-17.07.82A8.01 8.01 0 0 0 2 12a8 8 0 0 0 8 8c.64 0 1.27-.08 1.88-.23-1.76-.39-3.38-1.27-4.71-2.48A6.001 6.001 0 0 1 4 12c0-.3.03-.59.07-.89C4.03 10.74 4 10.37 4 10c0-1.44.32-2.87.93-4.18Z"></path></svg></span> <strong>Actions</strong>:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"><span class="task-list-indicator"></span></input></label> TIDES Manager to solicit feedback from TIDES Contributors on which needs to prioritize.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"><span class="task-list-indicator"></span></input></label> TIDES Manager to propose a set of needs that the community will focus on resolving based on feedback and available community capacity.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> TIDES Board will approve a set of needs to focus on based on TIDES Manager’s proposal and TIDES Contributors’ feedback.</li>
+</ul>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 5 9 17l-5.5-5.5 1.41-1.41L9 14.17 19.59 3.59 21 5M3 21v-2h18v2H3Z"></path></svg></span> <strong>Resolution</strong>:  TIDES Manager will create a Milestone for the next release in GitHub and fill it with the issues the Board prioritized.</p>
+</div>
+<div class="tabbed-block">
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 14h2v3h5v-3l4 4-4 4v-3H4v3H2v-8m17 5V8H5v4H3V5c0-1.11.89-2 2-2h1V.998h2V3h8V.998h2V3h1a2 2 0 0 1 2 2v14c0 1.1-.9 2-2 2h-6.17l2-2H19Z"></path></svg></span> TIDES Manager, in consultation with the TIDES Board and TIDES Contributors, convenes an Issue Working Group to address a prioritized issue or set of interrelated issues.</p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8h-2c0 3.32-2.68 6-6 6a6 6 0 0 1-6-6 6 6 0 0 1 6-6c.43 0 .86.05 1.27.14l1.61-1.6C15.96 2.18 15 2 14 2m6.59 1.58L14 10.17l-2.38-2.38-1.41 1.42L14 13l8-8m-17.07.82A8.01 8.01 0 0 0 2 12a8 8 0 0 0 8 8c.64 0 1.27-.08 1.88-.23-1.76-.39-3.38-1.27-4.71-2.48A6.001 6.001 0 0 1 4 12c0-.3.03-.59.07-.89C4.03 10.74 4 10.37 4 10c0-1.44.32-2.87.93-4.18Z"></path></svg></span> <strong>Actions</strong>:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> TIDES Manager convenes an Issue Working Group to develop a resolution to the issue.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> The TIDES Manager will invite those who have expressed interest in the issue (including the issue creator and commenters) and who they believe will have an interest in the topic to take part on the Issue Working Group. They will also solicit participation from all TIDES Contributors.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Working Group members document discussion points about approach in the relevant github issue.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> While consensus will be sought, if the Working Group members cannot come to a unanimous agreement about the solution, the TIDES Manager may ask the TIDES Board to make a decision after hearing feedback from various perspectives.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Working Group members update the schema and documentation according to the proposal on a feature branch.</li>
+</ul>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 5 9 17l-5.5-5.5 1.41-1.41L9 14.17 19.59 3.59 21 5M3 21v-2h18v2H3Z"></path></svg></span> <strong>Resolution</strong>: Working Group submits a pull request to the <code>develop</code> branch.</p>
+</div>
+<div class="tabbed-block">
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 14h2v3h5v-3l4 4-4 4v-3H4v3H2v-8m17 5V8H5v4H3V5c0-1.11.89-2 2-2h1V.998h2V3h8V.998h2V3h1a2 2 0 0 1 2 2v14c0 1.1-.9 2-2 2h-6.17l2-2H19Z"></path></svg></span> TIDES Manager invites people outside of the Working Group to review and comment on the proposal</p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8h-2c0 3.32-2.68 6-6 6a6 6 0 0 1-6-6 6 6 0 0 1 6-6c.43 0 .86.05 1.27.14l1.61-1.6C15.96 2.18 15 2 14 2m6.59 1.58L14 10.17l-2.38-2.38-1.41 1.42L14 13l8-8m-17.07.82A8.01 8.01 0 0 0 2 12a8 8 0 0 0 8 8c.64 0 1.27-.08 1.88-.23-1.76-.39-3.38-1.27-4.71-2.48A6.001 6.001 0 0 1 4 12c0-.3.03-.59.07-.89C4.03 10.74 4 10.37 4 10c0-1.44.32-2.87.93-4.18Z"></path></svg></span> <strong>Actions</strong>:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> The TIDES Manager MUST invite people outside of the Working Group to review and comment on the Pull Request for the proposal for a minimum of two weeks, making sure TIDES Contributors with different roles and backgrounds have had a chance to consider it.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> The TIDES Manager MUST review the proposal for consistency with the Open Standards Definition maintained by the <a href="http://interoperablemobility.org">Mobility Data Interoperability Principles</a>.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> The TIDES Manager MUST offer tools, services and  assistance to any TIDES Contributor who is unable to fluidly interact with the tooling used in the review process.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> A minimum of three TIDES Contributors outside the Working Group MUST publicly comment on each proposal for it to move forward  and indicate a score of:<ul>
+<li>Accepted;</li>
+<li>Accepted with minor changes; or</li>
+<li>Substantially revised.</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> If 100% of reviewers accept, the proposal is adopted without need for further discussion.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> If any reviewer accepts with minor changes, the suggested change must be considered by the Working Group.<ul>
+<li>If the Working Group decides to incorporate the edited proposal will be re-circulated for some period time greater than 72 hours and previous reviewers notified.  If nobody objects to the change in that time, it is adopted.</li>
+<li>If the Working Group does not agree with the suggested change, they may appeal to the TIDES Board to make a final decision about its necessity.</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> If any reviewer requests substantial changes, they must also agree to work with the working group on developing an alternative solution to the need.<ul>
+<li>If the working group believes the substantial change request is invalid or without merit, they may appeal to the TIDES Board to make a final decision about if revisions are necessary.</li>
+</ul>
+</li>
+</ul>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 5 9 17l-5.5-5.5 1.41-1.41L9 14.17 19.59 3.59 21 5M3 21v-2h18v2H3Z"></path></svg></span> <strong>Resolution:</strong> Change as represented in the pull request from the feature branch is approved and merged into the <code>develop</code> branch.</p>
+</div>
+<div class="tabbed-block">
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 14h2v3h5v-3l4 4-4 4v-3H4v3H2v-8m17 5V8H5v4H3V5c0-1.11.89-2 2-2h1V.998h2V3h8V.998h2V3h1a2 2 0 0 1 2 2v14c0 1.1-.9 2-2 2h-6.17l2-2H19Z"></path></svg></span> Final change proposal is approved - although initial work can begin ahead of this.</p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8h-2c0 3.32-2.68 6-6 6a6 6 0 0 1-6-6 6 6 0 0 1 6-6c.43 0 .86.05 1.27.14l1.61-1.6C15.96 2.18 15 2 14 2m6.59 1.58L14 10.17l-2.38-2.38-1.41 1.42L14 13l8-8m-17.07.82A8.01 8.01 0 0 0 2 12a8 8 0 0 0 8 8c.64 0 1.27-.08 1.88-.23-1.76-.39-3.38-1.27-4.71-2.48A6.001 6.001 0 0 1 4 12c0-.3.03-.59.07-.89C4.03 10.74 4 10.37 4 10c0-1.44.32-2.87.93-4.18Z"></path></svg></span> <strong>Actions</strong>:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> TIDES Manager MUST ensure the relevant accompanying documentation fleshed out.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> TIDES Manager MUST ensure <a href="https://keepachangelog.com/en/1.1.0/">Changelog</a> fully documented.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> TIDES Manager MUST ensure sample datasets updated or added which support the new feature.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> TIDES Manager MUST ensure any relevant updates to continuous integration and testing are completed.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> TIDES Manager MAY make any number of <a href="#pre-releases">pre-release</a>(s).</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> TIDES Manager MUST identify and ensure resolution of relevant conflicts among proposals as overseen by the TIDES Board or their designee.</li>
+</ul>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 5 9 17l-5.5-5.5 1.41-1.41L9 14.17 19.59 3.59 21 5M3 21v-2h18v2H3Z"></path></svg></span> <strong>Resolution</strong>: <a href="#releases">Requirements for release are met</a>.</p>
+</div>
+<div class="tabbed-block">
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 14h2v3h5v-3l4 4-4 4v-3H4v3H2v-8m17 5V8H5v4H3V5c0-1.11.89-2 2-2h1V.998h2V3h8V.998h2V3h1a2 2 0 0 1 2 2v14c0 1.1-.9 2-2 2h-6.17l2-2H19Z"></path></svg></span> <strong>Initiated</strong>: On a quarterly schedule maintained by the TIDES Manager.</p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8h-2c0 3.32-2.68 6-6 6a6 6 0 0 1-6-6 6 6 0 0 1 6-6c.43 0 .86.05 1.27.14l1.61-1.6C15.96 2.18 15 2 14 2m6.59 1.58L14 10.17l-2.38-2.38-1.41 1.42L14 13l8-8m-17.07.82A8.01 8.01 0 0 0 2 12a8 8 0 0 0 8 8c.64 0 1.27-.08 1.88-.23-1.76-.39-3.38-1.27-4.71-2.48A6.001 6.001 0 0 1 4 12c0-.3.03-.59.07-.89C4.03 10.74 4 10.37 4 10c0-1.44.32-2.87.93-4.18Z"></path></svg></span> <strong>Actions</strong>:  See <a href="#versions-and-release-management">Release Management</a>.</p>
+</div>
+</div>
+</input></input></input></input></input></input></div>
+<h3 id="expedited-change-management">Expedited Change Management<a class="headerlink" href="#expedited-change-management" title="Permanent link"> ¶</a></h3>
+<p>This section outlines an expedited process for implementing changes in response to <strong>Urgent Needs</strong> which are critical to maintaining the security, compliance, or operational functionality of TIDES balancing rapid response with informed, transparent decision-making.</p>
+<details class="info" open="open">
+<summary><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15 4a8 8 0 0 1 8 8 8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8m0 2a6 6 0 0 0-6 6 6 6 0 0 0 6 6 6 6 0 0 0 6-6 6 6 0 0 0-6-6m-1 2h1.5v3.78l2.33 2.33-1.06 1.06L14 12.4V8M2 18a1 1 0 0 1-1-1 1 1 0 0 1 1-1h3.83c.31.71.71 1.38 1.17 2H2m1-5a1 1 0 0 1-1-1 1 1 0 0 1 1-1h2.05L5 12l.05 1H3m1-5a1 1 0 0 1-1-1 1 1 0 0 1 1-1h3c-.46.62-.86 1.29-1.17 2H4Z"></path></svg></span> Urgent Needs</summary>
+<p>Urgent needs MUST pose significant risks to security, compliance, or the operational integrity of stakeholder systems. These MAY include necessary revisions due to legal mandates, critical security vulnerabilities, or severe technical inaccuracies that directly impair system functionalities. Urgent needs SHOULD necessitate an implementation timeline which is inconsistent with the normal <a href="#change-making-process">change-making process</a>.</p>
+</details>
+<h4 id="process">Process<a class="headerlink" href="#process" title="Permanent link"> ¶</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"/><input id="__tabbed_2_2" name="__tabbed_2" type="radio"/><input id="__tabbed_2_3" name="__tabbed_2" type="radio"/><input id="__tabbed_2_4" name="__tabbed_2" type="radio"/><input id="__tabbed_2_5" name="__tabbed_2" type="radio"/><div class="tabbed-labels"><label for="__tabbed_2_1"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 21h4a2 2 0 0 1-2 2 2 2 0 0 1-2-2m11-2v1H3v-1l2-2v-6c0-3.1 2.03-5.83 5-6.71V4a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.29c2.97.88 5 3.61 5 6.71v6l2 2m-4-8a5 5 0 0 0-5-5 5 5 0 0 0-5 5v7h10v-7m2.75-7.81-1.42 1.42A8.982 8.982 0 0 1 21 11h2c0-2.93-1.16-5.75-3.25-7.81M1 11h2c0-2.4.96-4.7 2.67-6.39L4.25 3.19A10.96 10.96 0 0 0 1 11Z"></path></svg></span> Identification</label><label for="__tabbed_2_2"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 3C9.23 3 6.19 5.95 6 9.66l-1.92 2.53c-.24.31 0 .81.42.81H6v3c0 1.11.89 2 2 2h1v3h7v-4.69c2.37-1.12 4-3.51 4-6.31 0-3.86-3.12-7-7-7m1 11h-2v-2h2v2m1.75-5.19c-.29.4-.66.69-1.11.93-.25.16-.42.33-.51.52-.09.18-.13.43-.13.74h-2c0-.5.11-.92.31-1.18.19-.27.54-.57 1.05-.91.26-.16.47-.36.61-.59.16-.23.23-.5.23-.82 0-.3-.08-.56-.26-.75-.18-.18-.44-.28-.75-.28a1 1 0 0 0-.66.23c-.18.16-.27.39-.28.69h-1.93l-.01-.03c-.01-.79.25-1.36.77-1.77.54-.39 1.24-.59 2.11-.59.93 0 1.66.23 2.19.68.54.45.81 1.06.81 1.82 0 .5-.15.91-.44 1.31Z"></path></svg></span> Rapid Evaluation</label><label for="__tabbed_2_3"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg></span> Solution Identification</label><label for="__tabbed_2_4"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 13h-.68l-2 2h1.91L19 17H5l1.78-2h2.05l-2-2H6l-3 3v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4l-3-3m-1-5.05-4.95 4.95L8.5 9.36l4.96-4.95L17 7.95m-4.24-5.66L6.39 8.66a.996.996 0 0 0 0 1.41L11.34 15c.39.41 1.02.41 1.41 0l6.36-6.34a.996.996 0 0 0 0-1.41L14.16 2.3a.975.975 0 0 0-1.4-.01Z"></path></svg></span> Decision-Making</label><label for="__tabbed_2_5"><span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M308.5 135.3c7.1-6.3 9.9-16.2 6.2-25-2.3-5.3-4.8-10.5-7.6-15.5l-3.1-5.4c-3-5-6.3-9.9-9.8-14.6-5.7-7.6-15.7-10.1-24.7-7.1L241.3 77c-10.7-8.8-23-16-36.2-20.9l-6.1-29c-1.9-9.3-9.1-16.7-18.5-17.8-6.6-.9-13.3-1.3-20.1-1.3h-.7c-6.8 0-13.5.4-20.1 1.2-9.4 1.1-16.6 8.6-18.5 17.8L115 56.1c-13.3 5-25.5 12.1-36.2 20.9l-28.3-9.2c-9-3-19-.5-24.7 7.1-3.5 4.7-6.8 9.6-9.9 14.6l-3 5.3c-2.8 5-5.3 10.2-7.6 15.6-3.7 8.7-.9 18.6 6.2 25l22.2 19.8c-1.1 6.7-1.7 13.7-1.7 20.8s.6 14.1 1.7 20.9l-22.2 19.8c-7.1 6.3-9.9 16.2-6.2 25 2.3 5.3 4.8 10.5 7.6 15.6l3 5.2c3 5.1 6.3 9.9 9.9 14.6 5.7 7.6 15.7 10.1 24.7 7.1l28.2-9.3c10.7 8.8 23 16 36.2 20.9l6.1 29.1c1.9 9.3 9.1 16.7 18.5 17.8 6.7.8 13.5 1.2 20.4 1.2s13.7-.4 20.4-1.2c9.4-1.1 16.6-8.6 18.5-17.8l6.1-29.1c13.3-5 25.5-12.1 36.2-20.9l28.2 9.3c9 3 19 .5 24.7-7.1 3.5-4.7 6.8-9.5 9.8-14.6l3.1-5.4c2.8-5 5.3-10.2 7.6-15.5 3.7-8.7.9-18.6-6.2-25l-22.2-19.8c1.1-6.8 1.7-13.8 1.7-20.9s-.6-14.1-1.7-20.9l22.2-19.8zM112 176a48 48 0 1 1 96 0 48 48 0 1 1-96 0zm392.7 324.5c6.3 7.1 16.2 9.9 25 6.2 5.3-2.3 10.5-4.8 15.5-7.6l5.4-3.1c5-3 9.9-6.3 14.6-9.8 7.6-5.7 10.1-15.7 7.1-24.7l-9.3-28.2c8.8-10.7 16-23 20.9-36.2L613 391c9.3-1.9 16.7-9.1 17.8-18.5.8-6.7 1.2-13.5 1.2-20.4s-.4-13.7-1.2-20.4c-1.1-9.4-8.6-16.6-17.8-18.5l-29.1-6.2c-5-13.3-12.1-25.5-20.9-36.2l9.3-28.2c3-9 .5-19-7.1-24.7-4.7-3.5-9.6-6.8-14.6-9.9l-5.3-3c-5-2.8-10.2-5.3-15.6-7.6-8.7-3.7-18.6-.9-25 6.2l-19.8 22.2c-6.8-1.1-13.8-1.7-20.9-1.7s-14.1.6-20.9 1.7l-19.8-22.2c-6.3-7.1-16.2-9.9-25-6.2-5.3 2.3-10.5 4.8-15.6 7.6l-5.2 3c-5.1 3-9.9 6.3-14.6 9.9-7.6 5.7-10.1 15.7-7.1 24.7l9.3 28.2c-8.8 10.7-16 23-20.9 36.2l-29.1 6c-9.3 1.9-16.7 9.1-17.8 18.5-.8 6.7-1.2 13.5-1.2 20.4s.4 13.7 1.2 20.4c1.1 9.4 8.6 16.6 17.8 18.5l29.1 6.1c5 13.3 12.1 25.5 20.9 36.2l-9.3 28.2c-3 9-.5 19 7.1 24.7 4.7 3.5 9.5 6.8 14.6 9.8l5.4 3.1c5 2.8 10.2 5.3 15.5 7.6 8.7 3.7 18.6.9 25-6.2l19.8-22.2c6.8 1.1 13.8 1.7 20.9 1.7s14.1-.6 20.9-1.7l19.8 22.2zM464 304a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path></svg></span> Implementation</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Stakeholders SHOULD promptly report urgent needs to the TIDES Manager, detailing the problem and its potential impact.</p>
+</div>
+<div class="tabbed-block">
+<p>The TIDES Manager MUST convene a group of at least 2 TIDES Contributors of their choosing to swiftly assess the issue’s urgency and validity.</p>
+<ol>
+<li>If it meets their threshold for an urgent need, they forward a list of their proposed Urgent Working Group Members to the TIDES Board.</li>
+<li>The Urgent Working Group Members SHOULD contain representatives of TIDES Contributors affected stakeholder groups.</li>
+<li>The Urgent Working Group size SHOULD be at least three and reflect the scale of the problem and also need for agile decision making.  </li>
+<li>The TIDES Board MAY object to their characterization of the need as urgent.</li>
+<li>The TIDES Board MAY make changes to the Urgent Working Group members.</li>
+<li>If the TIDES Board fails to respond within 48 hours, the Urgent Working Group MAY proceed with their implicit approval.</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p>The Urgent Working Group, managed by the TIDES Manager, MUST identify a solution that meets the urgent need and document it as a PR to the <code>main</code> repository branch – outside the normal release cycle.  </p>
+</div>
+<div class="tabbed-block">
+<p>A supermajority of the Urgent Working Group members MUST approve the proposed change to meet the urgent need.  If the decision is deadlocked, the decision is escalated to the TIDES Board.</p>
+</div>
+<div class="tabbed-block">
+<p>The rest of the implementation and release cycle mirrors the main <a href="#change-making-process">change-making process</a>.</p>
+</div>
+</div>
+</div>
+<h2 id="versions-and-release-management">Versions and Release Management<a class="headerlink" href="#versions-and-release-management" title="Permanent link"> ¶</a></h2>
+<p>A release is an official version of the TIDES data specification which can be referenced in perpetuity by a version number. The process by which a new release is made and determination of a version number is discussed below.</p>
+<h3 id="releases">Releases<a class="headerlink" href="#releases" title="Permanent link"> ¶</a></h3>
+<div class="admonition question">
+<p class="admonition-title">What triggers a release?</p>
+<p>Each change to normative content in the <code>main</code> branch of the TIDES github repository MUST be considered a new release and assigned a <a href="#version-numbering">version number</a>.</p>
+</div>
+<p>Requirements:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Each release MUST contain one or more changes to <a href="#normative-content">normative content</a> which have been approved through the change-making process.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Each release MUST be reviewed and approved in GitHub by 2+ members of the Board – or their designees – for accuracy and consistency with the changes’ intent.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Each release MUST be tagged with its <a href="#version-numbering">version number</a>.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Each release MUST have documentation available.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Each release MUST have an entry in CHANGELOG.md.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Each release MUST be <a href="https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository">specified as a release on Github</a>.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Each release MUST be noticed to any TIDES mailing lists or discussion groups.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Each release SHOULD have sample datasets (real or exemplary) which cover the normative changes in the release.</li>
+</ul>
+<h4 id="pre-releases">Pre-releases<a class="headerlink" href="#pre-releases" title="Permanent link"> ¶</a></h4>
+<div class="admonition question">
+<p class="admonition-title">When might we create a pre-release?</p>
+<p>Pre-releases MAY be made in order to evaluate and work on incrementally-approved changes.</p>
+<p>Each approved change to normative content in the <code>develop</code> branch of the TIDES github repository MAY be considered a pre-release and assigned a pre-release version number.</p>
+</div>
+<p>Requirements:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Each pre-release MUST contain one or more changes to <a href="#normative-content">normative content</a> which have been approved through the change-making process.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Each pre-release MUST be reviewed and approved in GitHub by 1+ members of the board – or their designees – for accuracy and consistency with the changes’ intent.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Pre-releases MUST be tagged with an appropriate pre-release version number:<ul>
+<li>Pre-releases that have incorporated all the normative changes for the target-release MUST have a <strong>beta</strong> version number;</li>
+<li>otherwise, they MUST receive an <strong>alpha</strong> version number.</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Each pre-release MUST have documentation available.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Each pre-release MUST have an entry in CHANGELOG.md.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> ach pre-release MAY be <a href="https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository">specified as a pre-release on Github</a>.</li>
+</ul>
+<h4 id="release-frequency">Release Frequency<a class="headerlink" href="#release-frequency" title="Permanent link"> ¶</a></h4>
+<div class="admonition question">
+<p class="admonition-title">How often do we make new releases?</p>
+<p>Barring significant unexpected events:</p>
+<ul>
+<li>Major releases SHOULD be limited to no more than once per year;</li>
+<li>Minor releases MAY be expected approximately quarterly.</li>
+</ul>
+</div>
+<h3 id="version-numbering">Version Numbering<a class="headerlink" href="#version-numbering" title="Permanent link"> ¶</a></h3>
+<p>TIDES <a href="#releases">releases</a> MUST be reflected by an incremental version number based on a <a href="https://semver.org/">semantic versioning</a> policy as detailed below.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"/><input id="__tabbed_3_2" name="__tabbed_3" type="radio"/><div class="tabbed-labels"><label for="__tabbed_3_1">Releases</label><label for="__tabbed_3_2">Pre-releases</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Release versions MUST be named with incremental increases to the format <a href="https://semver.org/#spec-item-8"><code>&lt;MAJOR&gt;</code></a>.<a href="https://semver.org/#spec-item-7"><code>&lt;MINOR&gt;</code></a>.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul class="task-list">
+<li class="task-list-item">
+<p><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Pre-release versions MUST be named with the <a href="https://semver.org/#spec-item-8"><code>&lt;MAJOR&gt;</code></a>.<a href="https://semver.org/#spec-item-7"><code>&lt;MINOR&gt;</code></a> of their target release name and appended with either:</p>
+</li>
+<li>
+<p><code>-alpha.&lt;NUMBER&gt;</code> where NUMBER starts at 1 and increases by 1 for each alpha release of that target release.</p>
+</li>
+<li><code>-beta.&lt;NUMBER&gt;</code> where NUMBER starts at 1 and increases by 1 for each beta release of that target release.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">What is a Major vs Minor version?</p>
+<ul>
+<li><strong>Major</strong> versions reflect backwards-incompatible changes</li>
+<li><strong>Minor</strong> versions change the <a href="#normative-content">normative content</a> in a way that is backwards-compatible</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Non-normative changes MUST NOT increment the TIDES version.</p>
+</div>
+<h2 id="version-control">Version Control<a class="headerlink" href="#version-control" title="Permanent link"> ¶</a></h2>
+<p><strong>TIDES SHOULD be managed in Github or a  similar version-control tool.</strong></p>
+<p>The following branches SHOULD always be maintained:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"/><input id="__tabbed_4_2" name="__tabbed_4" type="radio"/><input id="__tabbed_4_3" name="__tabbed_4" type="radio"/><div class="tabbed-labels"><label for="__tabbed_4_1"><code>main</code></label><label for="__tabbed_4_2"><code>develop</code></label><label for="__tabbed_4_3">Feature Branches</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Fully approved and documented <a href="#versions-and-release-management">versions</a> of TIDES whereby:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Each commit reflecting a normative change MUST be tagged with <a href="#version-numbering">TIDES version number</a>.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Each commit reflecting a normative change MUST be released as a TIDES release version.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> SHOULD only be committed to with an approved PR whereby:<ul>
+<li>PRs with normative changes MUST come from the <code>develop</code> branch.</li>
+<li>If PRs come from the <code>develop</code> branch, they MUST be reviewed and approved in GitHub by 2+ members of the Board – or their designees – for accuracy and consistency with the changes’ intent and r<a href="#releases">equirements for full release</a>.</li>
+<li>If PRs contain non-normative content, they MUST be reviewed and approved in GitHub by 2+ members of the board – or their designees – for accuracy and consistency with the changes’ intent.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>Approved and staged versions of TIDES, awaiting full documentation, sample datasets, and next <a href="#release-schedule">quarterly release cycle</a> whereby:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> TIDES Manager MAY release commits periodically as a <a href="#pre-releases">pre-release</a>(s).</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> SHOULD only be updated from <code>main</code> branch or PRs whereby:<ul>
+<li>TIDES Manager SHOULD periodically update this branch with any non-normative changes accepted into <code>main</code>.</li>
+<li>PRs MUST be approved by TIDES Manager or their designee  and their approval MUST represent that:<ul>
+<li>the <a href="#contributor-review-adoption">governance process</a> for approving a normative change to the standard has been met; and</li>
+<li>that the change meets all the requirements outlined in the <a href="#pre-releases">pre-release requirements</a>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>All development by contributors SHOULD take place on <em>feature branches</em> whereby.</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Each branch SHOULD represent a maximum of one <a href="#change-making-stages">change proposa</a>l.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Feature branches in the TIDES version control repository which have not been updated in 6 months MAY be archived.</li>
+</ul>
+</div>
+</div>
+</div>
+<h2 id="attribution">Attribution<a class="headerlink" href="#attribution" title="Permanent link"> ¶</a></h2>
+<p><strong><em>This change management policy is adapted from:</em></strong></p>
+<ul>
+<li><a href="https://standard.open-contracting.org/latest/en/governance/">Open Contracting Data Standard</a></li>
+</ul>
+<h2 id="revision-history">Revision History<a class="headerlink" href="#revision-history" title="Permanent link"> ¶</a></h2>
+<h3 id="v10-2023-11-29-initial-version">v1.0 2023-11-29 Initial Version<a class="headerlink" href="#v10-2023-11-29-initial-version" title="Permanent link"> ¶</a></h3>
+<ul>
+<li>Converted from <a href="https://docs.google.com/document/d/1UyQDlpdfz2oMwh9kFIby-Z6jDxArZmsY6WQyIl3sQBA/edit?usp=sharing">draft document</a></li>
+</ul>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+<footer>
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a href="https://github.com/TIDES-transit/TIDES/" property="dct:title" rel="cc:attributionURL">TIDES Project</a> by <span property="cc:attributionName">TIDES Board of Directors</span> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" rel="license noopener noreferrer" style="display:inline-block;" target="_blank">CC BY 4.0<img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"/><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"/></a></p>
+</div>
+</div>
+</div>
+</footer>
+</div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.tabs", "navigation.expand", "toc.integrate", "toc.follow"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+<script src="../../../assets/javascripts/bundle.caa56a14.min.js"></script>
+<script src="https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js"></script>
+</body>
+</html>
