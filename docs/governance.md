@@ -7,7 +7,7 @@ Governance of the TIDES Project is achieved through the definition and filling o
 | [TIDES Board](#tides-board-of-directors) | <ul><li>[Michael Eichler](https://github.com/planitmichael), [Washington Metropolitan Area Transit Authority](https://hwww.wmata.com/)</li><li>[Katrina Kaiser](https://github.com/KatrinaMKaiser), [Caltrans](https://dot.ca.gov)</li><li>[John Levin](https://github.com/jlstpaul), [Metro Transit (Minneapolis)](https://www.metrotransit.org/)</li><li>[Elizabeth Sall](https://github.com/e-lo), [UrbanLabs LLC](https://urbanlabs.io)</li><li>[Gabriel Sánchez Martinez](https://github.com/gabriel-korbato), [Korbato](https://korbato.com/)</li></ul> |
 | [TIDES Board Coordinator](#board-coordinator) | [John Levin](https://github.com/jlstpaul), [Metro Transit (Minneapolis)](https://www.metrotransit.org/) |
 | [TIDES Manager](#tides-manager) | [MobilityData](https://mobilitydata.org) |
-| [TIDES Program Manager](#tides-program-manager) | TBD |
+| [TIDES Program Manager](#tides-program-manager) | [Cristhian Hellion](https://github.com/Cristhian-HA), [MobilityData](https://mobilitydata.org) |
 | [TIDES Contributor](#tides-contributor) | [List of Contributors](development.md#contributors.md) |
 | [TIDES Stakeholder](#tides-stakeholder) | Anyone who has an interest in or could be directly affected by the TIDES specification and tools. |
 
