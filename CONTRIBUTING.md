@@ -19,7 +19,7 @@ As defined in the [TIDES Governance][TIDES-governance], a [TIDES-Contributor][TI
 
 These roles and responsibilities are further detailed in the [TIDES Governance][TIDES-governance] and documents linked to from it.  
 
-Individuals may request to be a Contributor by completing [the registration form][contributor registration form]that includes acknowledgement of the [Contributor Agreement](#tides-contributor-license-agreement) and [Code of Conduct](#tides-code-of-conduct).
+Individuals may request to be a Contributor by completing [the registration form][contributor registration form] that includes acknowledgement of the [Contributor Agreement](#tides-contributor-license-agreement) and [Code of Conduct](#tides-code-of-conduct).
 
 ## How to Contribute
 
