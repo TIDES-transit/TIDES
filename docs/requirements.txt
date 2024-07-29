@@ -1,4 +1,4 @@
-setuptools<70.0.0 # because mkdocs-mermaid2-plugin requirement conflicts with removed setuptools command.test module
+setuptools<72.0.0 # because mkdocs-mermaid2-plugin requirement conflicts with removed setuptools command.test module
 mike<2.0
 mkdocs
 mkdocs-autorefs
