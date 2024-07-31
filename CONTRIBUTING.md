@@ -129,7 +129,7 @@ The TIDES specification is licensed under the [Apache License 2.0](https://www.a
 
 ## Project Governance
 
-The TIDES Project Governance and the roles within are detailed in the [TIDES-governance][TIDES-governance] documentation.
+The TIDES Project Governance and the roles within are detailed in the [TIDES governance][TIDES-governance] documentation.
 
 ### [GitHub Access Levels](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization)
 

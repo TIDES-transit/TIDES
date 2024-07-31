@@ -23,7 +23,7 @@ UPDATE_LINKS = {
     "[contributors]":"development.md#contributors",
     "[contributors.md]":"development.md#contributors",
     "[contributing]": "development.md",
-    "[code of conduct]": "../governance/policies/code_of_conduct",
+    "[code of conduct]": "../governance/policies/code-of-conduct",
     "[doc-building]":"../documentation",
     "[license]": f"{GITHUB_REPO}/LICENSE)",
     "[table schemas]":"tables.md",
