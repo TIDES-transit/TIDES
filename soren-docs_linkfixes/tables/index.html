@@ -976,7 +976,7 @@ schema standards.</p>
 <h3 id="station-activities">Station Activities<a class="headerlink" href="#station-activities" title="Permanent link"> ¶</a></h3>
 <p><em>station_activities.schema.json</em></p>
 <p>Summarized transactions, entries, and exits by stop or station and time period for each service date (for events not associated with a trip).</p>
-<p>Primary key: {<code>stop_id</code>, <code>time_period_end</code>, <code>service_date</code>, <code>time_period_start</code>}</p>
+<p>Primary key: {<code>time_period_end</code>, <code>stop_id</code>, <code>service_date</code>, <code>time_period_start</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1077,7 +1077,7 @@ schema standards.</p>
 <h3 id="stop-visits">Stop Visits<a class="headerlink" href="#stop-visits" title="Permanent link"> ¶</a></h3>
 <p><em>stop_visits.schema.json</em></p>
 <p>Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date.</p>
-<p>Primary key: {<code>trip_id_performed</code>, <code>service_date</code>, <code>trip_stop_sequence</code>}</p>
+<p>Primary key: {<code>trip_stop_sequence</code>, <code>trip_id_performed</code>, <code>service_date</code>}</p>
 <table>
 <thead>
 <tr>
