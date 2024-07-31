@@ -18,13 +18,13 @@ GITHUB_REPO = f"http://github.com/TIDES-transit/TIDES/tree/{BRANCH_NAME_KEYWORD}
 # targets for these link keys will be updated upon doc build
 UPDATE_LINKS = {
     "[architecture]":"architecture.md",
-    "[change-policy]":"../governance/policies/change-management.md",
-    "[CLA]":"../governance/policies/CLA.md",
+    "[change-policy]":"../governance/policies/change-management",
+    "[CLA]":"../governance/policies/CLA",
     "[contributors]":"development.md#contributors",
     "[contributors.md]":"development.md#contributors",
     "[contributing]": "development.md",
-    "[code of conduct]": "../governance/policies/code_of_conduct.md",
-    "[doc-building]":"../documentation.md",
+    "[code of conduct]": "../governance/policies/code_of_conduct",
+    "[doc-building]":"../documentation",
     "[license]": f"{GITHUB_REPO}/LICENSE)",
     "[table schemas]":"tables.md",
     "[template-datapackage]":f"{GITHUB_REPO}/samples/template/TIDES/datapackage.json",
