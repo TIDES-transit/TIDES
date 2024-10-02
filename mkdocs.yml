@@ -23,6 +23,7 @@ theme:
 plugins:
   - autorefs
   - awesome-pages
+  - include-markdown
   - macros
   - mermaid2:
       arguments:
@@ -94,6 +95,7 @@ nav:
           - Contributor license agreement: governance/policies/CLA.md
       - Board Actions: governance/actions.md 
       - Board Meetings: governance/meetings.md
+  - Awesome: awesome.md
 
 copyright: |
     <footer>
