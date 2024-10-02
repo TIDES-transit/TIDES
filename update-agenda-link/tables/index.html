@@ -1077,7 +1077,7 @@ schema standards.</p>
 <h3 id="stop-visits">Stop Visits<a class="headerlink" href="#stop-visits" title="Permanent link"> ¶</a></h3>
 <p><em>stop_visits.schema.json</em></p>
 <p>Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date.</p>
-<p>Primary key: {<code>trip_id_performed</code>, <code>service_date</code>, <code>trip_stop_sequence</code>}</p>
+<p>Primary key: {<code>service_date</code>, <code>trip_id_performed</code>, <code>trip_stop_sequence</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1311,7 +1311,7 @@ schema standards.</p>
 <h3 id="trips-performed">Trips Performed<a class="headerlink" href="#trips-performed" title="Permanent link"> ¶</a></h3>
 <p><em>trips_performed.schema.json</em></p>
 <p>Trips performed for each service date.</p>
-<p>Primary key: {<code>trip_id_performed</code>, <code>service_date</code>}</p>
+<p>Primary key: {<code>service_date</code>, <code>trip_id_performed</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1641,7 +1641,7 @@ schema standards.</p>
 <h3 id="vehicle-train-cars">Vehicle Train Cars<a class="headerlink" href="#vehicle-train-cars" title="Permanent link"> ¶</a></h3>
 <p><em>vehicle_train_cars.schema.json</em></p>
 <p>Relationships between assets and vehicles.</p>
-<p>Primary key: {<code>train_car_id</code>, <code>vehicle_id</code>}</p>
+<p>Primary key: {<code>vehicle_id</code>, <code>train_car_id</code>}</p>
 <table>
 <thead>
 <tr>
