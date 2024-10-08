@@ -19,7 +19,7 @@ As defined in the [TIDES Governance][TIDES-governance], a [TIDES-Contributor][TI
 
 These roles and responsibilities are further detailed in the [TIDES Governance][TIDES-governance] and documents linked to from it.  
 
-Individuals may request to be a Contributor by completing [the registration form][contributor registration form]that includes acknowledgement of the [Contributor Agreement](#tides-contributor-license-agreement) and [Code of Conduct](#tides-code-of-conduct).
+Individuals may request to be a Contributor by completing [the registration form][contributor registration form] that includes acknowledgement of the [Contributor Agreement](#tides-contributor-license-agreement) and [Code of Conduct](#tides-code-of-conduct).
 
 ## How to Contribute
 
@@ -129,7 +129,7 @@ The TIDES specification is licensed under the [Apache License 2.0](https://www.a
 
 ## Project Governance
 
-The TIDES Project Governance and the roles within are detailed in the [TIDES-governance][TIDES-governance] documentation.
+The TIDES Project Governance and the roles within are detailed in the [TIDES governance][TIDES-governance] documentation.
 
 ### [GitHub Access Levels](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization)
 
