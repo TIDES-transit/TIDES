@@ -2,6 +2,7 @@ mike<2.0
 mkdocs
 mkdocs-autorefs
 mkdocs-awesome-pages-plugin
+mkdocs-include-markdown-plugin
 mkdocs-jupyter
 mkdocs-macros-plugin
 mkdocs-material
