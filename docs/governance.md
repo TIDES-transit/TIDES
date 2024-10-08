@@ -34,7 +34,7 @@ TIDES is collectively owned and governed by a Board of Directors.
 
 ### TIDES Board of Directors
 
-TIDES is governed by a Board of Directors. The Board meets roughly one a month and has a [public agenda and minutes](https://docs.google.com/document/d/1qAOr960Z8Eow7dsD5nIYcFEm40V9kaTfQFO9A-pNls4/edit?usp=drive_link).
+TIDES is governed by a Board of Directors. The Board meets roughly one a month and has a [public agenda and minutes](https://docs.google.com/document/d/1C-qynGan-jh4z1bJH_Qv3mJX0lXCHHKkzdrEgJzl3QY/edit?usp=sharing).
 
 #### Board Membership
 
