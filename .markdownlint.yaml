@@ -11,6 +11,10 @@ MD041: false
 # Remove line length limit
 MD013: false
 
+# Remove "fenced code blocks should have language specified"
+MD040: false
+
+# Remove "no inline HTML"
 # Remove code block style because it also fails on admonition
 MD046: false
 
