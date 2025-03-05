@@ -9,9 +9,9 @@
 <link href="../architecture/" rel="prev"/>
 <link href="../datapackage/" rel="next"/>
 <link href="../assets/tides.ico" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.6.3" name="generator"/>
-<title>Table Schemas - Transit Integrated Data Exchange (TIDES) Data Specification Suite</title>
-<link href="../assets/stylesheets/main.d7758b05.min.css" rel="stylesheet"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.7" name="generator"/>
+<title>Table Schemas - Transit Integrated Data Exchange Specification (TIDES) Suite</title>
+<link href="../assets/stylesheets/main.8608ea7d.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -35,7 +35,7 @@
 </div>
 <header class="md-header" data-md-component="header">
 <nav aria-label="Header" class="md-header__inner md-grid">
-<a aria-label="Transit Integrated Data Exchange (TIDES) Data Specification Suite" class="md-header__button md-logo" data-md-component="logo" href=".." title="Transit Integrated Data Exchange (TIDES) Data Specification Suite">
+<a aria-label="Transit Integrated Data Exchange Specification (TIDES) Suite" class="md-header__button md-logo" data-md-component="logo" href=".." title="Transit Integrated Data Exchange Specification (TIDES) Suite">
 <img alt="logo" src="../assets/bus-surf.svg"/>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
@@ -45,7 +45,7 @@
 <div class="md-header__ellipsis">
 <div class="md-header__topic">
 <span class="md-ellipsis">
-            Transit Integrated Data Exchange (TIDES) Data Specification Suite
+            Transit Integrated Data Exchange Specification (TIDES) Suite
           </span>
 </div>
 <div class="md-header__topic" data-md-component="header-topic">
@@ -167,10 +167,10 @@
 <div class="md-sidebar__inner">
 <nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="Transit Integrated Data Exchange (TIDES) Data Specification Suite" class="md-nav__button md-logo" data-md-component="logo" href=".." title="Transit Integrated Data Exchange (TIDES) Data Specification Suite">
+<a aria-label="Transit Integrated Data Exchange Specification (TIDES) Suite" class="md-nav__button md-logo" data-md-component="logo" href=".." title="Transit Integrated Data Exchange Specification (TIDES) Suite">
 <img alt="logo" src="../assets/bus-surf.svg"/>
 </a>
-    Transit Integrated Data Exchange (TIDES) Data Specification Suite
+    Transit Integrated Data Exchange Specification (TIDES) Suite
   </label>
 <div class="md-nav__source">
 <a class="md-source" data-md-component="source" href="https://github.com/TIDES-transit/TIDES" title="Go to repository">
@@ -1012,7 +1012,7 @@ schema standards.</p>
 <h3 id="station-activities">Station Activities<a class="headerlink" href="#station-activities" title="Permanent link"> ¶</a></h3>
 <p><em>station_activities.schema.json</em></p>
 <p>Summarized transactions, entries, and exits by stop or station and time period for each service date (for events not associated with a trip).</p>
-<p>Primary key: {<code>service_date</code>, <code>time_period_start</code>, <code>stop_id</code>, <code>time_period_end</code>}</p>
+<p>Primary key: {<code>time_period_start</code>, <code>stop_id</code>, <code>service_date</code>, <code>time_period_end</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1113,7 +1113,7 @@ schema standards.</p>
 <h3 id="stop-visits">Stop Visits<a class="headerlink" href="#stop-visits" title="Permanent link"> ¶</a></h3>
 <p><em>stop_visits.schema.json</em></p>
 <p>Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date.</p>
-<p>Primary key: {<code>service_date</code>, <code>trip_stop_sequence</code>, <code>trip_id_performed</code>}</p>
+<p>Primary key: {<code>trip_stop_sequence</code>, <code>service_date</code>, <code>trip_id_performed</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1677,7 +1677,7 @@ schema standards.</p>
 <h3 id="vehicle-train-cars">Vehicle Train Cars<a class="headerlink" href="#vehicle-train-cars" title="Permanent link"> ¶</a></h3>
 <p><em>vehicle_train_cars.schema.json</em></p>
 <p>Relationships between assets and vehicles.</p>
-<p>Primary key: {<code>vehicle_id</code>, <code>train_car_id</code>}</p>
+<p>Primary key: {<code>train_car_id</code>, <code>vehicle_id</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1830,7 +1830,7 @@ schema standards.</p>
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tabs", "navigation.expand", "toc.integrate", "toc.follow"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
-<script src="../assets/javascripts/bundle.f1b6f286.min.js"></script>
+<script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
 <script src="https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js"></script>
 </body>
 </html>
