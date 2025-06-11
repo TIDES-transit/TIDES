@@ -2,7 +2,7 @@
 
 Thank you for contributing to the TIDES Project. This document outlines the process for contributing to the project and documents the governance roles and approach for decision-making. Where [TIDES Governance][TIDES-governance] and this document differ, the [TIDES Governance][TIDES-governance] shall take precedence.
 
-[contributor registration form]: https://forms.office.com/Pages/ResponsePage.aspx?id=i_a_3SpIc0WB4P74FWpP0Hpd6kyRp1VEg8rnx5-CwORUMFFGTzBYRktEMkJRWVg4Qlg3SkM0VEJKVi4u
+[contributor registration form]: https://docs.google.com/forms/d/e/1FAIpQLSfQUjKHfV64uDBAYAt0OSPgYCe_BGgcAPWXi-m0PSlX6edCIQ/viewform?usp=header
 [code of conduct]:./docs/governance/policies/code_of_conduct.md
 [CLA]:./docs/governance/policies/CLA.md
 [change-policy]:./docs/governance/policies/change-management.md

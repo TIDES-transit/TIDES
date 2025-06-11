@@ -120,4 +120,4 @@ TIDES is governed by a Board of Directors. The Board meets roughly one a month a
 - Initial release of the TIDES Governance document.
 - Establishment of governance principles, roles, policies, and procedures.
 
-[contributor-registration]: https://forms.office.com/Pages/ResponsePage.aspx?id=i_a_3SpIc0WB4P74FWpP0Hpd6kyRp1VEg8rnx5-CwORUMFFGTzBYRktEMkJRWVg4Qlg3SkM0VEJKVi4u
+[contributor-registration]: https://docs.google.com/forms/d/e/1FAIpQLSfQUjKHfV64uDBAYAt0OSPgYCe_BGgcAPWXi-m0PSlX6edCIQ/viewform?usp=header
