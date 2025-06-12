@@ -380,6 +380,82 @@
 <article class="md-content__inner md-typeset">
 <h1 id="use-case-profile-otp-delays-analysis">Use Case Profile: OTP / Delays Analysis<a class="headerlink" href="#use-case-profile-otp-delays-analysis" title="Permanent link"> ¶</a></h1>
 <p><em><strong>Note:</strong> This is a working draft. At various points, we have included references (italicized) to input that have contributed to the creation of this use case profile draft. The full comments from these contributors can be found in the issue: <a href="https://github.com/TIDES-transit/TIDES/issues/231">📄🚀 – OTP/Delays Analysis Use Case Profile Development</a>.</em></p>
+<h2 id="contents">Contents<a class="headerlink" href="#contents" title="Permanent link"> ¶</a></h2>
+<ul>
+<li>
+<p><strong>Overview and Context</strong></p>
+<ul>
+<li>Title, description, priority, and intended audience</li>
+<li>Problem statement addressing standardization needs for transit delay analysis</li>
+</ul>
+</li>
+<li>
+<p><strong>Use Case Definition</strong></p>
+<ul>
+<li>Analytical needs (vehicle delay, passenger delay, spatial and cross-modal analysis)</li>
+<li>Specific questions categorized by spatial/temporal, passenger impact, and system performance</li>
+<li>Variations across different agency types and sizes</li>
+<li>Related use cases and overlaps with other transit analysis domains</li>
+</ul>
+</li>
+<li>
+<p><strong>Required TIDES Tables and Fields</strong></p>
+<ul>
+<li>Primary tables (vehicle_locations, trips_performed, stop_visits, passenger_events)</li>
+<li>Essential fields for each table with detailed descriptions</li>
+<li>Optional fields that enhance analysis capabilities</li>
+<li>Minimum data completeness requirements for effective analysis</li>
+</ul>
+</li>
+<li>
+<p><strong>Data Relationships and Integration</strong></p>
+<ul>
+<li>Relationships between TIDES tables for delay analysis</li>
+<li>Integration with external data (GTFS, street networks, weather/event data)</li>
+<li>Temporal and spatial considerations for comprehensive analysis</li>
+</ul>
+</li>
+<li>
+<p><strong>Implementation Considerations</strong></p>
+<ul>
+<li>Common implementation challenges (data volume, quality, performance, schedule linking)</li>
+<li>Data quality requirements (positional/temporal accuracy, completeness, consistency)</li>
+<li>Performance considerations for storage, queries, and visualization</li>
+</ul>
+</li>
+<li>
+<p><strong>Extension Points</strong></p>
+<ul>
+<li>Areas for extending TIDES (street network integration, advanced metrics, external factors)</li>
+<li>Examples of extension mechanisms (namespaced fields, extension objects)</li>
+<li>Potential extensions for promotion to core specification</li>
+</ul>
+</li>
+<li>
+<p><strong>Validation Approach</strong></p>
+<ul>
+<li>Specific validation rules (temporal sequence, spatial, relationship, completeness)</li>
+<li>Data quality thresholds for accuracy and completeness</li>
+<li>Cross-table validation requirements</li>
+<li>Validation tool considerations</li>
+</ul>
+</li>
+<li>
+<p><strong>Working Group Tasks and Timeline</strong></p>
+<ul>
+<li>Development tasks with deadlines</li>
+<li>Key questions for resolution</li>
+<li>Process for community feedback</li>
+</ul>
+</li>
+<li>
+<p><strong>References and Resources</strong></p>
+<ul>
+<li>Relevant GitHub discussions and issues</li>
+<li>External resources and tools</li>
+</ul>
+</li>
+</ul>
 <h2 id="overview-and-context">Overview and Context<a class="headerlink" href="#overview-and-context" title="Permanent link"> ¶</a></h2>
 <p><strong>Title:</strong> On-Time Performance and Delay Analysis Use Case Profile</p>
 <p><strong>Description:</strong> This profile defines the requirements, methodologies, and best practices for using TIDES data to analyze transit delays and on-time performance at a granular, actionable level. It covers both vehicle and passenger delay analysis, with a focus on spatial visualization and street network integration.</p>
