@@ -2,6 +2,54 @@
 
 _**Note:** This is a working draft. At various points, we have included references (italicized) to input that have contributed to the creation of this use case profile draft. The full comments from these contributors can be found in the issue: [📄🚀 – OTP/Delays Analysis Use Case Profile Development](https://github.com/TIDES-transit/TIDES/issues/231)._
 
+## Contents
+
+- **Overview and Context**
+    - Title, description, priority, and intended audience
+    - Problem statement addressing standardization needs for transit delay analysis
+
+- **Use Case Definition**
+    - Analytical needs (vehicle delay, passenger delay, spatial and cross-modal analysis)
+    - Specific questions categorized by spatial/temporal, passenger impact, and system performance
+    - Variations across different agency types and sizes
+    - Related use cases and overlaps with other transit analysis domains
+
+- **Required TIDES Tables and Fields**
+    - Primary tables (vehicle_locations, trips_performed, stop_visits, passenger_events)
+    - Essential fields for each table with detailed descriptions
+    - Optional fields that enhance analysis capabilities
+    - Minimum data completeness requirements for effective analysis
+
+- **Data Relationships and Integration**
+    - Relationships between TIDES tables for delay analysis
+    - Integration with external data (GTFS, street networks, weather/event data)
+    - Temporal and spatial considerations for comprehensive analysis
+
+- **Implementation Considerations**
+    - Common implementation challenges (data volume, quality, performance, schedule linking)
+    - Data quality requirements (positional/temporal accuracy, completeness, consistency)
+    - Performance considerations for storage, queries, and visualization
+
+- **Extension Points**
+    - Areas for extending TIDES (street network integration, advanced metrics, external factors)
+    - Examples of extension mechanisms (namespaced fields, extension objects)
+    - Potential extensions for promotion to core specification
+
+- **Validation Approach**
+    - Specific validation rules (temporal sequence, spatial, relationship, completeness)
+    - Data quality thresholds for accuracy and completeness
+    - Cross-table validation requirements
+    - Validation tool considerations
+
+- **Working Group Tasks and Timeline**
+    - Development tasks with deadlines
+    - Key questions for resolution
+    - Process for community feedback
+
+- **References and Resources**
+    - Relevant GitHub discussions and issues
+    - External resources and tools
+
 ## Overview and Context
 
 **Title:** On-Time Performance and Delay Analysis Use Case Profile
