@@ -648,7 +648,6 @@ Suggested thresholds for data quality:
 
 ### Relevant GitHub Discussions/Issues
 
-- [GitHub Discussion: Help Shape the TIDES Implementation Guide](https://github.com/TIDES-transit/TIDES/discussions/230)
 - [Issue #99: Accommodate other types of instantaneous events](https://github.com/TIDES-transit/TIDES/issues/99)
 - [Issue #151: Specify schedule data set when more than one is used on a single service date](https://github.com/TIDES-transit/TIDES/issues/151)
 - [Issue #231: OTP/Delays Analysis Use Case Profile Development](https://github.com/TIDES-transit/TIDES/issues/231)
@@ -659,7 +658,6 @@ Suggested thresholds for data quality:
 - [Shared Streets](https://sharedstreets.io/) - Reference system for street segment identification
     - _Re: @botanize's mention of using sharedstreets-matcher_
 - [GTFS-ride](https://github.com/ODOT-PTS/GTFS-ride) - Related standard for ridership data
-- [Transit Center's Bus Delay Toolkit](https://transitcenter.org/publication/bus-delay-toolkit/)
-- [TCRP Report 113: Using Archived AVL-APC Data to Improve Transit Performance and Management](http://www.trb.org/Publications/Blurbs/153537.aspx)
-- [California Transit Speed Maps](https://dot.ca.gov/cal-transit-speed-maps) - Caltrans tool for transit speed analysis
+- [TCRP Report 113: Using Archived AVL-APC Data to Improve Transit Performance and Management](https://www.trb.org/publications/tcrp/tcrp_rpt_113.pdf)
+- [California Transit Speed Maps](https://rt--cal-itp-data-analyses.netlify.app/readme) - Caltrans tool for transit speed analysis
     - _Re: @edasmalchi's work at Caltrans_
