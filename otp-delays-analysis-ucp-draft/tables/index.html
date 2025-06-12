@@ -1018,7 +1018,7 @@ schema standards.</p>
 <h3 id="station-activities">Station Activities<a class="headerlink" href="#station-activities" title="Permanent link"> ¶</a></h3>
 <p><em>station_activities.schema.json</em></p>
 <p>Summarized transactions, entries, and exits by stop or station and time period for each service date (for events not associated with a trip).</p>
-<p>Primary key: {<code>time_period_end</code>, <code>service_date</code>, <code>time_period_start</code>, <code>stop_id</code>}</p>
+<p>Primary key: {<code>service_date</code>, <code>time_period_end</code>, <code>stop_id</code>, <code>time_period_start</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1683,7 +1683,7 @@ schema standards.</p>
 <h3 id="vehicle-train-cars">Vehicle Train Cars<a class="headerlink" href="#vehicle-train-cars" title="Permanent link"> ¶</a></h3>
 <p><em>vehicle_train_cars.schema.json</em></p>
 <p>Relationships between assets and vehicles.</p>
-<p>Primary key: {<code>vehicle_id</code>, <code>train_car_id</code>}</p>
+<p>Primary key: {<code>train_car_id</code>, <code>vehicle_id</code>}</p>
 <table>
 <thead>
 <tr>
