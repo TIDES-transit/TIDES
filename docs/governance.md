@@ -4,7 +4,7 @@ Governance of the TIDES Project is achieved through the definition and filling o
 
 | **Role** | **Who** |
 | -------- | ----- |
-| [TIDES Board](#tides-board-of-directors) | <ul><li>[Michael Eichler](https://github.com/planitmichael), [Washington Metropolitan Area Transit Authority](https://hwww.wmata.com/)</li><li>[Evan Siroky](https://github.com/evansiroky), [Caltrans](https://dot.ca.gov)</li><li>[John Levin](https://github.com/jlstpaul), [Metro Transit (Minneapolis)](https://www.metrotransit.org/)</li><li>[Elizabeth Sall](https://github.com/e-lo), [UrbanLabs LLC](https://urbanlabs.io)</li><li>[Gabriel Sánchez Martinez](https://github.com/gabriel-korbato), [Korbato](https://korbato.com/)</li></ul> |
+| [TIDES Board](#tides-board-of-directors) | <ul><li>[Michael Eichler](https://github.com/planitmichael), [Washington Metropolitan Area Transit Authority](https://hwww.wmata.com/)</li><li>[Evan Siroky](https://github.com/evansiroky), [Caltrans](https://dot.ca.gov)</li><li>[John Levin](https://github.com/jlstpaul)</li><li>[Elizabeth Sall](https://github.com/e-lo), [UrbanLabs LLC](https://urbanlabs.io)</li><li>[Gabriel Sánchez Martinez](https://github.com/gabriel-korbato), [Korbato](https://korbato.com/)</li></ul> |
 | [TIDES Board Coordinator](#board-coordinator) | [John Levin](https://github.com/jlstpaul) |
 | [TIDES Manager](#tides-manager) | [MobilityData](https://mobilitydata.org) |
 | [TIDES Program Managers](#tides-program-manager) | <ul><li>[Cristhian Hellion](https://ca.linkedin.com/in/cristhian-hellion-2a698124), [MobilityData](https://mobilitydata.org)</li><li>[Chris Alfano](https://github.com/themightychris), [Jarvus Innovations](https://jarv.us/)</li></ul> |
