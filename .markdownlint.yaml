@@ -19,3 +19,7 @@ MD033: false
 
 # Remove "no emphasis as heading"
 MD036: false
+
+# Allow duplicate headings under different parents (needed for CHANGELOG.md)
+MD024:
+  siblings_only: true
