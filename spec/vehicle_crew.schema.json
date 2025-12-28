@@ -1,0 +1,99 @@
+{
+  "primaryKey": [
+    "service_date",
+    "trip_id_performed",
+    "crew_id",
+    "start_time"
+  ],
+  "missingValues": [
+    "NA",
+    "NaN",
+    ""
+  ],
+  "fields": [
+    {
+      "name": "service_date",
+      "type": "date",
+      "description": "Service date. References GTFS",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "trip_id_performed",
+      "type": "string",
+      "title": "ID referencing trips_performed.trip_id_performed",
+      "description": "Identifies the trip performed. Optional if crew assignment is at vehicle level only."
+    },
+    {
+      "name": "vehicle_id",
+      "type": "string",
+      "title": "ID referencing vehicles.vehicle_id",
+      "description": "Identifies the vehicle.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "crew_id",
+      "type": "string",
+      "title": "ID referencing operators.operator_id",
+      "description": "Identifies the crew member. References operators table.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "crew_role",
+      "type": "string",
+      "description": "Role of the crew member on the vehicle.",
+      "constraints": {
+        "enum": [
+          "operator",
+          "conductor",
+          "fare_inspector",
+          "other"
+        ]
+      }
+    },
+    {
+      "name": "start_time",
+      "type": "datetime",
+      "description": "Timestamp when the crew member's assignment began.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "end_time",
+      "type": "datetime",
+      "description": "Timestamp when the crew member's assignment ended. Null if assignment is ongoing."
+    }
+  ],
+  "foreignReferences": [
+    {
+      "fields": ["service_date", "trip_id_performed"],
+      "reference": {
+        "resource": "trips_performed",
+        "fields": ["service_date", "trip_id_performed"]
+      }
+    },
+    {
+      "fields": "vehicle_id",
+      "reference": {
+        "resource": "vehicles",
+        "fields": "vehicle_id"
+      }
+    },
+    {
+      "fields": "crew_id",
+      "reference": {
+        "resource": "operators",
+        "fields": "operator_id"
+      }
+    }
+  ],
+  "name": "vehicle_crew.schema.json",
+  "description": "Crew member assignments to vehicles and trips, supporting multiple crew members and mid-trip reliefs.",
+  "_table_type": "Supporting"
+}
