@@ -35,10 +35,10 @@
       }
     },
     {
-      "name": "trip_id_scheduled",
+      "name": "operator_id",
       "type": "string",
-      "title": "ID referencing GTFS trips.trip_id",
-      "description": "Identifies the scheduled trip associated with the trip performed. One scheduled trip may be associated with multiple operated trips, or an operated trip may not be associated with a scheduled trip. References GTFS.  If this trip was published in GTFS Schedule, this value should be consistent with the GTFS `trip_id`.  If this trip was not scheduled, the value should be Null."
+      "title": "ID referencing operators.operator_id",
+      "description": "Identifies the vehicle's operator. Optional; for trips with multiple operators, use the first operator or reference the vehicle_crew table for complete crew assignments."
     },
     {
       "name": "route_id",
@@ -201,12 +201,6 @@
           1
         ]
       }
-    },
-    {
-      "name": "operator_id",
-      "type": "string",
-      "title": "ID referencing operators.operator_id",
-      "description": "Identifies the vehicle’s operator."
     },
     {
       "name": "block_id",
