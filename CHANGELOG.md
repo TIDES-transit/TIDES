@@ -31,17 +31,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial pre-release of the TIDES data specification
 - **Core Tables:**
-- `vehicle_locations` - Timestamped vehicle locations and speeds.
-- `passenger_events` - Timestamped passenger-related events, including boardings and alightings.
-- `fare_transactions` - Timestamped fare transaction, associated with devices.
-- `stop_visits` - Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date.
-- `trips_performed` - Trips performed for each service date.
-- `station_activities` - Summarized transactions, entries, and exits by stop or station and time period for each service date (for events not associated with a trip).
-- `devices` - Measurement devices, such as AVL, APC, and AFC devices, associated with vehicles or stops or stations.
-- `train_cars` - Assets that comprise vehicles, such as train cars, with descriptive information.
-- `vehicle_train_cars` - Relationships between assets and vehicles.
-- `vehicles` - Vehicles, including buses and train consists, with descriptive information.
-- `operators` - Personnel who operate vehicles.
+    - `vehicle_locations` - Timestamped vehicle locations and speeds.
+    - `passenger_events` - Timestamped passenger-related events, including boardings and alightings.
+    - `fare_transactions` - Timestamped fare transaction, associated with devices.
+    - `stop_visits` - Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service     date.
+    - `trips_performed` - Trips performed for each service date.
+    - `station_activities` - Summarized transactions, entries, and exits by stop or station and time period for each service date (for events not associated with a     trip).
+    - `devices` - Measurement devices, such as AVL, APC, and AFC devices, associated with vehicles or stops or stations.
+    - `train_cars` - Assets that comprise vehicles, such as train cars, with descriptive information.
+    - `vehicle_train_cars` - Relationships between assets and vehicles.
+    - `vehicles` - Vehicles, including buses and train consists, with descriptive information.
+    - `operators` - Personnel who operate vehicles.
 - TIDES Data Package Profile for data packaging
 - Sample template data package structure
 - Validation tools and test scripts
