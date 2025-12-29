@@ -76,22 +76,22 @@
         "required": true,
         "enum":
         [
-          "Vehicle arrived at stop",
-          "Vehicle departed stop",
-          "Door opened",
-          "Door closed",
-          "Passenger boarded",
-          "Passenger alighted",
-          "Kneel was engaged",
-          "Kneel was disengaged",
-          "Ramp was deployed",
-          "Ramp was raised",
-          "Ramp deployment failed",
-          "Lift was deployed",
-          "Lift was raised",
-          "Individual bike boarded",
-          "Individual bike alighted",
-          "Bike rack deployed"
+          "vehicle_arrived",
+          "vehicle_departed",
+          "door_opened",
+          "door_closed",
+          "passenger_boarded",
+          "passenger_alighted",
+          "kneel_engaged",
+          "kneel_disengaged",
+          "ramp_deployed",
+          "ramp_raised",
+          "ramp_failed",
+          "lift_deployed",
+          "lift_raised",
+          "bike_boarded",
+          "bike_alighted",
+          "bike_rack_deployed"
         ]
       }
     },
