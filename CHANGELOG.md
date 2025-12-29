@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **BREAKING:** `passenger_events.event_type` enum values changed from Title Case to snake_case for improved code compatibility ([#235](https://github.com/TIDES-transit/TIDES/issues/235))
+- **BREAKING:** `passenger_events.event_type` enum values changed from 'Sentence case' to snake_case for improved code compatibility ([#235](https://github.com/TIDES-transit/TIDES/issues/235))
 
 ## [1.0] - 2025-12-23
 
