@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - `vehicle_id` is now **optional** (was required)
     - `trip_stop_sequence` is now **optional** (was required)
 - **BREAKING:** `device_events.event_type` enum values converted from Title Case to snake_case and two new types added ([#241](https://github.com/TIDES-transit/TIDES/issues/241), incorporates [#235](https://github.com/TIDES-transit/TIDES/issues/235))
-- **BREAKING:** `passenger_events.event_type` enum values changed from Title Case to snake_case for improved code compatibility ([#235](https://github.com/TIDES-transit/TIDES/issues/235))
+- **BREAKING:** `passenger_events.event_type` enum values changed from 'Sentence case' to snake_case for improved code compatibility ([#235](https://github.com/TIDES-transit/TIDES/issues/235))
 
 ### Added
 
