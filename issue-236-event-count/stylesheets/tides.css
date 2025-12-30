@@ -1,0 +1,83 @@
+/* Define CSS variables based on theme colors */
+
+/* Palette source: https://coolors.co/palette/2f4858-33658a-86bbd8-f6ae2d-f26419 */
+:root {
+    --md-primary-fg-color:        #33658A; /*lapis lazuli*/
+    --md-accent-fg-color:         #86BBD8; /*carolina blue*/
+    --md-default-bg-color:        #f0f4f8;
+    --md-primary-bg-color:        #f0f4f8;
+    --text-color:                 #2F4858; /*charcoal*/
+    --md-code-hl-color:           #F26419; /*pantone orange*/
+    --highlight-outline:          #F6AE2D; /*hunyadi*/
+    --tides-wave:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 1440 320'%3E%3Cpath fill='%23F0F4F8' fill-opacity='1' d='M0,64L48,85.3C96,107,192,149,288,149.3C384,149,480,107,576,80C672,53,768,43,864,42.7C960,43,1056,53,1152,74.7C1248,96,1344,128,1392,144L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.md-header {
+    overflow: visible; /* Allow overflow */
+    background-color: var(--md-primary-fg-color);
+    color: var(--md-default-bg-color);
+    
+}
+
+.md-footer {
+    background-color: var(--text-color);
+    color: var(--md-default-bg-color);
+}
+
+.md-tabs {
+    position: relative; /* Make sure .md-tabs is positioned */
+    overflow: visible; /* Allow overflow */
+    margin-bottom: 60px;
+}
+
+.md-tabs::after {
+    content: '';
+    display: block;
+    width: 100%; /* Fill the width of the page */
+    height: 80px; /* Minimum height */
+    background-image: var(--tides-wave);
+    background-size: 100% auto; /* Adjust height as needed for overflow */
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-color: var(--md-primary-fg-color);
+    position: absolute;
+    bottom: 5;
+    left: 0;
+    z-index: -1; /* Optional: place behind content */
+    
+}
+
+
+/* Body and Link Styling for Readability */
+body {
+font-family: 'Roboto', sans-serif;
+color: var(--text-color);
+background-color: var(--md-primary-bg-color);
+}
+
+a:hover {
+color: var(--md-accent-fg-color); /* Sky Blue on hover */
+}
+
+/* Code Block Styling */
+code {
+background-color: var(--md-accent-fg-color); /* No border for a cleaner look */
+}
+
+/* Table Styling */
+table {
+border-collapse: collapse;
+width: 100%;
+}
+
+th, td {
+border: 1px solid var(--md-primary-fg-color);
+padding: 8px;
+text-align: left;
+}
+
+th {
+background-color: var(--md-primary-fg-color);
+color: var(--md-default-bg-color);
+}
+  
