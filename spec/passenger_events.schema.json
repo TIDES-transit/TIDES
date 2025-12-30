@@ -132,7 +132,7 @@
       "name": "event_count",
       "type": "integer",
       "title": "Event count",
-      "description": "Count for this event, e.g., 3 for a Passenger Boarding event with 3 boardings, default is  `1`",
+      "description": "Count for this event. Default is `1`. Use values > 1 only for truly simultaneous events (e.g., a parent carrying a child through a doorway as a single boarding event). Aggregated APC counts (e.g., '6 passengers boarded at this stop') should be recorded in stop_visits, not passenger_events, since passenger_events is intended for discrete, instantaneous events. A value of `0` indicates that the event was recorded but no passengers were counted (e.g., door opened but no one boarded), which is distinct from null/missing data.",
       "constraints": {
         "minimum": 0
       }
