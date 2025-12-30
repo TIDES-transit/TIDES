@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- `passenger_events.event_count` description clarified to specify when values > 1 are appropriate, direct aggregated APC data to stop_visits, and clarify that 0 is distinct from null ([#236](https://github.com/TIDES-transit/TIDES/issues/236))
+
 ## [1.0] - 2025-12-23
 
 ### Changed
