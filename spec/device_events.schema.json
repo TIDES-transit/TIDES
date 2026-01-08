@@ -1,5 +1,5 @@
 {
-  "primaryKey": "passenger_event_id",
+  "primaryKey": "device_event_id",
   "missingValues": [
     "NA",
     "NaN",
@@ -7,9 +7,9 @@
   ],
   "fields": [
     {
-      "name": "passenger_event_id",
+      "name": "device_event_id",
       "type": "string",
-      "description": "Identifies the recorded passenger event.",
+      "description": "Identifies the recorded device event.",
       "constraints": {
         "required": true,
         "unique": true
@@ -35,7 +35,7 @@
       "name": "location_ping_id",
       "type": "string",
       "title": "ID referencing vehicle_locations.location_ping_id",
-      "description": "Identifies the vehicle location where the passenger event occurred"
+      "description": "Identifies the vehicle location where the device event occurred"
     },
     {
       "name": "trip_id_performed",
@@ -53,9 +53,8 @@
       "name": "trip_stop_sequence",
       "type": "integer",
       "title": "Positive integer referencing stop_visits.trip_stop_sequence",
-      "description": "The actual order of stops visited within a performed trip. The values must start at 1 and must be consecutive along the trip.<br/> Example: A bus departs the first stop and detours around the second and third scheduled stops, visiting one unscheduled stop and resuming regular service at the 4th scheduled stop. The `scheduled_stop_sequence` is [1, null, 4], and the `trip_stop_sequence` is [1, 2, 3].",
+      "description": "The actual order of stops visited within a performed trip. The values must start at 1 and must be consecutive along the trip. Required for vehicle-based events; optional for station-based or mobile device events not associated with a trip.",
       "constraints": {
-        "required": true,
         "minimum": 1
       }
     },
@@ -71,27 +70,28 @@
     {
       "name": "event_type",
       "type": "string",
-      "description": "Indicates the type of event recorded.",
+      "description": "Indicates the type of event recorded. Use passenger_boarded/passenger_alighted for vehicle boarding/alighting events. Use passenger_entry/passenger_exit for station-based events like fare gate passages.",
       "constraints": {
         "required": true,
-        "enum":
-        [
-          "Vehicle arrived at stop",
-          "Vehicle departed stop",
-          "Door opened",
-          "Door closed",
-          "Passenger boarded",
-          "Passenger alighted",
-          "Kneel was engaged",
-          "Kneel was disengaged",
-          "Ramp was deployed",
-          "Ramp was raised",
-          "Ramp deployment failed",
-          "Lift was deployed",
-          "Lift was raised",
-          "Individual bike boarded",
-          "Individual bike alighted",
-          "Bike rack deployed"
+        "enum": [
+          "vehicle_arrived",
+          "vehicle_departed",
+          "door_opened",
+          "door_closed",
+          "passenger_boarded",
+          "passenger_alighted",
+          "passenger_entry",
+          "passenger_exit",
+          "kneel_engaged",
+          "kneel_disengaged",
+          "ramp_deployed",
+          "ramp_raised",
+          "ramp_failed",
+          "lift_deployed",
+          "lift_raised",
+          "bike_boarded",
+          "bike_alighted",
+          "bike_rack_deployed"
         ]
       }
     },
@@ -99,16 +99,22 @@
       "name": "vehicle_id",
       "type": "string",
       "title": "ID referencing vehicles.vehicle_id",
-      "description": "Identifies a vehicle.",
-      "constraints": {
-        "required": true
-      }
+      "description": "Identifies a vehicle. Required for vehicle-mounted device events; optional for station-based or mobile device events."
     },
     {
       "name": "device_id",
       "type": "string",
       "title": "ID referencing devices.device_id",
-      "description": "Identifies the device that recorded the event. May be null if only a single device is reporting passenger events on a vehicle/ train car and the device_id is not distinct from vehicle_id/train_car_id."
+      "description": "Identifies the device that recorded the event. Links to the devices table to determine device type (vehicle-mounted, station-based, or mobile).",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "employee_id",
+      "type": "string",
+      "title": "Employee ID",
+      "description": "Identifies the employee operating a handheld device, such as a fare inspector or conductor with a mobile validator."
     },
     {
       "name": "train_car_id",
@@ -121,6 +127,26 @@
       "type": "string",
       "title": "ID referencing GTFS stops.stop_id",
       "description": "Identifies the stop the vehicle is serving. References GTFS"
+    },
+    {
+      "name": "latitude",
+      "type": "number",
+      "title": "Latitude",
+      "description": "Degrees North, in the WGS-84 coordinate system. Used for mobile device events not at a fixed location. References GTFS-Realtime.",
+      "constraints": {
+        "minimum": -90,
+        "maximum": 90
+      }
+    },
+    {
+      "name": "longitude",
+      "type": "number",
+      "title": "Longitude",
+      "description": "Degrees East, in the WGS-84 coordinate system. Used for mobile device events not at a fixed location. References GTFS-Realtime.",
+      "constraints": {
+        "minimum": -180,
+        "maximum": 180
+      }
     },
     {
       "name": "pattern_id",
@@ -189,7 +215,7 @@
       }
     }
   ],
-  "name": "passenger_events.schema.json",
-  "description": "Timestamped passenger-related events, including boardings and alightings.",
+  "name": "device_events.schema.json",
+  "description": "Timestamped device-recorded events, including boardings, alightings, fare gate passages, and mobile validator events.",
   "_table_type": "Event"
 }
