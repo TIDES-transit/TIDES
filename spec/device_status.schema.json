@@ -1,0 +1,80 @@
+{
+  "primaryKey": "device_status_id",
+  "missingValues": [
+    "NA",
+    "NaN",
+    ""
+  ],
+  "fields": [
+    {
+      "name": "device_status_id",
+      "type": "string",
+      "title": "Device status ID",
+      "description": "Unique identifier for this device status record.",
+      "constraints": {
+        "required": true,
+        "unique": true
+      }
+    },
+    {
+      "name": "service_date",
+      "type": "date",
+      "title": "Service date",
+      "description": "Service date associated with this status record. Optional because device status may not align with transit service dates."
+    },
+    {
+      "name": "record_timestamp",
+      "type": "datetime",
+      "title": "Record timestamp",
+      "description": "Timestamp when this status record was created in the system. May differ from status_change_timestamp if status changes are recorded retroactively.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "status_change_timestamp",
+      "type": "datetime",
+      "title": "Status change timestamp",
+      "description": "Timestamp when the device status actually changed. This is the time the device went offline, came back online, or experienced the status change.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "device_id",
+      "type": "string",
+      "title": "ID referencing devices.device_id",
+      "description": "Identifies the device. References the devices table.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "status_type",
+      "type": "string",
+      "title": "Status type",
+      "description": "Type of device status. Examples: online, offline, maintenance, error, degraded. Agencies may define additional status types as needed.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "status_reason",
+      "type": "string",
+      "title": "Status reason",
+      "description": "Optional reason or description for the status change. Examples: scheduled maintenance, power failure, communication error, sensor malfunction."
+    }
+  ],
+  "foreignReferences": [
+    {
+      "fields": "device_id",
+      "reference": {
+        "resource": "devices",
+        "fields": "device_id"
+      }
+    }
+  ],
+  "name": "device_status.schema.json",
+  "description": "Records device operational status changes over time. This table tracks when devices (APCs, fare gates, AVL units, etc.) go offline, return to service, or experience errors. Enables data quality analysis by distinguishing between missing data due to device outages versus actual service patterns.",
+  "_table_type": "Event"
+}
