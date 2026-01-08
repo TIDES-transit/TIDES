@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **BREAKING:** Renamed `passenger_events` table to `device_events` to support station-based and mobile device events alongside vehicle-mounted APC events ([#241](https://github.com/TIDES-transit/TIDES/issues/241))
+    - Primary key renamed: `passenger_event_id` → `device_event_id`
+    - `device_id` is now **required** (was optional)
+    - `vehicle_id` is now **optional** (was required)
+    - `trip_stop_sequence` is now **optional** (was required)
+- **BREAKING:** `device_events.event_type` enum values converted from Title Case to snake_case and two new types added ([#241](https://github.com/TIDES-transit/TIDES/issues/241), incorporates [#235](https://github.com/TIDES-transit/TIDES/issues/235))
+
+### Added
+
+- `device_events.latitude` and `device_events.longitude` fields for mobile device events not at fixed locations ([#241](https://github.com/TIDES-transit/TIDES/issues/241))
+- `device_events.employee_id` field for handheld validator events operated by fare inspectors or conductors ([#241](https://github.com/TIDES-transit/TIDES/issues/241))
+- `passenger_entry` and `passenger_exit` event types for station-based events like fare gate passages ([#241](https://github.com/TIDES-transit/TIDES/issues/241))
+
 ## [1.0] - 2025-12-23
 
 ### Changed
