@@ -2,9 +2,9 @@
 
 # Check if jsonschema-cli is installed
 check_jsonschema-cli() {
-  if ! command -v jsonschema-cli >/dev/null 2>&1; then 
-    echo >&2 "\033[31m!!! jsonschema-cli is required but not found.\033[0m 
-    
+  if ! command -v jsonschema-cli >/dev/null 2>&1; then
+    echo >&2 "\033[31m!!! jsonschema-cli is required but not found.\033[0m
+
     You can install it using 'pip install jsonschema-cli'. Aborting."
     exit 1
   fi
@@ -12,9 +12,9 @@ check_jsonschema-cli() {
 
 # Check if frictionless is installed
 check_frictionless() {
-  if ! command -v frictionless >/dev/null 2>&1; then 
-    echo >&2 "\033[31m!!! frictionless is required but not found.\033[0m 
-    
+  if ! command -v frictionless >/dev/null 2>&1; then
+    echo >&2 "\033[31m!!! frictionless is required but not found.\033[0m
+
     You can install it using 'pip install frictionless'. Aborting."
     exit 1
   fi
