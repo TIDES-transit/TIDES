@@ -13,7 +13,7 @@ Arguments:
 "
 
 example_usage="
-Example Usage: 
+Example Usage:
 bin/replace-spec-in-datapackage samples/template/TIDES spec samples/template/TIDES/datapackage.tmp.json
 "
 
