@@ -1,11 +1,4 @@
-# Meta 
-
-* Add a link to this page to the homepage of [tides-transit.org](http://tides-transit.org)   
-* Possibly this becomes two pages, one for strategic direction, one for technical implementation
-
-# Content
-
-## Getting Started
+# Getting Started
 
 If you are interested in adopting TIDES at your transit agency or other organization, this page can help you get started. 
 
@@ -13,57 +6,35 @@ If you are interested in adopting TIDES at your transit agency or other organiza
 
 If you are a leader at an organization and you want your staff to start working on a TIDES adoption project, you will want to identify:
 
-* **How TIDES aligns with your organization’s strategic priorities or initiatives**
+* **How TIDES aligns with your organization’s strategic priorities or initiatives** <br>
+   TIDES can help with a variety of different use cases, from laying the foundation for a data warehouse to streamlining NTD reporting to preparing for an operational system migration. Which use case is most important for your organization? This will help set the technical direction and success criteria.
 
-  TIDES can help with a variety of different use cases, from laying the foundation for a data warehouse to streamlining NTD reporting to preparing for an operational system migration. Which use case is most important for your organization? This will help set the technical direction and success criteria.
-
-* **Technical feasibility**
-
+* **Technical feasibility** <br>
   A technical subject matter expert (someone with familiarity with operational data and/or analytics at your organization) can review the section below (“For technical staff”) to assess your organization’s technical readiness and approach.
 
-* **Resourcing**
-
+* **Resourcing** <br>
   Once you have a sense for the technical feasibility, you can determine the right implementation pathway for your organization, whether that be procurement requirements for vendors, in-house work, consultant support, or a mix. 
 
 ## For technical staff
 
 If you are a technical staff member getting started on a TIDES implementation, you will need the following:
 
-* **Requirements for your use case (information gathered from your stakeholders)**
+* **Requirements for your use case (information gathered from your stakeholders)** <br>
+  What do you need TIDES to do? The specific TIDES data that you need to produce and the format that it takes should be dictated by the use case. “Adopting TIDES” does not have to mean producing every single TIDES table at the same time. For example, NTD ridership reporting might dictate a different approach than a stop-level on-time performance dashboard. Example requirements to consider:  
+    * Data scope and features (what TIDES tables to produce and what type of analysis or reporting they need to support)  
+    * Data format / access (how will the TIDES data be accessed by the downstream user(s))  
+    * Update frequency   
+    * Alignment with other technical initiatives (for example, will this TIDES-based approach replace an existing workflow, or produce something net-new? Are new data tools being deployed at your organization that can be leveraged?)  
+    * Cybersecurity and compliance (does the TIDES data you will produce contain any data that is considered PII or otherwise sensitive according to your organization’s policies? If so, what are the requirements for working with that data?)
 
-  What do you need TIDES to do? The specific TIDES data that you need to produce and the format that it takes should be dictated by the use case. “Adopting TIDES” does not have to mean producing every single TIDES table at the same time. For example, NTD ridership reporting might dictate a different approach than a stop-level on-time performance dashboard.
+* **Assess technical infrastructure** <br>
+  Adopting TIDES does not require any specific tools or technologies, but it does require the technical capacity to ingest data, store it, transform it, and serve it to downstream systems (e.g., a business intelligence tool). Organizations can ingest, produce, or save TIDES in existing data infrastructure, or pair TIDES adoption with the deployment of new infrastructure and tools, depending on their needs and goals. The TRB 2026 presentation \[Name\] outlined a Common Framework and Maturity Ladder for TIDES-related data infrastructure. The deck is available \[here, add link\] and can provide a starting point.
 
-  Example requirements to consider:  
-  * Data scope and features (what TIDES tables to produce and what type of analysis or reporting they need to support)  
-  * Data format / access (how will the TIDES data be accessed by the downstream user(s))  
-  * Update frequency   
-  * Alignment with other technical initiatives (for example, will this TIDES-based approach replace an existing workflow, or produce something net-new? Are new data tools being deployed at your organization that can be leveraged?)  
-  * Cybersecurity or compliance (does the TIDES data you will produce contain any data that is considered PII or otherwise sensitive according to your organization’s policies? If so, what are the requirements for working with that data?)
+* **Assess source data availability** <br>
+  TIDES is a data format and to leverage it you will need access to the underlying data types: passenger counts, vehicle locations, or fare transactions. Once you have identified what TIDES table(s) are needed for your use case, you will need to ensure that you have access to the relevant source data, and that it meets your needs:
+    * Does the source provide the core columns for the TIDES table(s) you want to produce? Compare the source data columns with the TIDES table documentation and ensure it provides the required attributes. 
+    * Do you have access to the location where the data is stored, and can you transfer it to the data environment where you will be working with it? 
+    * Does the data update at the required frequency, and does your data infrastructure support the necessary update frequency?
 
-   
-
-* **Assess technical infrastructure** 
-
-  Adopting TIDES does not require any specific tools or technologies, but it does require the technical capacity to ingest data, store it, transform it, and serve it to downstream systems (e.g., a business intelligence tool). 
-
-  Organizations can ingest, produce, or save TIDES in existing data infrastructure, or pair TIDES adoption with the deployment of new infrastructure and tools, depending on their needs and goals. 
-
-  The TRB 2026 presentation \[Name\] outlined a Common Framework and Maturity Ladder for TIDES-related data infrastructure. The deck is available \[here, add link\] and can provide a starting point.
-
-* **Assess source data availability**
-
-  TIDES is a data format and to leverage it you will need access to the underlying data types: passenger counts, vehicle locations, or fare transactions. 
-
-  Once you have identified what TIDES table(s) are needed for your use case, you will need to ensure that you have access to the relevant source data, and that it meets your needs:
-
-  * Does the source provide the core columns for the TIDES table(s) you want to produce? Compare the source data columns with the TIDES table documentation and ensure it provides the required attributes. 
-
-  * Do you have access to the location where the data is stored, and can you transfer it to the data environment where you will be working with it? 
-
-  * Does the data update at the required frequency, and does your data infrastructure support the necessary update frequency?
-
-* **Resourcing requirements**
-
+* **Resourcing requirements** <br>
   Each organization will have a different approach to resourcing their TIDES initiatives. The previous requirements-gathering steps should clarify the scope of work to be done, and can then inform how that work can be performed, whether that be in-house, change or task orders to existing vendors, securing consultant support, or some combination. 
-
-	
