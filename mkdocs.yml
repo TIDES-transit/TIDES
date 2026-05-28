@@ -32,6 +32,9 @@ plugins:
         securityLevel: 'loose'
   - mike:
       version_selector: true
+  - redirects:
+      redirect_maps:
+        'awesome.md': 'resources.md'
   - search
 
 extra:
@@ -95,7 +98,7 @@ nav:
           - Contributor license agreement: governance/policies/CLA.md
       - Board Actions: governance/actions.md 
       - Board Meetings: governance/meetings.md
-  - Awesome: awesome.md
+  - Resources: resources.md
 
 copyright: |
     <footer>
