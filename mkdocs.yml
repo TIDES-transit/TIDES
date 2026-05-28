@@ -32,6 +32,9 @@ plugins:
         securityLevel: 'loose'
   - mike:
       version_selector: true
+  - redirects:
+      redirect_maps:
+        'awesome.md': 'resources.md'
   - search
 
 extra:
