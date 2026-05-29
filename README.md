@@ -43,7 +43,7 @@ Directories with TIDES data must contain metadata in a [`datapackage.json`][tide
 
 ## Sample Data
 
-See also [TIDES Resources page](https://tides-transit.org/main/resources/#sample-data) for sample data. There is also a framework for adding [sample data][samples] in the `/samples` directory, with one directory for each sample.
+See the [TIDES Resources page](https://tides-transit.org/main/resources/#sample-data) for sample data. There is also a framework for adding [sample data][samples] in the `/samples` directory, with one directory for each sample.
 
 ### Template
 
