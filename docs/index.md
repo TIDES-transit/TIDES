@@ -1,6 +1,6 @@
 # TIDES
 
-TIDES (Transit Integrated Data Exchange Specification) is your key to accessing, managing, and using transit operations data.
+TIDES (the Transit Integrated Data Exchange Specification) is your key to accessing, managing, and using transit operations data.
 
 ## Why TIDES?
 
