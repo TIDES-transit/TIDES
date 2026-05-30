@@ -4,10 +4,11 @@ TIDES is the Transit Integrated Data Exchange Specification and is your key to a
 
 ## Why TIDES?
 
-TIDES is a data specification for transit operations data including vehicle location data, passenger count data, and fare transaction data.
+TIDES is a data specification for transit operations data including vehicle locations, passenger counts, and fare transactions.
 
-- For **transit agencies**, TIDES simplifies data access and offers industry best practice tools to improve data quality, integrate data sources, and create the reports and tools you need to plan and manage service.
-- For **consultants, researchers, and partners**, TIDES simplifies access to agency data and allows creation of standard reports and tools across agencies and data sets.
+- For **transit agencies**, TIDES simplifies and unifies your historical operational data, allowing you to improve data quality, integrate data sources, and create the reports and tools you need to plan and manage service, including use cases like National Transit Database reporting and on-time performance analysis. 
+- For **consultants, researchers, and partners**, TIDES simplifies access to transit operational data and allows creation of standard reports and tools across agencies and data sets.
+- For **national, state, and regional bodies**, TIDES enables collecting granular, standardized data from transit providers throughout your jurisdiction, streamlining reporting and unlocking new analysis capabilities without burdensome overhead. 
 - For **ITS system vendors**, TIDES makes it easier to give your customers access to their data and allows them to use the data in more ways.
 
 TIDES frees your transit data and gives you more options to turn operations data into information on ridership, passenger loads, fare revenue, vehicle speed and delay, service reliability, and more!
@@ -42,7 +43,7 @@ Directories with TIDES data must contain metadata in a [`datapackage.json`][tide
 
 ## Sample Data
 
-[Sample data][samples] can be found in the `/samples` directory, with one directory for each sample.
+See the [TIDES Resources page](https://tides-transit.org/main/resources/#sample-data) for sample data. There is also a framework for adding [sample data][samples] in the `/samples` directory, with one directory for each sample.
 
 ### Template
 

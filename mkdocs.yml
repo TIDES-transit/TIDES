@@ -87,7 +87,7 @@ nav:
       - Table Schemas: tables.md
       - Data Package: datapackage.md
   - Getting Started: getting-started.md
-  - Sample Data: samples.md
+  - Sample Data: resources#sample-data
   - Contributing:
       - Development: development.md
       - Documentation: documentation.md
