@@ -97,8 +97,9 @@ nav:
       - Other Policies: 
           - Code of conduct: governance/policies/code-of-conduct.md
           - Contributor license agreement: governance/policies/CLA.md
-      - Board Actions: governance/actions.md 
+      - Board Actions: governance/actions.md
       - Board Meetings: governance/meetings.md
+      - Roadmap: governance/roadmap.md
   - Resources: resources.md
 
 copyright: |
