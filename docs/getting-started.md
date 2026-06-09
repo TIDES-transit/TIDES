@@ -1,5 +1,8 @@
 # Getting Started
 
+> [!NOTE]
+> If you would like to participate in TIDES community calls or subscribe for community updates, you can sign up via the [TIDES Community Interest Form](https://docs.google.com/forms/d/e/1FAIpQLSeb-YNZhnkn4PQ2yV25KvHJzyo40JtXPaTTWSLpDSRrwDpfEA/viewform).
+
 If you are interested in adopting TIDES at your transit agency or other organization, this page can help you get started. 
 
 ## For leaders and executives
