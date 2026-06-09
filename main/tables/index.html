@@ -752,15 +752,15 @@ schema standards.</p>
 </tr>
 <tr>
 <td>trip_stop_sequence</td>
-<td><br>  minimum: 1<br/></br></td>
+<td><br/>  minimum: 1<br/></td>
 <td>integer</td>
-<td>The actual order of stops visited within a performed trip. The values must start at 1 and must be consecutive along the trip.<br> Example: A bus departs the first stop and detours around the second and third scheduled stops, visiting one unscheduled stop and resuming regular service at the 4<sup>th</sup> scheduled stop. The <code>scheduled_stop_sequence</code> is [1, null, 4], and the <code>trip_stop_sequence</code> is [1, 2, 3].</br></td>
+<td>The actual order of stops visited within a performed trip. The values must start at 1 and must be consecutive along the trip.<br/> Example: A bus departs the first stop and detours around the second and third scheduled stops, visiting one unscheduled stop and resuming regular service at the 4<sup>th</sup> scheduled stop. The <code>scheduled_stop_sequence</code> is [1, null, 4], and the <code>trip_stop_sequence</code> is [1, 2, 3].</td>
 <td></td>
 <td>Positive integer referencing stop_visits.trip_stop_sequence</td>
 </tr>
 <tr>
 <td>scheduled_stop_sequence</td>
-<td><br>  minimum: 0<br/></br></td>
+<td><br/>  minimum: 0<br/></td>
 <td>integer</td>
 <td>Scheduled order of stops for a particular trip. The values must increase along the trip but do not need to be consecutive. References GTFS</td>
 <td></td>
@@ -800,7 +800,7 @@ schema standards.</p>
 </tr>
 <tr>
 <td>num_riders</td>
-<td><br>  minimum: 0<br/></br></td>
+<td><br/>  minimum: 0<br/></td>
 <td>integer</td>
 <td>The number of riders included in the transaction.</td>
 <td></td>
@@ -808,7 +808,7 @@ schema standards.</p>
 </tr>
 <tr>
 <td>fare_media_id</td>
-<td>Allowed Values<br> - <code>Cash or coins</code><br>- <code>Smart card or ticket</code><br>- <code>Magnetic-stripe card or ticket</code><br>- <code>Bank card</code><br>- <code>Mobile NFC</code><br>- <code>Optical scan</code><br>- <code>Button pressed by driver or operator to indicate a boarding or alighting passenger.</code><br>- <code>Other type</code></br></br></br></br></br></br></br></br></td>
+<td>Allowed Values<br/> - <code>Cash or coins</code><br/>- <code>Smart card or ticket</code><br/>- <code>Magnetic-stripe card or ticket</code><br/>- <code>Bank card</code><br/>- <code>Mobile NFC</code><br/>- <code>Optical scan</code><br/>- <code>Button pressed by driver or operator to indicate a boarding or alighting passenger.</code><br/>- <code>Other type</code></td>
 <td>string</td>
 <td>Indicates the fare medium that was used for the transaction.</td>
 <td></td>
@@ -1161,7 +1161,7 @@ schema standards.</p>
 <h3 id="station-activities">Station Activities<a class="headerlink" href="#station-activities" title="Permanent link"> ¶</a></h3>
 <p><em>station_activities.schema.json</em></p>
 <p>Summarized transactions, entries, and exits by stop or station and time period for each service date (for events not associated with a trip).</p>
-<p>Primary key: {<code>stop_id</code>, <code>time_period_start</code>, <code>service_date</code>, <code>time_period_end</code>}</p>
+<p>Primary key: {<code>time_period_start</code>, <code>service_date</code>, <code>time_period_end</code>, <code>stop_id</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1262,7 +1262,7 @@ schema standards.</p>
 <h3 id="stop-visits">Stop Visits<a class="headerlink" href="#stop-visits" title="Permanent link"> ¶</a></h3>
 <p><em>stop_visits.schema.json</em></p>
 <p>Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date.</p>
-<p>Primary key: {<code>trip_stop_sequence</code>, <code>trip_id_performed</code>, <code>service_date</code>}</p>
+<p>Primary key: {<code>trip_id_performed</code>, <code>service_date</code>, <code>trip_stop_sequence</code>}</p>
 <table>
 <thead>
 <tr>
