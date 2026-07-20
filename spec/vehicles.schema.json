@@ -9,71 +9,39 @@
     {
       "name": "vehicle_id",
       "type": "string",
-      "description": "Identifies a vehicle, such as a bus or a train consist. If possible, this should match other internal agency vehicle IDs and the GTFS-realtime VehicleDescriptor.",
+      "description": "Identifies a vehicle, such as a bus or a train car. If possible, this should match other internal agency vehicle IDs and the GTFS-realtime VehicleDescriptor.",
       "constraints": {
         "required": true,
         "unique": true
       }
     },
     {
-      "name": "vehicle_start",
+      "name": "start_date",
       "type": "datetime",
-      "description": "The timestamp at which the vehicle or train consist is first in operation (i.e., when the consist has been created). Required if Train_car is used."
+      "description": "The timestamp at which the vehicle is first in operation."
     },
     {
-      "name": "vehicle_end",
+      "name": "end_date",
       "type": "datetime",
-      "description": "The timestamp at which the vehicle or train consist no longer exists (i.e., the consist is separated or modified). Only used if Train_car is used."
+      "description": "The timestamp at which the vehicle no longer exists."
     },
     {
-      "name": "model_name",
+      "name": "vehicle_group_id",
       "type": "string",
-      "description": "Describes the vehicle's model."
+      "description": "Reference to vehicle_groups.vehicle_group_id"
     },
     {
-      "name": "facility_name",
+      "name": "vehicle_label",
       "type": "string",
-      "description": "Name or internal agency ID for the facility where the vehicle is generally held."
+      "description": "The public identifier that is shown on the vehicle (e.g., the bus number)"
     },
     {
-      "name": "capacity_seated",
-      "type": "integer",
-      "description": "Number of seats on the vehicle. Used if Train_car is not used.",
-      "constraints": {
-        "minimum": 0
-      }
-    },
-    {
-      "name": "capacity_wheelchair",
-      "type": "integer",
-      "description": "Number of wheelchair spaces on the vehicle. Used if Train_car is not used.",
-      "constraints": {
-        "minimum": 0
-      }
-    },
-    {
-      "name": "capacity_bike",
-      "type": "integer",
-      "description": "Number of bike spaces on the vehicle. Used if Train_car is not used.",
-      "constraints": {
-        "minimum": 0
-      }
-    },
-    {
-      "name": "bike_rack",
-      "type": "boolean",
-      "description": "Indicates if the vehicle has a useable bike rack. Used if Train_car is not used."
-    },
-    {
-      "name": "capacity_standing",
-      "type": "integer",
-      "description": "Standing capacity of the vehicle set by the manufacturer. Used if Train_car is not used.",
-      "constraints": {
-        "minimum": 0
-      }
+      "name": "license_plate",
+      "type": "string",
+      "description": "There text of the license plate on the vehicle."
     }
   ],
   "name": "vehicles.schema.json",
-  "description": "Vehicles, including buses and train consists, with descriptive information.",
+  "description": "Vehicles, including buses and train cars, with descriptive information.",
   "_table_type": "Supporting"
 }
