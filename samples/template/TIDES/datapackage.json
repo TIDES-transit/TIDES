@@ -67,20 +67,6 @@
             ]
         },
         {
-            "name": "train_cars",
-            "profile": "tabular-data-resource",
-            "path": "train_cars.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/train_cars.schema.json",
-            "sources": [
-                {
-                    "title": "Where did data come from?",
-                    "component": "Type of technology component, i.e. `AVL`",
-                    "product": "Product used.",
-                    "vendor": "Vendor selling product."
-                }
-            ]
-        },
-        {
             "name": "operators",
             "profile": "tabular-data-resource",
             "path": "operators.csv",
@@ -99,20 +85,6 @@
             "profile": "tabular-data-resource",
             "path": "stop_visits.csv",
             "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/stop_visits.schema.json",
-            "sources": [
-                {
-                    "title": "Where did data come from?",
-                    "component": "Type of technology component, i.e. `AVL`",
-                    "product": "Product used.",
-                    "vendor": "Vendor selling product."
-                }
-            ]
-        },
-        {
-            "name": "vehicle_train_cars",
-            "profile": "tabular-data-resource",
-            "path": "vehicle_train_cars.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicle_train_cars.schema.json",
             "sources": [
                 {
                     "title": "Where did data come from?",
