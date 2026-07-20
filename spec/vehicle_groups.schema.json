@@ -1,0 +1,54 @@
+{
+  "primaryKey": "vehicle_group_id",
+  "missingValues": [
+    "NA",
+    "NaN",
+    ""
+  ],
+  "fields": [
+    {
+      "name": "vehicle_group_id",
+      "type": "string",
+      "description": "Identifies a group of vehicles.",
+      "constraints": {
+        "required": true,
+        "unique": true
+      }
+    },
+    {
+      "name": "capacity_seated",
+      "type": "integer",
+      "description": "Number of seats on the vehicle.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "capacity_full",
+      "type": "integer",
+      "description": "Total capacity of the vehicle set by the manufacturer.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "capacity_wheelchair",
+      "type": "integer",
+      "description": "Number of wheelchair spaces on the vehicle.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "capacity_bike",
+      "type": "integer",
+      "description": "Number of bike spaces on the vehicle.",
+      "constraints": {
+        "minimum": 0
+      }
+    }
+  ],
+  "name": "vehicle_groups.schema.json",
+  "description": "Groups of vehicles.",
+  "_table_type": "Supporting"
+}
