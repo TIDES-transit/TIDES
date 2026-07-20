@@ -30,7 +30,10 @@
     {
       "name": "car_order",
       "type": "integer",
-      "description": "The assigned order of the car within the consist."
+      "description": "The assigned order of the car within the consist.",
+      "constraints": {
+        "minimum": 1
+      }
     },
     {
       "name": "car_orientation",
