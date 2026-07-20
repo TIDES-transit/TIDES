@@ -140,7 +140,7 @@
             "name": "vehicle_groups",
             "profile": "tabular-data-resource",
             "path": "vehicle_groups.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicles.schema.json",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicle_groups.schema.json",
             "sources": [
                 {
                     "title": "Where did data come from?",
