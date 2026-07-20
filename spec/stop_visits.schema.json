@@ -58,6 +58,17 @@
       "description": "Identifies the vehicle."
     },
     {
+      "name": "vehicle_direction",
+      "type": "string",
+      "description": "Indicates the direction of travel of the vehicle for this event.",
+      "constraints": {
+        "enum": [
+          "forward",
+          "backward"
+        ]
+      }
+    },
+    {
       "name": "dwell",
       "type": "integer",
       "description": "Indicates the amount of time a vehicle spent stopped at a stop in seconds.",
