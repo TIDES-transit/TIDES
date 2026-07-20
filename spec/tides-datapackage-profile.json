@@ -310,7 +310,7 @@
             "type": "string",
             "examples": [
               "fare_transactions",
-              "train_cars"
+              "vehicles"
             ]
           },
           "schema": {
