@@ -17,13 +17,13 @@
     },
     {
       "name": "start_date",
-      "type": "datetime",
-      "description": "The timestamp at which the vehicle is first in operation."
+      "type": "date",
+      "description": "Start of the date range for which operational data may reference this vehicle."
     },
     {
       "name": "end_date",
-      "type": "datetime",
-      "description": "The timestamp at which the vehicle no longer exists."
+      "type": "date",
+      "description": "End of the date range for which operational data may reference this vehicle."
     },
     {
       "name": "vehicle_group_id",
@@ -38,7 +38,7 @@
     {
       "name": "license_plate",
       "type": "string",
-      "description": "There text of the license plate on the vehicle."
+      "description": "The text of the license plate on the vehicle."
     }
   ],
   "name": "vehicles.schema.json",
