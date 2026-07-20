@@ -1,0 +1,94 @@
+{
+  "primaryKey": [
+    "vehicle_assignment_id",
+    "service_date"
+  ],
+  "missingValues": [
+    "NA",
+    "NaN",
+    ""
+  ],
+  "fields": [
+    {
+      "name": "vehicle_assignment_id",
+      "type": "string",
+      "description": "A unique identifier for the vehicle assignment.",
+      "constraints": {
+        "required": true,
+        "unique": true
+      }
+    },
+    {
+      "name": "service_date",
+      "type": "date",
+      "description": "Service date.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "description": "Indicates whether the assignment refers to a vehicle or a consist.",
+      "constraints": {
+        "enum": [
+          "vehicle",
+          "consist"
+        ]
+      }
+    },
+    {
+      "name": "vehicle_id",
+      "type": "string",
+      "title": "ID referencing vehicles.vehicle_id",
+      "description": "Identifies the vehicle that this assignment is for. Not required for type==consist"
+    },
+    {
+        "name": "vehicle_assignment_group_id",
+        "type": "string",
+        "title": "ID referencing vehicle_groups.vehicle_group_id",
+        "description": "Identifies the vehicle group that this assignment is for."
+    },
+    {
+      "name": "assignment_start_time",
+      "type": "datetime",
+      "description": "The timestamp when the assignment starts."
+    },
+    {
+      "name": "assignment_end_time",
+      "type": "datetime",
+      "description": "The timestamp when the assignment ends."
+    },
+    {
+      "name": "operational_status",
+      "type": "string",
+      "description": "Indicates the status of the vehicle on this date.",
+      "constraints": {
+        "enum": [
+          "unavailable",
+          "available"
+        ]
+      }
+    }
+
+  ],
+  "foreignReferences": [
+    {
+      "fields": "vehicle_id",
+      "reference": {
+        "resource": "vehicles",
+        "fields": "vehicle_id"
+      }
+    },
+    {
+      "fields": "vehicle_assignment_group_id",
+      "reference": {
+        "resource": "vehicle_groups",
+        "fields": "vehicle_group_id"
+      }
+    }
+  ],
+  "name": "vehicle_assignments.schema.json",
+  "description": "Daily assigngments of vehicles and consists.",
+  "_table_type": "Supporting"
+}
