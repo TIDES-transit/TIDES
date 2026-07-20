@@ -164,6 +164,20 @@
                 }
             ]
         },
+        {
+            "name": "consist_vehicles",
+            "profile": "tabular-data-resource",
+            "path": "consist_vehicles.csv",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/consist_vehicles.schema.json",
+            "sources": [
+                {
+                    "title": "Where did data come from?",
+                    "component": "Type of technology component, i.e. `AVL`",
+                    "product": "Product used.",
+                    "vendor": "Vendor selling product."
+                }
+            ]
+        },
    
         {
             "name": "trips_performed",

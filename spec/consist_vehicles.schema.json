@@ -1,0 +1,70 @@
+{
+  "primaryKey": [
+    "consist_id",
+    "car_vehicle_id"
+  ],
+  "missingValues": [
+    "NA",
+    "NaN",
+    ""
+  ],
+  "fields": [
+    {
+      "name": "consist_id",
+      "type": "string",
+      "title": "ID referencing vehicle_assignments.vehicle_assignment_id",
+      "description": "Identifies the consist assignment record.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "car_vehicle_id",
+      "type": "string",
+      "title": "ID referencing vehicles.vehicle_id",
+      "description": "Identifies the train car vehicle record in the vehicles table.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "car_order",
+      "type": "integer",
+      "description": "The assigned order of the car within the consist.",
+      "constraints": {
+        "minimum": 1,
+        "maximum": 3
+      }
+    },
+    {
+      "name": "car_orientation",
+      "type": "string",
+      "description": "Indicates the orientation of the car within the consist.",
+      "constraints": {
+        "enum": [
+          "forward",
+          "backward"
+        ]
+      }
+    }
+  ],
+  "foreignReferences": [
+    {
+      "fields": "consist_id",
+      "reference": {
+        "resource": "vehicle_assignments",
+        "fields": "vehicle_assignment_id"
+      }
+    },
+    {
+      "fields": "car_vehicle_id",
+      "reference": {
+        "resource": "vehicles",
+        "fields": "vehicle_id"
+      }
+    }
+  ],
+  "name": "consist_vehicles.schema.json",
+  "description": "Relationships between consist assignments and the vehicles that comprise them.",
+  "_table_type": "Supporting"
+}
