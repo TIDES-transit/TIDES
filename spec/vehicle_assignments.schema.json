@@ -1,7 +1,6 @@
 {
   "primaryKey": [
-    "vehicle_assignment_id",
-    "service_date"
+    "vehicle_assignment_id"
   ],
   "missingValues": [
     "NA",
@@ -21,17 +20,15 @@
     {
       "name": "service_date",
       "type": "date",
-      "description": "Service date.",
-      "constraints": {
-        "required": true
-      }
+      "description": "Service date."
     },
     {
       "name": "type",
       "type": "string",
       "description": "Indicates whether the assignment refers to a vehicle or a consist.",
       "constraints": {
-        "enum": [
+           "required": true,
+           "enum": [
           "vehicle",
           "consist"
         ]
@@ -89,6 +86,6 @@
     }
   ],
   "name": "vehicle_assignments.schema.json",
-  "description": "Daily assigngments of vehicles and consists.",
+  "description": "Daily assignments of vehicles and consists.",
   "_table_type": "Supporting"
 }
