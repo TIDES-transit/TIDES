@@ -13,7 +13,7 @@
       "name": "consist_id",
       "type": "string",
       "title": "ID referencing vehicle_assignments.vehicle_assignment_id",
-      "description": "Identifies the consist assignment record.",
+      "description": "Identifies the vehicle assignment record for the consist.",
       "constraints": {
         "required": true
       }
@@ -61,6 +61,6 @@
     }
   ],
   "name": "consist_vehicles.schema.json",
-  "description": "Relationships between consist assignments and the vehicles that comprise them.",
+  "description": "Assignment of vehicles/cars into consists.",
   "_table_type": "Supporting"
 }
