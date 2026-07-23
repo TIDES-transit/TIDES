@@ -119,7 +119,7 @@
       "name": "device_id",
       "type": "string",
       "title": "ID referencing devices.device_id",
-      "description": "Identifies the device that recorded the event. May be null if only a single device is reporting passenger events on a vehicle/ train car and the device_id is not distinct from vehicle_id/train_car_id."
+      "description": "Identifies the device that recorded the event. May be null if only a single device is reporting passenger events on a vehicle and the device_id is not distinct from vehicle_id."
     },
     {
       "name": "stop_id",

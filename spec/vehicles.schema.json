@@ -9,7 +9,7 @@
     {
       "name": "vehicle_id",
       "type": "string",
-      "description": "Identifies a vehicle, such as a bus or a train car. If possible, this should match other internal agency vehicle IDs and the GTFS-realtime VehicleDescriptor.",
+      "description": "Identifies a physical vehicle, such as a bus or an individual train car. If possible, this should match internal agency asset and vehicle IDs. Note that identifiers in operational data streams (including GTFS-realtime) may refer to either an individual vehicle or a consist; those operational identifiers are documented in vehicle_assignments.",
       "constraints": {
         "required": true,
         "unique": true
@@ -28,7 +28,8 @@
     {
       "name": "vehicle_group_id",
       "type": "string",
-      "description": "Reference to vehicle_groups.vehicle_group_id"
+      "title": "ID referencing vehicle_groups.vehicle_group_id",
+      "description": "Identifies the vehicle group whose attributes apply to this vehicle."
     },
     {
       "name": "vehicle_label",
@@ -41,7 +42,16 @@
       "description": "The text of the license plate on the vehicle."
     }
   ],
+  "foreignReferences": [
+    {
+      "fields": "vehicle_group_id",
+      "reference": {
+        "resource": "vehicle_groups",
+        "fields": "vehicle_group_id"
+      }
+    }
+  ],
   "name": "vehicles.schema.json",
-  "description": "Vehicles, including buses and train cars, with descriptive information.",
+  "description": "Physical vehicles, including buses and individual train cars.",
   "_table_type": "Supporting"
 }
