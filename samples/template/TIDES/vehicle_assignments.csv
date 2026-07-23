@@ -1,1 +1,1 @@
-vehicle_assignment_id,service_date,type,vehicle_id,vehicle_assignment_group_id,assignment_start_time,assignment_end_time,operational_status
+vehicle_assignment_id,service_date,type,vehicle_id,vehicle_group_id,assignment_start_time,assignment_end_time,operational_status
