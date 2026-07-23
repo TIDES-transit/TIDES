@@ -977,7 +977,7 @@ schema standards.</p>
 <td>device_id</td>
 <td></td>
 <td>string</td>
-<td>Identifies the device that recorded the event. May be null if only a single device is reporting passenger events on a vehicle/ train car and the device_id is not distinct from vehicle_id/train_car_id.</td>
+<td>Identifies the device that recorded the event. May be null if only a single device is reporting passenger events on a vehicle and the device_id is not distinct from vehicle_id.</td>
 <td>ID referencing <a href="#devices">devices</a>.device_id</td>
 </tr>
 <tr>
@@ -1185,7 +1185,7 @@ schema standards.</p>
 <h3 id="station-activities">Station Activities<a class="headerlink" href="#station-activities" title="Permanent link"> ¶</a></h3>
 <p><em>station_activities.schema.json</em></p>
 <p>Summarized transactions, entries, and exits by stop or station and time period for each service date (for events not associated with a trip).</p>
-<p>Primary key: {<code>time_period_start</code>, <code>stop_id</code>, <code>time_period_end</code>, <code>service_date</code>}</p>
+<p>Primary key: {<code>time_period_end</code>, <code>stop_id</code>, <code>time_period_start</code>, <code>service_date</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1286,7 +1286,7 @@ schema standards.</p>
 <h3 id="stop-visits">Stop Visits<a class="headerlink" href="#stop-visits" title="Permanent link"> ¶</a></h3>
 <p><em>stop_visits.schema.json</em></p>
 <p>Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date.</p>
-<p>Primary key: {<code>trip_stop_sequence</code>, <code>service_date</code>, <code>trip_id_performed</code>}</p>
+<p>Primary key: {<code>trip_stop_sequence</code>, <code>trip_id_performed</code>, <code>service_date</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1527,7 +1527,7 @@ schema standards.</p>
 <h3 id="trips-performed">Trips Performed<a class="headerlink" href="#trips-performed" title="Permanent link"> ¶</a></h3>
 <p><em>trips_performed.schema.json</em></p>
 <p>Trips performed for each service date.</p>
-<p>Primary key: {<code>service_date</code>, <code>trip_id_performed</code>}</p>
+<p>Primary key: {<code>trip_id_performed</code>, <code>service_date</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1699,7 +1699,7 @@ schema standards.</p>
 <h3 id="consist-vehicles">Consist Vehicles<a class="headerlink" href="#consist-vehicles" title="Permanent link"> ¶</a></h3>
 <p><em>consist_vehicles.schema.json</em></p>
 <p>Assignment of vehicles/cars into consists.</p>
-<p>Primary key: {<code>consist_id</code>, <code>car_vehicle_id</code>}</p>
+<p>Primary key: {<code>car_vehicle_id</code>, <code>consist_id</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1831,7 +1831,7 @@ schema standards.</p>
 </table>
 <h3 id="vehicle-assignments">Vehicle Assignments<a class="headerlink" href="#vehicle-assignments" title="Permanent link"> ¶</a></h3>
 <p><em>vehicle_assignments.schema.json</em></p>
-<p>Daily assignments of vehicles and consists.</p>
+<p>Vehicles and consists available for assignment to service, to which operational data and devices may be associated. Optional table: agencies with static fleets and no consists or vehicle status tracking may omit it. A single-car train is represented by two records: one for the physical vehicle and one for the consist.</p>
 <p>Primary key: {<code>vehicle_assignment_id</code>}</p>
 <table>
 <thead>
@@ -1848,14 +1848,14 @@ schema standards.</p>
 <td>vehicle_assignment_id</td>
 <td><strong>Required</strong><br/><em>Unique</em><br/></td>
 <td>string</td>
-<td>A unique identifier for the vehicle assignment.</td>
+<td>The identifier associated with the vehicle or consist in the operational data. For a single vehicle (type=vehicle), this is typically the same as vehicles.vehicle_id. For a consist (type=consist), this is a unique identifier assigned when the consist is formed; a consist that is broken up and re-formed should receive a new identifier. This identifier is not required to match GTFS-realtime VehicleDescriptor values, though it may where operational systems use the same identifiers.</td>
 <td></td>
 </tr>
 <tr>
 <td>service_date</td>
 <td></td>
 <td>date</td>
-<td>Service date.</td>
+<td>Service date of the assignment. Optional; assignment_start_time and assignment_end_time may be used to bound assignments that span multiple days or change within a day.</td>
 <td></td>
 </tr>
 <tr>
@@ -1869,14 +1869,14 @@ schema standards.</p>
 <td>vehicle_id</td>
 <td></td>
 <td>string</td>
-<td>Identifies the vehicle that this assignment is for. Not required for type==consist</td>
+<td>Identifies the physical vehicle for this assignment. Required when type=vehicle; omitted when type=consist (the cars of a consist are documented in consist_vehicles).</td>
 <td>ID referencing <a href="#vehicles">vehicles</a>.vehicle_id</td>
 </tr>
 <tr>
-<td>vehicle_assignment_group_id</td>
+<td>vehicle_group_id</td>
 <td></td>
 <td>string</td>
-<td>Identifies the vehicle group that this assignment is for.</td>
+<td>Identifies the vehicle group whose attributes apply to this assignment. For a single vehicle, this matches vehicles.vehicle_group_id; for a consist, this references the group describing the consist type.</td>
 <td>ID referencing <a href="#vehicle-groups">vehicle_groups</a>.vehicle_group_id</td>
 </tr>
 <tr>
@@ -1950,7 +1950,7 @@ schema standards.</p>
 </table>
 <h3 id="vehicles">Vehicles<a class="headerlink" href="#vehicles" title="Permanent link"> ¶</a></h3>
 <p><em>vehicles.schema.json</em></p>
-<p>Vehicles, including buses and train cars, with descriptive information.</p>
+<p>Physical vehicles, including buses and individual train cars.</p>
 <p>Primary key: {<code>vehicle_id</code>}</p>
 <table>
 <thead>
@@ -1959,6 +1959,7 @@ schema standards.</p>
 <th>constraints</th>
 <th>type</th>
 <th>description</th>
+<th>title</th>
 </tr>
 </thead>
 <tbody>
@@ -1966,37 +1967,43 @@ schema standards.</p>
 <td>vehicle_id</td>
 <td><strong>Required</strong><br/><em>Unique</em><br/></td>
 <td>string</td>
-<td>Identifies a vehicle, such as a bus or a train car. If possible, this should match other internal agency vehicle IDs and the GTFS-realtime VehicleDescriptor.</td>
+<td>Identifies a physical vehicle, such as a bus or an individual train car. If possible, this should match internal agency asset and vehicle IDs. Note that identifiers in operational data streams (including GTFS-realtime) may refer to either an individual vehicle or a consist; those operational identifiers are documented in vehicle_assignments.</td>
+<td></td>
 </tr>
 <tr>
 <td>start_date</td>
 <td></td>
 <td>date</td>
 <td>Start of the date range for which operational data may reference this vehicle.</td>
+<td></td>
 </tr>
 <tr>
 <td>end_date</td>
 <td></td>
 <td>date</td>
 <td>End of the date range for which operational data may reference this vehicle.</td>
+<td></td>
 </tr>
 <tr>
 <td>vehicle_group_id</td>
 <td></td>
 <td>string</td>
-<td>Reference to vehicle_groups.vehicle_group_id</td>
+<td>Identifies the vehicle group whose attributes apply to this vehicle.</td>
+<td>ID referencing <a href="#vehicle-groups">vehicle_groups</a>.vehicle_group_id</td>
 </tr>
 <tr>
 <td>vehicle_label</td>
 <td></td>
 <td>string</td>
 <td>The public identifier that is shown on the vehicle (e.g., the bus number)</td>
+<td></td>
 </tr>
 <tr>
 <td>license_plate</td>
 <td></td>
 <td>string</td>
 <td>The text of the license plate on the vehicle.</td>
+<td></td>
 </tr>
 </tbody>
 </table>
