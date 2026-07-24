@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- New `device_status` table for tracking device operational status changes over time ([#242](https://github.com/TIDES-transit/TIDES/issues/242))
+    - Tracks when devices go offline, return to service, or experience errors
+    - Two timestamps: `record_timestamp` (when recorded) vs `status_change_timestamp` (when status actually changed)
+    - Supports data quality analysis by distinguishing missing data due to device outages from actual service patterns
+
 ## [1.0] - 2025-12-23
 
 ### Changed

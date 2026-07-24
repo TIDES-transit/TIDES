@@ -25,6 +25,20 @@
     ],
     "resources": [
         {
+            "name": "device_status",
+            "profile": "tabular-data-resource",
+            "path": "device_status.csv",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/device_status.schema.json",
+            "sources": [
+                {
+                    "title": "Where did data come from?",
+                    "component": "Type of technology component, e.g. `Device monitoring system`",
+                    "product": "Product used.",
+                    "vendor": "Vendor selling product."
+                }
+            ]
+        },
+        {
             "name": "devices",
             "profile": "tabular-data-resource",
             "path": "devices.csv",
