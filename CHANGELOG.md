@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **BREAKING:** `vehicle_groups` table normalizing shared vehicle attributes (capacities, and additional attributes to be defined) ([#269](https://github.com/TIDES-transit/TIDES/issues/269), [#272](https://github.com/TIDES-transit/TIDES/pull/272))
+- `vehicle_assignments` table representing vehicles and consists in operation, to which operational data and devices may be associated ([#269](https://github.com/TIDES-transit/TIDES/issues/269))
+- `consist_vehicles` table documenting the cars of each consist with order and orientation ([#269](https://github.com/TIDES-transit/TIDES/issues/269))
+- `vehicle_direction` field on `vehicle_locations`, `passenger_events`, `fare_transactions`, `stop_visits`, and `trips_performed` ([#269](https://github.com/TIDES-transit/TIDES/issues/269))
+
+### Changed
+
+- **BREAKING:** `vehicles` table repurposed as the registry of physical vehicles (buses and individual train cars); attribute fields moved to `vehicle_groups`, and `vehicle_label`, `license_plate`, `start_date`, `end_date`, and `vehicle_group_id` fields added ([#269](https://github.com/TIDES-transit/TIDES/issues/269))
+
+### Removed
+
+- **BREAKING:** `train_cars` and `vehicle_train_cars` tables, superseded by `vehicles`, `vehicle_assignments`, and `consist_vehicles` ([#269](https://github.com/TIDES-transit/TIDES/issues/269))
+
 ## [1.0] - 2025-12-23
 
 ### Changed

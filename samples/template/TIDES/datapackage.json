@@ -67,20 +67,6 @@
             ]
         },
         {
-            "name": "train_cars",
-            "profile": "tabular-data-resource",
-            "path": "train_cars.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/train_cars.schema.json",
-            "sources": [
-                {
-                    "title": "Where did data come from?",
-                    "component": "Type of technology component, i.e. `AVL`",
-                    "product": "Product used.",
-                    "vendor": "Vendor selling product."
-                }
-            ]
-        },
-        {
             "name": "operators",
             "profile": "tabular-data-resource",
             "path": "operators.csv",
@@ -109,20 +95,6 @@
             ]
         },
         {
-            "name": "vehicle_train_cars",
-            "profile": "tabular-data-resource",
-            "path": "vehicle_train_cars.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicle_train_cars.schema.json",
-            "sources": [
-                {
-                    "title": "Where did data come from?",
-                    "component": "Type of technology component, i.e. `AVL`",
-                    "product": "Product used.",
-                    "vendor": "Vendor selling product."
-                }
-            ]
-        },
-        {
             "name": "vehicles",
             "profile": "tabular-data-resource",
             "path": "vehicles.csv",
@@ -136,6 +108,49 @@
                 }
             ]
         },
+        {
+            "name": "vehicle_groups",
+            "profile": "tabular-data-resource",
+            "path": "vehicle_groups.csv",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicle_groups.schema.json",
+            "sources": [
+                {
+                    "title": "Where did data come from?",
+                    "component": "Type of technology component, i.e. `AVL`",
+                    "product": "Product used.",
+                    "vendor": "Vendor selling product."
+                }
+            ]
+        },
+        {
+            "name": "vehicle_assignments",
+            "profile": "tabular-data-resource",
+            "path": "vehicle_assignments.csv",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicle_assignments.schema.json",
+            "sources": [
+                {
+                    "title": "Where did data come from?",
+                    "component": "Type of technology component, i.e. `AVL`",
+                    "product": "Product used.",
+                    "vendor": "Vendor selling product."
+                }
+            ]
+        },
+        {
+            "name": "consist_vehicles",
+            "profile": "tabular-data-resource",
+            "path": "consist_vehicles.csv",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/consist_vehicles.schema.json",
+            "sources": [
+                {
+                    "title": "Where did data come from?",
+                    "component": "Type of technology component, i.e. `AVL`",
+                    "product": "Product used.",
+                    "vendor": "Vendor selling product."
+                }
+            ]
+        },
+   
         {
             "name": "trips_performed",
             "profile": "tabular-data-resource",

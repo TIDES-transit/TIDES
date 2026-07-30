@@ -28,12 +28,6 @@
       "description": "Identifies the vehicle on which the device is located. May be null if the device is at a stop or station."
     },
     {
-      "name": "train_car_id",
-      "title": "ID referencing train_cars.train_car_id",
-      "type": "string",
-      "description": "Identifies the train car or asset on which the device is located. May be null if the device is at a stop or station or if the Train_cars file is not used."
-    },
-    {
       "name": "device_type",
       "type": "string",
       "description": "Indicates the type of device.",
@@ -77,13 +71,6 @@
       "reference": {
         "resource": "vehicles",
         "fields": "vehicle_id"
-      }
-    },
-    {
-      "fields": "train_car_id",
-      "reference": {
-        "resource": "train_car",
-        "fields": "train_car_id"
       }
     }
   ],

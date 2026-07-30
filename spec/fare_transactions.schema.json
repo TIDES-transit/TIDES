@@ -119,6 +119,17 @@
       "description": "Identifies the vehicle. May be null if collection device is NOT located on a vehicle. May be null if on a vehicle but vehicle data is unavailable, in which case the data would be associated with a trip and/or stop."
     },
     {
+      "name": "vehicle_direction",
+      "type": "string",
+      "description": "Indicates the direction of travel of the vehicle for this event.",
+      "constraints": {
+        "enum": [
+          "forward",
+          "backward"
+        ]
+      }
+    },
+    {
       "name": "device_id",
       "type": "string",
       "title": "ID referencing devices.device_id",

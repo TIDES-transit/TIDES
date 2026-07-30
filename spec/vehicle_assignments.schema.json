@@ -1,0 +1,91 @@
+{
+  "primaryKey": [
+    "vehicle_assignment_id"
+  ],
+  "missingValues": [
+    "NA",
+    "NaN",
+    ""
+  ],
+  "fields": [
+    {
+      "name": "vehicle_assignment_id",
+      "type": "string",
+      "description": "The identifier associated with the vehicle or consist in the operational data. For a single vehicle (type=vehicle), this is typically the same as vehicles.vehicle_id. For a consist (type=consist), this is a unique identifier assigned when the consist is formed; a consist that is broken up and re-formed should receive a new identifier. This identifier is not required to match GTFS-realtime VehicleDescriptor values, though it may where operational systems use the same identifiers.",
+      "constraints": {
+        "required": true,
+        "unique": true
+      }
+    },
+    {
+      "name": "service_date",
+      "type": "date",
+      "description": "Service date of the assignment. Optional; assignment_start_time and assignment_end_time may be used to bound assignments that span multiple days or change within a day."
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "description": "Indicates whether the assignment refers to a vehicle or a consist.",
+      "constraints": {
+           "required": true,
+           "enum": [
+          "vehicle",
+          "consist"
+        ]
+      }
+    },
+    {
+      "name": "vehicle_id",
+      "type": "string",
+      "title": "ID referencing vehicles.vehicle_id",
+      "description": "Identifies the physical vehicle for this assignment. Required when type=vehicle; omitted when type=consist (the cars of a consist are documented in consist_vehicles)."
+    },
+    {
+        "name": "vehicle_group_id",
+        "type": "string",
+        "title": "ID referencing vehicle_groups.vehicle_group_id",
+        "description": "Identifies the vehicle group whose attributes apply to this assignment. For a single vehicle, this matches vehicles.vehicle_group_id; for a consist, this references the group describing the consist type."
+    },
+    {
+      "name": "assignment_start_time",
+      "type": "datetime",
+      "description": "The timestamp when the assignment starts."
+    },
+    {
+      "name": "assignment_end_time",
+      "type": "datetime",
+      "description": "The timestamp when the assignment ends."
+    },
+    {
+      "name": "operational_status",
+      "type": "string",
+      "description": "Indicates the status of the vehicle on this date.",
+      "constraints": {
+        "enum": [
+          "unavailable",
+          "available"
+        ]
+      }
+    }
+
+  ],
+  "foreignReferences": [
+    {
+      "fields": "vehicle_id",
+      "reference": {
+        "resource": "vehicles",
+        "fields": "vehicle_id"
+      }
+    },
+    {
+      "fields": "vehicle_group_id",
+      "reference": {
+        "resource": "vehicle_groups",
+        "fields": "vehicle_group_id"
+      }
+    }
+  ],
+  "name": "vehicle_assignments.schema.json",
+  "description": "Vehicles and consists available for assignment to service, to which operational data and devices may be associated. Optional table: agencies with static fleets and no consists or vehicle status tracking may omit it. A single-car train is represented by two records: one for the physical vehicle and one for the consist.",
+  "_table_type": "Supporting"
+}
