@@ -206,7 +206,7 @@
       "name": "operator_id",
       "type": "string",
       "title": "ID referencing operators.operator_id",
-      "description": "Identifies the vehicle’s operator."
+      "description": "Identifies the vehicle's operator. Optional; for trips with multiple operators, use the first operator or reference the vehicle_crew table for complete crew assignments."
     },
     {
       "name": "block_id",

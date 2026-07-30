@@ -151,6 +151,20 @@
             ]
         },
         {
+            "name": "vehicle_crew",
+            "profile": "tabular-data-resource",
+            "path": "vehicle_crew.csv",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicle_crew.schema.json",
+            "sources": [
+                {
+                    "title": "Where did data come from?",
+                    "component": "Type of technology component, i.e. `CAD/AVL`",
+                    "product": "Product used.",
+                    "vendor": "Vendor selling product."
+                }
+            ]
+        },
+        {
             "name": "station_activities",
             "profile": "tabular-data-resource",
             "path": "station_activities.csv",

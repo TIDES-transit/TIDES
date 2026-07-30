@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `vehicle_crew` table for multiple crew members per trip, including mid-trip reliefs ([#220](https://github.com/TIDES-transit/TIDES/issues/220))
+
+### Changed
+
+- `trips_performed.operator_id` description clarified to reference vehicle_crew table for multi-operator trips ([#220](https://github.com/TIDES-transit/TIDES/issues/220))
+
 ## [1.0] - 2025-12-23
 
 ### Changed

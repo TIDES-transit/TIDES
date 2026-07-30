@@ -301,6 +301,7 @@
               "stop_visits",
               "train_cars",
               "trips_performed",
+              "vehicle_crew",
               "vehicle_locations",
               "vehicle_train_cars",
               "vehicles"
