@@ -53,7 +53,7 @@
       "name": "trip_stop_sequence",
       "type": "integer",
       "title": "Positive integer referencing stop_visits.trip_stop_sequence",
-      "description": "The actual order of stops visited within a performed trip. The values must start at 1 and must be consecutive along the trip. Required for vehicle-based events; optional for station-based or mobile device events not associated with a trip.",
+      "description": "The actual order of stops visited within a performed trip. The values must start at 1 and must be consecutive along the trip. Required for vehicle-based events; optional for station-based or mobile device events not associated with a trip.<br/> Example: A bus departs the first stop and detours around the second and third scheduled stops, visiting one unscheduled stop and resuming regular service at the 4th scheduled stop. The `scheduled_stop_sequence` is [1, null, 4], and the `trip_stop_sequence` is [1, 2, 3].",
       "constraints": {
         "minimum": 1
       }
@@ -132,7 +132,7 @@
       "name": "latitude",
       "type": "number",
       "title": "Latitude",
-      "description": "Degrees North, in the WGS-84 coordinate system. Used for mobile device events not at a fixed location. References GTFS-Realtime.",
+      "description": "Degrees North, in the WGS-84 coordinate system. Used for mobile device events not at a fixed location.",
       "constraints": {
         "minimum": -90,
         "maximum": 90
@@ -142,7 +142,7 @@
       "name": "longitude",
       "type": "number",
       "title": "Longitude",
-      "description": "Degrees East, in the WGS-84 coordinate system. Used for mobile device events not at a fixed location. References GTFS-Realtime.",
+      "description": "Degrees East, in the WGS-84 coordinate system. Used for mobile device events not at a fixed location.",
       "constraints": {
         "minimum": -180,
         "maximum": 180
