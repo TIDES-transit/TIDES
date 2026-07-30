@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `vehicles.vehicle_label` optional field for user-visible vehicle numbers displayed on exterior, distinguishing from internal `vehicle_id`. Aligns with GTFS-realtime VehicleDescriptor.label ([#240](https://github.com/TIDES-transit/TIDES/issues/240))
+
 ## [1.0] - 2025-12-23
 
 ### Changed
