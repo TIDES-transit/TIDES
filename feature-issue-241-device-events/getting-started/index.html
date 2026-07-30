@@ -5,10 +5,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://TIDES-transit.github.io/TIDES/feature-issue-241-device-events/samples/" rel="canonical"/>
+<link href="https://TIDES-transit.github.io/TIDES/feature-issue-241-device-events/getting-started/" rel="canonical"/>
+<link href="../datapackage/" rel="prev"/>
+<link href="../development/" rel="next"/>
 <link href="../assets/tides.ico" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
-<title>Sample Data - Transit Integrated Data Exchange Specification (TIDES) Suite</title>
+<title>Getting Started - Transit Integrated Data Exchange Specification (TIDES) Suite</title>
 <link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -23,7 +25,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#sample-data">
+<a class="md-skip" href="#getting-started">
           Skip to content
         </a>
 </div>
@@ -49,7 +51,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Sample Data
+              Getting Started
             
           </span>
 </div>
@@ -121,8 +123,8 @@
 
         </a>
 </li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../getting-started/">
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="./">
         
   
   
@@ -272,8 +274,20 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../getting-started/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
 <span class="md-ellipsis">
     
   
@@ -283,6 +297,32 @@
     
   </span>
 </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#for-leaders-and-executives">
+<span class="md-ellipsis">
+      
+        For leaders and executives
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#for-technical-staff">
+<span class="md-ellipsis">
+      
+        For technical staff
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../resources#sample-data">
@@ -489,78 +529,60 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="sample-data">Sample Data<a class="headerlink" href="#sample-data" title="Permanent link"> ¶</a></h1>
-<p>Sample data can be found in the <code>/samples</code> directory, with one directory for each data sample.  </p>
-<h2 id="samples-directory-organization">Samples Directory Organization<a class="headerlink" href="#samples-directory-organization" title="Permanent link"> ¶</a></h2>
-<p>Each TIDES Data Package example should follow the following directory structure, consistent with the structure of the <a href="https://specs.frictionlessdata.io/data-package/">Frictionless Data Package specification</a>, including:</p>
-<div class="highlight"><pre><span></span><code>unique-example-name
-<span class="w">  </span><span class="se">\T</span>IDES<span class="w">     </span><span class="c1"># Required. Data to be validated against the TIDES specification</span>
-<span class="w">  </span><span class="se">\d</span>atapackage.json<span class="w"> </span><span class="c1"># Required. [`tides-data-package`](#tides-data-package) metadata</span>
-<span class="w">  </span><span class="se">\r</span>aw<span class="w">      </span><span class="c1"># Optional. Data which the agency uses to create TIDES data</span>
-<span class="w">  </span><span class="se">\s</span>cripts<span class="w">  </span><span class="c1"># Optional. Scripts used to transform raw --&gt; TIDES</span>
-</code></pre></div>
-<h3 id="adding-examples">Adding Examples<a class="headerlink" href="#adding-examples" title="Permanent link"> ¶</a></h3>
-<p>We encourage the addition of examples, but please follow the following guidelines:</p>
-<ol>
-<li><em>No large files</em> This isn’t the place to store your data, rather to document some minimal examples.  The recommended size is 100-1000 records per file, more if absolutely required to reproduce an issue with the spec.  All individual files should be well under 50 MB.  </li>
-<li><em>Include Metadata</em> as specified in <a href="#data-package">tides-data-package</a>.</li>
-<li><em>Include a README.md</em> in the base folder of your example with an overview so that it can be included in the documentation.</li>
-</ol>
-<h3 id="data-package">Data Package<a class="headerlink" href="#data-package" title="Permanent link"> ¶</a></h3>
-<p>TIDES sample data must include a <a href="../datapackage/"><code>datapackage.json</code></a> in the format specified by the <a href="http://github.com/TIDES-transit/TIDES/tree/HEAD/spec/tides-datapackage-profile.json"><code>tides-data-package</code> json schema</a> (an extension of the <a href="https://specs.frictionlessdata.io/data-package/">frictionless data package</a>).  </p>
-<p>See:</p>
+<h1 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link"> ¶</a></h1>
+<blockquote>
+<p>[!NOTE]
+If you would like to participate in TIDES community calls or subscribe for community updates, you can sign up via the <a href="https://docs.google.com/forms/d/e/1FAIpQLSeb-YNZhnkn4PQ2yV25KvHJzyo40JtXPaTTWSLpDSRrwDpfEA/viewform">TIDES Community Interest Form</a>.</p>
+</blockquote>
+<p>If you are interested in adopting TIDES at your transit agency or other organization, this page can help you get started. </p>
+<h2 id="for-leaders-and-executives">For leaders and executives<a class="headerlink" href="#for-leaders-and-executives" title="Permanent link"> ¶</a></h2>
+<p>If you are a leader at an organization and you want your staff to start working on a TIDES adoption project, you will want to identify:</p>
 <ul>
-<li><a href="../datapackage/">Full documentation on the <code>tides-data-package</code></a></li>
-<li><a href="http://github.com/TIDES-transit/TIDES/tree/HEAD/samples/template/TIDES/datapackage.json">Example <code>tides-data-package</code> file</a></li>
+<li>
+<p><strong>How TIDES aligns with your organization’s strategic priorities or initiatives</strong> <br/>
+   TIDES can help with a variety of different use cases, from laying the foundation for a data warehouse to streamlining NTD reporting to preparing for an operational system migration. Which use case is most important for your organization? This will help set the technical direction and success criteria. For more information on general use cases for TIDES, see the <a href="https://drive.google.com/file/d/1FeTWyRKnuIdj-SwxEiO8-xtUZQ_E0XzD/view">“TIDES: Transit Data Pipelines, Not Silos”</a> presentation. For more details on selected use cases, see <a href="../resources/#use-case-profiles">TIDES use case profiles</a>.</p>
+</li>
+<li>
+<p><strong>Technical feasibility</strong> <br/>
+  A technical subject matter expert (someone with familiarity with operational data and/or analytics at your organization) can review <a href="#for-technical-staff">the section below</a> to assess your organization’s technical readiness and approach.</p>
+</li>
+<li>
+<p><strong>Resourcing</strong> <br/>
+  Once you have a sense for the technical feasibility, you can determine the right implementation pathway for your organization, whether that be procurement requirements for vendors, in-house work, consultant support, or a mix. </p>
+</li>
 </ul>
-<h3 id="data-validation">Data validation<a class="headerlink" href="#data-validation" title="Permanent link"> ¶</a></h3>
-<p>Data with a valid <a href="#data-package"><code>datapackage.json</code></a> can be easily validated using the <a href="https://framework.frictionlessdata.io/">frictionless framework</a>, which can be installed and invoked as follows:</p>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>frictionless
-frictionless<span class="w"> </span>validate<span class="w"> </span>--schema-sync<span class="w"> </span>path/to/your/datapackage.json
-</code></pre></div>
-<p>Alternatively, we also provide a wrapper script to provide some additional flexibility and options.</p>
-<p>Usage: <code>bin/validate-datapackage [-v remote_spec_ref | -l local_spec_path] [-d dataset_path]</code></p>
+<h2 id="for-technical-staff">For technical staff<a class="headerlink" href="#for-technical-staff" title="Permanent link"> ¶</a></h2>
+<p>If you are a technical staff member getting started on a TIDES implementation, you will need the following:</p>
 <ul>
-<li><code>-r remote_spec_ref</code>: Optional. Specify the ref name of the GitHub repository for validating agianst
-    a remote profile. Should not be used with -l option. Example: <code>-r main</code></li>
-<li><code>-l local_spec_path</code>: Optional. Specify the path of the local schema directory.
-    Default is ‘spec’. Is only used if remote_spec_ref = local.</li>
-<li><code>-d dataset_path</code>: Optional. Specify the path of the TIDES datapackage.json.
-    Default is the current directory.</li>
-</ul>
-<p>Key usage examples:</p>
+<li>
+<p><strong>Requirements for your use case (information gathered from your stakeholders)</strong> <br/>
+  What do you need TIDES to do? The specific TIDES data that you need to produce and the format that it takes should be dictated by the use case. “Adopting TIDES” does not have to mean producing every single TIDES table at the same time. For example, NTD ridership reporting might dictate a different approach than a stop-level on-time performance dashboard. For more information on selected use cases, see <a href="../resources/#use-case-profiles">TIDES use case profiles</a>. Example requirements to consider:  </p>
 <ul>
-<li><code>bin/validate-datapackage -l spec -d samples/&lt;my_samples&gt;/TIDES</code>: Validate my sample data to a version of the spec located in the <code>/spec</code> directory.</li>
-<li><code>bin/validate-datapackage -r main -d samples/&lt;my_samples&gt;/TIDES</code>: Validate my sample data to the canonical version of the TIDES spec.</li>
-<li><code>bin/validate-datapackage -r v1.0 -d samples/&lt;my_samples&gt;/TIDES</code>: Validate my sample data to v1.0 of the spec.</li>
-<li><code>bin/validate-datapackage -r develop -d samples/&lt;my_samples&gt;/TIDES</code>: Validate my sample data to the current <code>develop</code> branch of the TIDES spc.</li>
+<li>Data scope and features (what TIDES tables to produce and what type of analysis or reporting they need to support)  </li>
+<li>Data format / access (how will the TIDES data be accessed by the downstream users?)  </li>
+<li>Update frequency   </li>
+<li>Alignment with other technical initiatives (for example, will this TIDES-based approach replace an existing workflow, or produce something net-new? Are new data tools being deployed at your organization that can be leveraged?)  </li>
+<li>Cybersecurity and compliance (does the TIDES data you will produce contain any data that is considered PII or otherwise sensitive according to your organization’s policies? If so, what are the requirements for working with that data?)</li>
 </ul>
-<p>If you <strong>only</strong> want to validate your <code>datapackage.json</code> file and not the datapackage as a whole, you can run the script <code>bin/validate-datapackage-to-profile</code> instead with the same options. Note that this is also run as a part of <code>validate-datapackage</code>.</p>
-<h4 id="specific-files">Specific files<a class="headerlink" href="#specific-files" title="Permanent link"> ¶</a></h4>
-<p>Specific files can be validated by running the frictionless framework against them and their corresponding schemas as follows:</p>
-<div class="highlight"><pre><span></span><code>frictionless<span class="w"> </span>validate<span class="w"> </span>vehicles.csv<span class="w"> </span>--schema<span class="w"> </span>https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicles.schema.json
-</code></pre></div>
-<h4 id="continuous-data-validation">Continuous Data Validation<a class="headerlink" href="#continuous-data-validation" title="Permanent link"> ¶</a></h4>
-<p>Sample data in the <code>\TIDES</code> subdirectories of each sample is validated upon a push action to the main repository.</p>
-<h2 id="data-list">Data List<a class="headerlink" href="#data-list" title="Permanent link"> ¶</a></h2>
-<table>
-<thead>
-<tr>
-<th><em>Sample</em>*</th>
-<th><strong>Agency</strong></th>
-<th><strong>Resources</strong></th>
-<th>*<em>Vendors</em></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+</li>
+<li>
+<p><strong>Assess technical infrastructure</strong> <br/>
+  Adopting TIDES does not require any specific tools or technologies, but it does require the technical capacity to ingest data, store it, transform it, and serve it to downstream systems (e.g., a business intelligence tool). Organizations can ingest, produce, or save TIDES in existing data infrastructure, or pair TIDES adoption with the deployment of new infrastructure and tools, depending on their needs and goals. For information on technical architecture considerations associated with TIDES, see <a href="../resources/#implementation-approaches-technical-architecture">Implementation &amp; Technical Architecture Guidance</a>. For example code from other implementations, see <a href="../resources/#example-implementations-and-code">Implementation &amp; Code Examples</a>.</p>
+</li>
+<li>
+<p><strong>Assess source data availability</strong> <br/>
+  TIDES is a data format and to leverage it you will need access to the underlying data types from operational source systems: passenger counts, vehicle locations, or fare transactions. Once you have identified what TIDES table(s) are needed for your use case, you will need to ensure that you have access to the relevant source data, and that it meets your needs:</p>
+<ul>
+<li>Does the source provide the core columns for the TIDES table(s) you want to produce? Compare the source data columns with the <a href="../architecture/#files-in-specification">TIDES table documentation</a> and ensure it provides the required attributes. </li>
+<li>Do you have access to the location where the data is stored, and can you transfer it to the data environment where you will be working with it? </li>
+<li>Does the data update at the required frequency, and does your data infrastructure support the necessary update frequency?</li>
+</ul>
+</li>
+<li>
+<p><strong>Resourcing requirements</strong> <br/>
+  Each organization will have a different approach to resourcing their TIDES initiatives. The previous requirements-gathering steps should clarify the scope of work to be done, and can then inform how that work can be performed, whether that be in-house, change or task orders to existing vendors, securing consultant support, or some combination. </p>
+</li>
+</ul>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>

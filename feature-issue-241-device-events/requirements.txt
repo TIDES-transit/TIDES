@@ -10,4 +10,5 @@ mkdocs-mermaid2-plugin
 mkdocs-redirects
 pandas
 pyyaml
+setuptools<81
 tabulate
