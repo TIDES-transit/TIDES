@@ -165,10 +165,10 @@
             ]
         },
         {
-            "name": "passenger_events",
+            "name": "device_events",
             "profile": "tabular-data-resource",
-            "path": "passenger_events.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/passenger_events.schema.json",
+            "path": "device_events.csv",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/device_events.schema.json",
             "sources": [
                 {
                     "title": "Where did data come from?",
