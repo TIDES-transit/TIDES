@@ -1,0 +1,886 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://TIDES-transit.github.io/TIDES/feature-v2-migration-guide/migration-v1-to-v2/" rel="canonical"/>
+<link href="../datapackage/" rel="prev"/>
+<link href="../getting-started/" rel="next"/>
+<link href="../assets/tides.ico" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<title>Migrating to v2.0 - Transit Integrated Data Exchange Specification (TIDES) Suite</title>
+<link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet"/>
+<link href="../stylesheets/tides.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="custom" data-md-color-primary="custom" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#migrating-from-tides-v10-to-v20">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<div data-md-color-scheme="default" data-md-component="outdated" hidden="">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Transit Integrated Data Exchange Specification (TIDES) Suite" class="md-header__button md-logo" data-md-component="logo" href=".." title="Transit Integrated Data Exchange Specification (TIDES) Suite">
+<img alt="logo" src="../assets/bus-surf.svg"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Transit Integrated Data Exchange Specification (TIDES) Suite
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Migrating to v2.0
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/TIDES-transit/TIDES" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="..">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../architecture/">
+          
+  
+  
+  Specification
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../getting-started/">
+        
+  
+  
+    
+  
+  Getting Started
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../resources#sample-data">
+        
+  
+  
+    
+  
+  Sample Data
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../development/">
+          
+  
+  
+  Contributing
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../governance/">
+          
+  
+  
+  Governance
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../resources/">
+        
+  
+  
+    
+  
+  Resources
+
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Transit Integrated Data Exchange Specification (TIDES) Suite" class="md-nav__button md-logo" data-md-component="logo" href=".." title="Transit Integrated Data Exchange Specification (TIDES) Suite">
+<img alt="logo" src="../assets/bus-surf.svg"/>
+</a>
+    Transit Integrated Data Exchange Specification (TIDES) Suite
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/TIDES-transit/TIDES" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-ellipsis">
+    
+  
+    Specification
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Specification
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../architecture/">
+<span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tables/">
+<span class="md-ellipsis">
+    
+  
+    Table Schemas
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../datapackage/">
+<span class="md-ellipsis">
+    
+  
+    Data Package
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Migrating to v2.0
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Migrating to v2.0
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#summary-of-changes">
+<span class="md-ellipsis">
+      
+        Summary of changes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#breaking-changes">
+<span class="md-ellipsis">
+      
+        Breaking changes
+      
+    </span>
+</a>
+<nav aria-label="Breaking changes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#passenger_events-is-now-device_events">
+<span class="md-ellipsis">
+      
+        passenger_events is now device_events
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#event_type-values-are-now-snake_case">
+<span class="md-ellipsis">
+      
+        event_type values are now snake_case
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#duration-fields-renamed-in-stop_visits">
+<span class="md-ellipsis">
+      
+        Duration fields renamed in stop_visits
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vehicles-vehicle-groups-assignments-and-consists">
+<span class="md-ellipsis">
+      
+        Vehicles, vehicle groups, assignments, and consists
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#new-optional-capabilities">
+<span class="md-ellipsis">
+      
+        New optional capabilities
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#non-normative-clarifications">
+<span class="md-ellipsis">
+      
+        Non-normative clarifications
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#migration-checklist-for-producers">
+<span class="md-ellipsis">
+      
+        Migration checklist for producers
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#migration-checklist-for-consumers">
+<span class="md-ellipsis">
+      
+        Migration checklist for consumers
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../getting-started/">
+<span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../resources#sample-data">
+<span class="md-ellipsis">
+    
+  
+    Sample Data
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Contributing
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../development/">
+<span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../documentation/">
+<span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Governance
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Governance
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../governance/">
+<span class="md-ellipsis">
+    
+  
+    Governance Structure
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../governance/policies/change-management/">
+<span class="md-ellipsis">
+    
+  
+    Change Management
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Other Policies
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Other Policies
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../governance/policies/code-of-conduct/">
+<span class="md-ellipsis">
+    
+  
+    Code of conduct
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../governance/policies/CLA/">
+<span class="md-ellipsis">
+    
+  
+    Contributor license agreement
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../governance/actions/">
+<span class="md-ellipsis">
+    
+  
+    Board Actions
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../governance/meetings/">
+<span class="md-ellipsis">
+    
+  
+    Board Meetings
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../resources/">
+<span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="migrating-from-tides-v10-to-v20">Migrating from TIDES v1.0 to v2.0<a class="headerlink" href="#migrating-from-tides-v10-to-v20" title="Permanent link"> ¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Draft</p>
+<p>This guide is a working draft. It reflects the changes staged for the v2.0 release and will be finalized when v2.0 is released. Field names and details below may change during review.</p>
+</div>
+<p>TIDES v2.0 is a major release containing backwards-incompatible changes. This guide summarizes every change from v1.0 and what producers and consumers of TIDES data need to do to migrate.</p>
+<h2 id="summary-of-changes">Summary of changes<a class="headerlink" href="#summary-of-changes" title="Permanent link"> ¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Type</th>
+<th>Affected tables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>passenger_events</code> renamed to <code>device_events</code> with expanded scope</td>
+<td>Breaking</td>
+<td><code>passenger_events</code> → <code>device_events</code></td>
+</tr>
+<tr>
+<td><code>event_type</code> enumeration values renamed to <code>snake_case</code></td>
+<td>Breaking</td>
+<td><code>device_events</code></td>
+</tr>
+<tr>
+<td>Duration fields renamed with explicit <code>_duration</code> suffix</td>
+<td>Breaking</td>
+<td><code>stop_visits</code></td>
+</tr>
+<tr>
+<td>Vehicle attributes normalized into <code>vehicle_groups</code>; <code>train_cars</code> and <code>vehicle_train_cars</code> removed; <code>vehicle_assignments</code> and <code>consist_vehicles</code> added</td>
+<td>Breaking</td>
+<td><code>vehicles</code>, <code>train_cars</code>, <code>vehicle_train_cars</code>, and new tables</td>
+</tr>
+<tr>
+<td><code>vehicle_direction</code> field added to operational tables</td>
+<td>New optional field</td>
+<td><code>vehicle_locations</code>, <code>stop_visits</code>, <code>trips_performed</code>, <code>fare_transactions</code>, <code>device_events</code></td>
+</tr>
+<tr>
+<td><code>vehicle_label</code> field added</td>
+<td>New optional field</td>
+<td><code>vehicles</code></td>
+</tr>
+<tr>
+<td><code>vehicle_crew</code> supporting table added</td>
+<td>New optional table</td>
+<td><code>vehicle_crew</code></td>
+</tr>
+<tr>
+<td><code>device_status</code> supporting table added</td>
+<td>New optional table</td>
+<td><code>device_status</code></td>
+</tr>
+<tr>
+<td><code>event_count</code> usage and APC data guidance clarified</td>
+<td>Non-normative</td>
+<td><code>device_events</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="breaking-changes">Breaking changes<a class="headerlink" href="#breaking-changes" title="Permanent link"> ¶</a></h2>
+<h3 id="passenger_events-is-now-device_events"><code>passenger_events</code> is now <code>device_events</code><a class="headerlink" href="#passenger_events-is-now-device_events" title="Permanent link"> ¶</a></h3>
+<p>The <code>passenger_events</code> table is renamed to <code>device_events</code> and generalized from a vehicle-centered to a device-centered model. The table now covers three kinds of measurement devices:</p>
+<ol>
+<li><strong>Vehicle-mounted devices</strong> (the existing APC use case)</li>
+<li><strong>Station-based devices</strong> (fare gates, turnstiles)</li>
+<li><strong>Mobile devices</strong> (handheld validators used by fare inspectors and conductors)</li>
+</ol>
+<p>To migrate:</p>
+<ul>
+<li>Rename the file <code>passenger_events.csv</code> to <code>device_events.csv</code> and update the resource entry in <code>datapackage.json</code>.</li>
+<li>Rename the primary key column <code>passenger_event_id</code> to <code>device_event_id</code>.</li>
+<li>Populate <code>device_id</code> for every record; it is now <strong>required</strong> (it was optional in v1.0). Every event must be traceable to a device in the <code>devices</code> table.</li>
+<li><code>vehicle_id</code> and <code>trip_stop_sequence</code> are now <strong>optional</strong> (they were required in v1.0). Existing vehicle-based records can keep them populated; station-based and mobile device events may leave them empty.</li>
+<li>New optional fields are available: <code>employee_id</code> (for mobile/handheld devices), <code>latitude</code>, and <code>longitude</code> (for mobile device events not at a fixed location).</li>
+<li>New <code>event_type</code> values <code>passenger_entry</code> and <code>passenger_exit</code> support station fare-gate and turnstile events.</li>
+</ul>
+<h3 id="event_type-values-are-now-snake_case"><code>event_type</code> values are now <code>snake_case</code><a class="headerlink" href="#event_type-values-are-now-snake_case" title="Permanent link"> ¶</a></h3>
+<p>Descriptive-sentence enumeration values in <code>event_type</code> are replaced with <code>snake_case</code> identifiers. Producers must map values as follows:</p>
+<table>
+<thead>
+<tr>
+<th>v1.0 value</th>
+<th>v2.0 value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Vehicle arrived at stop</code></td>
+<td><code>vehicle_arrived</code></td>
+</tr>
+<tr>
+<td><code>Vehicle departed stop</code></td>
+<td><code>vehicle_departed</code></td>
+</tr>
+<tr>
+<td><code>Door opened</code></td>
+<td><code>door_opened</code></td>
+</tr>
+<tr>
+<td><code>Door closed</code></td>
+<td><code>door_closed</code></td>
+</tr>
+<tr>
+<td><code>Passenger boarded</code></td>
+<td><code>passenger_boarded</code></td>
+</tr>
+<tr>
+<td><code>Passenger alighted</code></td>
+<td><code>passenger_alighted</code></td>
+</tr>
+<tr>
+<td><code>Kneel was engaged</code></td>
+<td><code>kneel_engaged</code></td>
+</tr>
+<tr>
+<td><code>Kneel was disengaged</code></td>
+<td><code>kneel_disengaged</code></td>
+</tr>
+<tr>
+<td><code>Ramp was deployed</code></td>
+<td><code>ramp_deployed</code></td>
+</tr>
+<tr>
+<td><code>Ramp was raised</code></td>
+<td><code>ramp_raised</code></td>
+</tr>
+<tr>
+<td><code>Ramp deployment failed</code></td>
+<td><code>ramp_failed</code></td>
+</tr>
+<tr>
+<td><code>Lift was deployed</code></td>
+<td><code>lift_deployed</code></td>
+</tr>
+<tr>
+<td><code>Lift was raised</code></td>
+<td><code>lift_raised</code></td>
+</tr>
+<tr>
+<td><code>Individual bike boarded</code></td>
+<td><code>bike_boarded</code></td>
+</tr>
+<tr>
+<td><code>Individual bike alighted</code></td>
+<td><code>bike_alighted</code></td>
+</tr>
+<tr>
+<td><code>Bike rack deployed</code></td>
+<td><code>bike_rack_deployed</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="duration-fields-renamed-in-stop_visits">Duration fields renamed in <code>stop_visits</code><a class="headerlink" href="#duration-fields-renamed-in-stop_visits" title="Permanent link"> ¶</a></h3>
+<p>Three fields holding durations are renamed with an explicit <code>_duration</code> suffix to distinguish them from timestamps:</p>
+<table>
+<thead>
+<tr>
+<th>v1.0 field</th>
+<th>v2.0 field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kneel_deployed_time</code></td>
+<td><code>kneel_deployed_duration</code></td>
+</tr>
+<tr>
+<td><code>ramp_deployed_time</code></td>
+<td><code>ramp_deployed_duration</code></td>
+</tr>
+<tr>
+<td><code>lift_deployed_time</code></td>
+<td><code>lift_deployed_duration</code></td>
+</tr>
+</tbody>
+</table>
+<p>Field semantics are unchanged; only the names change.</p>
+<h3 id="vehicles-vehicle-groups-assignments-and-consists">Vehicles, vehicle groups, assignments, and consists<a class="headerlink" href="#vehicles-vehicle-groups-assignments-and-consists" title="Permanent link"> ¶</a></h3>
+<p>Vehicle representation is restructured to normalize attributes and properly support rail consists:</p>
+<ul>
+<li><strong><code>vehicle_groups</code> (new):</strong> shared attributes (seated capacity, full capacity, wheelchair capacity, bike capacity) for a group of vehicles of the same type. Attribute fields move here from <code>vehicles</code> and <code>train_cars</code>.</li>
+<li><strong><code>vehicles</code> (repurposed):</strong> the static or slowly changing list of physical vehicles, buses and train cars alike, each referencing a <code>vehicle_group_id</code> for its attributes, plus identifying information (<code>vehicle_label</code>, <code>license_plate</code>, in-service <code>start_date</code> and <code>end_date</code>).</li>
+<li><strong><code>vehicle_assignments</code> (new, optional):</strong> the daily record of a single vehicle or a consist that operational data can be associated with.</li>
+<li><strong><code>consist_vehicles</code> (new):</strong> the individual cars that make up a consist, with order and orientation. Replaces <code>vehicle_train_cars</code>.</li>
+<li><strong><code>train_cars</code> and <code>vehicle_train_cars</code> (removed):</strong> train cars are now records in <code>vehicles</code>; consist membership lives in <code>consist_vehicles</code>.</li>
+<li><strong><code>vehicle_direction</code> (new, optional):</strong> added to <code>vehicle_locations</code>, <code>stop_visits</code>, <code>trips_performed</code>, <code>fare_transactions</code>, and <code>device_events</code> to represent the direction a train is moving during operation.</li>
+</ul>
+<p>To migrate:</p>
+<ul>
+<li>Split vehicle attribute data out of <code>vehicles</code> and <code>train_cars</code> into <code>vehicle_groups</code> records, one per distinct vehicle type.</li>
+<li>Combine bus and train car records into a single <code>vehicles</code> table, each referencing its <code>vehicle_group_id</code>.</li>
+<li>Convert <code>vehicle_train_cars</code> records into <code>consist_vehicles</code> records with <code>car_order</code> and <code>car_orientation</code>.</li>
+<li>Remove <code>train_cars.csv</code> and <code>vehicle_train_cars.csv</code> from the data package and add the new tables to <code>datapackage.json</code>.</li>
+</ul>
+<h2 id="new-optional-capabilities">New optional capabilities<a class="headerlink" href="#new-optional-capabilities" title="Permanent link"> ¶</a></h2>
+<p>These additions are backwards-compatible; adopting them is optional.</p>
+<ul>
+<li><strong><code>vehicle_crew</code> table:</strong> supports multiple crew members per trip, including mid-trip reliefs, with <code>crew_role</code> and start/end times. <code>trips_performed.operator_id</code> remains for the single-operator case.</li>
+<li><strong><code>device_status</code> table:</strong> tracks device availability over time (<code>status_type</code>, <code>status_reason</code>) so consumers can distinguish data gaps caused by device outages from real service patterns.</li>
+<li><strong><code>vehicle_label</code> field:</strong> separates the user-visible vehicle number from the internal <code>vehicle_id</code>. Aligns with GTFS-realtime <code>VehicleDescriptor.label</code>.</li>
+</ul>
+<h2 id="non-normative-clarifications">Non-normative clarifications<a class="headerlink" href="#non-normative-clarifications" title="Permanent link"> ¶</a></h2>
+<ul>
+<li><code>event_count</code> usage and APC data guidance are clarified in the <code>device_events</code> table documentation. No data changes are required.</li>
+</ul>
+<h2 id="migration-checklist-for-producers">Migration checklist for producers<a class="headerlink" href="#migration-checklist-for-producers" title="Permanent link"> ¶</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Rename <code>passenger_events.csv</code> to <code>device_events.csv</code>; rename <code>passenger_event_id</code> to <code>device_event_id</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Populate <code>device_id</code> on all device events and register devices in the <code>devices</code> table.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Map <code>event_type</code> values to their <code>snake_case</code> equivalents.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Rename the three <code>stop_visits</code> duration fields.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Restructure vehicle data into <code>vehicles</code> + <code>vehicle_groups</code> (+ <code>vehicle_assignments</code> / <code>consist_vehicles</code> for rail).</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Remove <code>train_cars.csv</code> and <code>vehicle_train_cars.csv</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Update <code>datapackage.json</code> resource entries and the profile reference to the v2.0 spec.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Re-validate the data package against the v2.0 schemas.</li>
+</ul>
+<h2 id="migration-checklist-for-consumers">Migration checklist for consumers<a class="headerlink" href="#migration-checklist-for-consumers" title="Permanent link"> ¶</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Update queries and joins from <code>passenger_events</code> to <code>device_events</code>; handle records where <code>vehicle_id</code> is empty (station and mobile device events).</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Update any <code>event_type</code> string matching to the <code>snake_case</code> values.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Update references to the renamed <code>stop_visits</code> duration fields.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Source vehicle attributes (capacities) from <code>vehicle_groups</code> via <code>vehicles.vehicle_group_id</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Replace <code>train_cars</code> / <code>vehicle_train_cars</code> joins with <code>vehicles</code> / <code>consist_vehicles</code>.</li>
+</ul>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+<footer>
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a href="https://github.com/TIDES-transit/TIDES/" property="dct:title" rel="cc:attributionURL">TIDES Project</a> by <span property="cc:attributionName">TIDES Board of Directors</span> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" rel="license noopener noreferrer" style="display:inline-block;" target="_blank">CC BY 4.0<img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"/><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"/></a></p>
+</div>
+</div>
+</div>
+</footer>
+</div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.tabs", "navigation.expand", "toc.integrate", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+<script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script src="https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js"></script>
+</body>
+</html>
