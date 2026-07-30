@@ -1,0 +1,611 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://TIDES-transit.github.io/TIDES/v2-migration-guide/implementations/mountain-line-mutd/" rel="canonical"/>
+<link href="../../assets/tides.ico" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<title>Mountain Line (MUTD) - Transit Integrated Data Exchange Specification (TIDES) Suite</title>
+<link href="../../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet"/>
+<link href="../../stylesheets/tides.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="custom" data-md-color-primary="custom" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#mountain-line-mutd">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<div data-md-color-scheme="default" data-md-component="outdated" hidden="">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Transit Integrated Data Exchange Specification (TIDES) Suite" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Transit Integrated Data Exchange Specification (TIDES) Suite">
+<img alt="logo" src="../../assets/bus-surf.svg"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Transit Integrated Data Exchange Specification (TIDES) Suite
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Mountain Line (MUTD)
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/TIDES-transit/TIDES" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../architecture/">
+          
+  
+  
+  Specification
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../getting-started/">
+        
+  
+  
+    
+  
+  Getting Started
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../resources#sample-data">
+        
+  
+  
+    
+  
+  Sample Data
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../development/">
+          
+  
+  
+  Contributing
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../governance/">
+          
+  
+  
+  Governance
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../resources/">
+        
+  
+  
+    
+  
+  Resources
+
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Transit Integrated Data Exchange Specification (TIDES) Suite" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Transit Integrated Data Exchange Specification (TIDES) Suite">
+<img alt="logo" src="../../assets/bus-surf.svg"/>
+</a>
+    Transit Integrated Data Exchange Specification (TIDES) Suite
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/TIDES-transit/TIDES" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Specification
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Specification
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/">
+<span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tables/">
+<span class="md-ellipsis">
+    
+  
+    Table Schemas
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../datapackage/">
+<span class="md-ellipsis">
+    
+  
+    Data Package
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../migration-v1-to-v2/">
+<span class="md-ellipsis">
+    
+  
+    Migrating to v2.0
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../getting-started/">
+<span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../resources#sample-data">
+<span class="md-ellipsis">
+    
+  
+    Sample Data
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Contributing
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../development/">
+<span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../documentation/">
+<span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Governance
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Governance
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../governance/">
+<span class="md-ellipsis">
+    
+  
+    Governance Structure
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../governance/policies/change-management/">
+<span class="md-ellipsis">
+    
+  
+    Change Management
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Other Policies
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Other Policies
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../governance/policies/code-of-conduct/">
+<span class="md-ellipsis">
+    
+  
+    Code of conduct
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../governance/policies/CLA/">
+<span class="md-ellipsis">
+    
+  
+    Contributor license agreement
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../governance/actions/">
+<span class="md-ellipsis">
+    
+  
+    Board Actions
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../governance/meetings/">
+<span class="md-ellipsis">
+    
+  
+    Board Meetings
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../resources/">
+<span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="mountain-line-mutd">Mountain Line (MUTD)<a class="headerlink" href="#mountain-line-mutd" title="Permanent link"> ¶</a></h1>
+<p>Mountain Line is the <a href="https://mountainline.com/about/">Missoula Urban Transportation District (MUTD)</a>, the public transit agency serving Missoula, Montana. Mountain Line operates 29 fixed-route buses and 17 paratransit vehicles, has been fare-free since January 2015, and runs a near-fully-electric fleet. It was named the 2025 CTAA Small Urban Agency of the Year and the 2021 APTA Outstanding Public Transportation System (top system under 4 million trips in North America).</p>
+<p>This subfolder is Mountain Line’s entry in <code>tides-implementations</code>. Its primary purpose is to point to the open-source TIDES tooling being developed for Mountain Line’s data pipeline, so that other small and mid-sized agencies can fork, adapt, or learn from it.</p>
+<h2 id="who-to-contact">Who to contact<a class="headerlink" href="#who-to-contact" title="Permanent link"> ¶</a></h2>
+<p>Garin Wally — Transit Analyst, Mountain Line
+<a href="mailto:gwally@mountainline.com">gwally@mountainline.com</a> · GitHub: <a href="https://github.com/WindfallLabs">@WindfallLabs</a></p>
+<h2 id="whats-being-implemented">What’s being implemented<a class="headerlink" href="#whats-being-implemented" title="Permanent link"> ¶</a></h2>
+<p>Mountain Line is building a Python-based “analyst on a laptop” implementation pattern for TIDES — Level 0 in the <a href="https://tides-transit.org/main/resources/">TIDES Common Architecture Framework</a>. The work in progress includes:</p>
+<ul>
+<li><strong>NTD reporting pipeline.</strong> Co-designed with MobilityData as the small-urban anchor of a multi-agency NTD reporting pilot framework (alongside WMATA’s large-agency pilot). The framework runs TIDES-derived NTD metrics in parallel with existing reporting for FY2027, with phased coverage of fixed-route monthly metrics, demand-response metrics, and full annual rollup.</li>
+<li><strong>Open-source schema validation library.</strong> <a href="https://github.com/WindfallLabs/polartides"><code>polar-tides</code></a> — a Python library for validating <a href="https://pola.rs/">Polars</a> DataFrames against TIDES table schemas, built on <a href="https://github.com/Quantco/dataframely"><code>dataframely</code></a>. All TIDES tables covered as <code>dataframely.Schema</code> classes with column types, nullability constraints, and value-enforcement rules for enum fields. Released as alpha (v0.1.0a1) under the MIT License.</li>
+<li><strong>Open-source orchestration library.</strong> <a href="https://github.com/WindfallLabs/little_pipelines"><code>little_pipelines</code></a> — a minimal-dependency Python library for building and executing data pipelines. Decorator-based task definitions with automatic dependency resolution via <code>graphlib.TopologicalSorter</code>. Targets the analyst-on-a-laptop end of the spectrum, intentionally distinct from enterprise tools (Airflow, Prefect, Dagster, dbt). MIT-licensed.</li>
+</ul>
+<h2 id="data-sources-being-integrated">Data sources being integrated<a class="headerlink" href="#data-sources-being-integrated" title="Permanent link"> ¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Vendor / system</th>
+<th>TIDES tables fed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CAD/AVL</td>
+<td>ETA Transit (replacing Clever)</td>
+<td><code>vehicle_locations</code>, <code>trips_performed</code></td>
+</tr>
+<tr>
+<td>APC</td>
+<td>Hardware on every fixed-route bus, statistically processed by Swiftly</td>
+<td><code>passenger_events</code>, <code>stop_visits</code></td>
+</tr>
+<tr>
+<td>Demand-response</td>
+<td>Via Transportation (<code>Ride the Line — Missoula</code>)</td>
+<td><code>trips_performed</code>, derived DR metrics</td>
+</tr>
+<tr>
+<td>Maintenance / fleet</td>
+<td>RTA (Ron Turley Associates)</td>
+<td>supporting reference data</td>
+</tr>
+<tr>
+<td>Schedule</td>
+<td>Self-published GTFS / GTFS-RT</td>
+<td>linkage via <code>trip_id_scheduled</code>, <code>stop_id</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="whats-published-here-and-whats-not">What’s published here (and what’s not)<a class="headerlink" href="#whats-published-here-and-whats-not" title="Permanent link"> ¶</a></h2>
+<p>This subfolder is currently a <strong>pointer entry</strong>. The active development happens in the linked external repositories above; Mountain Line’s working code lives there rather than being copied into this repo. As the implementation matures, additional materials may be added here directly — sample pipeline configurations, transformation worked examples, a case study writeup, or contributions of MUTD-specific reference data once it’s appropriate to share publicly.</p>
+<p>If you’re an analyst at a small or mid-sized agency exploring TIDES, the <code>polar-tides</code> and <code>little_pipelines</code> repos linked above are the most useful starting points. Both are MIT-licensed and intentionally minimal in their dependencies.</p>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link"> ¶</a></h2>
+<p>Copyright 2026 Missoula Urban Transportation District</p>
+<p>Licensed under the Apache License, Version 2.0 (the “License”);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+<div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>http://www.apache.org/licenses/LICENSE-2.0
+</code></pre></div></td></tr></table></div>
+<p>Note that the linked external libraries (<code>polar-tides</code>, <code>little_pipelines</code>) are licensed independently by their author under the MIT License. Apache 2.0 and MIT are both permissive licenses and are fully compatible.</p>
+<h2 id="related-resources">Related resources<a class="headerlink" href="#related-resources" title="Permanent link"> ¶</a></h2>
+<ul>
+<li><a href="https://github.com/TIDES-transit/TIDES">TIDES specification</a></li>
+<li><a href="https://tides-transit.org">TIDES Common Architecture Framework</a></li>
+<li><a href="https://mountainline.com/about/">Mountain Line website</a></li>
+<li><a href="https://github.com/WindfallLabs/polartides"><code>polar-tides</code> on GitHub</a></li>
+<li><a href="https://github.com/WindfallLabs/little_pipelines"><code>little_pipelines</code> on GitHub</a></li>
+</ul>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+<footer>
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a href="https://github.com/TIDES-transit/TIDES/" property="dct:title" rel="cc:attributionURL">TIDES Project</a> by <span property="cc:attributionName">TIDES Board of Directors</span> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" rel="license noopener noreferrer" style="display:inline-block;" target="_blank">CC BY 4.0<img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"/><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"/></a></p>
+</div>
+</div>
+</div>
+</footer>
+</div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.tabs", "navigation.expand", "toc.integrate", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+<script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script src="https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js"></script>
+</body>
+</html>
