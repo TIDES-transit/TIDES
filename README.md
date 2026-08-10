@@ -72,6 +72,28 @@ Those who want to help with the development of the TIDES specification should re
 
 Please add issues, bugs, and feature requests to [GitHub][github issues].
 
+## Building or Serving the site locally
+
+1. In Terminal, change the directory to where you would like the local clone of this repo to be installed.
+1. Ensure you have an up-to-date version of pip: 
+   - Linux: `pip install pip` or `pip install --upgrade pip`
+   - macOS: `pip3 install pip` or `pip3 install --upgrade pip`
+1. Clone this repository:
+   - `git clone https://github.com/TIDES-transit/TIDES.git`
+1. Change the directory to the cloned repository, and create & enable a Python virtual environment:
+   - `python3 -m venv venv`
+   - `source venv/bin/activate`
+1. Install dependencies:
+   - `pip3 install --force-reinstall -r requirements.txt`
+1. To run the site locally:
+   - `mkdocs serve`
+   - Then go to this address with any browser: `http://127.0.0.1:8000/TIDES/`
+1. To build the site locally only:
+   - `mkdocs build`
+   - the files will end up in the `/site` folder.
+1. Deactivate the Python virtual environment when done:
+   - `deactivate`
+
 ## Acknowledgment
 
 These data schemas and tool definitions developed here are based on the results of research conducted by the Transportation Research Board (TRB) of the National Academies of Science, Engineering, and Medicine (NASEM) under the Transit Cooperative Research Program (TCRP). This research is available at [the National Academies website][tcrp report].
