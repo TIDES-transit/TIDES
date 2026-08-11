@@ -1,1 +1,5 @@
 -r docs/requirements.txt
+frictionless
+jsonschema
+jsonschema-cli
+pre-commit
