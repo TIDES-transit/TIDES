@@ -144,9 +144,13 @@ The TIDES Project Governance and the roles within are detailed in the [TIDES gov
 
 ## Review and Approval Process
 
-The TIDES Board has final approval of all *normative* changes changes to the specificaiton and project governance. All Contributors are permitted and encouraged to discuss and comment on issues and pull requests and make recommendations for changes to the specification.  Contributions made as a pull request by Contributors which do not make any changes to the `/spec` or `/docs/governance` directories may be approved by a another Contributor if it passes the continuous integration tests.
+The TIDES Board has final approval of all *normative* changes to the specification and project governance. All Contributors are permitted and encouraged to discuss and comment on issues and pull requests and make recommendations for changes to the specification.  Contributions made as a pull request by Contributors which do not make any changes to the `/spec` or `/docs/governance` directories may be approved by another Contributor if it passes the continuous integration tests.
 
 Following v1.0, TIDES will adhere to this [change management and versioning policy][change-policy].
+
+### Merge Execution on `main`
+
+Review approvals and merge execution are separate steps. Approving reviews (including Code Owner reviews) satisfy the review requirements on a pull request. Execution of the merge into `main` is then performed by a bypass actor on the branch ruleset: the TIDES Board, the TIDES Manager's repository administrators, or an organization administrator. If your pull request targeting `main` is fully approved and GitHub still shows "Merging is blocked / Cannot update this protected ref," that is the ruleset working as intended, not an error; comment on the pull request to request merge execution. Direct pushes to `main` are not possible for anyone, including administrators; all changes land through approved pull requests.
 
 ## TIDES Code of Conduct
 
