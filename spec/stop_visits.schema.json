@@ -139,10 +139,7 @@
     {
       "name": "departure_load",
       "type": "integer",
-      "description": "Number of riders on the vehicle when departing the stop.",
-      "constraints": {
-        "minimum": 0
-      }
+      "description": "Number of riders on the vehicle when departing the stop. Negative values are permitted and may occur in unadjusted APC data, since passenger counts are probabilistic measurements; data producers should indicate when negative values are present and how they should be interpreted."
     },
     {
       "name": "door_open",
