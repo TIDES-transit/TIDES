@@ -21,13 +21,10 @@ jobs:
     - name: Set github reference as Slug environment variable
       run: |
         echo "Slug=$(echo "${{ github.head_ref }}" | sed "s/\//\-/g")" >> "$GITHUB_ENV"
-    - name: If no github.head_ref, use last chunk of github.ref as Slug
+    - name: If no github.head_ref, use github.ref_name as Slug
       if: github.head_ref == ''
       run: |
-        IFS="\/";
-        read -a strarr <<< "${{ github.ref }}";
-        last_ref="${strarr[${#strarr[*]}-1]}";
-        echo "Slug=$(echo $last_ref)" >> "$GITHUB_ENV"
+        echo "Slug=$(echo "${{ github.ref_name }}" | sed "s/\//\-/g")" >> "$GITHUB_ENV"
     - name: Document which reference
       run: echo "Running for reference ${{ env.Slug }}"
     - name: Set up Python
@@ -52,6 +49,10 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'pull_request' && github.event.pull_request.merged == false && github.event.pull_request.head.repo.full_name == github.repository }}
     steps:
+      - name: Set slug from head ref
+        id: slug
+        run: echo "slug=$(echo "${{ github.head_ref }}" | sed "s/\//\-/g")" >> "$GITHUB_OUTPUT"
+
       - uses: peter-evans/find-comment@v2
         id: fc
         with:
@@ -63,5 +64,5 @@ jobs:
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.number }}
-          body: "Documentation available at: [`http://tides-transit.github.io/TIDES/${{ github.head_ref }}`](http://tides-transit.github.io/TIDES/${{ github.head_ref }})"
+          body: "Documentation available at: [`http://tides-transit.github.io/TIDES/${{ steps.slug.outputs.slug }}`](http://tides-transit.github.io/TIDES/${{ steps.slug.outputs.slug }})"
           edit-mode: replace
