@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Removed `minimum: 0` constraint from `stop_visits.departure_load`, permitting negative values in unadjusted APC data where probabilistic counts produce them ([#270](https://github.com/TIDES-transit/TIDES/issues/270))
+- Removed `minimum: 0` constraint from `stop_visits.departure_load`. This field is often derived from observations of boardings and alightings that are subject to observation error and those errors may result in negative values ([#270](https://github.com/TIDES-transit/TIDES/issues/270))
 
 ## [1.0] - 2025-12-23
 
