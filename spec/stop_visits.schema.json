@@ -139,10 +139,7 @@
     {
       "name": "departure_load",
       "type": "integer",
-      "description": "Number of riders on the vehicle when departing the stop.",
-      "constraints": {
-        "minimum": 0
-      }
+      "description": "Number of riders on the vehicle when departing the stop. `departure_load` is typically derived from boardings and alightings and negative values are possible and permitted due to errors in the APC observations; data producers should document how negative values should be interpreted if present."
     },
     {
       "name": "door_open",
