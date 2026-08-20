@@ -1161,7 +1161,7 @@ schema standards.</p>
 <h3 id="station-activities">Station Activities<a class="headerlink" href="#station-activities" title="Permanent link"> ¶</a></h3>
 <p><em>station_activities.schema.json</em></p>
 <p>Summarized transactions, entries, and exits by stop or station and time period for each service date (for events not associated with a trip).</p>
-<p>Primary key: {<code>service_date</code>, <code>time_period_start</code>, <code>stop_id</code>, <code>time_period_end</code>}</p>
+<p>Primary key: {<code>time_period_start</code>, <code>time_period_end</code>, <code>stop_id</code>, <code>service_date</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1262,7 +1262,7 @@ schema standards.</p>
 <h3 id="stop-visits">Stop Visits<a class="headerlink" href="#stop-visits" title="Permanent link"> ¶</a></h3>
 <p><em>stop_visits.schema.json</em></p>
 <p>Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date.</p>
-<p>Primary key: {<code>service_date</code>, <code>trip_stop_sequence</code>, <code>trip_id_performed</code>}</p>
+<p>Primary key: {<code>trip_stop_sequence</code>, <code>service_date</code>, <code>trip_id_performed</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1404,7 +1404,7 @@ schema standards.</p>
 <td>departure_load</td>
 <td></td>
 <td>integer</td>
-<td>Number of riders on the vehicle when departing the stop. Negative values are permitted and may occur in unadjusted APC data, since passenger counts are probabilistic measurements; data producers should indicate when negative values are present and how they should be interpreted.</td>
+<td>Number of riders on the vehicle when departing the stop. <code>departure_load</code> is typically derived from boardings and alightings and negative values are possible and permitted due to errors in the APC observations; data producers should document how negative values should be interpreted if present.</td>
 <td></td>
 </tr>
 <tr>
