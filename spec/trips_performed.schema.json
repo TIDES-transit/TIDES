@@ -167,7 +167,7 @@
           "Light Rail",
           "Monorail/Automated Guideway",
           "Other",
-          "Público",
+          "P\u00fablico",
           "Streetcar",
           "Trolleybus",
           "Vanpool"
@@ -206,7 +206,7 @@
       "name": "operator_id",
       "type": "string",
       "title": "ID referencing operators.operator_id",
-      "description": "Identifies the vehicle’s operator."
+      "description": "Identifies the vehicle\u2019s operator."
     },
     {
       "name": "block_id",
@@ -229,12 +229,12 @@
     {
       "name": "schedule_trip_start",
       "type": "datetime",
-      "description": "Scheduled departure time from the trip’s origin."
+      "description": "Scheduled departure time from the trip\u2019s origin."
     },
     {
       "name": "schedule_trip_end",
       "type": "datetime",
-      "description": "Scheduled end timestamp at the trip’s destination."
+      "description": "Scheduled end timestamp at the trip\u2019s destination."
     },
     {
       "name": "actual_trip_start",
@@ -252,16 +252,16 @@
       "description": "Indicates status of travel with regard to service.",
       "constraints": {
         "enum": [
-          "In service",
-          "Deadhead",
-          "Layover",
-          "Pullout",
-          "Pullin",
-          "Extra Pullout",
-          "Extra Pullin",
-          "Deadhead To Layover",
-          "Deadhead From Layover",
-          "Other not in service"
+          "in_service",
+          "deadhead",
+          "layover",
+          "pullout",
+          "pullin",
+          "extra_pullout",
+          "extra_pullin",
+          "deadhead_to_layover",
+          "deadhead_from_layover",
+          "other_not_in_service"
         ]
       }
     },
@@ -271,11 +271,11 @@
       "description": "Indicates the status of the trip. References GTFS-realtime TripUpdate.trip.schedule_relationship",
       "constraints": {
         "enum": [
-          "Scheduled",
-          "Added",
-          "Unscheduled",
-          "Canceled",
-          "Duplicated"
+          "scheduled",
+          "added",
+          "unscheduled",
+          "canceled",
+          "duplicated"
         ]
       }
     }
