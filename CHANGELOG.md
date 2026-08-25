@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **BREAKING:** `passenger_events.event_type` enum values changed from 'Sentence case' to snake_case for improved code compatibility ([#235](https://github.com/TIDES-transit/TIDES/issues/235))
+- **BREAKING:** Enum values changed from 'Sentence case' to snake_case for improved code compatibility across all TIDES-defined vocabularies: `passenger_events.event_type`, `devices.device_type`, `fare_transactions.fare_action`, `fare_transactions.fare_media_id`, `stop_visits.door_status`, `stop_visits.schedule_relationship`, `train_cars.train_car_type`, `trips_performed.trip_type`, `trips_performed.schedule_relationship`, `vehicle_locations.current_status`, `vehicle_locations.gps_quality`, `vehicle_locations.trip_type`, `vehicle_locations.schedule_relationship`. Enum values that mirror externally maintained textual vocabularies (`trips_performed.route_type` from GTFS, `trips_performed.ntd_mode` from the NTD Policy Manual) keep their source form. One value is renamed rather than mechanically converted: fare media "Button pressed by driver or operator to indicate a boarding or alighting passenger." becomes `operator_button_press`. ([#235](https://github.com/TIDES-transit/TIDES/issues/235))
 
 ## [1.0] - 2025-12-23
 
