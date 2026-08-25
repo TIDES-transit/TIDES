@@ -32,6 +32,9 @@ plugins:
         securityLevel: 'loose'
   - mike:
       version_selector: true
+  - redirects:
+      redirect_maps:
+        'awesome.md': 'resources.md'
   - search
 
 extra:
@@ -83,7 +86,8 @@ nav:
       - Architecture: architecture.md
       - Table Schemas: tables.md
       - Data Package: datapackage.md
-  - Sample Data: samples.md
+  - Getting Started: getting-started.md
+  - Sample Data: resources#sample-data
   - Contributing:
       - Development: development.md
       - Documentation: documentation.md
@@ -95,7 +99,7 @@ nav:
           - Contributor license agreement: governance/policies/CLA.md
       - Board Actions: governance/actions.md 
       - Board Meetings: governance/meetings.md
-  - Awesome: awesome.md
+  - Resources: resources.md
 
 copyright: |
     <footer>
