@@ -126,7 +126,7 @@
       "name": "stop_id",
       "type": "string",
       "title": "ID referencing GTFS stops.stop_id",
-      "description": "Identifies the stop the vehicle is serving. References GTFS"
+      "description": "Identifies the stop or station where the event occurred, recorded as of the time of the event. For vehicle-mounted device events, the stop the vehicle is serving. References GTFS"
     },
     {
       "name": "latitude",
