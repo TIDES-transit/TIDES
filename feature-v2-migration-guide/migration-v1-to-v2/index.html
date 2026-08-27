@@ -355,6 +355,15 @@
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#stop_visitsdeparture_load-may-be-negative">
+<span class="md-ellipsis">
+      
+        stop_visits.departure_load may be negative
+      
+    </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -649,6 +658,11 @@
 <td><code>stop_visits</code></td>
 </tr>
 <tr>
+<td><code>minimum: 0</code> constraint removed from <code>departure_load</code></td>
+<td>Normative (constraint relaxed)</td>
+<td><code>stop_visits</code></td>
+</tr>
+<tr>
 <td>Vehicle attributes normalized into <code>vehicle_groups</code>; <code>train_cars</code> and <code>vehicle_train_cars</code> removed; <code>vehicle_assignments</code> and <code>consist_vehicles</code> added</td>
 <td>Breaking</td>
 <td><code>vehicles</code>, <code>train_cars</code>, <code>vehicle_train_cars</code>, and new tables</td>
@@ -667,11 +681,6 @@
 <td><code>vehicle_crew</code> supporting table added</td>
 <td>New optional table</td>
 <td><code>vehicle_crew</code></td>
-</tr>
-<tr>
-<td><code>device_status</code> supporting table added</td>
-<td>New optional table</td>
-<td><code>device_status</code></td>
 </tr>
 <tr>
 <td><code>event_count</code> usage and APC data guidance clarified</td>
@@ -815,13 +824,17 @@
 <li>Convert <code>vehicle_train_cars</code> records into <code>consist_vehicles</code> records with <code>car_order</code> and <code>car_orientation</code>.</li>
 <li>Remove <code>train_cars.csv</code> and <code>vehicle_train_cars.csv</code> from the data package and add the new tables to <code>datapackage.json</code>.</li>
 </ul>
+<h3 id="stop_visitsdeparture_load-may-be-negative"><code>stop_visits.departure_load</code> may be negative<a class="headerlink" href="#stop_visitsdeparture_load-may-be-negative" title="Permanent link"> ¶</a></h3>
+<p>The <code>minimum: 0</code> constraint is removed. <code>departure_load</code> is typically derived from boardings and alightings rather than directly observed, and APC observation error can legitimately produce negative derived values, particularly at low loads.</p>
+<p><strong>For producers:</strong> negative values are valid and permitted. Document in your dataset metadata how negative values should be interpreted (for example, unadjusted derived values retained for aggregate accuracy). Nothing requires you to publish negative values; producers who adjust loads for internal consistency may continue to do so.</p>
+<p><strong>For consumers:</strong> do not assume <code>departure_load</code> is nonnegative. A negative value is a measurement artifact of the derived calculation, not a physical passenger count. For aggregate calculations (passenger miles, average loads), retaining negative values preserves statistical accuracy, since clamping them to zero introduces upward bias; for record-level display or operational reporting, treat interpretation per the producer’s documentation.</p>
 <h2 id="new-optional-capabilities">New optional capabilities<a class="headerlink" href="#new-optional-capabilities" title="Permanent link"> ¶</a></h2>
 <p>These additions are backwards-compatible; adopting them is optional.</p>
 <ul>
 <li><strong><code>vehicle_crew</code> table:</strong> supports multiple crew members per trip, including mid-trip reliefs, with <code>crew_role</code> and start/end times. <code>trips_performed.operator_id</code> remains for the single-operator case.</li>
-<li><strong><code>device_status</code> table:</strong> tracks device availability over time (<code>status_type</code>, <code>status_reason</code>) so consumers can distinguish data gaps caused by device outages from real service patterns.</li>
 <li><strong><code>vehicle_label</code> field:</strong> separates the user-visible vehicle number from the internal <code>vehicle_id</code>. Aligns with GTFS-realtime <code>VehicleDescriptor.label</code>.</li>
 </ul>
+<p>A <code>device_status</code> table for tracking device availability was considered during v2.0 development and deferred to a future minor release pending implementation experience (see #253).</p>
 <h2 id="non-normative-clarifications">Non-normative clarifications<a class="headerlink" href="#non-normative-clarifications" title="Permanent link"> ¶</a></h2>
 <ul>
 <li><code>event_count</code> usage and APC data guidance are clarified in the <code>device_events</code> table documentation. No data changes are required.</li>
@@ -842,6 +855,7 @@
 <li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Update queries and joins from <code>passenger_events</code> to <code>device_events</code>; handle records where <code>vehicle_id</code> is empty (station and mobile device events).</li>
 <li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Update any <code>event_type</code> string matching to the <code>snake_case</code> values.</li>
 <li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Update references to the renamed <code>stop_visits</code> duration fields.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Remove any assumption that <code>stop_visits.departure_load</code> is nonnegative; handle negative derived values per the producer’s documented interpretation.</li>
 <li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Source vehicle attributes (capacities) from <code>vehicle_groups</code> via <code>vehicles.vehicle_group_id</code>.</li>
 <li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Replace <code>train_cars</code> / <code>vehicle_train_cars</code> joins with <code>vehicles</code> / <code>consist_vehicles</code>.</li>
 </ul>
