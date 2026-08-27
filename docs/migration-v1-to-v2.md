@@ -13,11 +13,11 @@ TIDES v2.0 is a major release containing backwards-incompatible changes. This gu
 | `passenger_events` renamed to `device_events` with expanded scope | Breaking | `passenger_events` → `device_events` |
 | `event_type` enumeration values renamed to `snake_case` | Breaking | `device_events` |
 | Duration fields renamed with explicit `_duration` suffix | Breaking | `stop_visits` |
+| `minimum: 0` constraint removed from `departure_load` | Normative (constraint relaxed) | `stop_visits` |
 | Vehicle attributes normalized into `vehicle_groups`; `train_cars` and `vehicle_train_cars` removed; `vehicle_assignments` and `consist_vehicles` added | Breaking | `vehicles`, `train_cars`, `vehicle_train_cars`, and new tables |
 | `vehicle_direction` field added to operational tables | New optional field | `vehicle_locations`, `stop_visits`, `trips_performed`, `fare_transactions`, `device_events` |
 | `vehicle_label` field added | New optional field | `vehicles` |
 | `vehicle_crew` supporting table added | New optional table | `vehicle_crew` |
-| `device_status` supporting table added | New optional table | `device_status` |
 | `event_count` usage and APC data guidance clarified | Non-normative | `device_events` |
 
 ## Breaking changes
@@ -92,13 +92,22 @@ To migrate:
 - Convert `vehicle_train_cars` records into `consist_vehicles` records with `car_order` and `car_orientation`.
 - Remove `train_cars.csv` and `vehicle_train_cars.csv` from the data package and add the new tables to `datapackage.json`.
 
+### `stop_visits.departure_load` may be negative
+
+The `minimum: 0` constraint is removed. `departure_load` is typically derived from boardings and alightings rather than directly observed, and APC observation error can legitimately produce negative derived values, particularly at low loads.
+
+**For producers:** negative values are valid and permitted. Document in your dataset metadata how negative values should be interpreted (for example, unadjusted derived values retained for aggregate accuracy). Nothing requires you to publish negative values; producers who adjust loads for internal consistency may continue to do so.
+
+**For consumers:** do not assume `departure_load` is nonnegative. A negative value is a measurement artifact of the derived calculation, not a physical passenger count. For aggregate calculations (passenger miles, average loads), retaining negative values preserves statistical accuracy, since clamping them to zero introduces upward bias; for record-level display or operational reporting, treat interpretation per the producer's documentation.
+
 ## New optional capabilities
 
 These additions are backwards-compatible; adopting them is optional.
 
 - **`vehicle_crew` table:** supports multiple crew members per trip, including mid-trip reliefs, with `crew_role` and start/end times. `trips_performed.operator_id` remains for the single-operator case.
-- **`device_status` table:** tracks device availability over time (`status_type`, `status_reason`) so consumers can distinguish data gaps caused by device outages from real service patterns.
 - **`vehicle_label` field:** separates the user-visible vehicle number from the internal `vehicle_id`. Aligns with GTFS-realtime `VehicleDescriptor.label`.
+
+A `device_status` table for tracking device availability was considered during v2.0 development and deferred to a future minor release pending implementation experience (see #253).
 
 ## Non-normative clarifications
 
@@ -120,5 +129,6 @@ These additions are backwards-compatible; adopting them is optional.
 - [ ] Update queries and joins from `passenger_events` to `device_events`; handle records where `vehicle_id` is empty (station and mobile device events).
 - [ ] Update any `event_type` string matching to the `snake_case` values.
 - [ ] Update references to the renamed `stop_visits` duration fields.
+- [ ] Remove any assumption that `stop_visits.departure_load` is nonnegative; handle negative derived values per the producer's documented interpretation.
 - [ ] Source vehicle attributes (capacities) from `vehicle_groups` via `vehicles.vehicle_group_id`.
 - [ ] Replace `train_cars` / `vehicle_train_cars` joins with `vehicles` / `consist_vehicles`.
