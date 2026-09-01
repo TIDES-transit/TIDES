@@ -79,6 +79,13 @@ This change-making process covers all [normative content](#normative-content) ch
     * `examples`
     * `context`
 
+### Working Groups and Issue Resolution Groups
+
+Two kinds of groups take part in the change-making process:
+
+* **Working Groups** are standing or time-boxed groups chartered by the TIDES Board, as defined in the [TIDES Governance document][TIDES-governance]. These include the standing Standards Development Working Group (SDWG) and topic-focused groups (for example, around National Transit Database reporting or on-time performance). Working Groups follow this policy for any normative change.
+* **Issue Resolution Groups** are convened to develop a resolution to a prioritized issue or set of interrelated issues, drawing members from interested Contributors. They were previously called “Issue Working Groups” in this policy; the name is changed to avoid confusion with Board-chartered Working Groups.
+
 ### Change-making Stages
 
 The process by which normative changes are made to the TIDES data specification occurs in the following stages:
@@ -86,11 +93,13 @@ The process by which normative changes are made to the TIDES data specification 
 | Stage | When | Who (led by) |
 |-----|-----|-----|
 | Need Identification | Anytime | Anyone |
-| Prioritization | Quarterly (or as determined by TIDES Board or TIDES Manager) | Contributors (Manager) |
-| Proposal Development  | Prioritized quarter | Working Group (Manager) |
-| Review + Adoption | Pull request for proposed change submitted after consensus in the Working Group | Working Group (Manager) |
-| Implementation | When decision made to consensus achieved on proposal | Working Group (Manager) |
+| Prioritization | Quarterly (or as determined by TIDES Board or TIDES Manager) | Contributors (Manager or Working Group Chair) |
+| Proposal Development  | Prioritized quarter | Issue Resolution Group (Manager or Working Group Chair) |
+| Review + Adoption | Pull request for proposed change submitted after consensus in the Issue Resolution Group | Issue Resolution Group (Manager or Working Group Chair) |
+| Implementation | When decision made to consensus achieved on proposal | Issue Resolution Group (Manager or Working Group Chair) |
 | Released | Next quarterly release | Manager |
+
+By default, a Working Group Chair leads the Proposal Development, Review + Adoption, and Implementation stages for work within their charter’s scope. The TIDES Manager retains the governance-compliance review at the version-release gate and acts as backstop where Manager authority is specifically required or no chair is seated. The Board continues to approve the prioritized change list and each release.
 
 Each of these stages is discussed in more detail below.
 
@@ -120,37 +129,37 @@ Each of these stages is discussed in more detail below.
 
 === ":material-pencil: Proposal Development"
 
-    :material-calendar-start: TIDES Manager, in consultation with the TIDES Board and TIDES Contributors, convenes an Issue Working Group to address a prioritized issue or set of interrelated issues.
+    :material-calendar-start: A Working Group or the TIDES Manager convenes an Issue Resolution Group to address a prioritized issue or set of interrelated issues, drawing members from interested Contributors.
 
     :material-checkbox-multiple-marked-circle-outline: **Actions**:
 
-    - [ ] TIDES Manager convenes an Issue Working Group to develop a resolution to the issue.
-    - [ ] The TIDES Manager will invite those who have expressed interest in the issue (including the issue creator and commenters) and who they believe will have an interest in the topic to take part on the Issue Working Group. They will also solicit participation from all TIDES Contributors.
-    - [ ] Working Group members document discussion points about approach in the relevant github issue.
-    - [ ] While consensus will be sought, if the Working Group members cannot come to a unanimous agreement about the solution, the TIDES Manager may ask the TIDES Board to make a decision after hearing feedback from various perspectives.
-    - [ ] Working Group members update the schema and documentation according to the proposal on a feature branch.
+    - [ ] A Working Group or the TIDES Manager convenes an Issue Resolution Group to develop a resolution to the issue.
+    - [ ] The convener will invite those who have expressed interest in the issue (including the issue creator and commenters) and who they believe will have an interest in the topic to take part on the Issue Resolution Group. They will also solicit participation from all TIDES Contributors.
+    - [ ] Issue Resolution Group members document discussion points about approach in the relevant github issue.
+    - [ ] While consensus will be sought, if the Issue Resolution Group members cannot come to a unanimous agreement about the solution, the TIDES Manager may ask the TIDES Board to make a decision after hearing feedback from various perspectives.
+    - [ ] Issue Resolution Group members update the schema and documentation according to the proposal on a feature branch.
 
-    :material-check-underline: **Resolution**: Working Group submits a pull request to the `develop` branch.
+    :material-check-underline: **Resolution**: Issue Resolution Group submits a pull request to the `develop` branch.
 
 === ":octicons-comment-discussion-24: Review + :material-vote: Adoption"
 
-    :material-calendar-start: TIDES Manager invites people outside of the Working Group to review and comment on the proposal
+    :material-calendar-start: TIDES Manager invites people outside of the Issue Resolution Group to review and comment on the proposal
 
     :material-checkbox-multiple-marked-circle-outline: **Actions**:
 
-    - [ ] The TIDES Manager MUST invite people outside of the Working Group to review and comment on the Pull Request for the proposal for a minimum of two weeks, making sure TIDES Contributors with different roles and backgrounds have had a chance to consider it.
+    - [ ] The TIDES Manager MUST invite people outside of the Issue Resolution Group to review and comment on the Pull Request for the proposal for a minimum of two weeks, making sure TIDES Contributors with different roles and backgrounds have had a chance to consider it.
     - [ ] The TIDES Manager MUST review the proposal for consistency with the Open Standards Definition maintained by the [Mobility Data Interoperability Principles](http://interoperablemobility.org).
     - [ ] The TIDES Manager MUST offer tools, services and  assistance to any TIDES Contributor who is unable to fluidly interact with the tooling used in the review process.
-    - [ ] A minimum of three TIDES Contributors outside the Working Group MUST publicly comment on each proposal for it to move forward  and indicate a score of:
+    - [ ] A minimum of three TIDES Contributors outside the Issue Resolution Group MUST publicly comment on each proposal for it to move forward  and indicate a score of:
         * Accepted;
         * Accepted with minor changes; or
         * Substantially revised.
     - [ ] If 100% of reviewers accept, the proposal is adopted without need for further discussion.
-    - [ ] If any reviewer accepts with minor changes, the suggested change must be considered by the Working Group.
-        * If the Working Group decides to incorporate the edited proposal will be re-circulated for some period time greater than 72 hours and previous reviewers notified.  If nobody objects to the change in that time, it is adopted.
-        * If the Working Group does not agree with the suggested change, they may appeal to the TIDES Board to make a final decision about its necessity.
-    - [ ] If any reviewer requests substantial changes, they must also agree to work with the working group on developing an alternative solution to the need.
-        * If the working group believes the substantial change request is invalid or without merit, they may appeal to the TIDES Board to make a final decision about if revisions are necessary.
+    - [ ] If any reviewer accepts with minor changes, the suggested change must be considered by the Issue Resolution Group.
+        * If the Issue Resolution Group decides to incorporate the edited proposal will be re-circulated for some period time greater than 72 hours and previous reviewers notified.  If nobody objects to the change in that time, it is adopted.
+        * If the Issue Resolution Group does not agree with the suggested change, they may appeal to the TIDES Board to make a final decision about its necessity.
+    - [ ] If any reviewer requests substantial changes, they must also agree to work with the Issue Resolution Group on developing an alternative solution to the need.
+        * If the Issue Resolution Group believes the substantial change request is invalid or without merit, they may appeal to the TIDES Board to make a final decision about if revisions are necessary.
 
     :material-check-underline: **Resolution:** Change as represented in the pull request from the feature branch is approved and merged into the `develop` branch.
 
@@ -306,7 +315,7 @@ The following branches SHOULD always be maintained:
     - [ ] TIDES Manager MAY release commits periodically as a [pre-release](#pre-releases)(s).
     - [ ] SHOULD only be updated from `main` branch or PRs whereby:
         * TIDES Manager SHOULD periodically update this branch with any non-normative changes accepted into `main`.
-        * PRs MUST be approved by TIDES Manager or their designee  and their approval MUST represent that:
+        * PRs MUST be approved by the TIDES Manager or an authorized Working Group Chair  and their approval MUST represent that:
             * the [governance process](#contributor-review-adoption) for approving a normative change to the standard has been met; and
             * that the change meets all the requirements outlined in the [pre-release requirements](#pre-releases).
 
@@ -324,6 +333,10 @@ The following branches SHOULD always be maintained:
 * [Open Contracting Data Standard](https://standard.open-contracting.org/latest/en/governance/)
 
 ## Revision History
+
+### v1.1 2026-09
+
+* Updated per the [2026-08-27 TIDES Board approval](https://docs.google.com/document/d/1C-qynGan-jh4z1bJH_Qv3mJX0lXCHHKkzdrEgJzl3QY/edit?usp=sharing): renamed “Issue Working Group” to “Issue Resolution Group,” recognized Board-chartered Working Groups, allowed Working Group Chairs to lead change-making stages within their charter’s scope, and authorized Working Group Chairs to approve pull requests to the `develop` branch.
 
 ### v1.0 2023-11-29 Initial Version
 
