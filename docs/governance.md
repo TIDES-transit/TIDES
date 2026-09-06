@@ -35,7 +35,7 @@ TIDES is collectively owned and governed by a Board of Directors.
 
 ### TIDES Board of Directors
 
-TIDES is governed by a Board of Directors. The Board holds quarterly strategic meetings with the TIDES Manager; the Board Coordinator may convene additional Board meetings as needed. The Board has a [public agenda and minutes](https://docs.google.com/document/d/1C-qynGan-jh4z1bJH_Qv3mJX0lXCHHKkzdrEgJzl3QY/edit?usp=sharing).
+TIDES is governed by a Board of Directors. The Board holds quarterly strategic meetings with the TIDES Manager. The Board Coordinator may convene additional Board meetings as needed. The Board has a [public agenda and minutes](https://docs.google.com/document/d/1C-qynGan-jh4z1bJH_Qv3mJX0lXCHHKkzdrEgJzl3QY/edit?usp=sharing).
 
 #### Board Membership
 
@@ -64,8 +64,8 @@ TIDES is governed by a Board of Directors. The Board holds quarterly strategic m
     - Review and approve each new release of TIDES.
     - Manage Urgent Changes to the standard in collaboration with the TIDES Manager.
     - Resolve issues that arise during the Change Management process that cannot be addressed by the TIDES Manager.
-    - Charter Working Groups and approve their written charters.
-    - Appoint Working Group chairs and approve each chair’s written agreement.
+    - Establish Working Groups and approve their written charters.
+    - Appoint Working Group chairs.
 
 #### Board Member Role and Term
 
@@ -84,7 +84,7 @@ TIDES is governed by a Board of Directors. The Board holds quarterly strategic m
 - The Board will execute a Memorandum of Understanding with the TIDES Manager that outlines the roles, responsibilities, and limitations of the management role.
 - The Board may change the management of TIDES at any time for any reason.
 - When there is no TIDES Manager assigned, the Board will take over management in the interim.
-- The TIDES Manager conducts its activities in coordination and collaboration with Working Groups and other entities chartered by the Board, and makes reasonable accommodations within its existing responsibilities (for example, GitHub access for Working Group chairs). The Manager is not responsible for staffing or facilitating Working Groups.
+- The TIDES Manager conducts its activities in coordination and collaboration with Working Groups and other entities established by the Board, and facilitates the work of those groups. The TIDES Manager is not responsible for staffing or managing Working Groups.
 
 ### TIDES Program Manager
 
@@ -126,7 +126,7 @@ The TIDES Board may charter **Working Groups** to carry ongoing or time-boxed wo
 
 ## Document History
 
-### 2026-09
+### 2026-09-08
 
 - Updated per the [2026-08-27 Board approval](https://docs.google.com/document/d/1C-qynGan-jh4z1bJH_Qv3mJX0lXCHHKkzdrEgJzl3QY/edit?usp=sharing): added the Working Groups section and registry, updated Board meeting cadence, GitHub organization asset language, TIDES Manager coordination with Working Groups, Board decisions list, and management implementation language.
 - Updated the TIDES Program Manager assignment to Carl Fredlund, MobilityData, and Board member affiliations.
