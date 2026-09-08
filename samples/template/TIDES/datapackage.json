@@ -81,10 +81,10 @@
             ]
         },
         {
-            "name": "operators",
+            "name": "crew",
             "profile": "tabular-data-resource",
-            "path": "operators.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/operators.schema.json",
+            "path": "crew.csv",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/crew.schema.json",
             "sources": [
                 {
                     "title": "Where did data come from?",
