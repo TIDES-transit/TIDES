@@ -83,7 +83,7 @@ This change-making process covers all [normative content](#normative-content) ch
 
 Two kinds of groups take part in the change-making process:
 
-* **Working Groups** are standing or time-boxed groups chartered by the TIDES Board, as defined in the [TIDES Governance document][TIDES-governance]. These include the standing Standards Development Working Group (SDWG) and topic-focused groups (for example, around National Transit Database reporting or on-time performance). Working Groups follow this policy for any normative change.
+* **Working Groups** are groups chartered by the TIDES Board, standing or formed for a limited time, as defined in the [TIDES Governance document][TIDES-governance]. These include the standing Standards Development Working Group (SDWG) and topic-focused groups chartered as champions emerge. Working Groups follow this policy for any normative change.
 * **Issue Resolution Groups** are convened to develop a resolution to a prioritized issue or set of interrelated issues, drawing members from interested Contributors. They were previously called “Issue Working Groups” in this policy; the name is changed to avoid confusion with Board-chartered Working Groups.
 
 ### Change-making Stages

@@ -101,7 +101,7 @@ TIDES is governed by a Board of Directors. The Board holds quarterly strategic m
 
 ### Working Groups
 
-The TIDES Board may charter **Working Groups** to carry ongoing or time-boxed work on the specification, tooling, documentation, and community engagement. Current groups, their charters, chairs, and how to join are listed in the [TIDES Working Groups registry](governance/working-groups.md).
+The TIDES Board may charter **Working Groups**, standing or formed for a limited time, to carry work on the specification, tooling, documentation, and community engagement. Current groups, their charters, chairs, and how to join are listed in the [TIDES Working Groups registry](governance/working-groups.md).
 
 - Working Groups are distinct from the Issue Resolution Groups defined in the [Change Management Policy](governance/policies/change-management.md).
 - Each Working Group operates under a written, Board-approved charter (purpose, scope, chair(s), rights, timeline, review cadence).

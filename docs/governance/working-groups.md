@@ -1,6 +1,6 @@
 # TIDES Working Groups
 
-The TIDES Board of Directors charters Working Groups to carry ongoing or time-boxed work on the TIDES specification, tooling, documentation, and community engagement. Each Working Group operates under a written, Board-approved charter, has one or more Board-appointed chairs (for example a Chair and Deputy Chair), and follows the [TIDES Change Management Policy](policies/change-management.md) for any changes to the specification. See the [TIDES Governance document](../governance.md#working-groups) for how Working Groups are chartered and governed.
+The TIDES Board of Directors charters Working Groups, standing or formed for a limited time, to carry work on the TIDES specification, tooling, documentation, and community engagement. Each Working Group operates under a written, Board-approved charter, has one or more Board-appointed chairs (for example a Chair and Deputy Chair), and follows the [TIDES Change Management Policy](policies/change-management.md) for any changes to the specification. See the [TIDES Governance document](../governance.md#working-groups) for how Working Groups are chartered and governed.
 
 Working Groups are open to anyone. Each group's charter states how to join, the group's meeting cadence, and any limits on participation. Joining a Working Group includes registering as a TIDES Contributor, which carries agreement to the TIDES Code of Conduct; anyone may observe public working sessions without registering.
 
@@ -21,6 +21,6 @@ The SDWG is the standing Working Group responsible for the ongoing technical dev
 
 ## Proposing a new Working Group
 
-Topic-focused Working Groups (for example, around specific use cases such as National Transit Database reporting or on-time performance) are chartered by the Board as champions and participation emerge. To propose a Working Group, contact the TIDES Board or open a [Discussion on GitHub](https://github.com/TIDES-transit/TIDES/discussions).
+Topic-focused Working Groups are chartered by the Board as champions and participation emerge. To propose a Working Group, contact the TIDES Board or open a [Discussion on GitHub](https://github.com/TIDES-transit/TIDES/discussions).
 
 [contributor-registration]: https://docs.google.com/forms/d/e/1FAIpQLSfQUjKHfV64uDBAYAt0OSPgYCe_BGgcAPWXi-m0PSlX6edCIQ/viewform?usp=header
