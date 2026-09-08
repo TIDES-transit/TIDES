@@ -40,8 +40,8 @@
     {
       "name": "crew_id",
       "type": "string",
-      "title": "ID referencing operators.operator_id",
-      "description": "Identifies the crew member. References operators table.",
+      "title": "ID referencing crew.crew_id",
+      "description": "Identifies the crew member. References the crew table.",
       "constraints": {
         "required": true
       }
@@ -75,10 +75,16 @@
   ],
   "foreignReferences": [
     {
-      "fields": ["service_date", "trip_id_performed"],
+      "fields": [
+        "service_date",
+        "trip_id_performed"
+      ],
       "reference": {
         "resource": "trips_performed",
-        "fields": ["service_date", "trip_id_performed"]
+        "fields": [
+          "service_date",
+          "trip_id_performed"
+        ]
       }
     },
     {
@@ -91,8 +97,8 @@
     {
       "fields": "crew_id",
       "reference": {
-        "resource": "operators",
-        "fields": "operator_id"
+        "resource": "crew",
+        "fields": "crew_id"
       }
     }
   ],
