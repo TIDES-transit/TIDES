@@ -295,7 +295,7 @@
             "enum": [
               "devices",
               "fare_transactions",
-              "operators",
+              "crew",
               "station_activities",
               "passenger_events",
               "stop_visits",
