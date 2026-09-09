@@ -21,6 +21,6 @@ The SDWG is the standing Working Group responsible for the ongoing technical dev
 
 ## Proposing a new Working Group
 
-Topic-focused Working Groups are chartered by the Board as champions and participation emerge. To propose a Working Group, contact the TIDES Board or open a [Discussion on GitHub](https://github.com/TIDES-transit/TIDES/discussions).
+To propose a Working Group, contact the TIDES Board or open a [Discussion on GitHub](https://github.com/TIDES-transit/TIDES/discussions).
 
 [contributor-registration]: https://docs.google.com/forms/d/e/1FAIpQLSfQUjKHfV64uDBAYAt0OSPgYCe_BGgcAPWXi-m0PSlX6edCIQ/viewform?usp=header
