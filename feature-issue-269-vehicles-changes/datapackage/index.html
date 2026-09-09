@@ -838,24 +838,10 @@
 <span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vehicle_assignments"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vehicle_train_cars"</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">"profile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tabular-data-resource"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vehicle_assignments.csv"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicle_assignments.schema.json"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"sources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Where did data come from?"</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">"component"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Type of technology component, i.e. `AVL`"</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product used."</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vendor selling product."</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">]</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"consist_vehicles"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"profile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tabular-data-resource"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"consist_vehicles.csv"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/consist_vehicles.schema.json"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vehicle_train_cars.csv"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicle_train_cars.schema.json"</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">"sources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
 <span class="w">                    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Where did data come from?"</span><span class="p">,</span>
@@ -1384,7 +1370,6 @@ jsonschema-cli<span class="w"> </span>validate<span class="w"> </span><span clas
 <span class="w">          </span><span class="p">},</span>
 <span class="w">          </span><span class="nt">"tides-table"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">"enum"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">              </span><span class="s2">"consist_vehicles"</span><span class="p">,</span>
 <span class="w">              </span><span class="s2">"devices"</span><span class="p">,</span>
 <span class="w">              </span><span class="s2">"fare_transactions"</span><span class="p">,</span>
 <span class="w">              </span><span class="s2">"operators"</span><span class="p">,</span>
@@ -1392,9 +1377,9 @@ jsonschema-cli<span class="w"> </span>validate<span class="w"> </span><span clas
 <span class="w">              </span><span class="s2">"passenger_events"</span><span class="p">,</span>
 <span class="w">              </span><span class="s2">"stop_visits"</span><span class="p">,</span>
 <span class="w">              </span><span class="s2">"trips_performed"</span><span class="p">,</span>
-<span class="w">              </span><span class="s2">"vehicle_assignments"</span><span class="p">,</span>
 <span class="w">              </span><span class="s2">"vehicle_groups"</span><span class="p">,</span>
 <span class="w">              </span><span class="s2">"vehicle_locations"</span><span class="p">,</span>
+<span class="w">              </span><span class="s2">"vehicle_train_cars"</span><span class="p">,</span>
 <span class="w">              </span><span class="s2">"vehicles"</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"An identifier string corresponding to the name of one of the table specs in the TIDES data package"</span><span class="p">,</span>
