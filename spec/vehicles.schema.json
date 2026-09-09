@@ -1,5 +1,8 @@
 {
-  "primaryKey": "vehicle_id",
+  "primaryKey": [
+    "vehicle_id", 
+    "start_date"
+  ],
   "missingValues": [
     "NA",
     "NaN",
