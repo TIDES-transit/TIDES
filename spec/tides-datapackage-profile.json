@@ -293,7 +293,6 @@
           },
           "tides-table": {
             "enum": [
-              "consist_vehicles",
               "devices",
               "fare_transactions",
               "operators",
@@ -301,9 +300,9 @@
               "passenger_events",
               "stop_visits",
               "trips_performed",
-              "vehicle_assignments",
               "vehicle_groups",
               "vehicle_locations",
+              "vehicle_train_cars",
               "vehicles"
             ],
             "description": "An identifier string corresponding to the name of one of the table specs in the TIDES data package",

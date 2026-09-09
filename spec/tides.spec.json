@@ -77,20 +77,11 @@
       "required": false
     },
     {
-      "title": "Vehicle Assignments",
-      "name": "vehicle_assignments",
-      "description": "Daily assignments of vehicles and consists to service operations.",
-      "path": "vehicle_assignments.csv",
-      "schema": "vehicle_assignments.schema.json",
-      "profile": "tabular-data-resource",
-      "required": false
-    },
-    {
-      "title": "Consist Vehicles",
-      "name": "consist_vehicles",
-      "description": "Assignment of train cars into ordered consists.",
-      "path": "consist_vehicles.csv",
-      "schema": "consist_vehicles.schema.json",
+      "title": "Vehicle Train Cars",
+      "name": "vehicle_train_cars",
+      "description": "Assignment of individual cars into ordered train consists.",
+      "path": "vehicle_train_cars.csv",
+      "schema": "vehicle_train_cars.schema.json",
       "profile": "tabular-data-resource",
       "required": false
     },
