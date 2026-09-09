@@ -49,6 +49,6 @@
     }
   ],
   "name": "vehicle_groups.schema.json",
-  "description": "Groups of vehicles.",
+  "description": "Defines the shared attribute values for groups of similar vehicles.",
   "_table_type": "Supporting"
 }

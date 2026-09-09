@@ -9,16 +9,14 @@
     {
       "name": "vehicle_id",
       "type": "string",
-      "description": "Identifies a physical vehicle, such as a bus or an individual train car. If possible, this should match internal agency asset and vehicle IDs. Note that identifiers in operational data streams (including GTFS-realtime) may refer to either an individual vehicle or a consist; those operational identifiers are documented in vehicle_assignments.",
-      "constraints": {
-        "required": true,
-        "unique": true
-      }
+      "description": "Identifies an operational vehicle, such as a bus, individual train car, or train consist. This should match the identifier used in operational data tables.",
+      "required": true
     },
     {
       "name": "start_date",
       "type": "date",
-      "description": "Start of the date range for which operational data may reference this vehicle."
+      "description": "Start of the date range for which operational data may reference this vehicle.",
+      "required": true
     },
     {
       "name": "end_date",
@@ -52,6 +50,6 @@
     }
   ],
   "name": "vehicles.schema.json",
-  "description": "Physical vehicles, including buses and individual train cars.",
+  "description": "Operational vehicles, including buses, individual train cars, and train consists.",
   "_table_type": "Supporting"
 }
