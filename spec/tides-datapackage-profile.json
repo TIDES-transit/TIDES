@@ -299,8 +299,8 @@
               "station_activities",
               "passenger_events",
               "stop_visits",
-              "train_cars",
               "trips_performed",
+              "vehicle_groups",
               "vehicle_locations",
               "vehicle_train_cars",
               "vehicles"
@@ -309,7 +309,7 @@
             "type": "string",
             "examples": [
               "fare_transactions",
-              "train_cars"
+              "vehicles"
             ]
           },
           "schema": {

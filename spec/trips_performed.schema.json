@@ -35,6 +35,17 @@
       }
     },
     {
+      "name": "vehicle_direction",
+      "type": "string",
+      "description": "Indicates the direction of travel of the vehicle for this trip.",
+      "constraints": {
+        "enum": [
+          "forward",
+          "backward"
+        ]
+      }
+    },
+    {
       "name": "trip_id_scheduled",
       "type": "string",
       "title": "ID referencing GTFS trips.trip_id",

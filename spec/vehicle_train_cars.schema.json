@@ -1,7 +1,7 @@
 {
   "primaryKey": [
-    "vehicle_id",
-    "train_car_id"
+    "train_vehicle_id",
+    "car_vehicle_id"
   ],
   "missingValues": [
     "NA",
@@ -10,61 +10,60 @@
   ],
   "fields": [
     {
-      "name": "vehicle_id",
+      "name": "train_vehicle_id",
       "type": "string",
-      "title": "ID referencing vehicles.vehicle_id",
-      "description": "Identifies a vehicle, such as a train consist. If possible, this should match other internal agency vehicle IDs.",
+      "title": "ID referencing vehicles.vehicle_id for the entire train",
+      "description": "Identifies the train vehicle record in the vehicles table.",
       "constraints": {
         "required": true
       }
     },
     {
-      "name": "train_car_id",
+      "name": "car_vehicle_id",
       "type": "string",
-      "title": "ID referencing train_cars.train_car_id",
-      "description": "Identifies a train car or an asset that is a component of the vehicle.",
+      "title": "ID referencing vehicles.vehicle_id for the individual train car",
+      "description": "Identifies the train car vehicle record in the vehicles table.",
       "constraints": {
         "required": true
       }
     },
     {
-      "name": "train_car_order",
+      "name": "car_order",
       "type": "integer",
-      "description": "The assigned order of the train car or asset within the vehicle.",
+      "description": "The assigned order of the car within the consist.",
       "constraints": {
-        "minimum": 0
+        "minimum": 1
       }
     },
     {
-      "name": "operator_id",
+      "name": "car_orientation",
       "type": "string",
-      "description": "Identifies an operator (person). If possible, this should match other internal agency operator IDs."
+      "description": "Indicates the orientation of the car within the consist.",
+      "constraints": {
+        "enum": [
+          "forward",
+          "backward"
+        ]
+      }
     }
   ],
   "foreignReferences": [
     {
-      "fields": "vehicle_id",
+      "fields": "train_vehicle_id",
       "reference": {
         "resource": "vehicles",
         "fields": "vehicle_id"
       }
     },
     {
-      "fields": "train_car_id",
+      "fields": "car_vehicle_id",
       "reference": {
-        "resource": "train_cars",
-        "fields": "train_car_id"
-      }
-    },
-    {
-      "fields": "operator_id",
-      "reference": {
-        "resource": "operator",
-        "fields": "operator_id"
+        "resource": "vehicles",
+        "fields": "vehicle_id"
       }
     }
   ],
   "name": "vehicle_train_cars.schema.json",
-  "description": "Relationships between assets and vehicles.",
+  "description": "Assignment of vehicles/cars into consists.",
   "_table_type": "Supporting"
 }

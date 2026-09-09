@@ -68,6 +68,17 @@
       }
     },
     {
+      "name": "vehicle_direction",
+      "type": "string",
+      "description": "Indicates the direction of travel of the vehicle for this event.",
+      "constraints": {
+        "enum": [
+          "forward",
+          "backward"
+        ]
+      }
+    },
+    {
       "name": "device_id",
       "type": "string",
       "title": "ID references devices.device_id",

@@ -105,16 +105,21 @@
       }
     },
     {
+      "name": "vehicle_direction",
+      "type": "string",
+      "description": "Indicates the direction of travel of the vehicle for this event.",
+      "constraints": {
+        "enum": [
+          "forward",
+          "backward"
+        ]
+      }
+    },
+    {
       "name": "device_id",
       "type": "string",
       "title": "ID referencing devices.device_id",
-      "description": "Identifies the device that recorded the event. May be null if only a single device is reporting passenger events on a vehicle/ train car and the device_id is not distinct from vehicle_id/train_car_id."
-    },
-    {
-      "name": "train_car_id",
-      "type": "string",
-      "title": "ID referencing train_cars.train_car_id",
-      "description": "Identifies the train car."
+      "description": "Identifies the device that recorded the event. May be null if only a single device is reporting passenger events on a vehicle and the device_id is not distinct from vehicle_id."
     },
     {
       "name": "stop_id",
@@ -172,13 +177,6 @@
       "reference": {
         "resource": "devices",
         "fields": "device_id"
-      }
-    },
-    {
-      "fields": "train_car_id",
-      "reference": {
-        "resource": "train_cars",
-        "fields": "train_car_id"
       }
     },
     {
