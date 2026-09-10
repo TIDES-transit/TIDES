@@ -367,19 +367,19 @@
 <nav aria-label="Supporting Tables" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#devices">
+<a class="md-nav__link" href="#crew">
 <span class="md-ellipsis">
       
-        Devices
+        Crew
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#operators">
+<a class="md-nav__link" href="#devices">
 <span class="md-ellipsis">
       
-        Operators
+        Devices
       
     </span>
 </a>
@@ -1170,7 +1170,7 @@ schema standards.</p>
 <h3 id="station-activities">Station Activities<a class="headerlink" href="#station-activities" title="Permanent link"> ¶</a></h3>
 <p><em>station_activities.schema.json</em></p>
 <p>Summarized transactions, entries, and exits by stop or station and time period for each service date (for events not associated with a trip).</p>
-<p>Primary key: {<code>stop_id</code>, <code>service_date</code>, <code>time_period_end</code>, <code>time_period_start</code>}</p>
+<p>Primary key: {<code>time_period_start</code>, <code>stop_id</code>, <code>time_period_end</code>, <code>service_date</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1271,7 +1271,7 @@ schema standards.</p>
 <h3 id="stop-visits">Stop Visits<a class="headerlink" href="#stop-visits" title="Permanent link"> ¶</a></h3>
 <p><em>stop_visits.schema.json</em></p>
 <p>Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date.</p>
-<p>Primary key: {<code>trip_stop_sequence</code>, <code>service_date</code>, <code>trip_id_performed</code>}</p>
+<p>Primary key: {<code>trip_stop_sequence</code>, <code>trip_id_performed</code>, <code>service_date</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1505,7 +1505,7 @@ schema standards.</p>
 <h3 id="trips-performed">Trips Performed<a class="headerlink" href="#trips-performed" title="Permanent link"> ¶</a></h3>
 <p><em>trips_performed.schema.json</em></p>
 <p>Trips performed for each service date.</p>
-<p>Primary key: {<code>service_date</code>, <code>trip_id_performed</code>}</p>
+<p>Primary key: {<code>trip_id_performed</code>, <code>service_date</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1599,7 +1599,7 @@ schema standards.</p>
 <td></td>
 <td>string</td>
 <td>Identifies the vehicle’s operator. Optional; for trips with multiple operators, use the first operator or reference the vehicle_crew table for complete crew assignments.</td>
-<td>ID referencing <a href="#operators">operators</a>.operator_id</td>
+<td>ID referencing <a href="#crew">crew</a>.crew_id</td>
 </tr>
 <tr>
 <td>block_id</td>
@@ -1667,6 +1667,46 @@ schema standards.</p>
 </tbody>
 </table>
 <h2 id="supporting-tables">Supporting Tables<a class="headerlink" href="#supporting-tables" title="Permanent link"> ¶</a></h2>
+<h3 id="crew">Crew<a class="headerlink" href="#crew" title="Permanent link"> ¶</a></h3>
+<p><em>crew.schema.json</em></p>
+<p>Transit personnel who serve as vehicle or station crew, including operators, conductors, and fare inspectors.</p>
+<p>Primary key: {<code>crew_id</code>, <code>start_date</code>}</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>constraints</th>
+<th>type</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>crew_id</td>
+<td><strong>Required</strong><br/></td>
+<td>string</td>
+<td>Identifies a crew member. If possible, this should match other internal agency crew or employee IDs. The same crew_id may appear in multiple records over time as the crew member’s role changes.</td>
+</tr>
+<tr>
+<td>crew_role</td>
+<td><strong>Required</strong><br/>Allowed Values<br/> - <code>operator</code><br/>- <code>conductor</code><br/>- <code>fare_inspector</code><br/>- <code>other</code></td>
+<td>string</td>
+<td>Role of the crew member during the period this record covers.</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td><strong>Required</strong><br/></td>
+<td>date</td>
+<td>Date this crew record becomes effective.</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td></td>
+<td>date</td>
+<td>Date this crew record is no longer effective. Empty if currently effective.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="devices">Devices<a class="headerlink" href="#devices" title="Permanent link"> ¶</a></h3>
 <p><em>devices.schema.json</em></p>
 <p>Measurement devices, such as AVL, APC, and AFC devices, associated with vehicles or stops or stations.</p>
@@ -1737,28 +1777,6 @@ schema standards.</p>
 <td>string</td>
 <td>Indicates the location of a device on the vehicle or at a station. For example:<br/>Front door.<br/>Back door.<br/>Entrance (not located on a vehicle).<br/>Exit (not located on a vehicle).<br/>Entrance/exit (not located on a vehicle).<br/>Other.</td>
 <td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="operators">Operators<a class="headerlink" href="#operators" title="Permanent link"> ¶</a></h3>
-<p><em>operators.schema.json</em></p>
-<p>Personnel who operate vehicles.</p>
-<p>Primary key: {<code>operator_id</code>}</p>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>constraints</th>
-<th>type</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>operator_id</td>
-<td><strong>Required</strong><br/><em>Unique</em><br/></td>
-<td>string</td>
-<td>Identifies an operator. If possible, this should match other internal agency operator IDs.</td>
 </tr>
 </tbody>
 </table>
@@ -1835,7 +1853,7 @@ schema standards.</p>
 <h3 id="vehicle-crew">Vehicle Crew<a class="headerlink" href="#vehicle-crew" title="Permanent link"> ¶</a></h3>
 <p><em>vehicle_crew.schema.json</em></p>
 <p>Crew member assignments to vehicles and trips, supporting multiple crew members and mid-trip reliefs.</p>
-<p>Primary key: {<code>service_date</code>, <code>trip_id_performed</code>, <code>crew_id</code>, <code>start_time</code>}</p>
+<p>Primary key: {<code>start_time</code>, <code>crew_id</code>, <code>trip_id_performed</code>, <code>service_date</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1872,8 +1890,8 @@ schema standards.</p>
 <td>crew_id</td>
 <td><strong>Required</strong><br/></td>
 <td>string</td>
-<td>Identifies the crew member. References operators table.</td>
-<td>ID referencing <a href="#operators">operators</a>.operator_id</td>
+<td>Identifies the crew member. References the crew table.</td>
+<td>ID referencing <a href="#crew">crew</a>.crew_id</td>
 </tr>
 <tr>
 <td>crew_role</td>
@@ -1939,7 +1957,7 @@ schema standards.</p>
 <td></td>
 <td>string</td>
 <td>Identifies an operator (person). If possible, this should match other internal agency operator IDs.</td>
-<td></td>
+<td>ID referencing <a href="#crew">crew</a>.crew_id</td>
 </tr>
 </tbody>
 </table>

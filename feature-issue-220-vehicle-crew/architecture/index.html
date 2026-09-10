@@ -605,9 +605,9 @@
 <td style="text-align: left;">False</td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="../tables/#operators"><code>operators</code></a></td>
+<td style="text-align: left;"><a href="../tables/#crew"><code>crew</code></a></td>
 <td style="text-align: left;">Operators</td>
-<td style="text-align: left;">Personnel who operate vehicles.</td>
+<td style="text-align: left;">Transit personnel who serve as vehicle or station crew, including operators, conductors, and fare inspectors.</td>
 <td style="text-align: left;">False</td>
 </tr>
 </tbody>
@@ -634,7 +634,7 @@
     train_cars -.- |train_car_id| devices[/devices/]
     vehicles  --- |vehicle_id| devices
     vehicles --&gt; |vehicle_id|trips_performed
-    operators[/operators/] -.-&gt; |operator_id| trips_performed
+    crew[/crew/] -.-&gt; |operator_id| trips_performed
     stop_times.txt --&gt; |"
         stop_times.txt: stop_id,stop_sequence
         stop_visits: stop_id,scheduled_stop_sequence
@@ -676,7 +676,7 @@
     end
     subgraph additional [ Additional Data ]
         devices
-        operators
+        crew
     end
     click stops.txt "https://gtfs.org/schedule/reference/#stopstxt"
     click stop_times.txt "https://gtfs.org/schedule/reference/#stop_timestxt"
