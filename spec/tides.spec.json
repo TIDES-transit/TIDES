@@ -86,10 +86,10 @@
     },
     {
       "title": "Operators",
-      "name": "operators",
-      "description": "Personnel who operate vehicles.",
-      "path": "operators.csv",
-      "schema": "operators.schema.json",
+      "name": "crew",
+      "description": "Transit personnel who serve as vehicle or station crew, including operators, conductors, and fare inspectors.",
+      "path": "crew.csv",
+      "schema": "crew.schema.json",
       "required": false
     }
   ]
