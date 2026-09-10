@@ -167,7 +167,7 @@
           "Light Rail",
           "Monorail/Automated Guideway",
           "Other",
-          "Público",
+          "P\u00fablico",
           "Streetcar",
           "Trolleybus",
           "Vanpool"
@@ -205,7 +205,7 @@
     {
       "name": "operator_id",
       "type": "string",
-      "title": "ID referencing operators.operator_id",
+      "title": "ID referencing crew.crew_id",
       "description": "Identifies the vehicle's operator. Optional; for trips with multiple operators, use the first operator or reference the vehicle_crew table for complete crew assignments."
     },
     {
@@ -229,12 +229,12 @@
     {
       "name": "schedule_trip_start",
       "type": "datetime",
-      "description": "Scheduled departure time from the trip’s origin."
+      "description": "Scheduled departure time from the trip\u2019s origin."
     },
     {
       "name": "schedule_trip_end",
       "type": "datetime",
-      "description": "Scheduled end timestamp at the trip’s destination."
+      "description": "Scheduled end timestamp at the trip\u2019s destination."
     },
     {
       "name": "actual_trip_start",
@@ -291,8 +291,8 @@
     {
       "fields": "operator_id",
       "reference": {
-        "resource": "operators",
-        "fields": "operator_id"
+        "resource": "crew",
+        "fields": "crew_id"
       }
     }
   ],

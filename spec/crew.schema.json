@@ -1,0 +1,51 @@
+{
+  "primaryKey": [
+    "crew_id",
+    "start_date"
+  ],
+  "missingValues": [
+    "NA",
+    "NaN",
+    ""
+  ],
+  "fields": [
+    {
+      "name": "crew_id",
+      "type": "string",
+      "description": "Identifies a crew member. If possible, this should match other internal agency crew or employee IDs. The same crew_id may appear in multiple records over time as the crew member's role changes.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "crew_role",
+      "type": "string",
+      "description": "Role of the crew member during the period this record covers.",
+      "constraints": {
+        "required": true,
+        "enum": [
+          "operator",
+          "conductor",
+          "fare_inspector",
+          "other"
+        ]
+      }
+    },
+    {
+      "name": "start_date",
+      "type": "date",
+      "description": "Date this crew record becomes effective.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "end_date",
+      "type": "date",
+      "description": "Date this crew record is no longer effective. Empty if currently effective."
+    }
+  ],
+  "name": "crew.schema.json",
+  "description": "Transit personnel who serve as vehicle or station crew, including operators, conductors, and fare inspectors.",
+  "_table_type": "Supporting"
+}
