@@ -74,7 +74,7 @@
     {
       "name": "timepoint",
       "type": "boolean",
-      "description": "Indicates if the stop should be used for evaluating schedule adherence, on-time performance, and other KPIs. This could be populated to match the GTFS “timepoint” field."
+      "description": "Indicates if the stop should be used for evaluating schedule adherence, on-time performance, and other KPIs. This could be populated to match the GTFS \u201ctimepoint\u201d field."
     },
     {
       "name": "schedule_arrival_time",
@@ -160,11 +160,11 @@
       "description": "Indicates actions of the doors during the stop visit.",
       "constraints": {
         "enum": [
-          "Doors did not open",
-          "Front door opened and back doors remain closed",
-          "Back doors opened and front door remained closed",
-          "All doors opened",
-          "Other configuration"
+          "doors_did_not_open",
+          "front_door_opened_and_back_doors_remain_closed",
+          "back_doors_opened_and_front_door_remained_closed",
+          "all_doors_opened",
+          "other_configuration"
         ]
       }
     },
@@ -229,20 +229,26 @@
       "description": "Indicates the status of the stop.",
       "constraints": {
         "enum": [
-          "Scheduled",
-          "Skipped",
-          "Added",
-          "Missing"
+          "scheduled",
+          "skipped",
+          "added",
+          "missing"
         ]
       }
     }
   ],
   "foreignReferences": [
     {
-      "fields": ["service_date", "trip_id_performed"],
+      "fields": [
+        "service_date",
+        "trip_id_performed"
+      ],
       "reference": {
         "resource": "trips_performed",
-        "fields": ["service_date", "trip_id_performed"]
+        "fields": [
+          "service_date",
+          "trip_id_performed"
+        ]
       }
     },
     {
