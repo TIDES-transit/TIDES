@@ -1,7 +1,7 @@
 {
   "primaryKey": [
     "service_date",
-    "trip_id_performed",
+    "vehicle_id",
     "crew_id",
     "start_time"
   ],
@@ -23,16 +23,13 @@
       "name": "trip_id_performed",
       "type": "string",
       "title": "ID referencing trips_performed.trip_id_performed",
-      "description": "Identifies the trip performed. Required as part of the primary key.",
-      "constraints": {
-        "required": true
-      }
+      "description": "Identifies the trip performed during this crew assignment. Optional so that a single assignment can span consecutive trips (interlining) or cover vehicle time not tied to one trip; populate it wherever a single trip applies, which keeps joins with trips_performed simple."
     },
     {
       "name": "vehicle_id",
       "type": "string",
       "title": "ID referencing vehicles.vehicle_id",
-      "description": "Identifies the vehicle.",
+      "description": "Identifies the vehicle the crew member is assigned to. Must match trips_performed.vehicle_id for the same performed trip when trip_id_performed is populated.",
       "constraints": {
         "required": true
       }
