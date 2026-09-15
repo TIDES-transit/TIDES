@@ -1170,7 +1170,7 @@ schema standards.</p>
 <h3 id="station-activities">Station Activities<a class="headerlink" href="#station-activities" title="Permanent link"> ¶</a></h3>
 <p><em>station_activities.schema.json</em></p>
 <p>Summarized transactions, entries, and exits by stop or station and time period for each service date (for events not associated with a trip).</p>
-<p>Primary key: {<code>time_period_start</code>, <code>stop_id</code>, <code>time_period_end</code>, <code>service_date</code>}</p>
+<p>Primary key: {<code>service_date</code>, <code>time_period_start</code>, <code>stop_id</code>, <code>time_period_end</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1271,7 +1271,7 @@ schema standards.</p>
 <h3 id="stop-visits">Stop Visits<a class="headerlink" href="#stop-visits" title="Permanent link"> ¶</a></h3>
 <p><em>stop_visits.schema.json</em></p>
 <p>Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date.</p>
-<p>Primary key: {<code>trip_stop_sequence</code>, <code>trip_id_performed</code>, <code>service_date</code>}</p>
+<p>Primary key: {<code>service_date</code>, <code>trip_id_performed</code>, <code>trip_stop_sequence</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1505,7 +1505,7 @@ schema standards.</p>
 <h3 id="trips-performed">Trips Performed<a class="headerlink" href="#trips-performed" title="Permanent link"> ¶</a></h3>
 <p><em>trips_performed.schema.json</em></p>
 <p>Trips performed for each service date.</p>
-<p>Primary key: {<code>trip_id_performed</code>, <code>service_date</code>}</p>
+<p>Primary key: {<code>service_date</code>, <code>trip_id_performed</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1670,7 +1670,7 @@ schema standards.</p>
 <h3 id="crew">Crew<a class="headerlink" href="#crew" title="Permanent link"> ¶</a></h3>
 <p><em>crew.schema.json</em></p>
 <p>Transit personnel who serve as vehicle or station crew, including operators, conductors, and fare inspectors.</p>
-<p>Primary key: {<code>crew_id</code>, <code>start_date</code>}</p>
+<p>Primary key: {<code>start_date</code>, <code>crew_id</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1853,7 +1853,7 @@ schema standards.</p>
 <h3 id="vehicle-crew">Vehicle Crew<a class="headerlink" href="#vehicle-crew" title="Permanent link"> ¶</a></h3>
 <p><em>vehicle_crew.schema.json</em></p>
 <p>Crew member assignments to vehicles and trips, supporting multiple crew members and mid-trip reliefs.</p>
-<p>Primary key: {<code>start_time</code>, <code>crew_id</code>, <code>trip_id_performed</code>, <code>service_date</code>}</p>
+<p>Primary key: {<code>service_date</code>, <code>start_time</code>, <code>vehicle_id</code>, <code>crew_id</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1874,16 +1874,16 @@ schema standards.</p>
 </tr>
 <tr>
 <td>trip_id_performed</td>
-<td><strong>Required</strong><br/></td>
+<td></td>
 <td>string</td>
-<td>Identifies the trip performed. Required as part of the primary key.</td>
+<td>Identifies the trip performed during this crew assignment. Optional so that a single assignment can span consecutive trips (interlining) or cover vehicle time not tied to one trip; populate it wherever a single trip applies, which keeps joins with trips_performed simple.</td>
 <td>ID referencing <a href="#trips-performed">trips_performed</a>.trip_id_performed</td>
 </tr>
 <tr>
 <td>vehicle_id</td>
 <td><strong>Required</strong><br/></td>
 <td>string</td>
-<td>Identifies the vehicle.</td>
+<td>Identifies the vehicle the crew member is assigned to. Must match trips_performed.vehicle_id for the same performed trip when trip_id_performed is populated.</td>
 <td>ID referencing <a href="#vehicles">vehicles</a>.vehicle_id</td>
 </tr>
 <tr>
@@ -1919,7 +1919,7 @@ schema standards.</p>
 <h3 id="vehicle-train-cars">Vehicle Train Cars<a class="headerlink" href="#vehicle-train-cars" title="Permanent link"> ¶</a></h3>
 <p><em>vehicle_train_cars.schema.json</em></p>
 <p>Relationships between assets and vehicles.</p>
-<p>Primary key: {<code>train_car_id</code>, <code>vehicle_id</code>}</p>
+<p>Primary key: {<code>vehicle_id</code>, <code>train_car_id</code>}</p>
 <table>
 <thead>
 <tr>
