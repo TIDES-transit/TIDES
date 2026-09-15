@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `vehicle_crew` table for multiple crew members per trip, including mid-trip reliefs ([#220](https://github.com/TIDES-transit/TIDES/issues/220))
+- `vehicle_crew` table for multiple crew members per vehicle and trip, including mid-trip reliefs; keyed on `service_date`, `vehicle_id`, `crew_id`, `start_time`. `trip_id_performed` is optional so a single assignment can span consecutive trips ([#220](https://github.com/TIDES-transit/TIDES/issues/220))
 
 ### Changed
 
