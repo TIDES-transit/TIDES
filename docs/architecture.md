@@ -38,7 +38,7 @@ graph LR;
     train_cars -.- |train_car_id| devices[/devices/]
     vehicles  --- |vehicle_id| devices
     vehicles --> |vehicle_id|trips_performed
-    operators[/operators/] -.-> |operator_id| trips_performed
+    crew[/crew/] -.-> |operator_id| trips_performed
     stop_times.txt --> |"
         stop_times.txt: stop_id,stop_sequence
         stop_visits: stop_id,scheduled_stop_sequence
@@ -80,7 +80,7 @@ graph LR;
     end
     subgraph additional [ Additional Data ]
         devices
-        operators
+        crew
     end
     click stops.txt "https://gtfs.org/schedule/reference/#stopstxt"
     click stop_times.txt "https://gtfs.org/schedule/reference/#stop_timestxt"
