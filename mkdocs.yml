@@ -91,8 +91,11 @@ nav:
   - Contributing:
       - Development: development.md
       - Documentation: documentation.md
-  - Governance: 
+  - Governance:
       - Governance Structure: governance.md
+      - Working Groups:
+          - Working Groups Registry: governance/working-groups.md
+          - SDWG Charter: governance/working-groups/sdwg-charter.md
       - Change Management: governance/policies/change-management.md
       - Other Policies: 
           - Code of conduct: governance/policies/code-of-conduct.md
