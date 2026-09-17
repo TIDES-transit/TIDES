@@ -74,7 +74,7 @@
     {
       "name": "timepoint",
       "type": "boolean",
-      "description": "Indicates if the stop should be used for evaluating schedule adherence, on-time performance, and other KPIs. This could be populated to match the GTFS “timepoint” field."
+      "description": "Indicates if the stop should be used for evaluating schedule adherence, on-time performance, and other KPIs. This could be populated to match the GTFS \"timepoint\" field."
     },
     {
       "name": "schedule_arrival_time",
