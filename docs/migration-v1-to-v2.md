@@ -1,8 +1,8 @@
 # Migrating from TIDES v1.0 to v2.0
 
-!!! warning "Draft"
+!!! note "Pre-release"
 
-    This guide is a working draft. It reflects the changes staged for the v2.0 release and will be finalized when v2.0 is released. Field names and details below may change during review.
+    This guide covers the changes in the v2.0-alpha.1 pre-release. Everything described here has been approved through the change management process. One area targeted for v2.0, vehicles and consists, is still in review and is not part of alpha.1; see the placeholder section below. That area will be added to this guide when it lands in v2.0 final.
 
 TIDES v2.0 is a major release containing backwards-incompatible changes. This guide summarizes every change from v1.0 and what producers and consumers of TIDES data need to do to migrate.
 
@@ -11,13 +11,13 @@ TIDES v2.0 is a major release containing backwards-incompatible changes. This gu
 | Change | Type | Affected tables |
 |---|---|---|
 | `passenger_events` renamed to `device_events` with expanded scope | Breaking | `passenger_events` → `device_events` |
-| `event_type` enumeration values renamed to `snake_case` | Breaking | `device_events` |
+| Enumeration values renamed to `snake_case` across TIDES-defined vocabularies | Breaking | `device_events`, `devices`, `fare_transactions`, `stop_visits`, `train_cars`, `trips_performed`, `vehicle_locations` |
 | Duration fields renamed with explicit `_duration` suffix | Breaking | `stop_visits` |
 | `minimum: 0` constraint removed from `departure_load` | Normative (constraint relaxed) | `stop_visits` |
-| Vehicle attributes normalized into `vehicle_groups`; `train_cars` and `vehicle_train_cars` removed; `vehicle_assignments` and `consist_vehicles` added | Breaking | `vehicles`, `train_cars`, `vehicle_train_cars`, and new tables |
-| `vehicle_direction` field added to operational tables | New optional field | `vehicle_locations`, `stop_visits`, `trips_performed`, `fare_transactions`, `device_events` |
+| `operators` table restructured into `crew` | Breaking | `operators` → `crew`; `trips_performed`, `vehicle_train_cars` |
 | `vehicle_label` field added | New optional field | `vehicles` |
 | `vehicle_crew` supporting table added | New optional table | `vehicle_crew` |
+| Vehicles and consists restructure | In review for v2.0 final; not in alpha.1 | `vehicles`, `train_cars`, `vehicle_train_cars` (unchanged in alpha.1) |
 | `event_count` usage and APC data guidance clarified | Non-normative | `device_events` |
 
 ## Breaking changes
@@ -39,9 +39,13 @@ To migrate:
 - New optional fields are available: `employee_id` (for mobile/handheld devices), `latitude`, and `longitude` (for mobile device events not at a fixed location).
 - New `event_type` values `passenger_entry` and `passenger_exit` support station fare-gate and turnstile events.
 
-### `event_type` values are now `snake_case`
+### Enumeration values are now `snake_case`
 
-Descriptive-sentence enumeration values in `event_type` are replaced with `snake_case` identifiers. Producers must map values as follows:
+Descriptive-sentence enumeration values in every TIDES-defined vocabulary are replaced with `snake_case` identifiers, for code compatibility. The rule agreed by the Contributors Group: vocabularies that TIDES defines itself convert; values inherited from externally maintained vocabularies keep their source form. So `trips_performed.route_type` (GTFS) and `trips_performed.ntd_mode` (NTD) are unchanged, and `direction_id` is numeric and untouched. A GTFS-to-TIDES crosswalk for `route_type` ships as a companion artifact.
+
+Thirteen fields across seven tables are affected. Producers must map values as follows. Consumers matching on any of these strings must update the same way.
+
+#### `device_events.event_type`
 
 | v1.0 value | v2.0 value |
 |---|---|
@@ -62,6 +66,122 @@ Descriptive-sentence enumeration values in `event_type` are replaced with `snake
 | `Individual bike alighted` | `bike_alighted` |
 | `Bike rack deployed` | `bike_rack_deployed` |
 
+The new values `passenger_entry` and `passenger_exit` (station fare gates and turnstiles) have no v1.0 equivalent.
+
+#### `devices.device_type`
+
+| v1.0 value | v2.0 value |
+|---|---|
+| `Farebox` | `farebox` |
+| `Fare gate` | `fare_gate` |
+| `Fare vending machine` | `fare_vending_machine` |
+| `Passenger counter` | `passenger_counter` |
+| `Vehicle location` | `vehicle_location` |
+| `Other` | `other` |
+
+#### `fare_transactions.fare_action`
+
+| v1.0 value | v2.0 value |
+|---|---|
+| `Unknown action type` | `unknown_action_type` |
+| `Purchase` | `purchase` |
+| `Enter` | `enter` |
+| `Exit` | `exit` |
+| `Transfer entrance` | `transfer_entrance` |
+| `Transfer exit` | `transfer_exit` |
+| `Add` | `add` |
+| `New` | `new` |
+| `Capture` | `capture` |
+| `Extend` | `extend` |
+| `Combine` | `combine` |
+| `Void` | `void` |
+| `Activate` | `activate` |
+| `Adjust` | `adjust` |
+| `Other` | `other` |
+
+#### `fare_transactions.fare_media_id`
+
+| v1.0 value | v2.0 value |
+|---|---|
+| `Cash or coins` | `cash_or_coins` |
+| `Smart card or ticket` | `smart_card_or_ticket` |
+| `Magnetic-stripe card or ticket` | `magnetic_stripe_card_or_ticket` |
+| `Bank card` | `bank_card` |
+| `Mobile NFC` | `mobile_nfc` |
+| `Optical scan` | `optical_scan` |
+| `Button pressed by driver or operator to indicate a boarding or alighting passenger.` | `operator_button_press` |
+| `Other type` | `other_type` |
+
+The sentence-long fare media value is the one editorial rename in the set; its meaning is unchanged.
+
+#### `stop_visits.door_status`
+
+| v1.0 value | v2.0 value |
+|---|---|
+| `Doors did not open` | `doors_did_not_open` |
+| `Front door opened and back doors remain closed` | `front_door_opened_and_back_doors_remain_closed` |
+| `Back doors opened and front door remained closed` | `back_doors_opened_and_front_door_remained_closed` |
+| `All doors opened` | `all_doors_opened` |
+| `Other configuration` | `other_configuration` |
+
+#### `stop_visits.schedule_relationship` and `vehicle_locations.schedule_relationship`
+
+| v1.0 value | v2.0 value |
+|---|---|
+| `Scheduled` | `scheduled` |
+| `Skipped` | `skipped` |
+| `Added` | `added` |
+| `Missing` | `missing` |
+
+#### `trips_performed.schedule_relationship`
+
+| v1.0 value | v2.0 value |
+|---|---|
+| `Scheduled` | `scheduled` |
+| `Added` | `added` |
+| `Unscheduled` | `unscheduled` |
+| `Canceled` | `canceled` |
+| `Duplicated` | `duplicated` |
+
+#### `trips_performed.trip_type` and `vehicle_locations.trip_type`
+
+| v1.0 value | v2.0 value |
+|---|---|
+| `In service` | `in_service` |
+| `Deadhead` | `deadhead` |
+| `Layover` | `layover` |
+| `Pullout` | `pullout` |
+| `Pullin` | `pullin` |
+| `Extra Pullout` | `extra_pullout` |
+| `Extra Pullin` | `extra_pullin` |
+| `Deadhead To Layover` | `deadhead_to_layover` |
+| `Deadhead From Layover` | `deadhead_from_layover` |
+| `Other not in service` | `other_not_in_service` |
+
+#### `train_cars.train_car_type`
+
+| v1.0 value | v2.0 value |
+|---|---|
+| `Train car` | `train_car` |
+| `Trolley` | `trolley` |
+| `Other` | `other` |
+
+#### `vehicle_locations.current_status`
+
+| v1.0 value | v2.0 value |
+|---|---|
+| `Incoming at` | `incoming_at` |
+| `Stopped at` | `stopped_at` |
+| `In transit to` | `in_transit_to` |
+
+#### `vehicle_locations.gps_quality`
+
+| v1.0 value | v2.0 value |
+|---|---|
+| `Excellent` | `excellent` |
+| `Good` | `good` |
+| `Poor` | `poor` |
+
 ### Duration fields renamed in `stop_visits`
 
 Three fields holding durations are renamed with an explicit `_duration` suffix to distinguish them from timestamps:
@@ -74,23 +194,27 @@ Three fields holding durations are renamed with an explicit `_duration` suffix t
 
 Field semantics are unchanged; only the names change.
 
-### Vehicles, vehicle groups, assignments, and consists
+### `operators` is now `crew`
 
-Vehicle representation is restructured to normalize attributes and properly support rail consists:
+The `operators` table is restructured into a `crew` table so that a crew member's role can change over time and so that the same person can be represented consistently across trips, vehicles, and train cars.
 
-- **`vehicle_groups` (new):** shared attributes (seated capacity, full capacity, wheelchair capacity, bike capacity) for a group of vehicles of the same type. Attribute fields move here from `vehicles` and `train_cars`.
-- **`vehicles` (repurposed):** the static or slowly changing list of physical vehicles, buses and train cars alike, each referencing a `vehicle_group_id` for its attributes, plus identifying information (`vehicle_label`, `license_plate`, in-service `start_date` and `end_date`).
-- **`vehicle_assignments` (new, optional):** the daily record of a single vehicle or a consist that operational data can be associated with.
-- **`consist_vehicles` (new):** the individual cars that make up a consist, with order and orientation. Replaces `vehicle_train_cars`.
-- **`train_cars` and `vehicle_train_cars` (removed):** train cars are now records in `vehicles`; consist membership lives in `consist_vehicles`.
-- **`vehicle_direction` (new, optional):** added to `vehicle_locations`, `stop_visits`, `trips_performed`, `fare_transactions`, and `device_events` to represent the direction a train is moving during operation.
+| v1.0 | v2.0 |
+|---|---|
+| `operators` table with a single `operator_id` field | `crew` table with `crew_id`, `crew_role`, `start_date`, and optional `end_date`; primary key `crew_id` + `start_date` |
+
+The same `crew_id` may appear in more than one `crew` record when the role changes, with non-overlapping date ranges. `trips_performed`, `vehicle_train_cars`, and the new `vehicle_crew` table reference `crew.crew_id`.
 
 To migrate:
 
-- Split vehicle attribute data out of `vehicles` and `train_cars` into `vehicle_groups` records, one per distinct vehicle type.
-- Combine bus and train car records into a single `vehicles` table, each referencing its `vehicle_group_id`.
-- Convert `vehicle_train_cars` records into `consist_vehicles` records with `car_order` and `car_orientation`.
-- Remove `train_cars.csv` and `vehicle_train_cars.csv` from the data package and add the new tables to `datapackage.json`.
+- Rename `operators.csv` to `crew.csv` and update the resource entry in `datapackage.json`.
+- Rename the `operator_id` column to `crew_id`, add `crew_role`, and add `start_date` (the earliest date the record applies; use the start of your dataset if unknown). Leave `end_date` empty for current records.
+- Existing `trips_performed.operator_id` and `vehicle_train_cars.operator_id` values now resolve against `crew.crew_id`; the referring field names are unchanged.
+
+### Vehicles and consists (in review, not part of v2.0-alpha.1)
+
+A restructure of vehicle representation to support rail consists and mixed fleets (#272) is being worked through by the Standards Development Working Group with worked examples against real operational data. It is targeted for v2.0 final and is **not included in v2.0-alpha.1**. In alpha.1, the `vehicles`, `train_cars`, and `vehicle_train_cars` tables keep their v1.0 structure apart from the `vehicle_label` addition and the `crew` reference described above.
+
+Producers implementing alpha.1 should expect the vehicles and consists area to change in v2.0 final; none of the changes in this guide depend on it beyond field references. This section will be replaced with migration steps when that work lands. Follow [#272](https://github.com/TIDES-transit/TIDES/pull/272) and the v2.0 map on [#271](https://github.com/TIDES-transit/TIDES/issues/271).
 
 ### `stop_visits.departure_load` may be negative
 
@@ -104,7 +228,7 @@ The `minimum: 0` constraint is removed. `departure_load` is typically derived fr
 
 These additions are backwards-compatible; adopting them is optional.
 
-- **`vehicle_crew` table:** supports multiple crew members per trip, including mid-trip reliefs, with `crew_role` and start/end times. `trips_performed.operator_id` remains for the single-operator case.
+- **`vehicle_crew` table:** supports multiple crew members per vehicle and trip, including mid-trip reliefs, with `crew_role` and start/end times. Records are keyed on `service_date`, `vehicle_id`, `crew_id`, and `start_time`; `trip_id_performed` is optional so that a single assignment can span consecutive trips (interlining), and is usually populated for easy joins. `trips_performed.operator_id` remains for the single-operator case.
 - **`vehicle_label` field:** separates the user-visible vehicle number from the internal `vehicle_id`. Aligns with GTFS-realtime `VehicleDescriptor.label`.
 
 A `device_status` table for tracking device availability was considered during v2.0 development and deferred to a future minor release pending implementation experience (see #253).
@@ -117,18 +241,18 @@ A `device_status` table for tracking device availability was considered during v
 
 - [ ] Rename `passenger_events.csv` to `device_events.csv`; rename `passenger_event_id` to `device_event_id`.
 - [ ] Populate `device_id` on all device events and register devices in the `devices` table.
-- [ ] Map `event_type` values to their `snake_case` equivalents.
+- [ ] Map enumeration values in the thirteen affected fields to their `snake_case` equivalents; leave `route_type` and `ntd_mode` as they are.
 - [ ] Rename the three `stop_visits` duration fields.
-- [ ] Restructure vehicle data into `vehicles` + `vehicle_groups` (+ `vehicle_assignments` / `consist_vehicles` for rail).
-- [ ] Remove `train_cars.csv` and `vehicle_train_cars.csv`.
+- [ ] Rename `operators.csv` to `crew.csv`; rename `operator_id` to `crew_id` and add `crew_role` and `start_date`.
+- [ ] Leave `vehicles`, `train_cars`, and `vehicle_train_cars` as in v1.0 (plus optional `vehicle_label`); the vehicles and consists restructure follows in v2.0 final.
 - [ ] Update `datapackage.json` resource entries and the profile reference to the v2.0 spec.
 - [ ] Re-validate the data package against the v2.0 schemas.
 
 ## Migration checklist for consumers
 
 - [ ] Update queries and joins from `passenger_events` to `device_events`; handle records where `vehicle_id` is empty (station and mobile device events).
-- [ ] Update any `event_type` string matching to the `snake_case` values.
+- [ ] Update any string matching on the thirteen converted enumeration fields to the `snake_case` values.
 - [ ] Update references to the renamed `stop_visits` duration fields.
 - [ ] Remove any assumption that `stop_visits.departure_load` is nonnegative; handle negative derived values per the producer's documented interpretation.
-- [ ] Source vehicle attributes (capacities) from `vehicle_groups` via `vehicles.vehicle_group_id`.
-- [ ] Replace `train_cars` / `vehicle_train_cars` joins with `vehicles` / `consist_vehicles`.
+- [ ] Join `trips_performed.operator_id` and `vehicle_train_cars.operator_id` to `crew.crew_id` (with `start_date`/`end_date` if you need the role at the time); use `vehicle_crew` for full crew assignments.
+- [ ] Expect the vehicles and consists tables to change in v2.0 final; no consumer change is needed for alpha.1.
