@@ -85,11 +85,19 @@
       "required": false
     },
     {
-      "title": "Operators",
+      "title": "Crew",
       "name": "crew",
       "description": "Transit personnel who serve as vehicle or station crew, including operators, conductors, and fare inspectors.",
       "path": "crew.csv",
       "schema": "crew.schema.json",
+      "required": false
+    },
+    {
+      "title": "Vehicle Crew",
+      "name": "vehicle_crew",
+      "description": "Crew member assignments to vehicles and trips, supporting multiple crew members and mid-trip reliefs.",
+      "path": "vehicle_crew.csv",
+      "schema": "vehicle_crew.schema.json",
       "required": false
     }
   ]
