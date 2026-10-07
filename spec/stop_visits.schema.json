@@ -161,7 +161,7 @@
       "constraints": {
         "enum": [
           "doors_did_not_open",
-          "front_door_opened_and_back_doors_remain_closed",
+          "front_door_opened_and_back_doors_remained_closed",
           "back_doors_opened_and_front_door_remained_closed",
           "all_doors_opened",
           "other_configuration"
