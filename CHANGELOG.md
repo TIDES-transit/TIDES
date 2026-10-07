@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `vehicle_crew` table for multiple crew members per vehicle and trip, including mid-trip reliefs; keyed on `service_date`, `vehicle_id`, `crew_id`, `start_time`. `trip_id_performed` is optional so a single assignment can span consecutive trips ([#220](https://github.com/TIDES-transit/TIDES/issues/220))
+
+### Changed
+
+- **BREAKING:** `operators` table replaced by a `crew` table (`crew_id`, `crew_role`, `start_date`, `end_date`) so crew members of any role are representable and can change roles over time. `vehicle_crew.crew_id`, `trips_performed.operator_id`, and `vehicle_train_cars.operator_id` now reference `crew.crew_id` ([#220](https://github.com/TIDES-transit/TIDES/issues/220))
+- `trips_performed.operator_id` description clarified to reference vehicle_crew table for multi-operator trips ([#220](https://github.com/TIDES-transit/TIDES/issues/220))
+
 ## [1.0] - 2025-12-23
 
 ### Changed

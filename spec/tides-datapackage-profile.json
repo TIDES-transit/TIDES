@@ -295,12 +295,13 @@
             "enum": [
               "devices",
               "fare_transactions",
-              "operators",
+              "crew",
               "station_activities",
               "passenger_events",
               "stop_visits",
               "train_cars",
               "trips_performed",
+              "vehicle_crew",
               "vehicle_locations",
               "vehicle_train_cars",
               "vehicles"
