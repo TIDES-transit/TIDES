@@ -12,6 +12,7 @@ TIDES v2.0 is a major release containing backwards-incompatible changes. This gu
 |---|---|---|
 | `passenger_events` renamed to `device_events` with expanded scope | Breaking | `passenger_events` → `device_events` |
 | Enumeration values renamed to `snake_case` across TIDES-defined vocabularies | Breaking | `device_events`, `devices`, `fare_transactions`, `stop_visits`, `train_cars`, `trips_performed`, `vehicle_locations` |
+| `ntd_mode` values switched to NTD's two-character mode codes | Breaking | `trips_performed` |
 | Duration fields renamed with explicit `_duration` suffix | Breaking | `stop_visits` |
 | `minimum: 0` constraint removed from `departure_load` | Normative (constraint relaxed) | `stop_visits` |
 | `operators` table restructured into `crew` | Breaking | `operators` → `crew`; `trips_performed`, `vehicle_train_cars` |
@@ -37,11 +38,12 @@ To migrate:
 - Populate `device_id` for every record; it is now **required** (it was optional in v1.0). Every event must be traceable to a device in the `devices` table.
 - `vehicle_id` and `trip_stop_sequence` are now **optional** (they were required in v1.0). Existing vehicle-based records can keep them populated; station-based and mobile device events may leave them empty.
 - New optional fields are available: `employee_id` (for mobile/handheld devices), `latitude`, and `longitude` (for mobile device events not at a fixed location).
+- `employee_id` is a free identifier in alpha.1 and is not linked to the new `crew` table; how it relates to `crew.crew_id` is subject to change in v2.0 final.
 - New `event_type` values `passenger_entry` and `passenger_exit` support station fare-gate and turnstile events.
 
 ### Enumeration values are now `snake_case`
 
-Descriptive-sentence enumeration values in every TIDES-defined vocabulary are replaced with `snake_case` identifiers, for code compatibility. The rule agreed by the Contributors Group: vocabularies that TIDES defines itself convert; values inherited from externally maintained vocabularies keep their source form. So `trips_performed.route_type` (GTFS) and `trips_performed.ntd_mode` (NTD) are unchanged, and `direction_id` is numeric and untouched. A GTFS-to-TIDES crosswalk for `route_type` ships as a companion artifact.
+Descriptive-sentence enumeration values in every TIDES-defined vocabulary are replaced with `snake_case` identifiers, for code compatibility. The rule agreed by the Contributors Group: vocabularies that TIDES defines itself convert; values inherited from externally maintained vocabularies keep their source form. So `trips_performed.route_type` (GTFS) is unchanged, and `direction_id` is numeric and untouched. A GTFS-to-TIDES crosswalk for `route_type` ships as a companion artifact. `trips_performed.ntd_mode` (NTD) also stays in NTD's own form, but moves from NTD's mode names to its official two-character codes (mapping below).
 
 Thirteen fields across seven tables are affected. Producers must map values as follows. Consumers matching on any of these strings must update the same way.
 
@@ -119,10 +121,12 @@ The sentence-long fare media value is the one editorial rename in the set; its m
 | v1.0 value | v2.0 value |
 |---|---|
 | `Doors did not open` | `doors_did_not_open` |
-| `Front door opened and back doors remain closed` | `front_door_opened_and_back_doors_remain_closed` |
+| `Front door opened and back doors remain closed` | `front_door_opened_and_back_doors_remained_closed` |
 | `Back doors opened and front door remained closed` | `back_doors_opened_and_front_door_remained_closed` |
 | `All doors opened` | `all_doors_opened` |
 | `Other configuration` | `other_configuration` |
+
+The second value also changes `remain` to `remained`, matching the tense of the third.
 
 #### `stop_visits.schedule_relationship` and `vehicle_locations.schedule_relationship`
 
@@ -181,6 +185,34 @@ The sentence-long fare media value is the one editorial rename in the set; its m
 | `Excellent` | `excellent` |
 | `Good` | `good` |
 | `Poor` | `poor` |
+
+### `trips_performed.ntd_mode` uses NTD's two-character mode codes
+
+`ntd_mode` values change from NTD mode names to the official two-character mode codes listed in the Modes and Types of Service section of the [NTD Full Reporting Policy Manual](https://www.transit.dot.gov/ntd/manuals). The codes follow the 2026 edition of the manual; if NTD revises its list of modes, the `ntd_mode` values will be updated through the change management process. `Demand Taxi` and `Other` are removed because neither has a code in the 2026 manual. The field is optional; leave it empty for trips with no NTD mode.
+
+| v1.0 value | v2.0 value |
+|---|---|
+| `Aerial Tramway` | `TR` |
+| `Alaska Railroad` | `AR` |
+| `Bus` | `MB` |
+| `Bus Rapid Transit` | `RB` |
+| `Cable Car` | `CC` |
+| `Commuter Bus` | `CB` |
+| `Commuter Rail` | `CR` |
+| `Demand Response` | `DR` |
+| `Demand Taxi` | removed |
+| `Ferryboat` | `FB` |
+| `Heavy Rail` | `HR` |
+| `Hybrid Rail` | `YR` |
+| `Inclined Plane` | `IP` |
+| `Jitney` | `JT` |
+| `Light Rail` | `LR` |
+| `Monorail/Automated Guideway` | `MG` |
+| `Other` | removed |
+| `Público` | `PB` |
+| `Streetcar` | `SR` |
+| `Trolleybus` | `TB` |
+| `Vanpool` | `VP` |
 
 ### Duration fields renamed in `stop_visits`
 
@@ -241,7 +273,8 @@ A `device_status` table for tracking device availability was considered during v
 
 - [ ] Rename `passenger_events.csv` to `device_events.csv`; rename `passenger_event_id` to `device_event_id`.
 - [ ] Populate `device_id` on all device events and register devices in the `devices` table.
-- [ ] Map enumeration values in the thirteen affected fields to their `snake_case` equivalents; leave `route_type` and `ntd_mode` as they are.
+- [ ] Map enumeration values in the thirteen affected fields to their `snake_case` equivalents; leave `route_type` as it is.
+- [ ] Switch `ntd_mode` to the two-character NTD mode codes; leave it empty for trips with no NTD mode.
 - [ ] Rename the three `stop_visits` duration fields.
 - [ ] Rename `operators.csv` to `crew.csv`; rename `operator_id` to `crew_id` and add `crew_role` and `start_date`.
 - [ ] Leave `vehicles`, `train_cars`, and `vehicle_train_cars` as in v1.0 (plus optional `vehicle_label`); the vehicles and consists restructure follows in v2.0 final.
@@ -252,6 +285,7 @@ A `device_status` table for tracking device availability was considered during v
 
 - [ ] Update queries and joins from `passenger_events` to `device_events`; handle records where `vehicle_id` is empty (station and mobile device events).
 - [ ] Update any string matching on the thirteen converted enumeration fields to the `snake_case` values.
+- [ ] Update any matching on `ntd_mode` to the two-character NTD mode codes, and expect it to be empty for trips with no NTD mode.
 - [ ] Update references to the renamed `stop_visits` duration fields.
 - [ ] Remove any assumption that `stop_visits.departure_load` is nonnegative; handle negative derived values per the producer's documented interpretation.
 - [ ] Join `trips_performed.operator_id` and `vehicle_train_cars.operator_id` to `crew.crew_id` (with `start_date`/`end_date` if you need the role at the time); use `vehicle_crew` for full crew assignments.
