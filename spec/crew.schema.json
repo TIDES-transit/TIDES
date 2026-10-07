@@ -20,7 +20,7 @@
     {
       "name": "crew_role",
       "type": "string",
-      "description": "Role of the crew member during the period this record covers.This value may be superseded by vehicle_crew.crew_role when they differ or when an individual can have multiple roles during the same time period.",
+      "description": "Primary role of the crew member during the period this record covers. When vehicle_crew.crew_role is populated for an assignment, it takes precedence over this value.",
       "constraints": {
         "required": true,
         "enum": [
@@ -34,7 +34,7 @@
     {
       "name": "start_date",
       "type": "date",
-      "description": "Date this crew record becomes effective.  An individual crew member may have multiple overlapping records when they can have different roles during the same time period.",
+      "description": "Date this crew record becomes effective. A crew member has one effective crew record at a time, carrying their primary role; a different role on a specific assignment is recorded in vehicle_crew.crew_role rather than in an overlapping crew record.",
       "constraints": {
         "required": true
       }
@@ -42,7 +42,7 @@
     {
       "name": "end_date",
       "type": "date",
-      "description": "Date this crew record is no longer effective. Empty if currently effective."
+      "description": "Date this crew record is no longer effective. This date is exclusive, meaning the record covers dates from start_date up to but not including end_date, matching vehicle_crew.end_time. Empty if currently effective."
     }
   ],
   "name": "crew.schema.json",
