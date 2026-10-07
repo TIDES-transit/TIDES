@@ -20,7 +20,7 @@
     {
       "name": "crew_role",
       "type": "string",
-      "description": "Role of the crew member during the period this record covers.",
+      "description": "Role of the crew member during the period this record covers.This value may be superseded by vehicle_crew.crew_role when they differ or when an individual can have multiple roles during the same time period.",
       "constraints": {
         "required": true,
         "enum": [
@@ -34,7 +34,7 @@
     {
       "name": "start_date",
       "type": "date",
-      "description": "Date this crew record becomes effective.",
+      "description": "Date this crew record becomes effective.  An individual crew member may have multiple overlapping records when they can have different roles during the same time period.",
       "constraints": {
         "required": true
       }

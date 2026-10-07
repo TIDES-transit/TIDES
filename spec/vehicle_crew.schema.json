@@ -46,7 +46,7 @@
     {
       "name": "crew_role",
       "type": "string",
-      "description": "Role of the crew member on the vehicle.",
+      "description": "Role of the crew member on the vehicle. When multiple crew members are assigned, this indicates their specific function. This value may supersede the value of crew.crew_role when they differ or when there are overlapping crew records.",
       "constraints": {
         "enum": [
           "operator",
@@ -59,7 +59,7 @@
     {
       "name": "start_time",
       "type": "datetime",
-      "description": "Timestamp when the crew member's assignment began.",
+      "description": "Timestamp when the crew member's assignment began. This time is inclusive, meaning the time starts at the given timestamp. Multiple crew members may have overlapping times on the same vehicle, but an individual crew member should not be assigned to multiple vehicles at the same time. ",
       "constraints": {
         "required": true
       }
@@ -67,7 +67,7 @@
     {
       "name": "end_time",
       "type": "datetime",
-      "description": "Timestamp when the crew member's assignment ended. Null if assignment is ongoing."
+      "description": "Timestamp when the crew member's assignment ended. This time is exclusive meaning the assignment ends immediately before the timestamp. Null if assignment is ongoing."
     }
   ],
   "foreignReferences": [
