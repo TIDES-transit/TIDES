@@ -46,7 +46,7 @@
     {
       "name": "crew_role",
       "type": "string",
-      "description": "Role of the crew member on the vehicle. When multiple crew members are assigned, this indicates their specific function. When populated, this value takes precedence over crew.crew_role; when empty, the role on the crew record effective on service_date applies.",
+      "description": "Role of the crew member on the vehicle. When multiple crew members are assigned, this indicates their specific function. When populated, this value takes precedence over crew.crew_role; when empty, the role on the crew record effective on service_date applies. Allowed values are a subset of those for crew.crew_role.",
       "constraints": {
         "enum": [
           "operator",
