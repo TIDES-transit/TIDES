@@ -12,8 +12,8 @@ Working Groups are open to anyone. Each group's charter states how to join, the 
 | --- | --- |
 | **Status** | Active. Chartered by the TIDES Board on August 27, 2026 |
 | **Charter** | [SDWG Charter](working-groups/sdwg-charter.md) |
-| **Chair** | *To be announced* |
-| **Deputy Chair** | *To be announced* |
+| **Chair** | [Christopher Yamas](https://github.com/chrisyamas) |
+| **Deputy Chair** | Ian Thistle, [Washington Metropolitan Area Transit Authority](https://www.wmata.com/) |
 | **Meets** | Monthly by video call; schedule and connection details announced through TIDES community channels |
 | **How to join** | Register as a TIDES Contributor via the [registration form][contributor-registration], then contact the chairs |
 
