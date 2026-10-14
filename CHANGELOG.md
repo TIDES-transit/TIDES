@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **BREAKING:** `stop_visits` duration fields renamed from `_time` to `_duration` suffix to distinguish from timestamp fields: `ramp_deployed_time` → `ramp_deployed_duration`, `kneel_deployed_time` → `kneel_deployed_duration`, `lift_deployed_time` → `lift_deployed_duration` ([#237](https://github.com/TIDES-transit/TIDES/issues/237))
+
 ## [1.0] - 2025-12-23
 
 ### Changed

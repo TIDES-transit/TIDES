@@ -169,7 +169,7 @@
       }
     },
     {
-      "name": "ramp_deployed_time",
+      "name": "ramp_deployed_duration",
       "type": "number",
       "description": "Duration of time a ramp is deployed, in seconds.",
       "constraints": {
@@ -182,17 +182,17 @@
       "description": "Indicates if the ramp deployment failed at a stop."
     },
     {
-      "name": "kneel_deployed_time",
+      "name": "kneel_deployed_duration",
       "type": "number",
-      "description": "Duration of time a kneel is deployed in seconds.",
+      "description": "Duration of time a kneel is deployed, in seconds.",
       "constraints": {
         "minimum": 0
       }
     },
     {
-      "name": "lift_deployed_time",
+      "name": "lift_deployed_duration",
       "type": "number",
-      "description": "Duration of time in seconds of time a lift is deployed.",
+      "description": "Duration of time a lift is deployed, in seconds.",
       "constraints": {
         "minimum": 0
       }
