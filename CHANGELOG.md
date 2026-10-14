@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **BREAKING:** `stop_visits` duration fields renamed from `_time` to `_duration` suffix to distinguish from timestamp fields: `ramp_deployed_time` → `ramp_deployed_duration`, `kneel_deployed_time` → `kneel_deployed_duration`, `lift_deployed_time` → `lift_deployed_duration` ([#237](https://github.com/TIDES-transit/TIDES/issues/237))
 - `passenger_events.event_count` description clarified to specify when values > 1 are appropriate, direct aggregated APC data to stop_visits, and clarify that 0 is distinct from null ([#236](https://github.com/TIDES-transit/TIDES/issues/236))
 
+### Added
+
+- `vehicles.vehicle_label` optional field for user-visible vehicle numbers displayed on exterior, distinguishing from internal `vehicle_id`. Aligns with GTFS-realtime VehicleDescriptor.label ([#240](https://github.com/TIDES-transit/TIDES/issues/240))
+
 ## [1.0] - 2025-12-23
 
 ### Changed
