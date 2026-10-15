@@ -68,9 +68,9 @@
       "description": "Indicates the type of train car or asset.",
       "constraints": {
         "enum": [
-          "Train car",
-          "Trolley",
-          "Other"
+          "train_car",
+          "trolley",
+          "other"
         ]
       }
     }

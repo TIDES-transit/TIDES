@@ -32,12 +32,12 @@
       }
     },
     {
-       "name": "location_ping_id",
-       "type": "string",
-       "title": "ID referencing vehicle_locations.location_ping_id",
-       "description": "Identifies the vehicle location where the fare transaction occurred"
-     },
-     {
+      "name": "location_ping_id",
+      "type": "string",
+      "title": "ID referencing vehicle_locations.location_ping_id",
+      "description": "Identifies the vehicle location where the fare transaction occurred"
+    },
+    {
       "name": "amount",
       "type": "number",
       "description": "Value of the transaction.",
@@ -54,25 +54,25 @@
     {
       "name": "fare_action",
       "type": "string",
-      "description": "Indicates the type of action performed.<br>Unknown action type: the action type is unknown or missing<br>Purchase: purchase a new card, ticket, pass, or other fare product<br>Enter: enter a fare-controlled area or vehicle<br>Exit: exit a fare-controlled area or vehicle<br>Transfer entrance: enter a fare-controlled area or vehicle at no charge due to network or fare policy rules, such as a desginated free transfer at two nearby fare-controlled stations<br>Transfer exit: exit a fare-controlled area or vehicle at no charge due to network or fare policy rules, such as a desginated free transfer at two nearby fare-controlled stations<br>Add: add stored value or stored rides to an existing fare instrument<br>New: obtain a new fare instrument<br>Capture: the device confiscated or retained the fare instrument<br>Extend: extend a fare product's temporal validity<br>Combine: combine two or more fare instruments or products into one<br>Void: void, cancel, negate, or undo a previous fare transaction<br>Activate: make a fare product active for travel<br>Adjust: credit or debit a fare instrument to balance an earlier transaction<Br>Other: other action not included in this enumeration",
+      "description": "Indicates the type of action performed.<br>unknown_action_type: the action type is unknown or missing<br>purchase: purchase a new card, ticket, pass, or other fare product<br>enter: enter a fare-controlled area or vehicle<br>exit: exit a fare-controlled area or vehicle<br>transfer_entrance: enter a fare-controlled area or vehicle at no charge due to network or fare policy rules, such as a desginated free transfer at two nearby fare-controlled stations<br>transfer_exit: exit a fare-controlled area or vehicle at no charge due to network or fare policy rules, such as a desginated free transfer at two nearby fare-controlled stations<br>add: add stored value or stored rides to an existing fare instrument<br>new: obtain a new fare instrument<br>capture: the device confiscated or retained the fare instrument<br>extend: extend a fare product's temporal validity<br>combine: combine two or more fare instruments or products into one<br>void: void, cancel, negate, or undo a previous fare transaction<br>activate: make a fare product active for travel<br>adjust: credit or debit a fare instrument to balance an earlier transaction<Br>other: other action not included in this enumeration",
       "constraints": {
         "required": true,
         "enum": [
-          "Unknown action type",
-          "Purchase",
-          "Enter",
-          "Exit",
-          "Transfer entrance",
-          "Transfer exit",
-          "Add",
-          "New",
-          "Capture",
-          "Extend",
-          "Combine",
-          "Void",
-          "Activate",
-          "Adjust",
-          "Other"
+          "unknown_action_type",
+          "purchase",
+          "enter",
+          "exit",
+          "transfer_entrance",
+          "transfer_exit",
+          "add",
+          "new",
+          "capture",
+          "extend",
+          "combine",
+          "void",
+          "activate",
+          "adjust",
+          "other"
         ]
       }
     },
@@ -100,7 +100,7 @@
       "title": "Positive integer referencing stop_visits.trip_stop_sequence",
       "description": "The actual order of stops visited within a performed trip. The values must start at 1 and must be consecutive along the trip.<br/> Example: A bus departs the first stop and detours around the second and third scheduled stops, visiting one unscheduled stop and resuming regular service at the 4th scheduled stop. The `scheduled_stop_sequence` is [1, null, 4], and the `trip_stop_sequence` is [1, 2, 3].",
       "constraints": {
-        "minimum":1
+        "minimum": 1
       }
     },
     {
@@ -150,14 +150,14 @@
       "description": "Indicates the fare medium that was used for the transaction.",
       "constraints": {
         "enum": [
-          "Cash or coins",
-          "Smart card or ticket",
-          "Magnetic-stripe card or ticket",
-          "Bank card",
-          "Mobile NFC",
-          "Optical scan",
-          "Button pressed by driver or operator to indicate a boarding or alighting passenger.",
-          "Other type"
+          "cash_or_coins",
+          "smart_card_or_ticket",
+          "magnetic_stripe_card_or_ticket",
+          "bank_card",
+          "mobile_nfc",
+          "optical_scan",
+          "operator_button_press",
+          "other_type"
         ]
       }
     },
@@ -197,10 +197,16 @@
   ],
   "foreignReferences": [
     {
-      "fields": ["service_date", "trip_id_performed"],
+      "fields": [
+        "service_date",
+        "trip_id_performed"
+      ],
       "reference": {
         "resource": "trips_performed",
-        "fields": ["service_date", "trip_id_performed"]
+        "fields": [
+          "service_date",
+          "trip_id_performed"
+        ]
       }
     },
     {
@@ -211,10 +217,18 @@
       }
     },
     {
-      "fields": ["service_date", "trip_id_performed", "scheduled_stop_sequence"],
+      "fields": [
+        "service_date",
+        "trip_id_performed",
+        "scheduled_stop_sequence"
+      ],
       "reference": {
         "resource": "stop_times",
-        "fields": ["service_date", "trip_id_performed", "stop_sequence"]
+        "fields": [
+          "service_date",
+          "trip_id_performed",
+          "stop_sequence"
+        ]
       }
     },
     {

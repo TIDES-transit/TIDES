@@ -74,7 +74,7 @@
     {
       "name": "timepoint",
       "type": "boolean",
-      "description": "Indicates if the stop should be used for evaluating schedule adherence, on-time performance, and other KPIs. This could be populated to match the GTFS “timepoint” field."
+      "description": "Indicates if the stop should be used for evaluating schedule adherence, on-time performance, and other KPIs. This could be populated to match the GTFS \"timepoint\" field."
     },
     {
       "name": "schedule_arrival_time",
@@ -152,16 +152,16 @@
       "description": "Timestamp at which the doors closed."
     },
     {
-      "name": "door_status",
+      "name": "door_action",
       "type": "string",
-      "description": "Indicates actions of the doors during the stop visit.",
+      "description": "Indicates actions of the doors during the stop visit.<br>none: no doors opened<br>front_only: the front door opened and the back doors remained closed<br>back_only: the back doors opened and the front door remained closed<br>all: all doors opened<br>other: any other door configuration",
       "constraints": {
         "enum": [
-          "Doors did not open",
-          "Front door opened and back doors remain closed",
-          "Back doors opened and front door remained closed",
-          "All doors opened",
-          "Other configuration"
+          "none",
+          "front_only",
+          "back_only",
+          "all",
+          "other"
         ]
       }
     },
@@ -226,20 +226,26 @@
       "description": "Indicates the status of the stop.",
       "constraints": {
         "enum": [
-          "Scheduled",
-          "Skipped",
-          "Added",
-          "Missing"
+          "scheduled",
+          "skipped",
+          "added",
+          "missing"
         ]
       }
     }
   ],
   "foreignReferences": [
     {
-      "fields": ["service_date", "trip_id_performed"],
+      "fields": [
+        "service_date",
+        "trip_id_performed"
+      ],
       "reference": {
         "resource": "trips_performed",
-        "fields": ["service_date", "trip_id_performed"]
+        "fields": [
+          "service_date",
+          "trip_id_performed"
+        ]
       }
     },
     {
