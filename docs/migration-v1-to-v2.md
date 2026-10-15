@@ -332,7 +332,7 @@ The `operators` table is restructured into a `crew` table so that a crew member'
 |---|---|
 | `operators` table with a single `operator_id` field | `crew` table with `crew_id`, `crew_role`, `start_date`, and optional `end_date`; primary key `crew_id` + `start_date` |
 
-The same `crew_id` may appear in more than one `crew` record when the role changes, with non-overlapping date ranges. `trips_performed`, `vehicle_train_cars`, and the new `vehicle_crew` table reference `crew.crew_id`.
+A crew member has one effective `crew` record at a time, carrying their primary role; when the primary role changes, a new record starts. `end_date` is exclusive, so a record covers dates from `start_date` up to but not including `end_date`. A different role on a specific assignment goes in `vehicle_crew.crew_role`, which takes precedence over `crew.crew_role` when populated. `trips_performed`, `vehicle_train_cars`, and the new `vehicle_crew` table reference `crew.crew_id`.
 
 To migrate:
 
@@ -358,7 +358,7 @@ The `minimum: 0` constraint is removed. `departure_load` is typically derived fr
 
 These additions are backwards-compatible; adopting them is optional.
 
-- **`vehicle_crew` table:** supports multiple crew members per vehicle and trip, including mid-trip reliefs, with `crew_role` and start/end times. Records are keyed on `service_date`, `vehicle_id`, `crew_id`, and `start_time`; `trip_id_performed` is optional so that a single assignment can span consecutive trips (interlining), and is usually populated for easy joins. `trips_performed.operator_id` remains for the single-operator case.
+- **`vehicle_crew` table:** supports multiple crew members per vehicle and trip, including mid-trip reliefs, with `crew_role` and start/end times. `start_time` is inclusive and `end_time` is exclusive, so at a handoff only the incoming crew member is assigned at that instant. `vehicle_crew.crew_role` values are a subset of `crew.crew_role`'s. Records are keyed on `service_date`, `vehicle_id`, `crew_id`, and `start_time`; `trip_id_performed` is optional so that a single assignment can span consecutive trips (interlining), and is usually populated for easy joins. `trips_performed.operator_id` remains for the single-operator case.
 - **`vehicle_label` field:** separates the user-visible vehicle number from the internal `vehicle_id`. Aligns with GTFS-realtime `VehicleDescriptor.label`.
 
 A `device_status` table for tracking device availability was considered during v2.0 development and deferred to a future minor release pending implementation experience (see #253).
@@ -388,5 +388,5 @@ A `device_status` table for tracking device availability was considered during v
 - [ ] Update any matching on `ntd_mode` to the two-character NTD mode codes, and expect it to be empty for trips with no NTD mode.
 - [ ] Update references to the renamed `stop_visits` duration fields.
 - [ ] Remove any assumption that `stop_visits.departure_load` is nonnegative; handle negative derived values per the producer's documented interpretation.
-- [ ] Join `trips_performed.operator_id` and `vehicle_train_cars.operator_id` to `crew.crew_id` (with `start_date`/`end_date` if you need the role at the time); use `vehicle_crew` for full crew assignments.
+- [ ] Join `trips_performed.operator_id` and `vehicle_train_cars.operator_id` to `crew.crew_id` (with `start_date`/`end_date` if you need the role at the time; `end_date` is exclusive); use `vehicle_crew` for full crew assignments, where `vehicle_crew.crew_role` takes precedence when populated.
 - [ ] Expect the vehicles and consists tables to change in v2.0 final; no consumer change is needed for alpha.1.
