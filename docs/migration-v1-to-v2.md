@@ -13,6 +13,8 @@ TIDES v2.0 is a major release containing backwards-incompatible changes. This gu
 | `passenger_events` renamed to `device_events` with expanded scope | Breaking | `passenger_events` → `device_events` |
 | Enumeration values renamed to `snake_case` across TIDES-defined vocabularies | Breaking | `device_events`, `devices`, `fare_transactions`, `stop_visits`, `train_cars`, `trips_performed`, `vehicle_locations` |
 | `ntd_mode` values switched to NTD's two-character mode codes | Breaking | `trips_performed` |
+| `stop_visits.door_status` renamed to `door_action`, with shorter values | Breaking | `stop_visits` |
+| `route_type` switched to GTFS numeric codes (integer field) | Breaking | `trips_performed` |
 | Duration fields renamed with explicit `_duration` suffix | Breaking | `stop_visits` |
 | `minimum: 0` constraint removed from `departure_load` | Normative (constraint relaxed) | `stop_visits` |
 | `operators` table restructured into `crew` | Breaking | `operators` → `crew`; `trips_performed`, `vehicle_train_cars` |
@@ -43,7 +45,7 @@ To migrate:
 
 ### Enumeration values are now `snake_case`
 
-Descriptive-sentence enumeration values in every TIDES-defined vocabulary are replaced with `snake_case` identifiers, for code compatibility. The rule agreed by the Contributors Group: vocabularies that TIDES defines itself convert; values inherited from externally maintained vocabularies keep their source form. So `trips_performed.route_type` (GTFS) is unchanged, and `direction_id` is numeric and untouched. A GTFS-to-TIDES crosswalk for `route_type` ships as a companion artifact. `trips_performed.ntd_mode` (NTD) also stays in NTD's own form, but moves from NTD's mode names to its official two-character codes (mapping below).
+Descriptive-sentence enumeration values in every TIDES-defined vocabulary are replaced with `snake_case` identifiers, for code compatibility. The rule agreed by the Contributors Group: vocabularies that TIDES defines itself convert; values inherited from externally maintained vocabularies keep their source form. `trips_performed.route_type` (GTFS) moves to the numeric codes GTFS itself uses (mapping below), and `direction_id` is numeric and untouched. `trips_performed.ntd_mode` (NTD) also stays in NTD's own form, but moves from NTD's mode names to its official two-character codes (mapping below).
 
 Thirteen fields across seven tables are affected. Producers must map values as follows. Consumers matching on any of these strings must update the same way.
 
@@ -116,17 +118,17 @@ The new values `passenger_entry` and `passenger_exit` (station fare gates and tu
 
 The sentence-long fare media value is the one editorial rename in the set; its meaning is unchanged.
 
-#### `stop_visits.door_status`
+#### `stop_visits.door_status` is now `door_action`
+
+The field is renamed from `door_status` to `door_action`, and its values are shortened rather than mechanically converted. The field description lists what each value means.
 
 | v1.0 value | v2.0 value |
 |---|---|
-| `Doors did not open` | `doors_did_not_open` |
-| `Front door opened and back doors remain closed` | `front_door_opened_and_back_doors_remained_closed` |
-| `Back doors opened and front door remained closed` | `back_doors_opened_and_front_door_remained_closed` |
-| `All doors opened` | `all_doors_opened` |
-| `Other configuration` | `other_configuration` |
-
-The second value also changes `remain` to `remained`, matching the tense of the third.
+| `Doors did not open` | `none` |
+| `Front door opened and back doors remain closed` | `front_only` |
+| `Back doors opened and front door remained closed` | `back_only` |
+| `All doors opened` | `all` |
+| `Other configuration` | `other` |
 
 #### `stop_visits.schedule_relationship` and `vehicle_locations.schedule_relationship`
 
@@ -214,6 +216,102 @@ The second value also changes `remain` to `remained`, matching the tense of the 
 | `Trolleybus` | `TB` |
 | `Vanpool` | `VP` |
 
+### `trips_performed.route_type` uses GTFS numeric codes
+
+`route_type` changes from GTFS route type names to the numeric codes GTFS itself uses in `routes.txt`, and becomes an integer field. Google's [Extended Route Types](https://developers.google.com/transit/gtfs/reference/extended-route-types) stay available alongside the basic GTFS codes, so every value allowed in v1.0 has a code. Two codes that couldn't be listed by name in v1.0 are now available: `403`, which shares the name "Urban Railway Service" with `400`, and `405`, which shares the name "Monorail" with the basic code `12`.
+
+| v1.0 value | v2.0 value |
+|---|---|
+| `Tram / Streetcar / Light rail` | `0` |
+| `Subway / Metro` | `1` |
+| `Rail` | `2` |
+| `Bus` | `3` |
+| `Ferry` | `4` |
+| `Cable tram` | `5` |
+| `Aerial lift` | `6` |
+| `Funicular` | `7` |
+| `Trolleybus` | `11` |
+| `Monorail` | `12` |
+| `Railway Service` | `100` |
+| `High Speed Rail Service` | `101` |
+| `Long Distance Trains` | `102` |
+| `Inter Regional Rail Service` | `103` |
+| `Car Transport Rail Service` | `104` |
+| `Sleeper Rail Service` | `105` |
+| `Regional Rail Service` | `106` |
+| `Tourist Railway Service` | `107` |
+| `Rail Shuttle (Within Complex)` | `108` |
+| `Suburban Railway` | `109` |
+| `Replacement Rail Service` | `110` |
+| `Special Rail Service` | `111` |
+| `Lorry Transport Rail Service` | `112` |
+| `All Rail Services` | `113` |
+| `Cross-Country Rail Service` | `114` |
+| `Vehicle Transport Rail Service` | `115` |
+| `Rack and Pinion Railway` | `116` |
+| `Additional Rail Service` | `117` |
+| `Coach Service` | `200` |
+| `International Coach Service` | `201` |
+| `National Coach Service` | `202` |
+| `Shuttle Coach Service` | `203` |
+| `Regional Coach Service` | `204` |
+| `Special Coach Service` | `205` |
+| `Sightseeing Coach Service` | `206` |
+| `Tourist Coach Service` | `207` |
+| `Commuter Coach Service` | `208` |
+| `All Coach Services` | `209` |
+| `Urban Railway Service` | `400` (or `403`, which Google's table also names "Urban Railway Service") |
+| `Metro Service` | `401` |
+| `Underground Service` | `402` |
+| `All Urban Railway Services` | `404` |
+| `Bus Service` | `700` |
+| `Regional Bus Service` | `701` |
+| `Express Bus Service` | `702` |
+| `Stopping Bus Service` | `703` |
+| `Local Bus Service` | `704` |
+| `Night Bus Service` | `705` |
+| `Post Bus Service` | `706` |
+| `Special Needs Bus` | `707` |
+| `Mobility Bus Service` | `708` |
+| `Mobility Bus for Registered Disabled` | `709` |
+| `Sightseeing Bus` | `710` |
+| `Shuttle Bus` | `711` |
+| `School Bus` | `712` |
+| `School and Public Service Bus` | `713` |
+| `Rail Replacement Bus Service` | `714` |
+| `Demand and Response Bus Service` | `715` |
+| `All Bus Services` | `716` |
+| `Trolleybus Service` | `800` |
+| `Tram Service` | `900` |
+| `City Tram Service` | `901` |
+| `Local Tram Service` | `902` |
+| `Regional Tram Service` | `903` |
+| `Sightseeing Tram Service` | `904` |
+| `Shuttle Tram Service` | `905` |
+| `All Tram Services` | `906` |
+| `Water Transport Service` | `1000` |
+| `Air Service` | `1100` |
+| `Ferry Service` | `1200` |
+| `Aerial Lift Service` | `1300` |
+| `Telecabin Service` | `1301` |
+| `Cable Car Service` | `1302` |
+| `Elevator Service` | `1303` |
+| `Chair Lift Service` | `1304` |
+| `Drag Lift Service` | `1305` |
+| `Small Telecabin Service` | `1306` |
+| `All Telecabin Services` | `1307` |
+| `Funicular Service` | `1400` |
+| `Taxi Service` | `1500` |
+| `Communal Taxi Service` | `1501` |
+| `Water Taxi Service` | `1502` |
+| `Rail Taxi Service` | `1503` |
+| `Bike Taxi Service` | `1504` |
+| `Licensed Taxi Service` | `1505` |
+| `Private Hire Service Vehicle` | `1506` |
+| `All Taxi Services` | `1507` |
+| `Miscellaneous Service` | `1700` |
+| `Horse-drawn Carriage` | `1702` |
+
 ### Duration fields renamed in `stop_visits`
 
 Three fields holding durations are renamed with an explicit `_duration` suffix to distinguish them from timestamps:
@@ -273,7 +371,8 @@ A `device_status` table for tracking device availability was considered during v
 
 - [ ] Rename `passenger_events.csv` to `device_events.csv`; rename `passenger_event_id` to `device_event_id`.
 - [ ] Populate `device_id` on all device events and register devices in the `devices` table.
-- [ ] Map enumeration values in the thirteen affected fields to their `snake_case` equivalents; leave `route_type` as it is.
+- [ ] Map enumeration values in the thirteen affected fields to their `snake_case` equivalents, and rename `stop_visits.door_status` to `door_action` with its shorter values.
+- [ ] Write `trips_performed.route_type` as the GTFS numeric code (an integer) instead of the route type name.
 - [ ] Switch `ntd_mode` to the two-character NTD mode codes; leave it empty for trips with no NTD mode.
 - [ ] Rename the three `stop_visits` duration fields.
 - [ ] Rename `operators.csv` to `crew.csv`; rename `operator_id` to `crew_id` and add `crew_role` and `start_date`.
@@ -284,7 +383,8 @@ A `device_status` table for tracking device availability was considered during v
 ## Migration checklist for consumers
 
 - [ ] Update queries and joins from `passenger_events` to `device_events`; handle records where `vehicle_id` is empty (station and mobile device events).
-- [ ] Update any string matching on the thirteen converted enumeration fields to the `snake_case` values.
+- [ ] Update any string matching on the thirteen converted enumeration fields to the `snake_case` values, and read `stop_visits.door_action` in place of `door_status`.
+- [ ] Expect `trips_performed.route_type` as an integer GTFS code rather than a route type name.
 - [ ] Update any matching on `ntd_mode` to the two-character NTD mode codes, and expect it to be empty for trips with no NTD mode.
 - [ ] Update references to the renamed `stop_visits` duration fields.
 - [ ] Remove any assumption that `stop_visits.departure_load` is nonnegative; handle negative derived values per the producer's documented interpretation.
