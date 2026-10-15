@@ -12,10 +12,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **BREAKING:** `stop_visits` duration fields renamed from `_time` to `_duration` suffix to distinguish from timestamp fields: `ramp_deployed_time` → `ramp_deployed_duration`, `kneel_deployed_time` → `kneel_deployed_duration`, `lift_deployed_time` → `lift_deployed_duration` ([#237](https://github.com/TIDES-transit/TIDES/issues/237))
 - `passenger_events.event_count` description clarified to specify when values > 1 are appropriate, direct aggregated APC data to stop_visits, and clarify that 0 is distinct from null ([#236](https://github.com/TIDES-transit/TIDES/issues/236))
 - Removed `minimum: 0` constraint from `stop_visits.departure_load`. This field is often derived from observations of boardings and alightings that are subject to observation error and those errors may result in negative values ([#270](https://github.com/TIDES-transit/TIDES/issues/270))
+- **BREAKING:** Renamed `passenger_events` table to `device_events` to support station-based and mobile device events alongside vehicle-mounted APC events ([#241](https://github.com/TIDES-transit/TIDES/issues/241))
+    - Primary key renamed: `passenger_event_id` → `device_event_id`
+    - `device_id` is now **required** (was optional)
+    - `vehicle_id` is now **optional** (was required)
+    - `trip_stop_sequence` is now **optional** (was required)
+- **BREAKING:** `device_events.event_type` enum values converted from Title Case to snake_case and two new types added ([#241](https://github.com/TIDES-transit/TIDES/issues/241), incorporates [#235](https://github.com/TIDES-transit/TIDES/issues/235))
 
 ### Added
 
 - `vehicles.vehicle_label` optional field for user-visible vehicle numbers displayed on exterior, distinguishing from internal `vehicle_id`. Aligns with GTFS-realtime VehicleDescriptor.label ([#240](https://github.com/TIDES-transit/TIDES/issues/240))
+- `device_events.latitude` and `device_events.longitude` fields for mobile device events not at fixed locations ([#241](https://github.com/TIDES-transit/TIDES/issues/241))
+- `device_events.employee_id` field for handheld validator events operated by fare inspectors or conductors ([#241](https://github.com/TIDES-transit/TIDES/issues/241))
+- `passenger_entry` and `passenger_exit` event types for station-based events like fare gate passages ([#241](https://github.com/TIDES-transit/TIDES/issues/241))
 
 ## [1.0] - 2025-12-23
 

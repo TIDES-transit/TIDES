@@ -293,11 +293,11 @@
           },
           "tides-table": {
             "enum": [
+              "device_events",
               "devices",
               "fare_transactions",
               "operators",
               "station_activities",
-              "passenger_events",
               "stop_visits",
               "train_cars",
               "trips_performed",
