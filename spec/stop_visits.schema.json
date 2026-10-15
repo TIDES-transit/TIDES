@@ -152,16 +152,16 @@
       "description": "Timestamp at which the doors closed."
     },
     {
-      "name": "door_status",
+      "name": "door_action",
       "type": "string",
-      "description": "Indicates actions of the doors during the stop visit.",
+      "description": "Indicates actions of the doors during the stop visit.<br>none: no doors opened<br>front_only: the front door opened and the back doors remained closed<br>back_only: the back doors opened and the front door remained closed<br>all: all doors opened<br>other: any other door configuration",
       "constraints": {
         "enum": [
-          "doors_did_not_open",
-          "front_door_opened_and_back_doors_remained_closed",
-          "back_doors_opened_and_front_door_remained_closed",
-          "all_doors_opened",
-          "other_configuration"
+          "none",
+          "front_only",
+          "back_only",
+          "all",
+          "other"
         ]
       }
     },
