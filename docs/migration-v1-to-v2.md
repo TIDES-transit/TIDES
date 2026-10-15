@@ -21,6 +21,7 @@ TIDES v2.0 is a major release containing backwards-incompatible changes. This gu
 | `vehicle_label` field added | New optional field | `vehicles` |
 | `vehicle_crew` supporting table added | New optional table | `vehicle_crew` |
 | Vehicles and consists restructure | In review for v2.0 final; not in alpha.1 | `vehicles`, `train_cars`, `vehicle_train_cars` (unchanged in alpha.1) |
+| Default `stop_visits` file name in `tides.spec.json` corrected to `stop_visits.csv` | Correction | `stop_visits` |
 | `event_count` usage and APC data guidance clarified | Non-normative | `device_events` |
 
 ## Breaking changes
@@ -377,6 +378,7 @@ A `device_status` table for tracking device availability was considered during v
 - [ ] Rename the three `stop_visits` duration fields.
 - [ ] Rename `operators.csv` to `crew.csv`; rename `operator_id` to `crew_id` and add `crew_role` and `start_date`.
 - [ ] Leave `vehicles`, `train_cars`, and `vehicle_train_cars` as in v1.0 (plus optional `vehicle_label`); the vehicles and consists restructure follows in v2.0 final.
+- [ ] Name the stop visits file `stop_visits.csv` (lowercase), matching the other tables; v1.0's `tides.spec.json` listed it as `Stop_visits.csv`.
 - [ ] Update `datapackage.json` resource entries and the profile reference to the v2.0 spec.
 - [ ] Re-validate the data package against the v2.0 schemas.
 
