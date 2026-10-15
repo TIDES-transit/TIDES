@@ -20,6 +20,11 @@
     "aliases": []
   },
   {
+    "version": "fix-stop-visits-path",
+    "title": "fix-stop-visits-path",
+    "aliases": []
+  },
+  {
     "version": "fix-clean-docs-mike2",
     "title": "fix-clean-docs-mike2",
     "aliases": []
