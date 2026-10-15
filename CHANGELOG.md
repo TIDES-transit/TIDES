@@ -26,6 +26,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `device_events.employee_id` field for handheld validator events operated by fare inspectors or conductors ([#241](https://github.com/TIDES-transit/TIDES/issues/241))
 - `passenger_entry` and `passenger_exit` event types for station-based events like fare gate passages ([#241](https://github.com/TIDES-transit/TIDES/issues/241))
 
+### Fixed
+
+- Default path for `stop_visits` in `tides.spec.json` corrected from `Stop_visits.csv` to `stop_visits.csv`, matching the table name and the sample data package
+
 ## [1.0] - 2025-12-23
 
 ### Changed

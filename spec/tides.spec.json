@@ -32,7 +32,7 @@
       "title": "Stop Visits",
       "name": "stop_visits",
       "description": "Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date.",
-      "path": "Stop_visits.csv",
+      "path": "stop_visits.csv",
       "schema": "stop_visits.schema.json",
       "required": false
     },
