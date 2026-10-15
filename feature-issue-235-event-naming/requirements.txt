@@ -1,4 +1,4 @@
-mike<2.0
+mike>=2.0
 mkdocs
 mkdocs-autorefs
 mkdocs-awesome-pages-plugin
@@ -9,6 +9,6 @@ mkdocs-material
 mkdocs-mermaid2-plugin
 mkdocs-redirects
 pandas
-pyyaml
-setuptools<81
+pyyaml>=6.0.1
+setuptools>=83,<84.0.0
 tabulate
