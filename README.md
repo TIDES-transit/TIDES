@@ -27,6 +27,10 @@ TIDES is open-source, free for use, and is community governed, developed and sup
 [frictionless framework]: (https://framework.frictionlessdata.io/)
 [tcrp report]: https://nap.nationalacademies.org/catalog/26674/improving-access-and-management-of-public-transit-its-data
 
+## Who supports TIDES?
+
+As of 2026, TIDES use is emerging at major public transport systems. US-DC-Washington's [WMATA](https://tides-transit.org/main/implementations/wmata-sdh/) runs its SMART Data Hub on TIDES, [Mountain Line](https://tides-transit.org/main/implementations/mountain-line-mutd/) in US-MT-Missoula publishes open-source TIDES tools, and US-MN-Minneapolis [Metro Transit](https://www.goswift.ly/events/trb-2025) presented emerging work on TIDES; US-CA California Department of Transportation [Caltrans](https://tides.dds.dot.ca.gov/) maintains a statewide TIDES dataset, the US-FL [Florida Department of Transportation](https://teo.fdot.gov/architecture/architectures/d7/html/standards/std1510.html) lists TIDES as an ITS standard, the US-CA-San Francisco Bay [Metropolitan Transportation Commission](https://dot.ca.gov/-/media/dot-media/programs/research-innovation-system-information/documents/final-reports/task-id-4085-data-standard-final-report-v2-a11y.pdf) participates in TIDES development, and the US [National Park Service](https://rosap.ntl.bts.gov/view/dot/88738/dot_88738_DS1.pdf) recommends using TIDES. TIDES has also been featured in CA-ON-Toronto at [TransitData 2026](https://www.transitdata2026.ca/program), CA-QC-Montreal at the [International Mobility Data Summit](https://mobilitydata.org/2026-international-mobility-data-summit/), and in US-DC-Washington at [TRB Annual Meeting](https://www.goswift.ly/events/trb-2025).
+
 ## TIDES specification
 
 The TIDES specification is maintained in the `/spec` sub-directory as a series of JSON tables compatible with the [frictionless table schema] standards.
