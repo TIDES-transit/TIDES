@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **BREAKING:** `stop_visits` duration fields renamed from `_time` to `_duration` suffix to distinguish from timestamp fields: `ramp_deployed_time` → `ramp_deployed_duration`, `kneel_deployed_time` → `kneel_deployed_duration`, `lift_deployed_time` → `lift_deployed_duration` ([#237](https://github.com/TIDES-transit/TIDES/issues/237))
-- `passenger_events.event_count` description clarified to specify when values > 1 are appropriate, direct aggregated APC data to stop_visits, and clarify that 0 is distinct from null ([#236](https://github.com/TIDES-transit/TIDES/issues/236))
+- `device_events.event_count` description clarified to specify when values > 1 are appropriate, direct aggregated APC data to stop_visits, and clarify that 0 is distinct from null ([#236](https://github.com/TIDES-transit/TIDES/issues/236))
 - Removed `minimum: 0` constraint from `stop_visits.departure_load`. This field is often derived from observations of boardings and alightings that are subject to observation error and those errors may result in negative values ([#270](https://github.com/TIDES-transit/TIDES/issues/270))
 - **BREAKING:** Renamed `passenger_events` table to `device_events` to support station-based and mobile device events alongside vehicle-mounted APC events ([#241](https://github.com/TIDES-transit/TIDES/issues/241))
     - Primary key renamed: `passenger_event_id` → `device_event_id`
