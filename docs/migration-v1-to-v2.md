@@ -1,6 +1,6 @@
 # Migrating from TIDES v1.0 to v2.0
 
-!!! note "Pre-release"
+!!! info "Pre-release"
 
     This guide covers the changes in the v2.0-alpha.1 pre-release. Everything described here has been approved through the change management process. One area targeted for v2.0, vehicles and consists, is still in review and is not part of alpha.1; see the placeholder section below. That area will be added to this guide when it lands in v2.0 final.
 
@@ -39,14 +39,14 @@ To migrate:
 - Rename the file `passenger_events.csv` to `device_events.csv` and update the resource entry in `datapackage.json`.
 - Rename the primary key column `passenger_event_id` to `device_event_id`.
 - Populate `device_id` for every record; it is now **required** (it was optional in v1.0). Every event must be traceable to a device in the `devices` table.
-- `vehicle_id` and `trip_stop_sequence` are now **optional** (they were required in v1.0). Existing vehicle-based records can keep them populated; station-based and mobile device events may leave them empty.
+- `vehicle_id` and `trip_stop_sequence` are now **optional** (they were required in v1.0). Vehicle-based records should keep them populated, since the field descriptions require them for vehicle-based events; station-based and mobile device events may leave them empty.
 - New optional fields are available: `employee_id` (for mobile/handheld devices), `latitude`, and `longitude` (for mobile device events not at a fixed location).
 - `employee_id` is a free identifier in alpha.1 and is not linked to the new `crew` table; how it relates to `crew.crew_id` is subject to change in v2.0 final.
 - New `event_type` values `passenger_entry` and `passenger_exit` support station fare-gate and turnstile events.
 
 ### Enumeration values are now `snake_case`
 
-Descriptive-sentence enumeration values in every TIDES-defined vocabulary are replaced with `snake_case` identifiers, for code compatibility. The rule agreed by the Contributors Group: vocabularies that TIDES defines itself convert; values inherited from externally maintained vocabularies keep their source form. `trips_performed.route_type` (GTFS) moves to the numeric codes GTFS itself uses (mapping below), and `direction_id` is numeric and untouched. `trips_performed.ntd_mode` (NTD) also stays in NTD's own form, but moves from NTD's mode names to its official two-character codes (mapping below).
+Descriptive-sentence enumeration values in every TIDES-defined vocabulary are replaced with `snake_case` identifiers, for code compatibility. The rule agreed by the Contributors Group: vocabularies that TIDES defines itself convert, and values inherited from externally maintained vocabularies keep their source form. `trips_performed.route_type` (GTFS) moves to the numeric codes GTFS itself uses (mapping below), and `direction_id` is numeric and untouched. `trips_performed.ntd_mode` (NTD) also stays in NTD's own form, but moves from NTD's mode names to its official two-character codes (mapping below).
 
 Thirteen fields across seven tables are affected. Producers must map values as follows. Consumers matching on any of these strings must update the same way.
 
@@ -117,7 +117,7 @@ The new values `passenger_entry` and `passenger_exit` (station fare gates and tu
 | `Button pressed by driver or operator to indicate a boarding or alighting passenger.` | `operator_button_press` |
 | `Other type` | `other_type` |
 
-The sentence-long fare media value is the one editorial rename in the set; its meaning is unchanged.
+The sentence-long value is the one editorial rename among the fare media values; its meaning is unchanged.
 
 #### `stop_visits.door_status` is now `door_action`
 
@@ -338,12 +338,13 @@ A crew member has one effective `crew` record at a time, carrying their primary 
 To migrate:
 
 - Rename `operators.csv` to `crew.csv` and update the resource entry in `datapackage.json`.
-- Rename the `operator_id` column to `crew_id`, add `crew_role`, and add `start_date` (the earliest date the record applies; use the start of your dataset if unknown). Leave `end_date` empty for current records.
+- Rename the `operator_id` column to `crew_id` and add `start_date` (the earliest date the record applies; use the start of your dataset if unknown). Leave `end_date` empty for current records.
+- Add `crew_role`, which is required and takes one of `operator`, `conductor`, `fare_inspector`, or `other`. A record migrated from v1.0's `operators` table gets `operator`.
 - Existing `trips_performed.operator_id` and `vehicle_train_cars.operator_id` values now resolve against `crew.crew_id`; the referring field names are unchanged.
 
 ### Vehicles and consists (in review, not part of v2.0-alpha.1)
 
-A restructure of vehicle representation to support rail consists and mixed fleets (#272) is being worked through by the Standards Development Working Group with worked examples against real operational data. It is targeted for v2.0 final and is **not included in v2.0-alpha.1**. In alpha.1, the `vehicles`, `train_cars`, and `vehicle_train_cars` tables keep their v1.0 structure apart from the `vehicle_label` addition and the `crew` reference described above.
+A restructure of vehicle representation to support rail consists and mixed fleets ([#272](https://github.com/TIDES-transit/TIDES/pull/272)) is being worked through by the Standards Development Working Group with worked examples against real operational data. It is targeted for v2.0 final and is **not included in v2.0-alpha.1**. In alpha.1, the `vehicles`, `train_cars`, and `vehicle_train_cars` tables keep their v1.0 structure apart from the `vehicle_label` addition and the `crew` reference described above.
 
 Producers implementing alpha.1 should expect the vehicles and consists area to change in v2.0 final; none of the changes in this guide depend on it beyond field references. This section will be replaced with migration steps when that work lands. Follow [#272](https://github.com/TIDES-transit/TIDES/pull/272) and the v2.0 map on [#271](https://github.com/TIDES-transit/TIDES/issues/271).
 
@@ -353,16 +354,16 @@ The `minimum: 0` constraint is removed. `departure_load` is typically derived fr
 
 **For producers:** negative values are valid and permitted. Document in your dataset metadata how negative values should be interpreted (for example, unadjusted derived values retained for aggregate accuracy). Nothing requires you to publish negative values; producers who adjust loads for internal consistency may continue to do so.
 
-**For consumers:** do not assume `departure_load` is nonnegative. A negative value is a measurement artifact of the derived calculation, not a physical passenger count. For aggregate calculations (passenger miles, average loads), retaining negative values preserves statistical accuracy, since clamping them to zero introduces upward bias; for record-level display or operational reporting, treat interpretation per the producer's documentation.
+**For consumers:** do not assume `departure_load` is nonnegative. A negative value is a measurement artifact of the derived calculation, not a physical passenger count. For aggregate calculations (passenger miles, average loads), retaining negative values preserves statistical accuracy, since clamping them to zero introduces upward bias. For record-level display or operational reporting, treat interpretation per the producer's documentation.
 
 ## New optional capabilities
 
 These additions are backwards-compatible; adopting them is optional.
 
-- **`vehicle_crew` table:** supports multiple crew members per vehicle and trip, including mid-trip reliefs, with `crew_role` and start/end times. `start_time` is inclusive and `end_time` is exclusive, so at a handoff only the incoming crew member is assigned at that instant. `vehicle_crew.crew_role` values are a subset of `crew.crew_role`'s. Records are keyed on `service_date`, `vehicle_id`, `crew_id`, and `start_time`; `trip_id_performed` is optional so that a single assignment can span consecutive trips (interlining), and is usually populated for easy joins. `trips_performed.operator_id` remains for the single-operator case.
+- **`vehicle_crew` table:** supports multiple crew members per vehicle and trip, including mid-trip reliefs, with `crew_role` and start/end times. `start_time` is inclusive and `end_time` is exclusive, so at a handoff only the incoming crew member is assigned at that instant. Several crew members may overlap on the same vehicle, but a crew member should not be assigned to two vehicles at the same time. `vehicle_crew.crew_role` values are a subset of `crew.crew_role`'s. Records are keyed on `service_date`, `vehicle_id`, `crew_id`, and `start_time`. `trip_id_performed` is optional so that a single assignment can span consecutive trips (interlining), and is usually populated for easy joins. When it is populated, `vehicle_id` must match `trips_performed.vehicle_id` for that trip. `trips_performed.operator_id` stays optional: for a trip with several operators, use the first operator, or reference `vehicle_crew` for the complete crew assignments.
 - **`vehicle_label` field:** separates the user-visible vehicle number from the internal `vehicle_id`. Aligns with GTFS-realtime `VehicleDescriptor.label`.
 
-A `device_status` table for tracking device availability was considered during v2.0 development and deferred to a future minor release pending implementation experience (see #253).
+A `device_status` table for tracking device availability ([#253](https://github.com/TIDES-transit/TIDES/pull/253)) is not part of v2.0-alpha.1.
 
 ## Non-normative clarifications
 
@@ -376,7 +377,7 @@ A `device_status` table for tracking device availability was considered during v
 - [ ] Write `trips_performed.route_type` as the GTFS numeric code (an integer) instead of the route type name.
 - [ ] Switch `ntd_mode` to the two-character NTD mode codes; leave it empty for trips with no NTD mode.
 - [ ] Rename the three `stop_visits` duration fields.
-- [ ] Rename `operators.csv` to `crew.csv`; rename `operator_id` to `crew_id` and add `crew_role` and `start_date`.
+- [ ] Rename `operators.csv` to `crew.csv`; rename `operator_id` to `crew_id` and add `start_date` and `crew_role` (`operator` for records migrated from v1.0).
 - [ ] Leave `vehicles`, `train_cars`, and `vehicle_train_cars` as in v1.0 (plus optional `vehicle_label`); the vehicles and consists restructure follows in v2.0 final.
 - [ ] Name the stop visits file `stop_visits.csv` (lowercase), matching the other tables; v1.0's `tides.spec.json` listed it as `Stop_visits.csv`.
 - [ ] Update `datapackage.json` resource entries and the profile reference to the v2.0 spec.
@@ -390,5 +391,6 @@ A `device_status` table for tracking device availability was considered during v
 - [ ] Update any matching on `ntd_mode` to the two-character NTD mode codes, and expect it to be empty for trips with no NTD mode.
 - [ ] Update references to the renamed `stop_visits` duration fields.
 - [ ] Remove any assumption that `stop_visits.departure_load` is nonnegative; handle negative derived values per the producer's documented interpretation.
-- [ ] Join `trips_performed.operator_id` and `vehicle_train_cars.operator_id` to `crew.crew_id` (with `start_date`/`end_date` if you need the role at the time; `end_date` is exclusive); use `vehicle_crew` for full crew assignments, where `vehicle_crew.crew_role` takes precedence when populated.
+- [ ] Join `trips_performed.operator_id` and `vehicle_train_cars.operator_id` to `crew.crew_id`, using `start_date` and `end_date` (exclusive) if you need the role at the time.
+- [ ] Use `vehicle_crew` for full crew assignments. Where `vehicle_crew.crew_role` is populated, it takes precedence over `crew.crew_role`.
 - [ ] Expect the vehicles and consists tables to change in v2.0 final; no consumer change is needed for alpha.1.
