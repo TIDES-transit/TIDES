@@ -7,10 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0-alpha.1] - YYYY-MM-DD
+
+First pre-release of TIDES v2.0, containing every v2.0 change approved so far. The vehicles and consists restructure ([#269](https://github.com/TIDES-transit/TIDES/issues/269)) is not included and is planned for v2.0 final. The [migration guide](https://tides-transit.org/main/migration-v1-to-v2/) covers what producers and consumers need to change.
+
+- `device_events.employee_id` is subject to change in v2.0 final, including how it relates to `crew.crew_id`.
+- `trips_performed.ntd_mode` uses the mode codes from the 2026 NTD Policy Manual. NTD may revise its list of modes in later report years.
+
 ### Changed
 
 - **BREAKING:** `stop_visits` duration fields renamed from `_time` to `_duration` suffix to distinguish from timestamp fields: `ramp_deployed_time` → `ramp_deployed_duration`, `kneel_deployed_time` → `kneel_deployed_duration`, `lift_deployed_time` → `lift_deployed_duration` ([#237](https://github.com/TIDES-transit/TIDES/issues/237))
-- `passenger_events.event_count` description clarified to specify when values > 1 are appropriate, direct aggregated APC data to stop_visits, and clarify that 0 is distinct from null ([#236](https://github.com/TIDES-transit/TIDES/issues/236))
+- `device_events.event_count` description clarified to specify when values > 1 are appropriate, direct aggregated APC data to stop_visits, and clarify that 0 is distinct from null ([#236](https://github.com/TIDES-transit/TIDES/issues/236))
 - Removed `minimum: 0` constraint from `stop_visits.departure_load`. This field is often derived from observations of boardings and alightings that are subject to observation error and those errors may result in negative values ([#270](https://github.com/TIDES-transit/TIDES/issues/270))
 - **BREAKING:** Renamed `passenger_events` table to `device_events` to support station-based and mobile device events alongside vehicle-mounted APC events ([#241](https://github.com/TIDES-transit/TIDES/issues/241))
     - Primary key renamed: `passenger_event_id` → `device_event_id`
@@ -67,6 +74,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Documentation site with governance policies
 - Change management policy with semantic versioning
 
-[Unreleased]: https://github.com/TIDES-transit/TIDES/compare/v1.0...HEAD
+[Unreleased]: https://github.com/TIDES-transit/TIDES/compare/v2.0-alpha.1...HEAD
+[2.0-alpha.1]: https://github.com/TIDES-transit/TIDES/compare/v1.0...v2.0-alpha.1
 [1.0]: https://github.com/TIDES-transit/TIDES/compare/v1.0-beta.1...v1.0
 [1.0-beta.1]: https://github.com/TIDES-transit/TIDES/releases/tag/v1.0-beta.1
