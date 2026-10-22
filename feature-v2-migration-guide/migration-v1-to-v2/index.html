@@ -9,7 +9,7 @@
 <link href="../datapackage/" rel="prev"/>
 <link href="../getting-started/" rel="next"/>
 <link href="../assets/tides.ico" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<meta content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7" name="generator"/>
 <title>Migrating to v2.0 - Transit Integrated Data Exchange Specification (TIDES) Suite</title>
 <link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
@@ -329,10 +329,28 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#event_type-values-are-now-snake_case">
+<a class="md-nav__link" href="#enumeration-values-are-now-snake_case">
 <span class="md-ellipsis">
       
-        event_type values are now snake_case
+        Enumeration values are now snake_case
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#trips_performedntd_mode-uses-ntds-two-character-mode-codes">
+<span class="md-ellipsis">
+      
+        trips_performed.ntd_mode uses NTD’s two-character mode codes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#trips_performedroute_type-uses-gtfs-numeric-codes">
+<span class="md-ellipsis">
+      
+        trips_performed.route_type uses GTFS numeric codes
       
     </span>
 </a>
@@ -347,10 +365,19 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#vehicles-vehicle-groups-assignments-and-consists">
+<a class="md-nav__link" href="#operators-is-now-crew">
 <span class="md-ellipsis">
       
-        Vehicles, vehicle groups, assignments, and consists
+        operators is now crew
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vehicles-and-consists-in-review-not-part-of-v20-alpha1">
+<span class="md-ellipsis">
+      
+        Vehicles and consists (in review, not part of v2.0-alpha.1)
       
     </span>
 </a>
@@ -518,6 +545,56 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Working Groups
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Working Groups
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../governance/working-groups/">
+<span class="md-ellipsis">
+    
+  
+    Working Groups Registry
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../governance/working-groups/sdwg-charter/">
+<span class="md-ellipsis">
+    
+  
+    SDWG Charter
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../governance/policies/change-management/">
 <span class="md-ellipsis">
@@ -531,8 +608,8 @@
 </a>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
 <span class="md-ellipsis">
     
   
@@ -543,8 +620,8 @@
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_6_3_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_6_3">
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_4">
 <span class="md-nav__icon md-icon"></span>
             
   
@@ -604,6 +681,18 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../governance/roadmap/">
+<span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -627,9 +716,9 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="migrating-from-tides-v10-to-v20">Migrating from TIDES v1.0 to v2.0<a class="headerlink" href="#migrating-from-tides-v10-to-v20" title="Permanent link"> ¶</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Draft</p>
-<p>This guide is a working draft. It reflects the changes staged for the v2.0 release and will be finalized when v2.0 is released. Field names and details below may change during review.</p>
+<div class="admonition info">
+<p class="admonition-title">Pre-release</p>
+<p>This guide covers the changes in the v2.0-alpha.1 pre-release. Everything described here has been approved through the change management process. One area targeted for v2.0, vehicles and consists, is still in review and is not part of alpha.1; see the placeholder section below. That area will be added to this guide when it lands in v2.0 final.</p>
 </div>
 <p>TIDES v2.0 is a major release containing backwards-incompatible changes. This guide summarizes every change from v1.0 and what producers and consumers of TIDES data need to do to migrate.</p>
 <h2 id="summary-of-changes">Summary of changes<a class="headerlink" href="#summary-of-changes" title="Permanent link"> ¶</a></h2>
@@ -648,9 +737,24 @@
 <td><code>passenger_events</code> → <code>device_events</code></td>
 </tr>
 <tr>
-<td><code>event_type</code> enumeration values renamed to <code>snake_case</code></td>
+<td>Enumeration values renamed to <code>snake_case</code> across TIDES-defined vocabularies</td>
 <td>Breaking</td>
-<td><code>device_events</code></td>
+<td><code>device_events</code>, <code>devices</code>, <code>fare_transactions</code>, <code>stop_visits</code>, <code>train_cars</code>, <code>trips_performed</code>, <code>vehicle_locations</code></td>
+</tr>
+<tr>
+<td><code>ntd_mode</code> values switched to NTD’s two-character mode codes</td>
+<td>Breaking</td>
+<td><code>trips_performed</code></td>
+</tr>
+<tr>
+<td><code>stop_visits.door_status</code> renamed to <code>door_action</code>, with shorter values</td>
+<td>Breaking</td>
+<td><code>stop_visits</code></td>
+</tr>
+<tr>
+<td><code>route_type</code> switched to GTFS numeric codes (integer field)</td>
+<td>Breaking</td>
+<td><code>trips_performed</code></td>
 </tr>
 <tr>
 <td>Duration fields renamed with explicit <code>_duration</code> suffix</td>
@@ -663,14 +767,9 @@
 <td><code>stop_visits</code></td>
 </tr>
 <tr>
-<td>Vehicle attributes normalized into <code>vehicle_groups</code>; <code>train_cars</code> and <code>vehicle_train_cars</code> removed; <code>vehicle_assignments</code> and <code>consist_vehicles</code> added</td>
+<td><code>operators</code> table restructured into <code>crew</code></td>
 <td>Breaking</td>
-<td><code>vehicles</code>, <code>train_cars</code>, <code>vehicle_train_cars</code>, and new tables</td>
-</tr>
-<tr>
-<td><code>vehicle_direction</code> field added to operational tables</td>
-<td>New optional field</td>
-<td><code>vehicle_locations</code>, <code>stop_visits</code>, <code>trips_performed</code>, <code>fare_transactions</code>, <code>device_events</code></td>
+<td><code>operators</code> → <code>crew</code>; <code>trips_performed</code>, <code>vehicle_train_cars</code></td>
 </tr>
 <tr>
 <td><code>vehicle_label</code> field added</td>
@@ -681,6 +780,16 @@
 <td><code>vehicle_crew</code> supporting table added</td>
 <td>New optional table</td>
 <td><code>vehicle_crew</code></td>
+</tr>
+<tr>
+<td>Vehicles and consists restructure</td>
+<td>In review for v2.0 final; not in alpha.1</td>
+<td><code>vehicles</code>, <code>train_cars</code>, <code>vehicle_train_cars</code> (unchanged in alpha.1)</td>
+</tr>
+<tr>
+<td>Default <code>stop_visits</code> file name in <code>tides.spec.json</code> corrected to <code>stop_visits.csv</code></td>
+<td>Correction</td>
+<td><code>stop_visits</code></td>
 </tr>
 <tr>
 <td><code>event_count</code> usage and APC data guidance clarified</td>
@@ -702,12 +811,15 @@
 <li>Rename the file <code>passenger_events.csv</code> to <code>device_events.csv</code> and update the resource entry in <code>datapackage.json</code>.</li>
 <li>Rename the primary key column <code>passenger_event_id</code> to <code>device_event_id</code>.</li>
 <li>Populate <code>device_id</code> for every record; it is now <strong>required</strong> (it was optional in v1.0). Every event must be traceable to a device in the <code>devices</code> table.</li>
-<li><code>vehicle_id</code> and <code>trip_stop_sequence</code> are now <strong>optional</strong> (they were required in v1.0). Existing vehicle-based records can keep them populated; station-based and mobile device events may leave them empty.</li>
+<li><code>vehicle_id</code> and <code>trip_stop_sequence</code> are now <strong>optional</strong> (they were required in v1.0). Vehicle-based records should keep them populated, since the field descriptions require them for vehicle-based events; station-based and mobile device events may leave them empty.</li>
 <li>New optional fields are available: <code>employee_id</code> (for mobile/handheld devices), <code>latitude</code>, and <code>longitude</code> (for mobile device events not at a fixed location).</li>
+<li><code>employee_id</code> is a free identifier in alpha.1 and is not linked to the new <code>crew</code> table; how it relates to <code>crew.crew_id</code> is subject to change in v2.0 final.</li>
 <li>New <code>event_type</code> values <code>passenger_entry</code> and <code>passenger_exit</code> support station fare-gate and turnstile events.</li>
 </ul>
-<h3 id="event_type-values-are-now-snake_case"><code>event_type</code> values are now <code>snake_case</code><a class="headerlink" href="#event_type-values-are-now-snake_case" title="Permanent link"> ¶</a></h3>
-<p>Descriptive-sentence enumeration values in <code>event_type</code> are replaced with <code>snake_case</code> identifiers. Producers must map values as follows:</p>
+<h3 id="enumeration-values-are-now-snake_case">Enumeration values are now <code>snake_case</code><a class="headerlink" href="#enumeration-values-are-now-snake_case" title="Permanent link"> ¶</a></h3>
+<p>Descriptive-sentence enumeration values in every TIDES-defined vocabulary are replaced with <code>snake_case</code> identifiers, for code compatibility. The rule agreed by the Contributors Group: vocabularies that TIDES defines itself convert, and values inherited from externally maintained vocabularies keep their source form. <code>trips_performed.route_type</code> (GTFS) moves to the numeric codes GTFS itself uses (mapping below), and <code>direction_id</code> is numeric and untouched. <code>trips_performed.ntd_mode</code> (NTD) also stays in NTD’s own form, but moves from NTD’s mode names to its official two-character codes (mapping below).</p>
+<p>Thirteen fields across seven tables are affected. Producers must map values as follows. Consumers matching on any of these strings must update the same way.</p>
+<h4 id="device_eventsevent_type"><code>device_events.event_type</code><a class="headerlink" href="#device_eventsevent_type" title="Permanent link"> ¶</a></h4>
 <table>
 <thead>
 <tr>
@@ -782,6 +894,831 @@
 </tr>
 </tbody>
 </table>
+<p>The new values <code>passenger_entry</code> and <code>passenger_exit</code> (station fare gates and turnstiles) have no v1.0 equivalent.</p>
+<h4 id="devicesdevice_type"><code>devices.device_type</code><a class="headerlink" href="#devicesdevice_type" title="Permanent link"> ¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>v1.0 value</th>
+<th>v2.0 value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Farebox</code></td>
+<td><code>farebox</code></td>
+</tr>
+<tr>
+<td><code>Fare gate</code></td>
+<td><code>fare_gate</code></td>
+</tr>
+<tr>
+<td><code>Fare vending machine</code></td>
+<td><code>fare_vending_machine</code></td>
+</tr>
+<tr>
+<td><code>Passenger counter</code></td>
+<td><code>passenger_counter</code></td>
+</tr>
+<tr>
+<td><code>Vehicle location</code></td>
+<td><code>vehicle_location</code></td>
+</tr>
+<tr>
+<td><code>Other</code></td>
+<td><code>other</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="fare_transactionsfare_action"><code>fare_transactions.fare_action</code><a class="headerlink" href="#fare_transactionsfare_action" title="Permanent link"> ¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>v1.0 value</th>
+<th>v2.0 value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Unknown action type</code></td>
+<td><code>unknown_action_type</code></td>
+</tr>
+<tr>
+<td><code>Purchase</code></td>
+<td><code>purchase</code></td>
+</tr>
+<tr>
+<td><code>Enter</code></td>
+<td><code>enter</code></td>
+</tr>
+<tr>
+<td><code>Exit</code></td>
+<td><code>exit</code></td>
+</tr>
+<tr>
+<td><code>Transfer entrance</code></td>
+<td><code>transfer_entrance</code></td>
+</tr>
+<tr>
+<td><code>Transfer exit</code></td>
+<td><code>transfer_exit</code></td>
+</tr>
+<tr>
+<td><code>Add</code></td>
+<td><code>add</code></td>
+</tr>
+<tr>
+<td><code>New</code></td>
+<td><code>new</code></td>
+</tr>
+<tr>
+<td><code>Capture</code></td>
+<td><code>capture</code></td>
+</tr>
+<tr>
+<td><code>Extend</code></td>
+<td><code>extend</code></td>
+</tr>
+<tr>
+<td><code>Combine</code></td>
+<td><code>combine</code></td>
+</tr>
+<tr>
+<td><code>Void</code></td>
+<td><code>void</code></td>
+</tr>
+<tr>
+<td><code>Activate</code></td>
+<td><code>activate</code></td>
+</tr>
+<tr>
+<td><code>Adjust</code></td>
+<td><code>adjust</code></td>
+</tr>
+<tr>
+<td><code>Other</code></td>
+<td><code>other</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="fare_transactionsfare_media_id"><code>fare_transactions.fare_media_id</code><a class="headerlink" href="#fare_transactionsfare_media_id" title="Permanent link"> ¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>v1.0 value</th>
+<th>v2.0 value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Cash or coins</code></td>
+<td><code>cash_or_coins</code></td>
+</tr>
+<tr>
+<td><code>Smart card or ticket</code></td>
+<td><code>smart_card_or_ticket</code></td>
+</tr>
+<tr>
+<td><code>Magnetic-stripe card or ticket</code></td>
+<td><code>magnetic_stripe_card_or_ticket</code></td>
+</tr>
+<tr>
+<td><code>Bank card</code></td>
+<td><code>bank_card</code></td>
+</tr>
+<tr>
+<td><code>Mobile NFC</code></td>
+<td><code>mobile_nfc</code></td>
+</tr>
+<tr>
+<td><code>Optical scan</code></td>
+<td><code>optical_scan</code></td>
+</tr>
+<tr>
+<td><code>Button pressed by driver or operator to indicate a boarding or alighting passenger.</code></td>
+<td><code>operator_button_press</code></td>
+</tr>
+<tr>
+<td><code>Other type</code></td>
+<td><code>other_type</code></td>
+</tr>
+</tbody>
+</table>
+<p>The sentence-long value is the one editorial rename among the fare media values; its meaning is unchanged.</p>
+<h4 id="stop_visitsdoor_status-is-now-door_action"><code>stop_visits.door_status</code> is now <code>door_action</code><a class="headerlink" href="#stop_visitsdoor_status-is-now-door_action" title="Permanent link"> ¶</a></h4>
+<p>The field is renamed from <code>door_status</code> to <code>door_action</code>, and its values are shortened rather than mechanically converted. The field description lists what each value means.</p>
+<table>
+<thead>
+<tr>
+<th>v1.0 value</th>
+<th>v2.0 value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Doors did not open</code></td>
+<td><code>none</code></td>
+</tr>
+<tr>
+<td><code>Front door opened and back doors remain closed</code></td>
+<td><code>front_only</code></td>
+</tr>
+<tr>
+<td><code>Back doors opened and front door remained closed</code></td>
+<td><code>back_only</code></td>
+</tr>
+<tr>
+<td><code>All doors opened</code></td>
+<td><code>all</code></td>
+</tr>
+<tr>
+<td><code>Other configuration</code></td>
+<td><code>other</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="stop_visitsschedule_relationship-and-vehicle_locationsschedule_relationship"><code>stop_visits.schedule_relationship</code> and <code>vehicle_locations.schedule_relationship</code><a class="headerlink" href="#stop_visitsschedule_relationship-and-vehicle_locationsschedule_relationship" title="Permanent link"> ¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>v1.0 value</th>
+<th>v2.0 value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Scheduled</code></td>
+<td><code>scheduled</code></td>
+</tr>
+<tr>
+<td><code>Skipped</code></td>
+<td><code>skipped</code></td>
+</tr>
+<tr>
+<td><code>Added</code></td>
+<td><code>added</code></td>
+</tr>
+<tr>
+<td><code>Missing</code></td>
+<td><code>missing</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="trips_performedschedule_relationship"><code>trips_performed.schedule_relationship</code><a class="headerlink" href="#trips_performedschedule_relationship" title="Permanent link"> ¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>v1.0 value</th>
+<th>v2.0 value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Scheduled</code></td>
+<td><code>scheduled</code></td>
+</tr>
+<tr>
+<td><code>Added</code></td>
+<td><code>added</code></td>
+</tr>
+<tr>
+<td><code>Unscheduled</code></td>
+<td><code>unscheduled</code></td>
+</tr>
+<tr>
+<td><code>Canceled</code></td>
+<td><code>canceled</code></td>
+</tr>
+<tr>
+<td><code>Duplicated</code></td>
+<td><code>duplicated</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="trips_performedtrip_type-and-vehicle_locationstrip_type"><code>trips_performed.trip_type</code> and <code>vehicle_locations.trip_type</code><a class="headerlink" href="#trips_performedtrip_type-and-vehicle_locationstrip_type" title="Permanent link"> ¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>v1.0 value</th>
+<th>v2.0 value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>In service</code></td>
+<td><code>in_service</code></td>
+</tr>
+<tr>
+<td><code>Deadhead</code></td>
+<td><code>deadhead</code></td>
+</tr>
+<tr>
+<td><code>Layover</code></td>
+<td><code>layover</code></td>
+</tr>
+<tr>
+<td><code>Pullout</code></td>
+<td><code>pullout</code></td>
+</tr>
+<tr>
+<td><code>Pullin</code></td>
+<td><code>pullin</code></td>
+</tr>
+<tr>
+<td><code>Extra Pullout</code></td>
+<td><code>extra_pullout</code></td>
+</tr>
+<tr>
+<td><code>Extra Pullin</code></td>
+<td><code>extra_pullin</code></td>
+</tr>
+<tr>
+<td><code>Deadhead To Layover</code></td>
+<td><code>deadhead_to_layover</code></td>
+</tr>
+<tr>
+<td><code>Deadhead From Layover</code></td>
+<td><code>deadhead_from_layover</code></td>
+</tr>
+<tr>
+<td><code>Other not in service</code></td>
+<td><code>other_not_in_service</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="train_carstrain_car_type"><code>train_cars.train_car_type</code><a class="headerlink" href="#train_carstrain_car_type" title="Permanent link"> ¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>v1.0 value</th>
+<th>v2.0 value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Train car</code></td>
+<td><code>train_car</code></td>
+</tr>
+<tr>
+<td><code>Trolley</code></td>
+<td><code>trolley</code></td>
+</tr>
+<tr>
+<td><code>Other</code></td>
+<td><code>other</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="vehicle_locationscurrent_status"><code>vehicle_locations.current_status</code><a class="headerlink" href="#vehicle_locationscurrent_status" title="Permanent link"> ¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>v1.0 value</th>
+<th>v2.0 value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Incoming at</code></td>
+<td><code>incoming_at</code></td>
+</tr>
+<tr>
+<td><code>Stopped at</code></td>
+<td><code>stopped_at</code></td>
+</tr>
+<tr>
+<td><code>In transit to</code></td>
+<td><code>in_transit_to</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="vehicle_locationsgps_quality"><code>vehicle_locations.gps_quality</code><a class="headerlink" href="#vehicle_locationsgps_quality" title="Permanent link"> ¶</a></h4>
+<table>
+<thead>
+<tr>
+<th>v1.0 value</th>
+<th>v2.0 value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Excellent</code></td>
+<td><code>excellent</code></td>
+</tr>
+<tr>
+<td><code>Good</code></td>
+<td><code>good</code></td>
+</tr>
+<tr>
+<td><code>Poor</code></td>
+<td><code>poor</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="trips_performedntd_mode-uses-ntds-two-character-mode-codes"><code>trips_performed.ntd_mode</code> uses NTD’s two-character mode codes<a class="headerlink" href="#trips_performedntd_mode-uses-ntds-two-character-mode-codes" title="Permanent link"> ¶</a></h3>
+<p><code>ntd_mode</code> values change from NTD mode names to the official two-character mode codes listed in the Modes and Types of Service section of the <a href="https://www.transit.dot.gov/ntd/manuals">NTD Full Reporting Policy Manual</a>. The codes follow the 2026 edition of the manual; if NTD revises its list of modes, the <code>ntd_mode</code> values will be updated through the change management process. <code>Demand Taxi</code> and <code>Other</code> are removed because neither has a code in the 2026 manual. The field is optional; leave it empty for trips with no NTD mode.</p>
+<table>
+<thead>
+<tr>
+<th>v1.0 value</th>
+<th>v2.0 value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Aerial Tramway</code></td>
+<td><code>TR</code></td>
+</tr>
+<tr>
+<td><code>Alaska Railroad</code></td>
+<td><code>AR</code></td>
+</tr>
+<tr>
+<td><code>Bus</code></td>
+<td><code>MB</code></td>
+</tr>
+<tr>
+<td><code>Bus Rapid Transit</code></td>
+<td><code>RB</code></td>
+</tr>
+<tr>
+<td><code>Cable Car</code></td>
+<td><code>CC</code></td>
+</tr>
+<tr>
+<td><code>Commuter Bus</code></td>
+<td><code>CB</code></td>
+</tr>
+<tr>
+<td><code>Commuter Rail</code></td>
+<td><code>CR</code></td>
+</tr>
+<tr>
+<td><code>Demand Response</code></td>
+<td><code>DR</code></td>
+</tr>
+<tr>
+<td><code>Demand Taxi</code></td>
+<td>removed</td>
+</tr>
+<tr>
+<td><code>Ferryboat</code></td>
+<td><code>FB</code></td>
+</tr>
+<tr>
+<td><code>Heavy Rail</code></td>
+<td><code>HR</code></td>
+</tr>
+<tr>
+<td><code>Hybrid Rail</code></td>
+<td><code>YR</code></td>
+</tr>
+<tr>
+<td><code>Inclined Plane</code></td>
+<td><code>IP</code></td>
+</tr>
+<tr>
+<td><code>Jitney</code></td>
+<td><code>JT</code></td>
+</tr>
+<tr>
+<td><code>Light Rail</code></td>
+<td><code>LR</code></td>
+</tr>
+<tr>
+<td><code>Monorail/Automated Guideway</code></td>
+<td><code>MG</code></td>
+</tr>
+<tr>
+<td><code>Other</code></td>
+<td>removed</td>
+</tr>
+<tr>
+<td><code>Público</code></td>
+<td><code>PB</code></td>
+</tr>
+<tr>
+<td><code>Streetcar</code></td>
+<td><code>SR</code></td>
+</tr>
+<tr>
+<td><code>Trolleybus</code></td>
+<td><code>TB</code></td>
+</tr>
+<tr>
+<td><code>Vanpool</code></td>
+<td><code>VP</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="trips_performedroute_type-uses-gtfs-numeric-codes"><code>trips_performed.route_type</code> uses GTFS numeric codes<a class="headerlink" href="#trips_performedroute_type-uses-gtfs-numeric-codes" title="Permanent link"> ¶</a></h3>
+<p><code>route_type</code> changes from GTFS route type names to the numeric codes GTFS itself uses in <code>routes.txt</code>, and becomes an integer field. Google’s <a href="https://developers.google.com/transit/gtfs/reference/extended-route-types">Extended Route Types</a> stay available alongside the basic GTFS codes, so every value allowed in v1.0 has a code. Two codes that couldn’t be listed by name in v1.0 are now available: <code>403</code>, which shares the name “Urban Railway Service” with <code>400</code>, and <code>405</code>, which shares the name “Monorail” with the basic code <code>12</code>.</p>
+<table>
+<thead>
+<tr>
+<th>v1.0 value</th>
+<th>v2.0 value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Tram / Streetcar / Light rail</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>Subway / Metro</code></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>Rail</code></td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td><code>Bus</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>Ferry</code></td>
+<td><code>4</code></td>
+</tr>
+<tr>
+<td><code>Cable tram</code></td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>Aerial lift</code></td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td><code>Funicular</code></td>
+<td><code>7</code></td>
+</tr>
+<tr>
+<td><code>Trolleybus</code></td>
+<td><code>11</code></td>
+</tr>
+<tr>
+<td><code>Monorail</code></td>
+<td><code>12</code></td>
+</tr>
+<tr>
+<td><code>Railway Service</code></td>
+<td><code>100</code></td>
+</tr>
+<tr>
+<td><code>High Speed Rail Service</code></td>
+<td><code>101</code></td>
+</tr>
+<tr>
+<td><code>Long Distance Trains</code></td>
+<td><code>102</code></td>
+</tr>
+<tr>
+<td><code>Inter Regional Rail Service</code></td>
+<td><code>103</code></td>
+</tr>
+<tr>
+<td><code>Car Transport Rail Service</code></td>
+<td><code>104</code></td>
+</tr>
+<tr>
+<td><code>Sleeper Rail Service</code></td>
+<td><code>105</code></td>
+</tr>
+<tr>
+<td><code>Regional Rail Service</code></td>
+<td><code>106</code></td>
+</tr>
+<tr>
+<td><code>Tourist Railway Service</code></td>
+<td><code>107</code></td>
+</tr>
+<tr>
+<td><code>Rail Shuttle (Within Complex)</code></td>
+<td><code>108</code></td>
+</tr>
+<tr>
+<td><code>Suburban Railway</code></td>
+<td><code>109</code></td>
+</tr>
+<tr>
+<td><code>Replacement Rail Service</code></td>
+<td><code>110</code></td>
+</tr>
+<tr>
+<td><code>Special Rail Service</code></td>
+<td><code>111</code></td>
+</tr>
+<tr>
+<td><code>Lorry Transport Rail Service</code></td>
+<td><code>112</code></td>
+</tr>
+<tr>
+<td><code>All Rail Services</code></td>
+<td><code>113</code></td>
+</tr>
+<tr>
+<td><code>Cross-Country Rail Service</code></td>
+<td><code>114</code></td>
+</tr>
+<tr>
+<td><code>Vehicle Transport Rail Service</code></td>
+<td><code>115</code></td>
+</tr>
+<tr>
+<td><code>Rack and Pinion Railway</code></td>
+<td><code>116</code></td>
+</tr>
+<tr>
+<td><code>Additional Rail Service</code></td>
+<td><code>117</code></td>
+</tr>
+<tr>
+<td><code>Coach Service</code></td>
+<td><code>200</code></td>
+</tr>
+<tr>
+<td><code>International Coach Service</code></td>
+<td><code>201</code></td>
+</tr>
+<tr>
+<td><code>National Coach Service</code></td>
+<td><code>202</code></td>
+</tr>
+<tr>
+<td><code>Shuttle Coach Service</code></td>
+<td><code>203</code></td>
+</tr>
+<tr>
+<td><code>Regional Coach Service</code></td>
+<td><code>204</code></td>
+</tr>
+<tr>
+<td><code>Special Coach Service</code></td>
+<td><code>205</code></td>
+</tr>
+<tr>
+<td><code>Sightseeing Coach Service</code></td>
+<td><code>206</code></td>
+</tr>
+<tr>
+<td><code>Tourist Coach Service</code></td>
+<td><code>207</code></td>
+</tr>
+<tr>
+<td><code>Commuter Coach Service</code></td>
+<td><code>208</code></td>
+</tr>
+<tr>
+<td><code>All Coach Services</code></td>
+<td><code>209</code></td>
+</tr>
+<tr>
+<td><code>Urban Railway Service</code></td>
+<td><code>400</code> (or <code>403</code>, which Google’s table also names “Urban Railway Service”)</td>
+</tr>
+<tr>
+<td><code>Metro Service</code></td>
+<td><code>401</code></td>
+</tr>
+<tr>
+<td><code>Underground Service</code></td>
+<td><code>402</code></td>
+</tr>
+<tr>
+<td><code>All Urban Railway Services</code></td>
+<td><code>404</code></td>
+</tr>
+<tr>
+<td><code>Bus Service</code></td>
+<td><code>700</code></td>
+</tr>
+<tr>
+<td><code>Regional Bus Service</code></td>
+<td><code>701</code></td>
+</tr>
+<tr>
+<td><code>Express Bus Service</code></td>
+<td><code>702</code></td>
+</tr>
+<tr>
+<td><code>Stopping Bus Service</code></td>
+<td><code>703</code></td>
+</tr>
+<tr>
+<td><code>Local Bus Service</code></td>
+<td><code>704</code></td>
+</tr>
+<tr>
+<td><code>Night Bus Service</code></td>
+<td><code>705</code></td>
+</tr>
+<tr>
+<td><code>Post Bus Service</code></td>
+<td><code>706</code></td>
+</tr>
+<tr>
+<td><code>Special Needs Bus</code></td>
+<td><code>707</code></td>
+</tr>
+<tr>
+<td><code>Mobility Bus Service</code></td>
+<td><code>708</code></td>
+</tr>
+<tr>
+<td><code>Mobility Bus for Registered Disabled</code></td>
+<td><code>709</code></td>
+</tr>
+<tr>
+<td><code>Sightseeing Bus</code></td>
+<td><code>710</code></td>
+</tr>
+<tr>
+<td><code>Shuttle Bus</code></td>
+<td><code>711</code></td>
+</tr>
+<tr>
+<td><code>School Bus</code></td>
+<td><code>712</code></td>
+</tr>
+<tr>
+<td><code>School and Public Service Bus</code></td>
+<td><code>713</code></td>
+</tr>
+<tr>
+<td><code>Rail Replacement Bus Service</code></td>
+<td><code>714</code></td>
+</tr>
+<tr>
+<td><code>Demand and Response Bus Service</code></td>
+<td><code>715</code></td>
+</tr>
+<tr>
+<td><code>All Bus Services</code></td>
+<td><code>716</code></td>
+</tr>
+<tr>
+<td><code>Trolleybus Service</code></td>
+<td><code>800</code></td>
+</tr>
+<tr>
+<td><code>Tram Service</code></td>
+<td><code>900</code></td>
+</tr>
+<tr>
+<td><code>City Tram Service</code></td>
+<td><code>901</code></td>
+</tr>
+<tr>
+<td><code>Local Tram Service</code></td>
+<td><code>902</code></td>
+</tr>
+<tr>
+<td><code>Regional Tram Service</code></td>
+<td><code>903</code></td>
+</tr>
+<tr>
+<td><code>Sightseeing Tram Service</code></td>
+<td><code>904</code></td>
+</tr>
+<tr>
+<td><code>Shuttle Tram Service</code></td>
+<td><code>905</code></td>
+</tr>
+<tr>
+<td><code>All Tram Services</code></td>
+<td><code>906</code></td>
+</tr>
+<tr>
+<td><code>Water Transport Service</code></td>
+<td><code>1000</code></td>
+</tr>
+<tr>
+<td><code>Air Service</code></td>
+<td><code>1100</code></td>
+</tr>
+<tr>
+<td><code>Ferry Service</code></td>
+<td><code>1200</code></td>
+</tr>
+<tr>
+<td><code>Aerial Lift Service</code></td>
+<td><code>1300</code></td>
+</tr>
+<tr>
+<td><code>Telecabin Service</code></td>
+<td><code>1301</code></td>
+</tr>
+<tr>
+<td><code>Cable Car Service</code></td>
+<td><code>1302</code></td>
+</tr>
+<tr>
+<td><code>Elevator Service</code></td>
+<td><code>1303</code></td>
+</tr>
+<tr>
+<td><code>Chair Lift Service</code></td>
+<td><code>1304</code></td>
+</tr>
+<tr>
+<td><code>Drag Lift Service</code></td>
+<td><code>1305</code></td>
+</tr>
+<tr>
+<td><code>Small Telecabin Service</code></td>
+<td><code>1306</code></td>
+</tr>
+<tr>
+<td><code>All Telecabin Services</code></td>
+<td><code>1307</code></td>
+</tr>
+<tr>
+<td><code>Funicular Service</code></td>
+<td><code>1400</code></td>
+</tr>
+<tr>
+<td><code>Taxi Service</code></td>
+<td><code>1500</code></td>
+</tr>
+<tr>
+<td><code>Communal Taxi Service</code></td>
+<td><code>1501</code></td>
+</tr>
+<tr>
+<td><code>Water Taxi Service</code></td>
+<td><code>1502</code></td>
+</tr>
+<tr>
+<td><code>Rail Taxi Service</code></td>
+<td><code>1503</code></td>
+</tr>
+<tr>
+<td><code>Bike Taxi Service</code></td>
+<td><code>1504</code></td>
+</tr>
+<tr>
+<td><code>Licensed Taxi Service</code></td>
+<td><code>1505</code></td>
+</tr>
+<tr>
+<td><code>Private Hire Service Vehicle</code></td>
+<td><code>1506</code></td>
+</tr>
+<tr>
+<td><code>All Taxi Services</code></td>
+<td><code>1507</code></td>
+</tr>
+<tr>
+<td><code>Miscellaneous Service</code></td>
+<td><code>1700</code></td>
+</tr>
+<tr>
+<td><code>Horse-drawn Carriage</code></td>
+<td><code>1702</code></td>
+</tr>
+</tbody>
+</table>
 <h3 id="duration-fields-renamed-in-stop_visits">Duration fields renamed in <code>stop_visits</code><a class="headerlink" href="#duration-fields-renamed-in-stop_visits" title="Permanent link"> ¶</a></h3>
 <p>Three fields holding durations are renamed with an explicit <code>_duration</code> suffix to distinguish them from timestamps:</p>
 <table>
@@ -807,34 +1744,44 @@
 </tbody>
 </table>
 <p>Field semantics are unchanged; only the names change.</p>
-<h3 id="vehicles-vehicle-groups-assignments-and-consists">Vehicles, vehicle groups, assignments, and consists<a class="headerlink" href="#vehicles-vehicle-groups-assignments-and-consists" title="Permanent link"> ¶</a></h3>
-<p>Vehicle representation is restructured to normalize attributes and properly support rail consists:</p>
-<ul>
-<li><strong><code>vehicle_groups</code> (new):</strong> shared attributes (seated capacity, full capacity, wheelchair capacity, bike capacity) for a group of vehicles of the same type. Attribute fields move here from <code>vehicles</code> and <code>train_cars</code>.</li>
-<li><strong><code>vehicles</code> (repurposed):</strong> the static or slowly changing list of physical vehicles, buses and train cars alike, each referencing a <code>vehicle_group_id</code> for its attributes, plus identifying information (<code>vehicle_label</code>, <code>license_plate</code>, in-service <code>start_date</code> and <code>end_date</code>).</li>
-<li><strong><code>vehicle_assignments</code> (new, optional):</strong> the daily record of a single vehicle or a consist that operational data can be associated with.</li>
-<li><strong><code>consist_vehicles</code> (new):</strong> the individual cars that make up a consist, with order and orientation. Replaces <code>vehicle_train_cars</code>.</li>
-<li><strong><code>train_cars</code> and <code>vehicle_train_cars</code> (removed):</strong> train cars are now records in <code>vehicles</code>; consist membership lives in <code>consist_vehicles</code>.</li>
-<li><strong><code>vehicle_direction</code> (new, optional):</strong> added to <code>vehicle_locations</code>, <code>stop_visits</code>, <code>trips_performed</code>, <code>fare_transactions</code>, and <code>device_events</code> to represent the direction a train is moving during operation.</li>
-</ul>
+<h3 id="operators-is-now-crew"><code>operators</code> is now <code>crew</code><a class="headerlink" href="#operators-is-now-crew" title="Permanent link"> ¶</a></h3>
+<p>The <code>operators</code> table is restructured into a <code>crew</code> table so that a crew member’s role can change over time and so that the same person can be represented consistently across trips, vehicles, and train cars.</p>
+<table>
+<thead>
+<tr>
+<th>v1.0</th>
+<th>v2.0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>operators</code> table with a single <code>operator_id</code> field</td>
+<td><code>crew</code> table with <code>crew_id</code>, <code>crew_role</code>, <code>start_date</code>, and optional <code>end_date</code>; primary key <code>crew_id</code> + <code>start_date</code></td>
+</tr>
+</tbody>
+</table>
+<p>A crew member has one effective <code>crew</code> record at a time, carrying their primary role; when the primary role changes, a new record starts. <code>end_date</code> is exclusive, so a record covers dates from <code>start_date</code> up to but not including <code>end_date</code>. A different role on a specific assignment goes in <code>vehicle_crew.crew_role</code>, which takes precedence over <code>crew.crew_role</code> when populated. <code>trips_performed</code>, <code>vehicle_train_cars</code>, and the new <code>vehicle_crew</code> table reference <code>crew.crew_id</code>.</p>
 <p>To migrate:</p>
 <ul>
-<li>Split vehicle attribute data out of <code>vehicles</code> and <code>train_cars</code> into <code>vehicle_groups</code> records, one per distinct vehicle type.</li>
-<li>Combine bus and train car records into a single <code>vehicles</code> table, each referencing its <code>vehicle_group_id</code>.</li>
-<li>Convert <code>vehicle_train_cars</code> records into <code>consist_vehicles</code> records with <code>car_order</code> and <code>car_orientation</code>.</li>
-<li>Remove <code>train_cars.csv</code> and <code>vehicle_train_cars.csv</code> from the data package and add the new tables to <code>datapackage.json</code>.</li>
+<li>Rename <code>operators.csv</code> to <code>crew.csv</code> and update the resource entry in <code>datapackage.json</code>.</li>
+<li>Rename the <code>operator_id</code> column to <code>crew_id</code> and add <code>start_date</code> (the earliest date the record applies; use the start of your dataset if unknown). Leave <code>end_date</code> empty for current records.</li>
+<li>Add <code>crew_role</code>, which is required and takes one of <code>operator</code>, <code>conductor</code>, <code>fare_inspector</code>, or <code>other</code>. A record migrated from v1.0’s <code>operators</code> table gets <code>operator</code>.</li>
+<li>Existing <code>trips_performed.operator_id</code> and <code>vehicle_train_cars.operator_id</code> values now resolve against <code>crew.crew_id</code>; the referring field names are unchanged.</li>
 </ul>
+<h3 id="vehicles-and-consists-in-review-not-part-of-v20-alpha1">Vehicles and consists (in review, not part of v2.0-alpha.1)<a class="headerlink" href="#vehicles-and-consists-in-review-not-part-of-v20-alpha1" title="Permanent link"> ¶</a></h3>
+<p>A restructure of vehicle representation to support rail consists and mixed fleets (<a href="https://github.com/TIDES-transit/TIDES/pull/272">#272</a>) is being worked through by the Standards Development Working Group with worked examples against real operational data. It is targeted for v2.0 final and is <strong>not included in v2.0-alpha.1</strong>. In alpha.1, the <code>vehicles</code>, <code>train_cars</code>, and <code>vehicle_train_cars</code> tables keep their v1.0 structure apart from the <code>vehicle_label</code> addition and the <code>crew</code> reference described above.</p>
+<p>Producers implementing alpha.1 should expect the vehicles and consists area to change in v2.0 final; none of the changes in this guide depend on it beyond field references. This section will be replaced with migration steps when that work lands. Follow <a href="https://github.com/TIDES-transit/TIDES/pull/272">#272</a> and the v2.0 map on <a href="https://github.com/TIDES-transit/TIDES/issues/271">#271</a>.</p>
 <h3 id="stop_visitsdeparture_load-may-be-negative"><code>stop_visits.departure_load</code> may be negative<a class="headerlink" href="#stop_visitsdeparture_load-may-be-negative" title="Permanent link"> ¶</a></h3>
 <p>The <code>minimum: 0</code> constraint is removed. <code>departure_load</code> is typically derived from boardings and alightings rather than directly observed, and APC observation error can legitimately produce negative derived values, particularly at low loads.</p>
 <p><strong>For producers:</strong> negative values are valid and permitted. Document in your dataset metadata how negative values should be interpreted (for example, unadjusted derived values retained for aggregate accuracy). Nothing requires you to publish negative values; producers who adjust loads for internal consistency may continue to do so.</p>
-<p><strong>For consumers:</strong> do not assume <code>departure_load</code> is nonnegative. A negative value is a measurement artifact of the derived calculation, not a physical passenger count. For aggregate calculations (passenger miles, average loads), retaining negative values preserves statistical accuracy, since clamping them to zero introduces upward bias; for record-level display or operational reporting, treat interpretation per the producer’s documentation.</p>
+<p><strong>For consumers:</strong> do not assume <code>departure_load</code> is nonnegative. A negative value is a measurement artifact of the derived calculation, not a physical passenger count. For aggregate calculations (passenger miles, average loads), retaining negative values preserves statistical accuracy, since clamping them to zero introduces upward bias. For record-level display or operational reporting, treat interpretation per the producer’s documentation.</p>
 <h2 id="new-optional-capabilities">New optional capabilities<a class="headerlink" href="#new-optional-capabilities" title="Permanent link"> ¶</a></h2>
 <p>These additions are backwards-compatible; adopting them is optional.</p>
 <ul>
-<li><strong><code>vehicle_crew</code> table:</strong> supports multiple crew members per trip, including mid-trip reliefs, with <code>crew_role</code> and start/end times. <code>trips_performed.operator_id</code> remains for the single-operator case.</li>
+<li><strong><code>vehicle_crew</code> table:</strong> supports multiple crew members per vehicle and trip, including mid-trip reliefs, with <code>crew_role</code> and start/end times. <code>start_time</code> is inclusive and <code>end_time</code> is exclusive, so at a handoff only the incoming crew member is assigned at that instant. Several crew members may overlap on the same vehicle, but a crew member should not be assigned to two vehicles at the same time. <code>vehicle_crew.crew_role</code> values are a subset of <code>crew.crew_role</code>’s. Records are keyed on <code>service_date</code>, <code>vehicle_id</code>, <code>crew_id</code>, and <code>start_time</code>. <code>trip_id_performed</code> is optional so that a single assignment can span consecutive trips (interlining), and is usually populated for easy joins. When it is populated, <code>vehicle_id</code> must match <code>trips_performed.vehicle_id</code> for that trip. <code>trips_performed.operator_id</code> stays optional: for a trip with several operators, use the first operator, or reference <code>vehicle_crew</code> for the complete crew assignments.</li>
 <li><strong><code>vehicle_label</code> field:</strong> separates the user-visible vehicle number from the internal <code>vehicle_id</code>. Aligns with GTFS-realtime <code>VehicleDescriptor.label</code>.</li>
 </ul>
-<p>A <code>device_status</code> table for tracking device availability was considered during v2.0 development and deferred to a future minor release pending implementation experience (see #253).</p>
+<p>A <code>device_status</code> table for tracking device availability (<a href="https://github.com/TIDES-transit/TIDES/pull/253">#253</a>) is not part of v2.0-alpha.1.</p>
 <h2 id="non-normative-clarifications">Non-normative clarifications<a class="headerlink" href="#non-normative-clarifications" title="Permanent link"> ¶</a></h2>
 <ul>
 <li><code>event_count</code> usage and APC data guidance are clarified in the <code>device_events</code> table documentation. No data changes are required.</li>
@@ -843,21 +1790,27 @@
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Rename <code>passenger_events.csv</code> to <code>device_events.csv</code>; rename <code>passenger_event_id</code> to <code>device_event_id</code>.</li>
 <li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Populate <code>device_id</code> on all device events and register devices in the <code>devices</code> table.</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Map <code>event_type</code> values to their <code>snake_case</code> equivalents.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Map enumeration values in the thirteen affected fields to their <code>snake_case</code> equivalents, and rename <code>stop_visits.door_status</code> to <code>door_action</code> with its shorter values.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Write <code>trips_performed.route_type</code> as the GTFS numeric code (an integer) instead of the route type name.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Switch <code>ntd_mode</code> to the two-character NTD mode codes; leave it empty for trips with no NTD mode.</li>
 <li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Rename the three <code>stop_visits</code> duration fields.</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Restructure vehicle data into <code>vehicles</code> + <code>vehicle_groups</code> (+ <code>vehicle_assignments</code> / <code>consist_vehicles</code> for rail).</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Remove <code>train_cars.csv</code> and <code>vehicle_train_cars.csv</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Rename <code>operators.csv</code> to <code>crew.csv</code>; rename <code>operator_id</code> to <code>crew_id</code> and add <code>start_date</code> and <code>crew_role</code> (<code>operator</code> for records migrated from v1.0).</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Leave <code>vehicles</code>, <code>train_cars</code>, and <code>vehicle_train_cars</code> as in v1.0 (plus optional <code>vehicle_label</code>); the vehicles and consists restructure follows in v2.0 final.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Name the stop visits file <code>stop_visits.csv</code> (lowercase), matching the other tables; v1.0’s <code>tides.spec.json</code> listed it as <code>Stop_visits.csv</code>.</li>
 <li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Update <code>datapackage.json</code> resource entries and the profile reference to the v2.0 spec.</li>
 <li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Re-validate the data package against the v2.0 schemas.</li>
 </ul>
 <h2 id="migration-checklist-for-consumers">Migration checklist for consumers<a class="headerlink" href="#migration-checklist-for-consumers" title="Permanent link"> ¶</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Update queries and joins from <code>passenger_events</code> to <code>device_events</code>; handle records where <code>vehicle_id</code> is empty (station and mobile device events).</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Update any <code>event_type</code> string matching to the <code>snake_case</code> values.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Update any string matching on the thirteen converted enumeration fields to the <code>snake_case</code> values, and read <code>stop_visits.door_action</code> in place of <code>door_status</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Expect <code>trips_performed.route_type</code> as an integer GTFS code rather than a route type name.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Update any matching on <code>ntd_mode</code> to the two-character NTD mode codes, and expect it to be empty for trips with no NTD mode.</li>
 <li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Update references to the renamed <code>stop_visits</code> duration fields.</li>
 <li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Remove any assumption that <code>stop_visits.departure_load</code> is nonnegative; handle negative derived values per the producer’s documented interpretation.</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Source vehicle attributes (capacities) from <code>vehicle_groups</code> via <code>vehicles.vehicle_group_id</code>.</li>
-<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Replace <code>train_cars</code> / <code>vehicle_train_cars</code> joins with <code>vehicles</code> / <code>consist_vehicles</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Join <code>trips_performed.operator_id</code> and <code>vehicle_train_cars.operator_id</code> to <code>crew.crew_id</code>, using <code>start_date</code> and <code>end_date</code> (exclusive) if you need the role at the time.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Use <code>vehicle_crew</code> for full crew assignments. Where <code>vehicle_crew.crew_role</code> is populated, it takes precedence over <code>crew.crew_role</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input disabled="" type="checkbox"/><span class="task-list-indicator"></span></label> Expect the vehicles and consists tables to change in v2.0 final; no consumer change is needed for alpha.1.</li>
 </ul>
 </article>
 </div>

@@ -9,7 +9,7 @@
 <link href="../architecture/" rel="prev"/>
 <link href="../datapackage/" rel="next"/>
 <link href="../assets/tides.ico" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<meta content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7" name="generator"/>
 <title>Table Schemas - Transit Integrated Data Exchange Specification (TIDES) Suite</title>
 <link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
@@ -287,19 +287,19 @@
 <nav aria-label="Event Tables" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#fare-transactions">
+<a class="md-nav__link" href="#device-events">
 <span class="md-ellipsis">
       
-        Fare Transactions
+        Device Events
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#passenger-events">
+<a class="md-nav__link" href="#fare-transactions">
 <span class="md-ellipsis">
       
-        Passenger Events
+        Fare Transactions
       
     </span>
 </a>
@@ -367,6 +367,15 @@
 <nav aria-label="Supporting Tables" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#crew">
+<span class="md-ellipsis">
+      
+        Crew
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#devices">
 <span class="md-ellipsis">
       
@@ -376,19 +385,19 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#operators">
+<a class="md-nav__link" href="#train-cars">
 <span class="md-ellipsis">
       
-        Operators
+        Train Cars
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#train-cars">
+<a class="md-nav__link" href="#vehicle-crew">
 <span class="md-ellipsis">
       
-        Train Cars
+        Vehicle Crew
       
     </span>
 </a>
@@ -553,6 +562,56 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Working Groups
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Working Groups
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../governance/working-groups/">
+<span class="md-ellipsis">
+    
+  
+    Working Groups Registry
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../governance/working-groups/sdwg-charter/">
+<span class="md-ellipsis">
+    
+  
+    SDWG Charter
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../governance/policies/change-management/">
 <span class="md-ellipsis">
@@ -566,8 +625,8 @@
 </a>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
 <span class="md-ellipsis">
     
   
@@ -578,8 +637,8 @@
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_6_3_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_6_3">
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_4">
 <span class="md-nav__icon md-icon"></span>
             
   
@@ -639,6 +698,18 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../governance/roadmap/">
+<span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -666,6 +737,149 @@
 <a href="https://specs.frictionlessdata.io/table-schema/">frictionless data</a> table
 schema standards.</p>
 <h2 id="event-tables">Event Tables<a class="headerlink" href="#event-tables" title="Permanent link"> ¶</a></h2>
+<h3 id="device-events">Device Events<a class="headerlink" href="#device-events" title="Permanent link"> ¶</a></h3>
+<p><em>device_events.schema.json</em></p>
+<p>Timestamped device-recorded events, including boardings, alightings, fare gate passages, and mobile validator events.</p>
+<p>Primary key: {<code>device_event_id</code>}</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>constraints</th>
+<th>type</th>
+<th>description</th>
+<th>title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>device_event_id</td>
+<td><strong>Required</strong><br/><em>Unique</em><br/></td>
+<td>string</td>
+<td>Identifies the recorded device event.</td>
+<td></td>
+</tr>
+<tr>
+<td>service_date</td>
+<td><strong>Required</strong><br/></td>
+<td>date</td>
+<td>Service date. References GTFS</td>
+<td></td>
+</tr>
+<tr>
+<td>event_timestamp</td>
+<td><strong>Required</strong><br/></td>
+<td>datetime</td>
+<td>Recorded event timestamp.</td>
+<td></td>
+</tr>
+<tr>
+<td>location_ping_id</td>
+<td></td>
+<td>string</td>
+<td>Identifies the vehicle location where the device event occurred</td>
+<td>ID referencing <a href="#vehicle-locations">vehicle_locations</a>.location_ping_id</td>
+</tr>
+<tr>
+<td>trip_id_performed</td>
+<td></td>
+<td>string</td>
+<td>Identifies the trip performed. If trips_performed table is used, this must be populated in order to link to it.</td>
+<td>ID referencing <a href="#trips-performed">trips_performed</a>.trip_id_performed</td>
+</tr>
+<tr>
+<td>trip_id_scheduled</td>
+<td></td>
+<td>string</td>
+<td>Identifies the scheduled trip.</td>
+<td>ID referencing <a href="#trips-performed">trips_performed</a>.trip_id_scheduled</td>
+</tr>
+<tr>
+<td>trip_stop_sequence</td>
+<td><br/>  minimum: 1<br/></td>
+<td>integer</td>
+<td>The actual order of stops visited within a performed trip. The values must start at 1 and must be consecutive along the trip. Required for vehicle-based events; optional for station-based or mobile device events not associated with a trip.<br/> Example: A bus departs the first stop and detours around the second and third scheduled stops, visiting one unscheduled stop and resuming regular service at the 4<sup>th</sup> scheduled stop. The <code>scheduled_stop_sequence</code> is [1, null, 4], and the <code>trip_stop_sequence</code> is [1, 2, 3].</td>
+<td>Positive integer referencing stop_visits.trip_stop_sequence</td>
+</tr>
+<tr>
+<td>scheduled_stop_sequence</td>
+<td><br/>  minimum: 0<br/></td>
+<td>integer</td>
+<td>Scheduled order of stops for a particular trip. The values must increase along the trip but do not need to be consecutive. References GTFS</td>
+<td>positive integer referencing  <a href="https://gtfs.org/schedule/reference/#stop_timestxt">GTFS stop_times</a>.stop_sequence</td>
+</tr>
+<tr>
+<td>event_type</td>
+<td><strong>Required</strong><br/>Allowed Values<br/> - <code>vehicle_arrived</code><br/>- <code>vehicle_departed</code><br/>- <code>door_opened</code><br/>- <code>door_closed</code><br/>- <code>passenger_boarded</code><br/>- <code>passenger_alighted</code><br/>- <code>passenger_entry</code><br/>- <code>passenger_exit</code><br/>- <code>kneel_engaged</code><br/>- <code>kneel_disengaged</code><br/>- <code>ramp_deployed</code><br/>- <code>ramp_raised</code><br/>- <code>ramp_failed</code><br/>- <code>lift_deployed</code><br/>- <code>lift_raised</code><br/>- <code>bike_boarded</code><br/>- <code>bike_alighted</code><br/>- <code>bike_rack_deployed</code></td>
+<td>string</td>
+<td>Indicates the type of event recorded. Use passenger_boarded/passenger_alighted for vehicle boarding/alighting events. Use passenger_entry/passenger_exit for station-based events like fare gate passages.</td>
+<td></td>
+</tr>
+<tr>
+<td>vehicle_id</td>
+<td></td>
+<td>string</td>
+<td>Identifies a vehicle. Required for vehicle-mounted device events; optional for station-based or mobile device events.</td>
+<td>ID referencing <a href="#vehicles">vehicles</a>.vehicle_id</td>
+</tr>
+<tr>
+<td>device_id</td>
+<td><strong>Required</strong><br/></td>
+<td>string</td>
+<td>Identifies the device that recorded the event. Links to the devices table to determine device type (vehicle-mounted, station-based, or mobile).</td>
+<td>ID referencing <a href="#devices">devices</a>.device_id</td>
+</tr>
+<tr>
+<td>employee_id</td>
+<td></td>
+<td>string</td>
+<td>Identifies the employee operating a handheld device, such as a fare inspector or conductor with a mobile validator.</td>
+<td>Employee ID</td>
+</tr>
+<tr>
+<td>train_car_id</td>
+<td></td>
+<td>string</td>
+<td>Identifies the train car.</td>
+<td>ID referencing <a href="#train-cars">train_cars</a>.train_car_id</td>
+</tr>
+<tr>
+<td>stop_id</td>
+<td></td>
+<td>string</td>
+<td>Identifies the stop or station where the event occurred, recorded as of the time of the event. For vehicle-mounted device events, the stop the vehicle is serving. References GTFS</td>
+<td>ID referencing  <a href="https://gtfs.org/schedule/reference/#stopstxt">GTFS stops</a>.stop_id</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td><br/>  minimum: -90<br/>  maximum: 90<br/></td>
+<td>number</td>
+<td>Degrees North, in the WGS-84 coordinate system. Used for mobile device events not at a fixed location.</td>
+<td>Latitude</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td><br/>  minimum: -180<br/>  maximum: 180<br/></td>
+<td>number</td>
+<td>Degrees East, in the WGS-84 coordinate system. Used for mobile device events not at a fixed location.</td>
+<td>Longitude</td>
+</tr>
+<tr>
+<td>pattern_id</td>
+<td></td>
+<td>string</td>
+<td>Identifies the unique stop-path for a trip, may be distinct from GTFS shapes.shape_id</td>
+<td>unique identifier for the route-pattern</td>
+</tr>
+<tr>
+<td>event_count</td>
+<td><br/>  minimum: 0<br/></td>
+<td>integer</td>
+<td>Count for this event. Default is <code>1</code>. Use values &gt; 1 only for truly simultaneous events (e.g., a parent carrying a child through a doorway as a single boarding event). Aggregated APC counts (e.g., ‘6 passengers boarded at this stop’) should be recorded in stop_visits, not passenger_events, since passenger_events is intended for discrete, instantaneous events. A value of <code>0</code> indicates that the event was recorded but no passengers were counted (e.g., door opened but no one boarded), which is distinct from null/missing data.</td>
+<td>Event count</td>
+</tr>
+</tbody>
+</table>
 <h3 id="fare-transactions">Fare Transactions<a class="headerlink" href="#fare-transactions" title="Permanent link"> ¶</a></h3>
 <p><em>fare_transactions.schema.json</em></p>
 <p>Timestamped fare transaction, associated with devices.</p>
@@ -732,9 +946,9 @@ schema standards.</p>
 </tr>
 <tr>
 <td>fare_action</td>
-<td><strong>Required</strong><br/>Allowed Values<br/> - <code>Unknown action type</code><br/>- <code>Purchase</code><br/>- <code>Enter</code><br/>- <code>Exit</code><br/>- <code>Transfer entrance</code><br/>- <code>Transfer exit</code><br/>- <code>Add</code><br/>- <code>New</code><br/>- <code>Capture</code><br/>- <code>Extend</code><br/>- <code>Combine</code><br/>- <code>Void</code><br/>- <code>Activate</code><br/>- <code>Adjust</code><br/>- <code>Other</code></td>
+<td><strong>Required</strong><br/>Allowed Values<br/> - <code>unknown_action_type</code><br/>- <code>purchase</code><br/>- <code>enter</code><br/>- <code>exit</code><br/>- <code>transfer_entrance</code><br/>- <code>transfer_exit</code><br/>- <code>add</code><br/>- <code>new</code><br/>- <code>capture</code><br/>- <code>extend</code><br/>- <code>combine</code><br/>- <code>void</code><br/>- <code>activate</code><br/>- <code>adjust</code><br/>- <code>other</code></td>
 <td>string</td>
-<td>Indicates the type of action performed.<br/>Unknown action type: the action type is unknown or missing<br/>Purchase: purchase a new card, ticket, pass, or other fare product<br/>Enter: enter a fare-controlled area or vehicle<br/>Exit: exit a fare-controlled area or vehicle<br/>Transfer entrance: enter a fare-controlled area or vehicle at no charge due to network or fare policy rules, such as a desginated free transfer at two nearby fare-controlled stations<br/>Transfer exit: exit a fare-controlled area or vehicle at no charge due to network or fare policy rules, such as a desginated free transfer at two nearby fare-controlled stations<br/>Add: add stored value or stored rides to an existing fare instrument<br/>New: obtain a new fare instrument<br/>Capture: the device confiscated or retained the fare instrument<br/>Extend: extend a fare product’s temporal validity<br/>Combine: combine two or more fare instruments or products into one<br/>Void: void, cancel, negate, or undo a previous fare transaction<br/>Activate: make a fare product active for travel<br/>Adjust: credit or debit a fare instrument to balance an earlier transaction<br/>Other: other action not included in this enumeration</td>
+<td>Indicates the type of action performed.<br/>unknown_action_type: the action type is unknown or missing<br/>purchase: purchase a new card, ticket, pass, or other fare product<br/>enter: enter a fare-controlled area or vehicle<br/>exit: exit a fare-controlled area or vehicle<br/>transfer_entrance: enter a fare-controlled area or vehicle at no charge due to network or fare policy rules, such as a desginated free transfer at two nearby fare-controlled stations<br/>transfer_exit: exit a fare-controlled area or vehicle at no charge due to network or fare policy rules, such as a desginated free transfer at two nearby fare-controlled stations<br/>add: add stored value or stored rides to an existing fare instrument<br/>new: obtain a new fare instrument<br/>capture: the device confiscated or retained the fare instrument<br/>extend: extend a fare product’s temporal validity<br/>combine: combine two or more fare instruments or products into one<br/>void: void, cancel, negate, or undo a previous fare transaction<br/>activate: make a fare product active for travel<br/>adjust: credit or debit a fare instrument to balance an earlier transaction<br/>other: other action not included in this enumeration</td>
 <td></td>
 <td></td>
 </tr>
@@ -820,7 +1034,7 @@ schema standards.</p>
 </tr>
 <tr>
 <td>fare_media_id</td>
-<td>Allowed Values<br/> - <code>Cash or coins</code><br/>- <code>Smart card or ticket</code><br/>- <code>Magnetic-stripe card or ticket</code><br/>- <code>Bank card</code><br/>- <code>Mobile NFC</code><br/>- <code>Optical scan</code><br/>- <code>Button pressed by driver or operator to indicate a boarding or alighting passenger.</code><br/>- <code>Other type</code></td>
+<td>Allowed Values<br/> - <code>cash_or_coins</code><br/>- <code>smart_card_or_ticket</code><br/>- <code>magnetic_stripe_card_or_ticket</code><br/>- <code>bank_card</code><br/>- <code>mobile_nfc</code><br/>- <code>optical_scan</code><br/>- <code>operator_button_press</code><br/>- <code>other_type</code></td>
 <td>string</td>
 <td>Indicates the fare medium that was used for the transaction.</td>
 <td></td>
@@ -873,128 +1087,6 @@ schema standards.</p>
 <td>Stored value remaining on an account after the transaction is made.</td>
 <td></td>
 <td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="passenger-events">Passenger Events<a class="headerlink" href="#passenger-events" title="Permanent link"> ¶</a></h3>
-<p><em>passenger_events.schema.json</em></p>
-<p>Timestamped passenger-related events, including boardings and alightings.</p>
-<p>Primary key: {<code>passenger_event_id</code>}</p>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>constraints</th>
-<th>type</th>
-<th>description</th>
-<th>title</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>passenger_event_id</td>
-<td><strong>Required</strong><br/><em>Unique</em><br/></td>
-<td>string</td>
-<td>Identifies the recorded passenger event.</td>
-<td></td>
-</tr>
-<tr>
-<td>service_date</td>
-<td><strong>Required</strong><br/></td>
-<td>date</td>
-<td>Service date. References GTFS</td>
-<td></td>
-</tr>
-<tr>
-<td>event_timestamp</td>
-<td><strong>Required</strong><br/></td>
-<td>datetime</td>
-<td>Recorded event timestamp.</td>
-<td></td>
-</tr>
-<tr>
-<td>location_ping_id</td>
-<td></td>
-<td>string</td>
-<td>Identifies the vehicle location where the passenger event occurred</td>
-<td>ID referencing <a href="#vehicle-locations">vehicle_locations</a>.location_ping_id</td>
-</tr>
-<tr>
-<td>trip_id_performed</td>
-<td></td>
-<td>string</td>
-<td>Identifies the trip performed. If trips_performed table is used, this must be populated in order to link to it.</td>
-<td>ID referencing <a href="#trips-performed">trips_performed</a>.trip_id_performed</td>
-</tr>
-<tr>
-<td>trip_id_scheduled</td>
-<td></td>
-<td>string</td>
-<td>Identifies the scheduled trip.</td>
-<td>ID referencing <a href="#trips-performed">trips_performed</a>.trip_id_scheduled</td>
-</tr>
-<tr>
-<td>trip_stop_sequence</td>
-<td><strong>Required</strong><br/><br/>  minimum: 1<br/></td>
-<td>integer</td>
-<td>The actual order of stops visited within a performed trip. The values must start at 1 and must be consecutive along the trip.<br/> Example: A bus departs the first stop and detours around the second and third scheduled stops, visiting one unscheduled stop and resuming regular service at the 4<sup>th</sup> scheduled stop. The <code>scheduled_stop_sequence</code> is [1, null, 4], and the <code>trip_stop_sequence</code> is [1, 2, 3].</td>
-<td>Positive integer referencing stop_visits.trip_stop_sequence</td>
-</tr>
-<tr>
-<td>scheduled_stop_sequence</td>
-<td><br/>  minimum: 0<br/></td>
-<td>integer</td>
-<td>Scheduled order of stops for a particular trip. The values must increase along the trip but do not need to be consecutive. References GTFS</td>
-<td>positive integer referencing  <a href="https://gtfs.org/schedule/reference/#stop_timestxt">GTFS stop_times</a>.stop_sequence</td>
-</tr>
-<tr>
-<td>event_type</td>
-<td><strong>Required</strong><br/>Allowed Values<br/> - <code>Vehicle arrived at stop</code><br/>- <code>Vehicle departed stop</code><br/>- <code>Door opened</code><br/>- <code>Door closed</code><br/>- <code>Passenger boarded</code><br/>- <code>Passenger alighted</code><br/>- <code>Kneel was engaged</code><br/>- <code>Kneel was disengaged</code><br/>- <code>Ramp was deployed</code><br/>- <code>Ramp was raised</code><br/>- <code>Ramp deployment failed</code><br/>- <code>Lift was deployed</code><br/>- <code>Lift was raised</code><br/>- <code>Individual bike boarded</code><br/>- <code>Individual bike alighted</code><br/>- <code>Bike rack deployed</code></td>
-<td>string</td>
-<td>Indicates the type of event recorded.</td>
-<td></td>
-</tr>
-<tr>
-<td>vehicle_id</td>
-<td><strong>Required</strong><br/></td>
-<td>string</td>
-<td>Identifies a vehicle.</td>
-<td>ID referencing <a href="#vehicles">vehicles</a>.vehicle_id</td>
-</tr>
-<tr>
-<td>device_id</td>
-<td></td>
-<td>string</td>
-<td>Identifies the device that recorded the event. May be null if only a single device is reporting passenger events on a vehicle/ train car and the device_id is not distinct from vehicle_id/train_car_id.</td>
-<td>ID referencing <a href="#devices">devices</a>.device_id</td>
-</tr>
-<tr>
-<td>train_car_id</td>
-<td></td>
-<td>string</td>
-<td>Identifies the train car.</td>
-<td>ID referencing <a href="#train-cars">train_cars</a>.train_car_id</td>
-</tr>
-<tr>
-<td>stop_id</td>
-<td></td>
-<td>string</td>
-<td>Identifies the stop the vehicle is serving. References GTFS</td>
-<td>ID referencing  <a href="https://gtfs.org/schedule/reference/#stopstxt">GTFS stops</a>.stop_id</td>
-</tr>
-<tr>
-<td>pattern_id</td>
-<td></td>
-<td>string</td>
-<td>Identifies the unique stop-path for a trip, may be distinct from GTFS shapes.shape_id</td>
-<td>unique identifier for the route-pattern</td>
-</tr>
-<tr>
-<td>event_count</td>
-<td><br/>  minimum: 0<br/></td>
-<td>integer</td>
-<td>Count for this event, e.g., 3 for a Passenger Boarding event with 3 boardings, default is  <code>1</code></td>
-<td>Event count</td>
 </tr>
 </tbody>
 </table>
@@ -1092,7 +1184,7 @@ schema standards.</p>
 </tr>
 <tr>
 <td>current_status</td>
-<td>Allowed Values<br/> - <code>Incoming at</code><br/>- <code>Stopped at</code><br/>- <code>In transit to</code></td>
+<td>Allowed Values<br/> - <code>incoming_at</code><br/>- <code>stopped_at</code><br/>- <code>in_transit_to</code></td>
 <td>string</td>
 <td>Indicates the status of the vehicle in reference to a stop. References GTFS-Realtime</td>
 <td></td>
@@ -1113,7 +1205,7 @@ schema standards.</p>
 </tr>
 <tr>
 <td>gps_quality</td>
-<td>Allowed Values<br/> - <code>Excellent</code><br/>- <code>Good</code><br/>- <code>Poor</code></td>
+<td>Allowed Values<br/> - <code>excellent</code><br/>- <code>good</code><br/>- <code>poor</code></td>
 <td>string</td>
 <td>Indicates the quality of data and communication provided by the GPS.</td>
 <td></td>
@@ -1155,14 +1247,14 @@ schema standards.</p>
 </tr>
 <tr>
 <td>trip_type</td>
-<td>Allowed Values<br/> - <code>In service</code><br/>- <code>Deadhead</code><br/>- <code>Layover</code><br/>- <code>Pullout</code><br/>- <code>Pullin</code><br/>- <code>Extra Pullout</code><br/>- <code>Extra Pullin</code><br/>- <code>Deadhead To Layover</code><br/>- <code>Deadhead From Layover</code><br/>- <code>Other not in service</code></td>
+<td>Allowed Values<br/> - <code>in_service</code><br/>- <code>deadhead</code><br/>- <code>layover</code><br/>- <code>pullout</code><br/>- <code>pullin</code><br/>- <code>extra_pullout</code><br/>- <code>extra_pullin</code><br/>- <code>deadhead_to_layover</code><br/>- <code>deadhead_from_layover</code><br/>- <code>other_not_in_service</code></td>
 <td>string</td>
 <td>Indicates status of travel with regard to service.</td>
 <td></td>
 </tr>
 <tr>
 <td>schedule_relationship</td>
-<td>Allowed Values<br/> - <code>Scheduled</code><br/>- <code>Skipped</code><br/>- <code>Added</code><br/>- <code>Missing</code></td>
+<td>Allowed Values<br/> - <code>scheduled</code><br/>- <code>skipped</code><br/>- <code>added</code><br/>- <code>missing</code></td>
 <td>string</td>
 <td>Indicates the status of the stop.</td>
 <td></td>
@@ -1173,7 +1265,7 @@ schema standards.</p>
 <h3 id="station-activities">Station Activities<a class="headerlink" href="#station-activities" title="Permanent link"> ¶</a></h3>
 <p><em>station_activities.schema.json</em></p>
 <p>Summarized transactions, entries, and exits by stop or station and time period for each service date (for events not associated with a trip).</p>
-<p>Primary key: {<code>time_period_end</code>, <code>time_period_start</code>, <code>stop_id</code>, <code>service_date</code>}</p>
+<p>Primary key: {<code>service_date</code>, <code>stop_id</code>, <code>time_period_start</code>, <code>time_period_end</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1274,7 +1366,7 @@ schema standards.</p>
 <h3 id="stop-visits">Stop Visits<a class="headerlink" href="#stop-visits" title="Permanent link"> ¶</a></h3>
 <p><em>stop_visits.schema.json</em></p>
 <p>Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date.</p>
-<p>Primary key: {<code>trip_id_performed</code>, <code>service_date</code>, <code>trip_stop_sequence</code>}</p>
+<p>Primary key: {<code>service_date</code>, <code>trip_id_performed</code>, <code>trip_stop_sequence</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1414,9 +1506,9 @@ schema standards.</p>
 </tr>
 <tr>
 <td>departure_load</td>
-<td><br/>  minimum: 0<br/></td>
+<td></td>
 <td>integer</td>
-<td>Number of riders on the vehicle when departing the stop.</td>
+<td>Number of riders on the vehicle when departing the stop. <code>departure_load</code> is typically derived from boardings and alightings and negative values are possible and permitted due to errors in the APC observations; data producers should document how negative values should be interpreted if present.</td>
 <td></td>
 </tr>
 <tr>
@@ -1434,14 +1526,14 @@ schema standards.</p>
 <td></td>
 </tr>
 <tr>
-<td>door_status</td>
-<td>Allowed Values<br/> - <code>Doors did not open</code><br/>- <code>Front door opened and back doors remain closed</code><br/>- <code>Back doors opened and front door remained closed</code><br/>- <code>All doors opened</code><br/>- <code>Other configuration</code></td>
+<td>door_action</td>
+<td>Allowed Values<br/> - <code>none</code><br/>- <code>front_only</code><br/>- <code>back_only</code><br/>- <code>all</code><br/>- <code>other</code></td>
 <td>string</td>
-<td>Indicates actions of the doors during the stop visit.</td>
+<td>Indicates actions of the doors during the stop visit.<br/>none: no doors opened<br/>front_only: the front door opened and the back doors remained closed<br/>back_only: the back doors opened and the front door remained closed<br/>all: all doors opened<br/>other: any other door configuration</td>
 <td></td>
 </tr>
 <tr>
-<td>ramp_deployed_time</td>
+<td>ramp_deployed_duration</td>
 <td><br/>  minimum: 0<br/></td>
 <td>number</td>
 <td>Duration of time a ramp is deployed, in seconds.</td>
@@ -1455,17 +1547,17 @@ schema standards.</p>
 <td></td>
 </tr>
 <tr>
-<td>kneel_deployed_time</td>
+<td>kneel_deployed_duration</td>
 <td><br/>  minimum: 0<br/></td>
 <td>number</td>
-<td>Duration of time a kneel is deployed in seconds.</td>
+<td>Duration of time a kneel is deployed, in seconds.</td>
 <td></td>
 </tr>
 <tr>
-<td>lift_deployed_time</td>
+<td>lift_deployed_duration</td>
 <td><br/>  minimum: 0<br/></td>
 <td>number</td>
-<td>Duration of time in seconds of time a lift is deployed.</td>
+<td>Duration of time a lift is deployed, in seconds.</td>
 <td></td>
 </tr>
 <tr>
@@ -1498,7 +1590,7 @@ schema standards.</p>
 </tr>
 <tr>
 <td>schedule_relationship</td>
-<td>Allowed Values<br/> - <code>Scheduled</code><br/>- <code>Skipped</code><br/>- <code>Added</code><br/>- <code>Missing</code></td>
+<td>Allowed Values<br/> - <code>scheduled</code><br/>- <code>skipped</code><br/>- <code>added</code><br/>- <code>missing</code></td>
 <td>string</td>
 <td>Indicates the status of the stop.</td>
 <td></td>
@@ -1508,7 +1600,7 @@ schema standards.</p>
 <h3 id="trips-performed">Trips Performed<a class="headerlink" href="#trips-performed" title="Permanent link"> ¶</a></h3>
 <p><em>trips_performed.schema.json</em></p>
 <p>Trips performed for each service date.</p>
-<p>Primary key: {<code>trip_id_performed</code>, <code>service_date</code>}</p>
+<p>Primary key: {<code>service_date</code>, <code>trip_id_performed</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1557,16 +1649,16 @@ schema standards.</p>
 </tr>
 <tr>
 <td>route_type</td>
-<td>Allowed Values<br/> - <code>Tram / Streetcar / Light rail</code><br/>- <code>Subway / Metro</code><br/>- <code>Rail</code><br/>- <code>Bus</code><br/>- <code>Ferry</code><br/>- <code>Cable tram</code><br/>- <code>Aerial lift</code><br/>- <code>Funicular</code><br/>- <code>Trolleybus</code><br/>- <code>Monorail</code><br/>- <code>Railway Service</code><br/>- <code>High Speed Rail Service</code><br/>- <code>Long Distance Trains</code><br/>- <code>Inter Regional Rail Service</code><br/>- <code>Car Transport Rail Service</code><br/>- <code>Sleeper Rail Service</code><br/>- <code>Regional Rail Service</code><br/>- <code>Tourist Railway Service</code><br/>- <code>Rail Shuttle (Within Complex)</code><br/>- <code>Suburban Railway</code><br/>- <code>Replacement Rail Service</code><br/>- <code>Special Rail Service</code><br/>- <code>Lorry Transport Rail Service</code><br/>- <code>All Rail Services</code><br/>- <code>Cross-Country Rail Service</code><br/>- <code>Vehicle Transport Rail Service</code><br/>- <code>Rack and Pinion Railway</code><br/>- <code>Additional Rail Service</code><br/>- <code>Coach Service</code><br/>- <code>International Coach Service</code><br/>- <code>National Coach Service</code><br/>- <code>Shuttle Coach Service</code><br/>- <code>Regional Coach Service</code><br/>- <code>Special Coach Service</code><br/>- <code>Sightseeing Coach Service</code><br/>- <code>Tourist Coach Service</code><br/>- <code>Commuter Coach Service</code><br/>- <code>All Coach Services</code><br/>- <code>Urban Railway Service</code><br/>- <code>Metro Service</code><br/>- <code>Underground Service</code><br/>- <code>All Urban Railway Services</code><br/>- <code>Bus Service</code><br/>- <code>Regional Bus Service</code><br/>- <code>Express Bus Service</code><br/>- <code>Stopping Bus Service</code><br/>- <code>Local Bus Service</code><br/>- <code>Night Bus Service</code><br/>- <code>Post Bus Service</code><br/>- <code>Special Needs Bus</code><br/>- <code>Mobility Bus Service</code><br/>- <code>Mobility Bus for Registered Disabled</code><br/>- <code>Sightseeing Bus</code><br/>- <code>Shuttle Bus</code><br/>- <code>School Bus</code><br/>- <code>School and Public Service Bus</code><br/>- <code>Rail Replacement Bus Service</code><br/>- <code>Demand and Response Bus Service</code><br/>- <code>All Bus Services</code><br/>- <code>Trolleybus Service</code><br/>- <code>Tram Service</code><br/>- <code>City Tram Service</code><br/>- <code>Local Tram Service</code><br/>- <code>Regional Tram Service</code><br/>- <code>Sightseeing Tram Service</code><br/>- <code>Shuttle Tram Service</code><br/>- <code>All Tram Services</code><br/>- <code>Water Transport Service</code><br/>- <code>Air Service</code><br/>- <code>Ferry Service</code><br/>- <code>Aerial Lift Service</code><br/>- <code>Telecabin Service</code><br/>- <code>Cable Car Service</code><br/>- <code>Elevator Service</code><br/>- <code>Chair Lift Service</code><br/>- <code>Drag Lift Service</code><br/>- <code>Small Telecabin Service</code><br/>- <code>All Telecabin Services</code><br/>- <code>Funicular Service</code><br/>- <code>Taxi Service</code><br/>- <code>Communal Taxi Service</code><br/>- <code>Water Taxi Service</code><br/>- <code>Rail Taxi Service</code><br/>- <code>Bike Taxi Service</code><br/>- <code>Licensed Taxi Service</code><br/>- <code>Private Hire Service Vehicle</code><br/>- <code>All Taxi Services</code><br/>- <code>Miscellaneous Service</code><br/>- <code>Horse-drawn Carriage</code></td>
-<td>string</td>
+<td>Allowed Values<br/> - <code>0</code><br/>- <code>1</code><br/>- <code>2</code><br/>- <code>3</code><br/>- <code>4</code><br/>- <code>5</code><br/>- <code>6</code><br/>- <code>7</code><br/>- <code>11</code><br/>- <code>12</code><br/>- <code>100</code><br/>- <code>101</code><br/>- <code>102</code><br/>- <code>103</code><br/>- <code>104</code><br/>- <code>105</code><br/>- <code>106</code><br/>- <code>107</code><br/>- <code>108</code><br/>- <code>109</code><br/>- <code>110</code><br/>- <code>111</code><br/>- <code>112</code><br/>- <code>113</code><br/>- <code>114</code><br/>- <code>115</code><br/>- <code>116</code><br/>- <code>117</code><br/>- <code>200</code><br/>- <code>201</code><br/>- <code>202</code><br/>- <code>203</code><br/>- <code>204</code><br/>- <code>205</code><br/>- <code>206</code><br/>- <code>207</code><br/>- <code>208</code><br/>- <code>209</code><br/>- <code>400</code><br/>- <code>401</code><br/>- <code>402</code><br/>- <code>403</code><br/>- <code>404</code><br/>- <code>405</code><br/>- <code>700</code><br/>- <code>701</code><br/>- <code>702</code><br/>- <code>703</code><br/>- <code>704</code><br/>- <code>705</code><br/>- <code>706</code><br/>- <code>707</code><br/>- <code>708</code><br/>- <code>709</code><br/>- <code>710</code><br/>- <code>711</code><br/>- <code>712</code><br/>- <code>713</code><br/>- <code>714</code><br/>- <code>715</code><br/>- <code>716</code><br/>- <code>800</code><br/>- <code>900</code><br/>- <code>901</code><br/>- <code>902</code><br/>- <code>903</code><br/>- <code>904</code><br/>- <code>905</code><br/>- <code>906</code><br/>- <code>1000</code><br/>- <code>1100</code><br/>- <code>1200</code><br/>- <code>1300</code><br/>- <code>1301</code><br/>- <code>1302</code><br/>- <code>1303</code><br/>- <code>1304</code><br/>- <code>1305</code><br/>- <code>1306</code><br/>- <code>1307</code><br/>- <code>1400</code><br/>- <code>1500</code><br/>- <code>1501</code><br/>- <code>1502</code><br/>- <code>1503</code><br/>- <code>1504</code><br/>- <code>1505</code><br/>- <code>1506</code><br/>- <code>1507</code><br/>- <code>1700</code><br/>- <code>1702</code></td>
+<td>integer</td>
 <td>Indicates the type of transportation used on a route. References GTFS routes.route_type including Google’s <a href="https://developers.google.com/transit/gtfs/reference/extended-route-types">Extended Route Types</a> GTFS extension</td>
 <td></td>
 </tr>
 <tr>
 <td>ntd_mode</td>
-<td>Allowed Values<br/> - <code>Aerial Tramway</code><br/>- <code>Alaska Railroad</code><br/>- <code>Bus</code><br/>- <code>Bus Rapid Transit</code><br/>- <code>Cable Car</code><br/>- <code>Commuter Bus</code><br/>- <code>Commuter Rail</code><br/>- <code>Demand Response</code><br/>- <code>Demand Taxi</code><br/>- <code>Ferryboat</code><br/>- <code>Heavy Rail</code><br/>- <code>Hybrid Rail</code><br/>- <code>Inclined Plane</code><br/>- <code>Jitney</code><br/>- <code>Light Rail</code><br/>- <code>Monorail/Automated Guideway</code><br/>- <code>Other</code><br/>- <code>Público</code><br/>- <code>Streetcar</code><br/>- <code>Trolleybus</code><br/>- <code>Vanpool</code></td>
+<td>Allowed Values<br/> - <code>AR</code><br/>- <code>CB</code><br/>- <code>CC</code><br/>- <code>CR</code><br/>- <code>DR</code><br/>- <code>FB</code><br/>- <code>HR</code><br/>- <code>IP</code><br/>- <code>JT</code><br/>- <code>LR</code><br/>- <code>MB</code><br/>- <code>MG</code><br/>- <code>PB</code><br/>- <code>RB</code><br/>- <code>SR</code><br/>- <code>TB</code><br/>- <code>TR</code><br/>- <code>VP</code><br/>- <code>YR</code></td>
 <td>string</td>
-<td>NTD mode, references the Modes and Types of Service section of the Introduction to the NTD Full Reporting Policy Manual <a href="https://www.transit.dot.gov/ntd/manuals">https://www.transit.dot.gov/ntd/manuals</a></td>
+<td>NTD mode, as the two-character mode code defined in the Modes and Types of Service section of the NTD Full Reporting Policy Manual <a href="https://www.transit.dot.gov/ntd/manuals">https://www.transit.dot.gov/ntd/manuals</a> (for example MB for Bus, CR for Commuter Rail). Leave empty for trips with no NTD mode.</td>
 <td></td>
 </tr>
 <tr>
@@ -1601,8 +1693,8 @@ schema standards.</p>
 <td>operator_id</td>
 <td></td>
 <td>string</td>
-<td>Identifies the vehicle’s operator.</td>
-<td>ID referencing <a href="#operators">operators</a>.operator_id</td>
+<td>Identifies the vehicle’s operator. Optional; for trips with multiple operators, use the first operator or reference the vehicle_crew table for complete crew assignments.</td>
+<td>ID referencing <a href="#crew">crew</a>.crew_id</td>
 </tr>
 <tr>
 <td>block_id</td>
@@ -1655,14 +1747,14 @@ schema standards.</p>
 </tr>
 <tr>
 <td>trip_type</td>
-<td>Allowed Values<br/> - <code>In service</code><br/>- <code>Deadhead</code><br/>- <code>Layover</code><br/>- <code>Pullout</code><br/>- <code>Pullin</code><br/>- <code>Extra Pullout</code><br/>- <code>Extra Pullin</code><br/>- <code>Deadhead To Layover</code><br/>- <code>Deadhead From Layover</code><br/>- <code>Other not in service</code></td>
+<td>Allowed Values<br/> - <code>in_service</code><br/>- <code>deadhead</code><br/>- <code>layover</code><br/>- <code>pullout</code><br/>- <code>pullin</code><br/>- <code>extra_pullout</code><br/>- <code>extra_pullin</code><br/>- <code>deadhead_to_layover</code><br/>- <code>deadhead_from_layover</code><br/>- <code>other_not_in_service</code></td>
 <td>string</td>
 <td>Indicates status of travel with regard to service.</td>
 <td></td>
 </tr>
 <tr>
 <td>schedule_relationship</td>
-<td>Allowed Values<br/> - <code>Scheduled</code><br/>- <code>Added</code><br/>- <code>Unscheduled</code><br/>- <code>Canceled</code><br/>- <code>Duplicated</code></td>
+<td>Allowed Values<br/> - <code>scheduled</code><br/>- <code>added</code><br/>- <code>unscheduled</code><br/>- <code>canceled</code><br/>- <code>duplicated</code></td>
 <td>string</td>
 <td>Indicates the status of the trip. References GTFS-realtime TripUpdate.trip.schedule_relationship</td>
 <td></td>
@@ -1670,6 +1762,46 @@ schema standards.</p>
 </tbody>
 </table>
 <h2 id="supporting-tables">Supporting Tables<a class="headerlink" href="#supporting-tables" title="Permanent link"> ¶</a></h2>
+<h3 id="crew">Crew<a class="headerlink" href="#crew" title="Permanent link"> ¶</a></h3>
+<p><em>crew.schema.json</em></p>
+<p>Transit personnel who serve as vehicle or station crew, including operators, conductors, and fare inspectors.</p>
+<p>Primary key: {<code>start_date</code>, <code>crew_id</code>}</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>constraints</th>
+<th>type</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>crew_id</td>
+<td><strong>Required</strong><br/></td>
+<td>string</td>
+<td>Identifies a crew member. If possible, this should match other internal agency crew or employee IDs. The same crew_id may appear in multiple records over time as the crew member’s role changes.</td>
+</tr>
+<tr>
+<td>crew_role</td>
+<td><strong>Required</strong><br/>Allowed Values<br/> - <code>operator</code><br/>- <code>conductor</code><br/>- <code>fare_inspector</code><br/>- <code>other</code></td>
+<td>string</td>
+<td>Primary role of the crew member during the period this record covers. When vehicle_crew.crew_role is populated for an assignment, it takes precedence over this value.</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td><strong>Required</strong><br/></td>
+<td>date</td>
+<td>Date this crew record becomes effective. A crew member has one effective crew record at a time, carrying their primary role; a different role on a specific assignment is recorded in vehicle_crew.crew_role rather than in an overlapping crew record.</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td></td>
+<td>date</td>
+<td>Date this crew record is no longer effective. This date is exclusive, meaning the record covers dates from start_date up to but not including end_date, matching vehicle_crew.end_time. Empty if currently effective.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="devices">Devices<a class="headerlink" href="#devices" title="Permanent link"> ¶</a></h3>
 <p><em>devices.schema.json</em></p>
 <p>Measurement devices, such as AVL, APC, and AFC devices, associated with vehicles or stops or stations.</p>
@@ -1715,7 +1847,7 @@ schema standards.</p>
 </tr>
 <tr>
 <td>device_type</td>
-<td>Allowed Values<br/> - <code>Farebox</code><br/>- <code>Fare gate</code><br/>- <code>Fare vending machine</code><br/>- <code>Passenger counter</code><br/>- <code>Vehicle location</code><br/>- <code>Other</code></td>
+<td>Allowed Values<br/> - <code>farebox</code><br/>- <code>fare_gate</code><br/>- <code>fare_vending_machine</code><br/>- <code>passenger_counter</code><br/>- <code>vehicle_location</code><br/>- <code>other</code></td>
 <td>string</td>
 <td>Indicates the type of device.</td>
 <td></td>
@@ -1740,28 +1872,6 @@ schema standards.</p>
 <td>string</td>
 <td>Indicates the location of a device on the vehicle or at a station. For example:<br/>Front door.<br/>Back door.<br/>Entrance (not located on a vehicle).<br/>Exit (not located on a vehicle).<br/>Entrance/exit (not located on a vehicle).<br/>Other.</td>
 <td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="operators">Operators<a class="headerlink" href="#operators" title="Permanent link"> ¶</a></h3>
-<p><em>operators.schema.json</em></p>
-<p>Personnel who operate vehicles.</p>
-<p>Primary key: {<code>operator_id</code>}</p>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>constraints</th>
-<th>type</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>operator_id</td>
-<td><strong>Required</strong><br/><em>Unique</em><br/></td>
-<td>string</td>
-<td>Identifies an operator. If possible, this should match other internal agency operator IDs.</td>
 </tr>
 </tbody>
 </table>
@@ -1829,16 +1939,82 @@ schema standards.</p>
 </tr>
 <tr>
 <td>train_car_type</td>
-<td>Allowed Values<br/> - <code>Train car</code><br/>- <code>Trolley</code><br/>- <code>Other</code></td>
+<td>Allowed Values<br/> - <code>train_car</code><br/>- <code>trolley</code><br/>- <code>other</code></td>
 <td>string</td>
 <td>Indicates the type of train car or asset.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vehicle-crew">Vehicle Crew<a class="headerlink" href="#vehicle-crew" title="Permanent link"> ¶</a></h3>
+<p><em>vehicle_crew.schema.json</em></p>
+<p>Crew member assignments to vehicles and trips, supporting multiple crew members and mid-trip reliefs.</p>
+<p>Primary key: {<code>service_date</code>, <code>start_time</code>, <code>vehicle_id</code>, <code>crew_id</code>}</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>constraints</th>
+<th>type</th>
+<th>description</th>
+<th>title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>service_date</td>
+<td><strong>Required</strong><br/></td>
+<td>date</td>
+<td>Service date. References GTFS</td>
+<td></td>
+</tr>
+<tr>
+<td>trip_id_performed</td>
+<td></td>
+<td>string</td>
+<td>Identifies the trip performed during this crew assignment. Optional so that a single assignment can span consecutive trips (interlining) or cover vehicle time not tied to one trip; populate it wherever a single trip applies, which keeps joins with trips_performed simple.</td>
+<td>ID referencing <a href="#trips-performed">trips_performed</a>.trip_id_performed</td>
+</tr>
+<tr>
+<td>vehicle_id</td>
+<td><strong>Required</strong><br/></td>
+<td>string</td>
+<td>Identifies the vehicle the crew member is assigned to. Must match trips_performed.vehicle_id for the same performed trip when trip_id_performed is populated.</td>
+<td>ID referencing <a href="#vehicles">vehicles</a>.vehicle_id</td>
+</tr>
+<tr>
+<td>crew_id</td>
+<td><strong>Required</strong><br/></td>
+<td>string</td>
+<td>Identifies the crew member. References the crew table.</td>
+<td>ID referencing <a href="#crew">crew</a>.crew_id</td>
+</tr>
+<tr>
+<td>crew_role</td>
+<td>Allowed Values<br/> - <code>operator</code><br/>- <code>conductor</code><br/>- <code>fare_inspector</code><br/>- <code>other</code></td>
+<td>string</td>
+<td>Role of the crew member on the vehicle. When multiple crew members are assigned, this indicates their specific function. When populated, this value takes precedence over crew.crew_role; when empty, the role on the crew record effective on service_date applies. Allowed values are a subset of those for crew.crew_role.</td>
+<td></td>
+</tr>
+<tr>
+<td>start_time</td>
+<td><strong>Required</strong><br/></td>
+<td>datetime</td>
+<td>Timestamp when the crew member’s assignment began. This time is inclusive, meaning the time starts at the given timestamp. Multiple crew members may have overlapping times on the same vehicle, but an individual crew member should not be assigned to multiple vehicles at the same time.</td>
+<td></td>
+</tr>
+<tr>
+<td>end_time</td>
+<td></td>
+<td>datetime</td>
+<td>Timestamp when the crew member’s assignment ended. This time is exclusive meaning the assignment ends immediately before the timestamp. Null if assignment is ongoing.</td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <h3 id="vehicle-train-cars">Vehicle Train Cars<a class="headerlink" href="#vehicle-train-cars" title="Permanent link"> ¶</a></h3>
 <p><em>vehicle_train_cars.schema.json</em></p>
 <p>Relationships between assets and vehicles.</p>
-<p>Primary key: {<code>vehicle_id</code>, <code>train_car_id</code>}</p>
+<p>Primary key: {<code>train_car_id</code>, <code>vehicle_id</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1876,7 +2052,7 @@ schema standards.</p>
 <td></td>
 <td>string</td>
 <td>Identifies an operator (person). If possible, this should match other internal agency operator IDs.</td>
-<td></td>
+<td>ID referencing <a href="#crew">crew</a>.crew_id</td>
 </tr>
 </tbody>
 </table>
@@ -1899,6 +2075,12 @@ schema standards.</p>
 <td><strong>Required</strong><br/><em>Unique</em><br/></td>
 <td>string</td>
 <td>Identifies a vehicle, such as a bus or a train consist. If possible, this should match other internal agency vehicle IDs and the GTFS-realtime VehicleDescriptor.</td>
+</tr>
+<tr>
+<td>vehicle_label</td>
+<td></td>
+<td>string</td>
+<td>User-visible label for the vehicle, such as the vehicle number displayed on the exterior. This may differ from vehicle_id, which is the internal identifier. Aligns with GTFS-realtime VehicleDescriptor.label.</td>
 </tr>
 <tr>
 <td>vehicle_start</td>
