@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.0-alpha.1] - YYYY-MM-DD
 
-First pre-release of TIDES v2.0, containing every v2.0 change approved so far. The vehicles and consists restructure ([#269](https://github.com/TIDES-transit/TIDES/issues/269)) is not included and is planned for v2.0 final. The [migration guide](https://tides-transit.org/main/migration-v1-to-v2/) covers what producers and consumers need to change.
+First pre-release of TIDES v2.0, containing every v2.0 change approved so far. The vehicles and consists restructure ([#272](https://github.com/TIDES-transit/TIDES/pull/272)) is not included and is planned for v2.0 final. The [migration guide](https://tides-transit.org/main/migration-v1-to-v2/) covers what producers and consumers need to change.
 
 - `device_events.employee_id` is subject to change in v2.0 final, including how it relates to `crew.crew_id`.
 - `trips_performed.ntd_mode` uses the mode codes from the 2026 NTD Policy Manual. NTD may revise its list of modes in later report years.
