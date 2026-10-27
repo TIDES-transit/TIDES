@@ -9,10 +9,10 @@
 <link href="../architecture/" rel="prev"/>
 <link href="../datapackage/" rel="next"/>
 <link href="../assets/tides.ico" rel="icon"/>
-<meta content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7" name="generator"/>
+<meta content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.8.0" name="generator"/>
 <title>Table Schemas - Transit Integrated Data Exchange Specification (TIDES) Suite</title>
-<link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.57a0d79d.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.fb2fffe2.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -1354,7 +1354,7 @@ schema standards.</p>
 <h3 id="stop-visits">Stop Visits<a class="headerlink" href="#stop-visits" title="Permanent link"> ¶</a></h3>
 <p><em>stop_visits.schema.json</em></p>
 <p>Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date.</p>
-<p>Primary key: {<code>service_date</code>, <code>trip_id_performed</code>, <code>trip_stop_sequence</code>}</p>
+<p>Primary key: {<code>trip_id_performed</code>, <code>service_date</code>, <code>trip_stop_sequence</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1588,7 +1588,7 @@ schema standards.</p>
 <h3 id="trips-performed">Trips Performed<a class="headerlink" href="#trips-performed" title="Permanent link"> ¶</a></h3>
 <p><em>trips_performed.schema.json</em></p>
 <p>Trips performed for each service date.</p>
-<p>Primary key: {<code>service_date</code>, <code>trip_id_performed</code>}</p>
+<p>Primary key: {<code>trip_id_performed</code>, <code>service_date</code>}</p>
 <table>
 <thead>
 <tr>
@@ -1936,7 +1936,7 @@ schema standards.</p>
 <h3 id="vehicle-crew">Vehicle Crew<a class="headerlink" href="#vehicle-crew" title="Permanent link"> ¶</a></h3>
 <p><em>vehicle_crew.schema.json</em></p>
 <p>Crew member assignments to vehicles and trips, supporting multiple crew members and mid-trip reliefs.</p>
-<p>Primary key: {<code>crew_id</code>, <code>service_date</code>, <code>vehicle_id</code>, <code>start_time</code>}</p>
+<p>Primary key: {<code>crew_id</code>, <code>vehicle_id</code>, <code>service_date</code>, <code>start_time</code>}</p>
 <table>
 <thead>
 <tr>
@@ -2160,8 +2160,8 @@ schema standards.</p>
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.tabs", "navigation.expand", "toc.integrate", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
-<script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.tabs", "navigation.expand", "toc.integrate", "toc.follow"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+<script src="../assets/javascripts/bundle.c21346df.min.js"></script>
 <script src="https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js"></script>
 </body>
 </html>
