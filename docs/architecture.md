@@ -22,11 +22,11 @@ Files in the TIDES suite are related to each other and other open standards as f
 ```mermaid
 graph LR;
     avl(((AVL))) --> vehicle_locations[/vehicle_locations/]
-    APC --> passenger_events[/passenger_events/]
+    APC --> device_events[/device_events/]
     AFC --> fare_transactions[/fare_transactions/]
     vehicle_locations --> summary[Summary Process]
     fare_transactions --> summary
-    passenger_events --> summary
+    device_events --> summary
     summary --> |stop_id,trip_id,vehicle_id|stop_visits[/stop_visits/]
     summary -->|stop_id| station_activities[/station_activities/]
     summary --> trips_performed[/trips_performed/]
@@ -51,15 +51,15 @@ graph LR;
     "| vehicle_locations
     stop_times.txt --> |"
         stop_times.txt: stop_id,stop_sequence
-        passenger_events: stop_id,scheduled_stop_sequence
-    "| passenger_events
+        device_events: stop_id,scheduled_stop_sequence
+    "| device_events
     stop_times.txt --> |"
         stop_times.txt: stop_id,stop_sequence
         fare_transactions: stop_id,scheduled_stop_sequence
     "| fare_transactions
     subgraph eventf [Event Data]
         vehicle_locations
-        passenger_events
+        device_events
         fare_transactions
     end
     subgraph summaryf [Summary Files]
@@ -93,7 +93,7 @@ graph LR;
     click vehicles "../tables/#vehicles"
     click devices "../tables/#devices"
     click vehicle_locations "../tables/#vehicle-locations"
-    click passenger_events "../tables/#passenger-events"
+    click device_events "../tables/#device-events"
     click fare_transactions "../tables/#fare-transactions"
 ```
 
