@@ -100,6 +100,11 @@
     "aliases": []
   },
   {
+    "version": "board_member_update",
+    "title": "board_member_update",
+    "aliases": []
+  },
+  {
     "version": "board_actions_aug2026",
     "title": "board_actions_aug2026",
     "aliases": []
