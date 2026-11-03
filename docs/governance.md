@@ -4,7 +4,7 @@ Governance of the TIDES Project is achieved through the definition and filling o
 
 | **Role** | **Who** |
 | -------- | ----- |
-| [TIDES Board](#tides-board-of-directors) | <ul><li>[Michael Eichler](https://github.com/planitmichael), [Charlotte Area Transit System](https://www.charlottenc.gov/CATS/Home)</li><li>[Evan Siroky](https://github.com/evansiroky), [Caltrans](https://dot.ca.gov)</li><li>[John Levin](https://github.com/jlstpaul)</li><li>[Elizabeth Sall](https://github.com/e-lo), [UrbanLabs LLC](https://urbanlabs.io)</li><li>[Gabriel Sánchez Martinez](https://github.com/gabriel-korbato), [Korbato](https://korbato.com/)</li></ul> |
+| [TIDES Board](#tides-board-of-directors) | <ul><li>[Michael Eichler](https://github.com/planitmichael), North Highland</li><li>[Evan Siroky](https://github.com/evansiroky), [Caltrans](https://dot.ca.gov)</li><li>[John Levin](https://github.com/jlstpaul)</li><li>[Elizabeth Sall](https://github.com/e-lo), [UrbanLabs LLC](https://urbanlabs.io)</li><li>[Gabriel Sánchez Martinez](https://github.com/gabriel-korbato), [Korbato](https://korbato.com/)</li></ul> |
 | [TIDES Board Coordinator](#board-coordinator) | [John Levin](https://github.com/jlstpaul) |
 | [TIDES Manager](#tides-manager) | [MobilityData](https://mobilitydata.org) |
 | [TIDES Program Manager](#tides-program-manager) | [Carl Fredlund](https://github.com/carlfredl), [MobilityData](https://mobilitydata.org) |
