@@ -1,1 +1,1 @@
-vehicle_id,vehicle_start,vehicle_end,model_name,facility_name,capacity_seated,capacity_wheelchair,capacity_bike,bike_rack,capacity_standing
+vehicle_id,vehicle_label,vehicle_start,vehicle_end,model_name,facility_name,capacity_seated,capacity_wheelchair,capacity_bike,bike_rack,capacity_standing
