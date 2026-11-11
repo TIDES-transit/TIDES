@@ -10,14 +10,16 @@
       "description": "Timestamped vehicle locations and speeds.",
       "path": "vehicle_locations.csv",
       "schema": "vehicle_locations.schema.json",
+      "profile": "tabular-data-resource",
       "required": false
     },
     {
-      "title": "Passenger Events",
-      "name": "passenger_events",
-      "description": "Timestamped passenger-related events, including boardings and alightings.",
-      "path": "passenger_events.csv",
-      "schema": "passenger_events.schema.json",
+      "title": "Device Events",
+      "name": "device_events",
+      "description": "Timestamped device-recorded events, including boardings, alightings, fare gate passages, and mobile validator events.",
+      "path": "device_events.csv",
+      "schema": "device_events.schema.json",
+      "profile": "tabular-data-resource",
       "required": false
     },
     {
@@ -26,6 +28,7 @@
       "description": "Timestamped fare transaction, associated with devices.",
       "path": "fare_transactions.csv",
       "schema": "fare_transactions.schema.json",
+      "profile": "tabular-data-resource",
       "required": false
     },
     {
@@ -34,6 +37,7 @@
       "description": "Summarized boarding, alighting, arrival, departure, and other events (kneel engaged, ramp deployed, etc.) by trip and stop for each service date.",
       "path": "stop_visits.csv",
       "schema": "stop_visits.schema.json",
+      "profile": "tabular-data-resource",
       "required": false
     },
     {
@@ -42,6 +46,7 @@
       "description": "Trips performed for each service date.",
       "path": "trips_performed.csv",
       "schema": "trips_performed.schema.json",
+      "profile": "tabular-data-resource",
       "required": false
     },
     {
@@ -50,6 +55,7 @@
       "description": "Summarized transactions, entries, and exits by stop or station and time period for each service date (for events not associated with a trip).",
       "path": "station_activities.csv",
       "schema": "station_activities.schema.json",
+      "profile": "tabular-data-resource",
       "required": false
     },
     {
@@ -58,6 +64,7 @@
       "description": "Measurement devices, such as AVL, APC, and AFC devices, associated with vehicles or stops or stations.",
       "path": "devices.csv",
       "schema": "devices.schema.json",
+      "profile": "tabular-data-resource",
       "required": false
     },
     {
@@ -66,6 +73,7 @@
       "description": "Assets that comprise vehicles, such as train cars, with descriptive information.",
       "path": "train_cars.csv",
       "schema": "train_cars.schema.json",
+      "profile": "tabular-data-resource",
       "required": false
     },
     {
@@ -74,6 +82,7 @@
       "description": "Relationships between assets and vehicles.",
       "path": "vehicle_train_cars.csv",
       "schema": "vehicle_train_cars.schema.json",
+      "profile": "tabular-data-resource",
       "required": false
     },
     {
@@ -82,6 +91,7 @@
       "description": "Vehicles, including buses and train consists, with descriptive information.",
       "path": "vehicles.csv",
       "schema": "vehicles.schema.json",
+      "profile": "tabular-data-resource",
       "required": false
     },
     {
@@ -90,6 +100,7 @@
       "description": "Transit personnel who serve as vehicle or station crew, including operators, conductors, and fare inspectors.",
       "path": "crew.csv",
       "schema": "crew.schema.json",
+      "profile": "tabular-data-resource",
       "required": false
     },
     {
@@ -98,6 +109,7 @@
       "description": "Crew member assignments to vehicles and trips, supporting multiple crew members and mid-trip reliefs.",
       "path": "vehicle_crew.csv",
       "schema": "vehicle_crew.schema.json",
+      "profile": "tabular-data-resource",
       "required": false
     }
   ]
