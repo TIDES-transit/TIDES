@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2.0-alpha.1] - YYYY-MM-DD
+## [2.0-alpha.1] - 2026-11-11
 
 First pre-release of TIDES v2.0, containing every v2.0 change approved so far. The vehicles and consists restructure ([#272](https://github.com/TIDES-transit/TIDES/pull/272)) is not included and is planned for v2.0 final. The [migration guide](https://tides-transit.org/main/migration-v1-to-v2/) covers what producers and consumers need to change.
 
