@@ -81,10 +81,10 @@
             ]
         },
         {
-            "name": "operators",
+            "name": "crew",
             "profile": "tabular-data-resource",
-            "path": "operators.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/operators.schema.json",
+            "path": "crew.csv",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/crew.schema.json",
             "sources": [
                 {
                     "title": "Where did data come from?",
@@ -151,6 +151,20 @@
             ]
         },
         {
+            "name": "vehicle_crew",
+            "profile": "tabular-data-resource",
+            "path": "vehicle_crew.csv",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/vehicle_crew.schema.json",
+            "sources": [
+                {
+                    "title": "Where did data come from?",
+                    "component": "Type of technology component, i.e. `CAD/AVL`",
+                    "product": "Product used.",
+                    "vendor": "Vendor selling product."
+                }
+            ]
+        },
+        {
             "name": "station_activities",
             "profile": "tabular-data-resource",
             "path": "station_activities.csv",
@@ -165,10 +179,10 @@
             ]
         },
         {
-            "name": "passenger_events",
+            "name": "device_events",
             "profile": "tabular-data-resource",
-            "path": "passenger_events.csv",
-            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/passenger_events.schema.json",
+            "path": "device_events.csv",
+            "schema": "https://raw.githubusercontent.com/TIDES-transit/TIDES/main/spec/device_events.schema.json",
             "sources": [
                 {
                     "title": "Where did data come from?",

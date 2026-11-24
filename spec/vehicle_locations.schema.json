@@ -91,9 +91,9 @@
       "description": "Indicates the status of the vehicle in reference to a stop. References GTFS-Realtime",
       "constraints": {
         "enum": [
-          "Incoming at",
-          "Stopped at",
-          "In transit to"
+          "incoming_at",
+          "stopped_at",
+          "in_transit_to"
         ]
       }
     },
@@ -121,9 +121,9 @@
       "description": "Indicates the quality of data and communication provided by the GPS.",
       "constraints": {
         "enum": [
-          "Excellent",
-          "Good",
-          "Poor"
+          "excellent",
+          "good",
+          "poor"
         ]
       }
     },
@@ -168,16 +168,16 @@
       "description": "Indicates status of travel with regard to service.",
       "constraints": {
         "enum": [
-          "In service",
-          "Deadhead",
-          "Layover",
-          "Pullout",
-          "Pullin",
-          "Extra Pullout",
-          "Extra Pullin",
-          "Deadhead To Layover",
-          "Deadhead From Layover",
-          "Other not in service"
+          "in_service",
+          "deadhead",
+          "layover",
+          "pullout",
+          "pullin",
+          "extra_pullout",
+          "extra_pullin",
+          "deadhead_to_layover",
+          "deadhead_from_layover",
+          "other_not_in_service"
         ]
       }
     },
@@ -187,27 +187,41 @@
       "description": "Indicates the status of the stop.",
       "constraints": {
         "enum": [
-          "Scheduled",
-          "Skipped",
-          "Added",
-          "Missing"
+          "scheduled",
+          "skipped",
+          "added",
+          "missing"
         ]
       }
     }
   ],
   "foreignReferences": [
     {
-      "fields": ["service_date", "trip_id_performed"],
+      "fields": [
+        "service_date",
+        "trip_id_performed"
+      ],
       "reference": {
         "resource": "trips_performed",
-        "fields": ["service_date", "trip_id_performed"]
+        "fields": [
+          "service_date",
+          "trip_id_performed"
+        ]
       }
     },
     {
-      "fields": ["service_date", "trip_id_performed", "stop_sequence"],
+      "fields": [
+        "service_date",
+        "trip_id_performed",
+        "stop_sequence"
+      ],
       "reference": {
         "resource": "stop_times",
-        "fields": ["service_date", "trip_id_performed", "stop_sequence"]
+        "fields": [
+          "service_date",
+          "trip_id_performed",
+          "stop_sequence"
+        ]
       }
     },
     {

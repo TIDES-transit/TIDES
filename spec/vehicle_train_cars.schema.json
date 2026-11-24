@@ -38,7 +38,8 @@
     {
       "name": "operator_id",
       "type": "string",
-      "description": "Identifies an operator (person). If possible, this should match other internal agency operator IDs."
+      "description": "Identifies an operator (person). If possible, this should match other internal agency operator IDs.",
+      "title": "ID referencing crew.crew_id"
     }
   ],
   "foreignReferences": [
@@ -59,8 +60,8 @@
     {
       "fields": "operator_id",
       "reference": {
-        "resource": "operator",
-        "fields": "operator_id"
+        "resource": "crew",
+        "fields": "crew_id"
       }
     }
   ],
